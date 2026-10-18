@@ -21,15 +21,15 @@ class Config:
     """Central configuration container."""
 
     # Brand & Inbound Lead Funnel
-    brand_name: str = os.getenv("BRAND_NAME", "Apex Velocity Labs")
-    brand_handle: str = os.getenv("BRAND_HANDLE", "@apexvelocitylabs")
+    brand_name: str = os.getenv("BRAND_NAME", "ExtrovertNerd")
+    brand_handle: str = os.getenv("BRAND_HANDLE", "@extrovertnerd")
     founder_name: str = os.getenv("FOUNDER_NAME", "Ravi")
     founder_title: str = os.getenv("FOUNDER_TITLE", "Lead Web Architect")
-    website_url: str = os.getenv("WEBSITE_URL", "https://apexvelocity.dev")
+    website_url: str = os.getenv("WEBSITE_URL", "https://extrovertnerd.com")
     whatsapp_phone_number: str = os.getenv("WHATSAPP_PHONE_NUMBER", "15551234567")
     whatsapp_default_message: str = os.getenv(
         "WHATSAPP_DEFAULT_MESSAGE",
-        "Hey! I saw your post and want a free 5-point website speed & UX audit for my business."
+        "Hey Ravi! I saw ExtrovertNerd's website audit and want a free 5-point speed & UX teardown for my business."
     )
     google_form_intake_url: str = os.getenv(
         "GOOGLE_FORM_INTAKE_URL",

@@ -1,0 +1,31 @@
+{
+    "name": "extrovertnerd/agency-hub",
+    "type": "project",
+    "description": "ExtrovertNerd - 24/7 Autonomous Client Acquisition Engine & High-Performance Laravel Agency Hub",
+    "keywords": [
+        "laravel",
+        "agency",
+        "performance",
+        "core-web-vitals",
+        "extrovertnerd"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "scripts": {
+        "start": "php -S 127.0.0.1:8000 -t public"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

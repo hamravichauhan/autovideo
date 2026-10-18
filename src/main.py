@@ -21,6 +21,7 @@ from typing import Any, Dict, Optional
 from src.config import config
 from src.generator_graphics import GraphicsRenderer
 from src.generator_pseo import PSEOGenerator
+from src.prospecting_engine import ProspectingEngine
 from src.publisher import SocialPublisherEngine
 
 logging.basicConfig(
@@ -37,6 +38,7 @@ class AutomationEngine:
         self.pseo_generator = PSEOGenerator()
         self.graphics_renderer = GraphicsRenderer()
         self.publisher_engine = SocialPublisherEngine()
+        self.prospecting_engine = ProspectingEngine()
 
     def run_daily_funnel(
         self,
@@ -102,10 +104,17 @@ class AutomationEngine:
         )
         logger.info("✅ Social Campaign Dispatched (Status: %s)", "Dry Run / Simulated" if config.dry_run else "Live")
 
+        # 4. Outbound Local Prospecting & Outreach Generation
+        logger.info("\n--- [STEP 4/5] Running Local Prospecting Engine ---")
+        prospecting_result = self.prospecting_engine.run_prospecting_batch(
+            city_id=city["id"], niche_id=niche["id"], count=5
+        )
+        logger.info("✅ Generated %d Local Outreach Drafts: %s", prospecting_result["count"], prospecting_result["outreach_deck_md"])
+
         # 5. Pipeline Summary & Metrics
         end_time = datetime.datetime.now()
         duration = (end_time - start_time).total_seconds()
-        logger.info("\n--- [STEP 4/4] Finalizing Run Log ---")
+        logger.info("\n--- [STEP 5/5] Finalizing Run Log ---")
 
         run_log = {
             "timestamp": start_time.isoformat(),
@@ -125,6 +134,10 @@ class AutomationEngine:
                 "caption_preview": campaign_summary.get("caption", "")[:120] + "...",
                 "dry_run": config.dry_run,
                 "meta_status": campaign_summary.get("meta_result", {}).get("status"),
+            },
+            "prospecting": {
+                "leads_count": prospecting_result["count"],
+                "deck": prospecting_result["outreach_deck_md"],
             },
             "lead_capture": {
                 "whatsapp_cta": config.whatsapp_click_to_chat_url,
@@ -149,7 +162,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--mode",
-        choices=["daily", "all", "pseo", "graphics", "tech_tip", "social"],
+        choices=["daily", "all", "pseo", "graphics", "tech_tip", "social", "prospect"],
         default="daily",
         help="Pipeline execution mode",
     )
@@ -182,6 +195,13 @@ def main() -> None:
             render_graphics=not args.no_graphics,
             platform=args.platform,
         )
+    elif args.mode == "prospect":
+        res = engine.prospecting_engine.run_prospecting_batch(
+            city_id=args.city, niche_id=args.niche, count=5
+        )
+        print(f"\n[ExtrovertNerd Prospecting Complete]")
+        print(f"Target: {res['city']} — {res['niche']}")
+        print(f"Deck: {res['outreach_deck_md']}")
     elif args.mode == "pseo":
         res = engine.pseo_generator.generate_article(
             city_id=args.city, niche_id=args.niche, angle=args.angle

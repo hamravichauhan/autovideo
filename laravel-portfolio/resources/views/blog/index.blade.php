@@ -1,0 +1,93 @@
+@extends('layouts.app')
+
+@section('title', 'Programmatic SEO Case Studies & Performance Teardowns | ExtrovertNerd')
+@section('meta_description', 'Read in-depth technical case studies and performance audits for local businesses across Goa, Mumbai, Bangalore, Delhi NCR, and Dubai.')
+
+@section('content')
+<div class="max-w-7xl mx-auto px-6 py-12">
+
+    <!-- HEADER -->
+    <div class="max-w-3xl space-y-3">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-xs font-semibold">
+            <span>📚</span>
+            <span>PROGRAMMATIC SEO CASE STUDIES & TEARDOWNS</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+            Engineering Logs & <span class="font-serif italic font-normal text-emerald-400">Field Audits</span>
+        </h1>
+        <p class="text-slate-400 text-base md:text-lg leading-relaxed">
+            Real data from hundreds of mobile performance audits across major local commercial centers. Discover how moving from bloated legacy platforms to custom Laravel architectures slashes load times by 90%.
+        </p>
+    </div>
+
+    <!-- CITY FILTER PILLS -->
+    <div class="flex items-center space-x-2.5 overflow-x-auto py-6 border-b border-white/10 scrollbar-none">
+        <a href="/blog" class="px-4 py-2 rounded-xl text-xs font-bold font-mono uppercase tracking-wider transition shrink-0 {{ empty($currentCity) ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20' : 'bg-slate-900 border border-white/10 text-slate-300 hover:text-white' }}">
+            All Cities
+        </a>
+        @foreach($cities as $city)
+        <a href="/blog?city={{ urlencode($city) }}" class="px-4 py-2 rounded-xl text-xs font-bold font-mono uppercase tracking-wider transition shrink-0 {{ ($currentCity && strtolower($currentCity) === strtolower($city)) ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20' : 'bg-slate-900 border border-white/10 text-slate-300 hover:text-white' }}">
+            {{ $city }}
+        </a>
+        @endforeach
+    </div>
+
+    <!-- ARTICLES GRID -->
+    @if(empty($articles))
+    <div class="text-center py-20 bg-slate-900/40 rounded-3xl border border-white/10 mt-8 space-y-4">
+        <div class="text-4xl">⚡</div>
+        <h3 class="text-xl font-bold text-white">No Case Studies Found for this Filter</h3>
+        <p class="text-slate-400 text-sm">Run our Python generator (`python -m src.generator_pseo`) to assemble fresh articles.</p>
+        <a href="/blog" class="inline-block bg-emerald-500 text-slate-950 font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl">View All Articles</a>
+    </div>
+    @else
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+        @foreach($articles as $article)
+        <article class="bg-gradient-to-b from-slate-900/90 to-slate-950 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-7 flex flex-col justify-between group transition duration-300 shadow-xl hover:-translate-y-1">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-bold">
+                        📍 {{ $article['city'] }}
+                    </span>
+                    <span class="text-slate-500">{{ $article['read_time'] }}</span>
+                </div>
+
+                <h2 class="text-xl font-extrabold text-white group-hover:text-emerald-300 transition leading-snug">
+                    <a href="/blog/{{ $article['slug'] }}">{{ $article['title'] }}</a>
+                </h2>
+
+                <p class="text-slate-400 text-sm leading-relaxed line-clamp-3">
+                    {{ $article['description'] }}
+                </p>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+                <span class="text-slate-500">{{ $article['date'] }}</span>
+                <a href="/blog/{{ $article['slug'] }}" class="text-emerald-400 font-bold flex items-center space-x-1 hover:translate-x-1 transition">
+                    <span>Read Teardown</span>
+                    <span>➔</span>
+                </a>
+            </div>
+        </article>
+        @endforeach
+    </div>
+    @endif
+
+    <!-- BOTTOM FUNNEL CTA -->
+    <div class="mt-20 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-indigo-950/40 border border-emerald-500/30 rounded-3xl p-8 md:p-12 text-center space-y-6">
+        <h3 class="text-3xl font-black text-white">Want Your Business Tested in Our Lab?</h3>
+        <p class="text-slate-300 text-base max-w-xl mx-auto">
+            Run your URL through our free speed checker or chat directly with Lead Architect Ravi for a complimentary 5-point teardown.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/speed-checker" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm uppercase px-7 py-3.5 rounded-xl shadow-lg transition">
+                Launch Free Speed Checker
+            </a>
+            <a href="https://wa.me/15551234567" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm px-7 py-3.5 rounded-xl border border-white/10 transition">
+                Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+</div>
+@endsection

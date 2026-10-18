@@ -74,11 +74,13 @@ jobs:
       - name: Execute Autonomous Funnel Engine
         env:
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
-          BRAND_NAME: ${{ secrets.BRAND_NAME || 'Apex Velocity Labs' }}
-          BRAND_HANDLE: ${{ secrets.BRAND_HANDLE || '@apexvelocitylabs' }}
-          WEBSITE_URL: ${{ secrets.WEBSITE_URL || 'https://apexvelocity.dev' }}
+          BRAND_NAME: ${{ secrets.BRAND_NAME || 'ExtrovertNerd' }}
+          BRAND_HANDLE: ${{ secrets.BRAND_HANDLE || '@extrovertnerd' }}
+          WEBSITE_URL: ${{ secrets.WEBSITE_URL || 'https://extrovertnerd.com' }}
+          FOUNDER_NAME: ${{ secrets.FOUNDER_NAME || 'Ravi' }}
+          FOUNDER_ROLE: ${{ secrets.FOUNDER_ROLE || 'Lead Web Architect' }}
           WHATSAPP_PHONE_NUMBER: ${{ secrets.WHATSAPP_PHONE_NUMBER || '15551234567' }}
-          WHATSAPP_DEFAULT_MESSAGE: ${{ secrets.WHATSAPP_DEFAULT_MESSAGE || 'Hey! I saw your post and want a free 5-point website speed & UX audit.' }}
+          WHATSAPP_DEFAULT_MESSAGE: ${{ secrets.WHATSAPP_DEFAULT_MESSAGE || 'Hey Ravi! I saw ExtrovertNerd and want a free 5-point website speed & UX audit.' }}
           GOOGLE_FORM_INTAKE_URL: ${{ secrets.GOOGLE_FORM_INTAKE_URL || 'https://forms.gle/your-free-speed-audit-intake' }}
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
@@ -106,7 +108,7 @@ jobs:
             ANGLE_ARG="--angle ${{ github.event.inputs.angle }}"
           fi
 
-          python -m src.main --mode daily $CITY_ARG $NICHE_ARG $ANGLE_ARG
+          python -m src.main --mode daily --platform all $CITY_ARG $NICHE_ARG $ANGLE_ARG
 
       - name: Upload Generated Graphics & Social Assets
         uses: actions/upload-artifact@v4
@@ -117,6 +119,8 @@ jobs:
             output/graphics/
             output/automation_log.json
             output/social_preview.json
+            output/outreach_drafts.md
+            output/prospects.json
           retention-days: 14
 
       - name: Commit and Push New pSEO Articles & Manifests
@@ -124,8 +128,8 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Stage new blog markdown files and manifest
-          git add output/blogs/ output/automation_log.json output/social_preview.json || true
+          # Stage new blog markdown files, manifests, and prospecting dossiers
+          git add output/blogs/ output/automation_log.json output/social_preview.json output/outreach_drafts.md output/prospects.json || true
           
           # Commit only if changes exist
           if git diff --staged --quiet; then
