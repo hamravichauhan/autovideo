@@ -87,42 +87,42 @@ class VideoReelGenerator:
         scenes = [
             {
                 "scene_number": 1,
-                "title": "The Hook",
-                "hud_label": "IS YOUR STORE LOSING 40% OF SALES?",
+                "title": "The Mobile Latency Reality",
+                "hud_label": "MOBILE LATENCY BENCHMARK",
                 "motion": "zoom_in",
                 "voiceover_text": script_override.get(
                     1,
-                    f"If your local {niche_name.lower()} website in {city_name} takes more than 3 seconds to load on mobile, you are actively throwing money away to your competitors.",
+                    f"When a mobile website takes more than 3 seconds to load, over 50 percent of visitors leave immediately. In {city_name}, mobile latency directly impacts user retention.",
                 ),
             },
             {
                 "scene_number": 2,
-                "title": "The Problem & Benchmark Failure",
-                "hud_label": "FAILED BENCHMARK // 24/100 CWV",
+                "title": "Core Web Vitals Impact",
+                "hud_label": "FAILED CORE WEB VITALS",
                 "motion": "pan_down",
                 "voiceover_text": script_override.get(
                     2,
-                    "Bloated WordPress and Shopify templates destroy your Google rankings. Google's Core Web Vitals don't care how nice your theme looks if your layout shifts and customers bounce before the checkout loads.",
+                    "Heavy scripts, uncompressed assets, and bloated page templates hurt Core Web Vitals. When layout shifts occur and paint times lag, search engines reduce mobile visibility.",
                 ),
             },
             {
                 "scene_number": 3,
-                "title": "The ExtrovertNerd Solution",
-                "hud_label": "EXTROVERTNERD // 100/100 VERIFIED",
+                "title": "ExtrovertNerd Standards",
+                "hud_label": "EXTROVERTNERD // SUB-SECOND",
                 "motion": "zoom_center",
                 "voiceover_text": script_override.get(
                     3,
-                    "At ExtrovertNerd, Lead Architect Ravi builds custom, sub-second architectures tailored precisely to your business requirements. Zero monthly SaaS fees, 350-millisecond load times, and guaranteed 100/100 scores.",
+                    "ExtrovertNerd focuses on sub-second web performance, clean code structures, and zero bloat, reaching 100 out of 100 Core Web Vitals scores.",
                 ),
             },
             {
                 "scene_number": 4,
-                "title": "The Call to Action",
-                "hud_label": "VIP AUDIT // WHATSAPP DIRECT",
+                "title": "Performance Insights",
+                "hud_label": "WEB SPEED BENCHMARKS",
                 "motion": "pulse_zoom",
                 "voiceover_text": script_override.get(
                     4,
-                    "Want your store rebuilt for raw speed? Comment 'AUDIT' below or click the link in bio to chat with Ravi on WhatsApp right now.",
+                    "Speed is the foundation of modern user experience. Follow ExtrovertNerd for daily technical teardowns and web performance benchmarks.",
                 ),
             },
         ]
@@ -510,20 +510,18 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         }
 
     def _build_video_caption(self, city: Dict[str, Any], niche: Dict[str, Any]) -> str:
-        """Generates high-converting multi-platform caption for Reels / Shorts / TikTok."""
+        """Generates high-value educational caption for Reels / Shorts / TikTok."""
         city_name = city.get("name", "Local Commercial Hub")
         niche_name = niche.get("name", "Boutique Business")
 
         return (
-            f"Is your {city_name} {niche_name.lower()} website secretly leaking 40% of its customers on mobile?\n\n"
-            f"Here is why slow websites kill local business revenue:\n"
-            f"• 53% of mobile users abandon sites that take >3s to load\n"
-            f"• Bloated WordPress & Shopify templates fail Google Core Web Vitals (24/100 score)\n"
-            f"• Every 100ms of latency reduction lifts conversion rates by +8.4%\n\n"
-            f"At ExtrovertNerd, we engineer custom sub-second architectures that pass every Core Web Vital with a guaranteed 100/100 score.\n\n"
-            f"👉 Want a free forensic speed audit of your store?\n"
-            f"Comment 'AUDIT' below or click the link in bio to chat with Ravi on WhatsApp right now.\n\n"
-            f"#WebPerformance #WebDevelopment #WebsiteSpeed #ExtrovertNerd #{city_name.replace(' ', '')} #{niche_name.replace(' ', '')}"
+            f"Why mobile website speed matters for {city_name} {niche_name.lower()}:\n\n"
+            f"• 53% of mobile visits are abandoned if pages take longer than 3 seconds to load.\n"
+            f"• Heavy scripts and bloated templates degrade Google Core Web Vitals metrics.\n"
+            f"• Sub-second response times improve engagement, retention, and mobile search rankings.\n\n"
+            f"ExtrovertNerd shares daily web performance teardowns and Core Web Vitals telemetry.\n\n"
+            f"Follow @extrovertnerd for daily performance breakdowns.\n\n"
+            f"#WebPerformance #CoreWebVitals #WebsiteSpeed #ExtrovertNerd #{city_name.replace(' ', '')} #{niche_name.replace(' ', '')}"
         )
 
     def render_latest_carousel_reel(
