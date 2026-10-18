@@ -1,0 +1,136 @@
+name: 24/7 Automated Client Acquisition Engine
+
+on:
+  schedule:
+    # Runs daily at 09:00 UTC (14:30 IST / 05:00 EDT)
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run in Dry-Run simulation mode'
+        required: true
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      city:
+        description: 'Target City ID (e.g., goa, mumbai, bangalore, dubai - leave empty for auto-rotation)'
+        required: false
+        default: ''
+        type: string
+      niche:
+        description: 'Target Niche ID (e.g., restaurants, boutique-hotels, fashion-boutiques - leave empty for auto-rotation)'
+        required: false
+        default: ''
+        type: string
+      angle:
+        description: 'Content Angle'
+        required: true
+        default: 'local_speed'
+        type: choice
+        options:
+          - 'local_speed'
+          - 'tech_comparison'
+          - 'automation'
+          - 'random'
+
+permissions:
+  contents: write
+
+jobs:
+  run-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Cache Playwright Chromium Browser
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('requirements.txt') }}
+
+      - name: Install Playwright Chromium & System Dependencies
+        run: |
+          python -m playwright install --with-deps chromium
+
+      - name: Execute Autonomous Funnel Engine
+        env:
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          BRAND_NAME: ${{ secrets.BRAND_NAME || 'Apex Velocity Labs' }}
+          BRAND_HANDLE: ${{ secrets.BRAND_HANDLE || '@apexvelocitylabs' }}
+          WEBSITE_URL: ${{ secrets.WEBSITE_URL || 'https://apexvelocity.dev' }}
+          WHATSAPP_PHONE_NUMBER: ${{ secrets.WHATSAPP_PHONE_NUMBER || '15551234567' }}
+          WHATSAPP_DEFAULT_MESSAGE: ${{ secrets.WHATSAPP_DEFAULT_MESSAGE || 'Hey! I saw your post and want a free 5-point website speed & UX audit.' }}
+          GOOGLE_FORM_INTAKE_URL: ${{ secrets.GOOGLE_FORM_INTAKE_URL || 'https://forms.gle/your-free-speed-audit-intake' }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+          IMAGE_HOSTING_BASE_URL: ${{ secrets.IMAGE_HOSTING_BASE_URL || format('https://raw.githubusercontent.com/{0}/main/', github.repository) }}
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+        run: |
+          CITY_ARG=""
+          NICHE_ARG=""
+          ANGLE_ARG=""
+
+          if [ -n "${{ github.event.inputs.city }}" ]; then
+            CITY_ARG="--city ${{ github.event.inputs.city }}"
+          fi
+
+          if [ -n "${{ github.event.inputs.niche }}" ]; then
+            NICHE_ARG="--niche ${{ github.event.inputs.niche }}"
+          fi
+
+          if [ -n "${{ github.event.inputs.angle }}" ]; then
+            ANGLE_ARG="--angle ${{ github.event.inputs.angle }}"
+          fi
+
+          python -m src.main --mode daily $CITY_ARG $NICHE_ARG $ANGLE_ARG
+
+      - name: Upload Generated Graphics & Social Assets
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: daily-graphics-and-logs
+          path: |
+            output/graphics/
+            output/automation_log.json
+            output/social_preview.json
+          retention-days: 14
+
+      - name: Commit and Push New pSEO Articles & Manifests
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Stage new blog markdown files and manifest
+          git add output/blogs/ output/automation_log.json output/social_preview.json || true
+          
+          # Commit only if changes exist
+          if git diff --staged --quiet; then
+            echo "No changes to commit. Working tree is clean."
+          else
+            git commit -m "automation: publish daily pSEO articles and update content manifest [skip ci]"
+            git push origin HEAD:${{ github.ref }}
+          fi

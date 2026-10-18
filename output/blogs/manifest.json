@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "slug": "goa-restaurants-local-speed",
+      "filename": "goa-restaurants-local-speed.md",
+      "title": "Why Goa Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "goa",
+      "city_name": "Goa",
+      "niche_id": "restaurants",
+      "niche_name": "Upscale Restaurants, Cafes & Lounges",
+      "angle": "local_speed",
+      "date": "2026-10-18",
+      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/goa-restaurants-local-speed.md"
+    },
+    {
+      "slug": "mumbai-fashion-boutiques-tech-comparison",
+      "filename": "mumbai-fashion-boutiques-tech-comparison.md",
+      "title": "Boutique Fashion & Designer Labels in Mumbai: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
+      "city_id": "mumbai",
+      "city_name": "Mumbai",
+      "niche_id": "fashion-boutiques",
+      "niche_name": "Boutique Fashion & Designer Labels",
+      "angle": "tech_comparison",
+      "date": "2026-10-18",
+      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/mumbai-fashion-boutiques-tech-comparison.md"
+    }
+  ],
+  "last_generated": {
+    "slug": "mumbai-fashion-boutiques-tech-comparison",
+    "filename": "mumbai-fashion-boutiques-tech-comparison.md",
+    "title": "Boutique Fashion & Designer Labels in Mumbai: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
+    "city_id": "mumbai",
+    "city_name": "Mumbai",
+    "niche_id": "fashion-boutiques",
+    "niche_name": "Boutique Fashion & Designer Labels",
+    "angle": "tech_comparison",
+    "date": "2026-10-18",
+    "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/mumbai-fashion-boutiques-tech-comparison.md"
+  }
+}

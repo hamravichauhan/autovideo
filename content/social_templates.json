@@ -1,0 +1,61 @@
+{
+  "hashtags": {
+    "webdev": [
+      "#WebDevelopment",
+      "#Laravel",
+      "#TailwindCSS",
+      "#WebDesign",
+      "#FullStack",
+      "#FrontendDev",
+      "#CodeNewbie",
+      "#PHP"
+    ],
+    "business": [
+      "#SmallBusinessTech",
+      "#EcommerceGrowth",
+      "#DigitalTransformation",
+      "#LocalBusiness",
+      "#ConversionRateOptimization",
+      "#UXDesign",
+      "#StartupFounders",
+      "#TechConsulting"
+    ],
+    "speed": [
+      "#CoreWebVitals",
+      "#PageSpeed",
+      "#WebsiteSpeed",
+      "#WebPerformance",
+      "#HighConvertingWebsites"
+    ]
+  },
+  "carousel_captions": [
+    {
+      "id": "speed_leak",
+      "hook_formula": "🚨 Is your {city} {niche_singular} silently losing 40%+ of mobile customers to a slow website?",
+      "body": "Here is the uncomfortable truth most digital agencies won't tell you:\n\nIf your website takes longer than 2.5 seconds to load on a mobile device, over 53% of your visitors leave before they ever see your offer.\n\nWe recently tore down the digital presence of local {niche_plural} in {city}. Here's what's draining profits:\n\n❌ Bloated WordPress/Shopify plugins crashing mobile browsers\n❌ 5MB unoptimized photography causing massive layout shifts\n❌ Clunky multi-step booking forms with zero WhatsApp automation\n\nSwipe through the carousel above to see how migrating to a custom Laravel + Tailwind architecture drops load time from {load_before} to {load_after} — boosting conversion rates by {conversion_lift}.\n\n---\n🎯 Want to know exactly where your current website is leaking paying clients?\n\nComment \"AUDIT\" below or click the WhatsApp link in our bio for a 100% free, 5-point mobile speed and conversion teardown of your website.\n\nNo pitch. Just raw performance data and fixes."
+    },
+    {
+      "id": "comparison_breakdown",
+      "hook_formula": "💡 Why scaling {niche_plural} in {city} are leaving Shopify & WordPress for Custom Laravel web apps.",
+      "body": "When you're running a premium {niche_singular} in {city}, every second of lag and every percentage of platform tax directly eats into your bottom line.\n\nHere is why custom engineering wins every single time:\n\n⚡ Speed: Sub-400ms server response vs 4-6 second plugin crawl\n💰 Margins: 0% platform transaction fees on high-ticket sales\n📱 Experience: Instant 1-tap WhatsApp booking confirmation without fragile Zapier integrations\n🔒 Ownership: 100% ownership of your customer database and codebase\n\nSwipe through to see the Before vs After breakdown! ➔\n\n---\n👉 Ready to upgrade your business from an off-the-shelf template to a high-speed revenue machine?\n\nDM us \"UPGRADE\" or tap the WhatsApp link in bio to claim your free website speed audit."
+    }
+  ],
+  "tech_tip_captions": [
+    {
+      "id": "code_snippet",
+      "hook_formula": "⚡ Quick Dev Tip: {tip_title}",
+      "body": "{tip_summary}\n\nSwipe through to see the exact code fix ➔\n\n{tip_explanation}\n\nSave this post for your next project and follow {brand_handle} for daily high-performance web development insights."
+    }
+  ],
+  "thread_structures": [
+    {
+      "id": "teardown_thread",
+      "step_hooks": [
+        "🧵 Most {city} {niche_plural} are burning marketing budgets on ads that land on sluggish websites.\n\nHere is a 4-part breakdown of why speed is your #1 growth bottleneck (and how to fix it): 👇",
+        "1/ The Friction Problem:\n\nWhen mobile visitors land on your site, Google measures Core Web Vitals.\n\nIn our audits across {city}, average load times sit at {load_before} with PageSpeed scores under {pagespeed_before}.\n\nEvery second of delay reduces conversions by 7%.",
+        "2/ The Modern Laravel Architecture:\n\nInstead of loading 25 heavy plugins, modern custom web applications use:\n\n• Laravel 11 with Redis RAM caching\n• Tailwind CSS with zero runtime bloat\n• Direct WhatsApp API integration\n\nResult: Page loads in {load_after} with a {pagespeed_after} PageSpeed score.",
+        "3/ The Business Impact:\n\nFaster sites don't just feel good — they convert:\n\n📈 Bounce rate drops from {bounce_before} to {bounce_after}\n🚀 Conversions lift by {conversion_lift}\n💰 Zero monthly platform percentage cuts\n\n4/ Free Speed Audit:\n\nWant to know where your site is losing money?\n\nDM us \"AUDIT\" or tap our WhatsApp link: {whatsapp_url}\n\nWe'll send you a 5-point performance video teardown completely free."
+      ]
+    }
+  ]
+}
