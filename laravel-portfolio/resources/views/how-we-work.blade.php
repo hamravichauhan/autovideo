@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'How We Work — The 5-Step Engineering Blueprint | ExtrovertNerd')
-@section('meta_description', 'Discover how Lead Web Architect Ravi transforms slow, bloated websites into sub-second revenue machines using our proprietary 5-phase engineering blueprint and guaranteed 100/100 Core Web Vitals.')
+@section('meta_description', 'Discover how ExtrovertNerd transforms slow, bloated websites into sub-second revenue machines using our proprietary 5-phase engineering blueprint and rigorous Core Web Vitals optimization.')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-6 py-16 space-y-24">
@@ -63,7 +63,7 @@
                         </div>
                         <h3 class="text-2xl sm:text-3xl font-black text-white">Forensic Speed & Revenue Leak Audit</h3>
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Before writing a single line of code, Lead Architect Ravi performs a forensic inspection of your website's network cascade using Chrome DevTools, WebPageTest, and Google Lighthouse. We isolate unminified JavaScript bundles, render-blocking stylesheets, and database queries locking your server.
+                            Before writing a single line of code, ExtrovertNerd Engineering performs a forensic inspection of your website's network cascade using Chrome DevTools, WebPageTest, and Google Lighthouse. We isolate unminified JavaScript bundles, render-blocking stylesheets, and database queries locking your server.
                         </p>
                         <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-slate-300">
                             <div class="flex items-center space-x-2 text-emerald-400">
@@ -88,7 +88,7 @@
                         <div class="text-[10px] font-mono uppercase text-slate-400 font-bold tracking-wider">PHASE DELIVERABLE</div>
                         <div class="text-base font-bold text-white">3-Minute Video Breakdown</div>
                         <p class="text-xs text-slate-400 leading-relaxed">
-                            A screen recording recorded personally by Ravi explaining your bottlenecks and demonstrating the exact monetary leak.
+                            A screen recording recorded by ExtrovertNerd Engineering explaining your bottlenecks and demonstrating the exact technical solution.
                         </p>
                         <div class="text-[10px] font-mono text-emerald-400 font-bold pt-2">TURNAROUND: 24 HOURS • 100% FREE</div>
                     </div>
@@ -238,11 +238,11 @@
                             <span class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-mono font-black text-emerald-300 text-lg">
                                 05
                             </span>
-                            <span class="text-xs font-mono uppercase tracking-widest text-emerald-300 font-bold">Phase 5: Guarantee</span>
+                            <span class="text-xs font-mono uppercase tracking-widest text-emerald-300 font-bold">Phase 5: Verification & Delivery</span>
                         </div>
-                        <h3 class="text-2xl sm:text-3xl font-black text-white">The Contractual 100/100 Core Web Vitals Guarantee</h3>
+                        <h3 class="text-2xl sm:text-3xl font-black text-white">Rigorous Real-World Core Web Vitals Verification</h3>
                         <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
-                            We don't make vague promises about "optimizing your site". We back our builds with a legally binding performance clause in every client agreement: if your production website does not pass Google Mobile Core Web Vitals with green scores, you receive an immediate, no-questions-asked 100% full refund.
+                            We don't make vague promises about "optimizing your site". We stress-test every build under simulated mobile 4G latency and packet loss. We ensure your production website passes Google Mobile Core Web Vitals with green scores across LCP, INP, and CLS before going live.
                         </p>
                         <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-emerald-300">
                             <div class="flex items-center space-x-2">
@@ -259,17 +259,17 @@
                             </div>
                             <div class="flex items-center space-x-2">
                                 <span>✓</span>
-                                <span>100% Money-Back Contract Protection</span>
+                                <span>Throttled Real Mobile 4G Verification</span>
                             </div>
                         </div>
                     </div>
                     <div class="bg-emerald-950/60 border border-emerald-500/30 rounded-2xl p-6 lg:w-80 shrink-0 space-y-3">
-                        <div class="text-[10px] font-mono uppercase text-emerald-400 font-bold tracking-wider">CLIENT PROTECTION</div>
-                        <div class="text-lg font-black text-white">Zero Financial Risk</div>
+                        <div class="text-[10px] font-mono uppercase text-emerald-400 font-bold tracking-wider">ENGINEERING INTEGRITY</div>
+                        <div class="text-lg font-black text-white">Verified Benchmarks</div>
                         <p class="text-xs text-slate-300 leading-relaxed">
-                            "If your mobile website doesn't score green on Google's official PageSpeed test upon launch, you pay nothing."
+                            "Every build is tested and verified on real mobile devices under throttled 4G conditions before production handover."
                         </p>
-                        <div class="text-[10px] font-mono text-emerald-300 font-bold pt-2">LEAD ARCHITECT: RAVI</div>
+                        <div class="text-[10px] font-mono text-emerald-300 font-bold pt-2">EXTROVERTNERD ENGINEERING</div>
                     </div>
                 </div>
             </div>
@@ -300,7 +300,7 @@
                     <tr class="hover:bg-slate-900/40">
                         <td class="p-4 sm:p-5 font-bold text-white">Lead Engineer</td>
                         <td class="p-4 sm:p-5 text-slate-400">Junior offshore freelancer or account manager</td>
-                        <td class="p-4 sm:p-5 text-emerald-300 font-bold bg-emerald-950/10">Architected personally by Ravi</td>
+                        <td class="p-4 sm:p-5 text-emerald-300 font-bold bg-emerald-950/10">Engineered directly by ExtrovertNerd</td>
                     </tr>
                     <tr class="hover:bg-slate-900/40">
                         <td class="p-4 sm:p-5 font-bold text-white">Mobile Load Time</td>
@@ -323,9 +323,9 @@
                         <td class="p-4 sm:p-5 text-emerald-300 font-bold bg-emerald-950/10">100% tailored (Next.js, Laravel, Node, Python, Go)</td>
                     </tr>
                     <tr class="hover:bg-slate-900/40">
-                        <td class="p-4 sm:p-5 font-bold text-white">Speed Guarantee</td>
+                        <td class="p-4 sm:p-5 font-bold text-white">Performance Standards</td>
                         <td class="p-4 sm:p-5 text-slate-400">None ("Page speed depends on your host")</td>
-                        <td class="p-4 sm:p-5 text-emerald-300 font-bold bg-emerald-950/10">100% Money-Back Core Web Vitals Guarantee</td>
+                        <td class="p-4 sm:p-5 text-emerald-300 font-bold bg-emerald-950/10">Strict Sub-Second Mobile Core Web Vitals Targets</td>
                     </tr>
                 </tbody>
             </table>
@@ -337,7 +337,7 @@
         <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">GET STARTED TODAY</span>
         <h3 class="text-3xl sm:text-5xl font-black text-white">Ready for Phase 1 of Your Rebuild?</h3>
         <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Message Lead Architect Ravi directly on WhatsApp. Within 24 hours, you'll receive a personalized 3-minute video teardown of your website's speed bottlenecks and exact roadmap.
+            Message ExtrovertNerd directly on WhatsApp. Within 24 hours, you'll receive a personalized 3-minute video teardown of your website's speed bottlenecks and exact roadmap.
         </p>
         <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
             <a 
@@ -347,7 +347,7 @@
                 class="bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider px-8 py-4 rounded-xl shadow-xl shadow-emerald-500/25 hover:scale-105 transition flex items-center space-x-2"
             >
                 <span>💬</span>
-                <span>Message Ravi on WhatsApp</span>
+                <span>Message ExtrovertNerd on WhatsApp</span>
             </a>
             <a 
                 href="/speed-checker" 

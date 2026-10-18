@@ -1,0 +1,62 @@
+[
+  {
+    "id": "eliminate-inp-delays",
+    "category": "Core Web Vitals",
+    "tag": "INP OPTIMIZATION",
+    "title": "Eliminate Interaction to Next Paint (INP) Delays with scheduler.yield()",
+    "problem": "Clicking a checkout or filter button freezes the mobile UI for 320ms because long synchronous JavaScript tasks monopolize the main thread, causing Google Core Web Vitals to fail.",
+    "code_snippet": "// \u274c BEFORE: Long synchronous loop freezes main thread\nfunction processHeavyFilters(items) {\n  for (const item of items) {\n    calculatePriceMatrix(item); // 280ms total freeze\n  }\n  updateDOM();\n}\n\n// \u2705 AFTER: Yield main thread to allow browser frame paint\nasync function processHeavyFilters(items) {\n  for (const item of items) {\n    calculatePriceMatrix(item);\n    if ('scheduler' in window && scheduler.yield) {\n      await scheduler.yield(); // Lets user clicks & paints breathe\n    }\n  }\n  updateDOM();\n}",
+    "measured_impact": "INP reduced from 340ms to 24ms (Passes Google Green Tier)",
+    "pro_tip": "Break long task arrays into chunks of under 16ms so the browser never drops a 60fps frame during user interaction."
+  },
+  {
+    "id": "zero-layout-shift-cls",
+    "category": "Layout & UX",
+    "tag": "CLS PERFECTION",
+    "title": "Lock Image Bounding Boxes with aspect-ratio & SVG Skeletons",
+    "problem": "Images loading without dimensions cause content to violently jump down the screen as they finish downloading, causing visitors to mis-click and triggering high Cumulative Layout Shift (CLS).",
+    "code_snippet": "<!-- \u274c BEFORE: Causes 0.42 CLS jump on mobile -->\n<img src=\"/hero.jpg\" alt=\"Luxury Villa\" class=\"w-full\">\n\n<!-- \u2705 AFTER: Strict aspect-ratio + SVG placeholder = 0.00 CLS -->\n<div class=\"w-full aspect-[16/9] bg-slate-900 overflow-hidden relative\">\n  <img \n    src=\"/hero.avif\" \n    alt=\"Luxury Villa\" \n    width=\"1280\" \n    height=\"720\"\n    loading=\"eager\"\n    fetchpriority=\"high\"\n    class=\"w-full h-full object-cover\"\n  >\n</div>",
+    "measured_impact": "Cumulative Layout Shift drops from 0.42 (Failing) to 0.00 (Flawless)",
+    "pro_tip": "Always specify explicit width and height HTML attributes on img tags. Modern browsers calculate the layout box before the first byte of image data arrives."
+  },
+  {
+    "id": "redis-full-page-cache",
+    "category": "Backend & Database",
+    "tag": "TTFB ACCELERATION",
+    "title": "Slash Server TTFB from 2.4s to 28ms with Redis In-Memory Full Page Caching",
+    "problem": "Every single page visit executes 42 MySQL database queries, boots CMS plugins, and renders template views from scratch, overwhelming the server on traffic spikes.",
+    "code_snippet": "// \u2705 Laravel 11 Redis Middleware: Sub-30ms Response\nnamespace App\\Http\\Middleware;\n\nuse Illuminate\\Support\\Facades\\Redis;\n\nclass CacheResponseWithRedis {\n    public function handle($request, \\Closure $next) {\n        if ($request->isMethod('GET') && !auth()->check()) {\n            $key = 'page:' . sha1($request->fullUrl());\n            if ($cached = Redis::get($key)) {\n                return response($cached)->header('X-Cache-Engine', 'Redis-RAM');\n            }\n            $response = $next($request);\n            Redis::setex($key, 3600, $response->getContent());\n            return $response;\n        }\n        return $next($request);\n    }\n}",
+    "measured_impact": "Time to First Byte (TTFB) slashes from 2,400ms down to 28ms",
+    "pro_tip": "Tag your Redis cache keys by entity (e.g., 'villa:42'). When an admin edits a record, purge only the associated tag instead of wiping the entire site cache."
+  },
+  {
+    "id": "self-host-modern-fonts",
+    "category": "Asset Delivery",
+    "tag": "FONT OPTIMIZATION",
+    "title": "Eliminate Google Fonts Render Blocking by Self-Hosting WOFF2 with preload",
+    "problem": "Loading fonts from external Google Fonts URLs requires 2 separate DNS lookups, TCP handshakes, and causes Flash of Invisible Text (FOIT) while the font file downloads.",
+    "code_snippet": "<!-- \u274c BEFORE: External blocking requests -->\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans\">\n\n<!-- \u2705 AFTER: Preloaded self-hosted WOFF2 format -->\n<link \n  rel=\"preload\" \n  href=\"/fonts/plus-jakarta-sans.woff2\" \n  as=\"font\" \n  type=\"font/woff2\" \n  crossorigin\n>\n<style>\n  @font-face {\n    font-family: 'Plus Jakarta Sans';\n    src: url('/fonts/plus-jakarta-sans.woff2') format('woff2');\n    font-weight: 400 800;\n    font-display: swap; /* Text remains readable immediately */\n  }\n</style>",
+    "measured_impact": "First Contentful Paint (FCP) accelerates by 480ms on mobile 4G",
+    "pro_tip": "Subset your WOFF2 font files to Latin glyphs only using glyphhanger or pyftsubset, cutting font file sizes from 180KB down to 18KB."
+  },
+  {
+    "id": "speculation-rules-instant",
+    "category": "Frontend Performance",
+    "tag": "ZERO-LATENCY NAV",
+    "title": "Deploy Speculation Rules API for True 0ms Internal Navigation",
+    "problem": "Even on fast websites, clicking a navigation link requires waiting 300ms to 600ms for HTTP request resolution, rendering, and asset fetching.",
+    "code_snippet": "<!-- \u2705 Instant Internal Navigation via Speculation Rules -->\n<script type=\"speculationrules\">\n{\n  \"prerender\": [\n    {\n      \"source\": \"list\",\n      \"urls\": [\"/how-we-work\", \"/speed-checker\", \"/case-studies\"],\n      \"eagerness\": \"moderate\"\n    }\n  ],\n  \"prefetch\": [\n    {\n      \"source\": \"document\",\n      \"where\": { \"and\": [{ \"href_matches\": \"/*\" }] },\n      \"eagerness\": \"conservative\"\n    }\n  ]\n}\n</script>",
+    "measured_impact": "Subsequent page LCP reaches true 0ms (renders instantly from browser RAM)",
+    "pro_tip": "Use 'moderate' eagerness so pages prerender on pointer-down or 200ms hover, preventing wasteful background bandwidth on unvisited links."
+  },
+  {
+    "id": "direct-whatsapp-funnels",
+    "category": "Conversion Architecture",
+    "tag": "HIGH-TICKET CONVERSION",
+    "title": "Replace 6-Field Contact Forms with 1-Tap Pre-Filled WhatsApp Click-to-Chat",
+    "problem": "Over 68% of mobile visitors abandon contact forms with name, email, phone, subject, and message fields on small touchscreens, leaking high-value inbound leads.",
+    "code_snippet": "<!-- \u274c BEFORE: High friction form with 68% drop-off -->\n<form><input placeholder=\"Name\"><input placeholder=\"Email\"><textarea></textarea></form>\n\n<!-- \u2705 AFTER: 1-Tap Direct WhatsApp Click-to-Chat Funnel -->\n<a \n  href=\"https://wa.me/15551234567?text=Hey!%20I'm%20interested%20in%20auditing%20my%20storefront%20speed.\" \n  target=\"_blank\" \n  class=\"bg-emerald-500 text-slate-950 font-bold px-6 py-3 rounded-xl flex items-center space-x-2\"\n>\n  <span>\ud83d\udcac</span>\n  <span>Chat Directly with Engineering on WhatsApp</span>\n</a>",
+    "measured_impact": "Mobile inquiry conversion rate surges by an average of +52%",
+    "pro_tip": "Pre-fill the WhatsApp message text with specific context (e.g., product name or service tier). It lowers cognitive friction and initiates immediate dialogue."
+  }
+]

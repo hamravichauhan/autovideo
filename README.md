@@ -1,6 +1,6 @@
 # ExtrovertNerd — 24/7 Autonomous Client Acquisition Engine & Laravel Agency Hub
 
-> **A 100% Free, Autonomous B2B Client Acquisition Engine & High-Performance Agency Hub** engineered by **ExtrovertNerd** (Founder & Lead Web Architect: **Ravi**). Attract local business owners, startup founders, and entrepreneurs who need custom high-speed Laravel e-commerce stores, automated dashboards, and modern web applications—running on zero-cost cloud automation without paid LLM APIs or manual intervention.
+> **A 100% Free, Autonomous B2B Client Acquisition Engine & High-Performance Agency Hub** engineered by **ExtrovertNerd**. Attract local business owners, startup founders, and entrepreneurs who need custom high-speed Laravel e-commerce stores, automated dashboards, and modern web applications—running on zero-cost cloud automation without paid LLM APIs or manual intervention.
 
 ---
 
@@ -111,7 +111,7 @@
 
 ### 1. Boutique Agency Website (`laravel-portfolio/`)
 - **Theme:** Sleek dark-mode aesthetic (`bg-slate-950`), glowing borders, typography pairing **Plus Jakarta Sans** with **Playfair Display (Italic)**.
-- **Lead Architect Attribution:** Branded under **ExtrovertNerd** (Lead Web Architect: **Ravi**).
+- **Studio Attribution:** Branded under **ExtrovertNerd** (`@extrovertnerd`).
 - **Interactive Speed Checker Micro-Tool (`/speed-checker`):**
   - Prospect enters any URL (e.g., `luxurygoavillas.com`).
   - Generates an instant side-by-side performance teardown: failing mobile score (`24/100`, 6.2s load, $7,500/mo estimated leak) vs. ExtrovertNerd's verified (`100/100`, 0.32s load) custom Laravel architecture.
@@ -221,10 +221,10 @@ Copy `.env.example` to `.env` in the root and configure your contact points:
 BRAND_NAME="ExtrovertNerd"
 BRAND_HANDLE="@extrovertnerd"
 WEBSITE_URL="https://extrovertnerd.com"
-FOUNDER_NAME="Ravi"
-FOUNDER_ROLE="Lead Web Architect"
+FOUNDER_NAME="ExtrovertNerd"
+FOUNDER_ROLE="Web Architecture Studio"
 WHATSAPP_PHONE_NUMBER="15551234567"
-WHATSAPP_DEFAULT_MESSAGE="Hey Ravi! I saw ExtrovertNerd and want a free 5-point website speed & UX audit."
+WHATSAPP_DEFAULT_MESSAGE="Hey ExtrovertNerd! I saw your engineering work and want a free 5-point website speed & UX audit."
 ```
 
 ---
@@ -246,5 +246,5 @@ The `.github/workflows/daily_automation.yml` workflow runs completely free on Gi
 ## 📄 License & Attribution
 
 Designed and engineered under **ExtrovertNerd**.  
-Founder & Lead Web Architect: **Ravi** (`@extrovertnerd`).  
+Studio & Architectural Direction: **ExtrovertNerd** (`@extrovertnerd`).  
 Licensed under the [MIT License](LICENSE).

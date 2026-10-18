@@ -77,10 +77,10 @@ jobs:
           BRAND_NAME: ${{ secrets.BRAND_NAME || 'ExtrovertNerd' }}
           BRAND_HANDLE: ${{ secrets.BRAND_HANDLE || '@extrovertnerd' }}
           WEBSITE_URL: ${{ secrets.WEBSITE_URL || 'https://extrovertnerd.com' }}
-          FOUNDER_NAME: ${{ secrets.FOUNDER_NAME || 'Ravi' }}
-          FOUNDER_ROLE: ${{ secrets.FOUNDER_ROLE || 'Lead Web Architect' }}
+          FOUNDER_NAME: ${{ secrets.FOUNDER_NAME || 'ExtrovertNerd' }}
+          FOUNDER_ROLE: ${{ secrets.FOUNDER_ROLE || 'Web Architecture Studio' }}
           WHATSAPP_PHONE_NUMBER: ${{ secrets.WHATSAPP_PHONE_NUMBER || '15551234567' }}
-          WHATSAPP_DEFAULT_MESSAGE: ${{ secrets.WHATSAPP_DEFAULT_MESSAGE || 'Hey Ravi! I saw ExtrovertNerd and want a free 5-point website speed & UX audit.' }}
+          WHATSAPP_DEFAULT_MESSAGE: ${{ secrets.WHATSAPP_DEFAULT_MESSAGE || 'Hey ExtrovertNerd! I saw your engineering work and want a free 5-point website speed & UX audit.' }}
           GOOGLE_FORM_INTAKE_URL: ${{ secrets.GOOGLE_FORM_INTAKE_URL || 'https://forms.gle/your-free-speed-audit-intake' }}
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}

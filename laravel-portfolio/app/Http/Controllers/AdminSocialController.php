@@ -68,9 +68,10 @@ class AdminSocialController
 
     public function generate()
     {
+        $type = request('type', 'top100');
         $platform = request('platform', 'vertical');
         $pythonBin = file_exists($this->baseDir . '/.venv/bin/python') ? '.venv/bin/python' : 'python3';
-        $cmd = "{$pythonBin} -m src.generator_graphics --platform {$platform}";
+        $cmd = "{$pythonBin} -m src.generator_graphics --type " . escapeshellarg($type) . " --platform " . escapeshellarg($platform);
         $output = [];
         $returnVar = 0;
         exec("cd " . escapeshellarg($this->baseDir) . " && {$cmd} 2>&1", $output, $returnVar);
@@ -78,7 +79,7 @@ class AdminSocialController
         // Also auto-dispatch newly rendered posters to Telegram
         exec("cd " . escapeshellarg($this->baseDir) . " && {$pythonBin} -m src.telegram_notifier --latest 2>&1", $tgOut, $tgCode);
 
-        session_flash('success', "Graphic renderer completed for [{$platform}]. High-resolution vertical posters automatically queued for Telegram dispatch!");
+        session_flash('success', "Generated [{$type}] graphic! Dispatched to output & Telegram queue.");
         redirect('/admin/social');
     }
 

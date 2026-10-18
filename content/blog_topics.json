@@ -320,9 +320,9 @@
           "laravel": "Laravel: High-ticket e-commerce, complex relational databases, and enterprise CRM systems"
         },
         {
-          "attribute": "Performance Guarantee",
-          "shopify": "Next.js: 100/100 Core Web Vitals when decoupled from heavy client bundles",
-          "laravel": "Laravel: 100/100 Core Web Vitals with <150ms TTFB via OPcache & Redis"
+          "attribute": "Performance Standards",
+          "shopify": "Next.js: Verified Core Web Vitals when decoupled from heavy client bundles",
+          "laravel": "Laravel: Sub-150ms TTFB via OPcache & Redis"
         }
       ]
     },

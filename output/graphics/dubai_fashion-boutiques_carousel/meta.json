@@ -1,0 +1,65 @@
+{
+  "batch_id": "dubai_fashion-boutiques_carousel",
+  "city": {
+    "id": "dubai",
+    "name": "Dubai",
+    "region": "Emirates",
+    "country": "UAE",
+    "tagline": "Global nexus of luxury commerce, ultra-prime real estate, and hospitality",
+    "districts": [
+      "Downtown Dubai",
+      "Dubai Marina",
+      "Palm Jumeirah",
+      "DIFC",
+      "Business Bay",
+      "JBR"
+    ],
+    "demographics": "Global ultra-high-net-worth clientele demanding bespoke visual aesthetics, multi-currency support, and instantaneous sub-second response times.",
+    "avg_mobile_traffic_pct": 94,
+    "competitor_landscape": "Agencies charging $20,000+ for slow Elementor sites that fail basic Core Web Vitals and lack custom backend automations."
+  },
+  "niche": {
+    "id": "fashion-boutiques",
+    "name": "Boutique Fashion & Designer Labels",
+    "singular": "Fashion Boutique",
+    "plural": "Boutiques & Designer Labels",
+    "target_client": "Fashion designers, luxury boutique founders, and artisanal apparel brands",
+    "primary_action": "direct e-commerce purchases and private studio appointment bookings",
+    "pain_points": [
+      "Shopify monthly app bloat pushing page weights above 6MB and slowing checkout.",
+      "Shopify taking 2% transaction cut on top of gateway fees on high-ticket luxury apparel ($300 - $2,000 items).",
+      "Inability to create custom bespoke tailoring workflows or personal virtual styling booking flows."
+    ],
+    "symptoms": [
+      "Sluggish image zoom and laggy color swatch selection on mobile devices",
+      "Checkout abandonment exceeding 74%",
+      "Core Web Vitals failing Cumulative Layout Shift (CLS) as banners load erratically"
+    ],
+    "laravel_solution": [
+      "Custom headless Laravel e-commerce storefront with zero platform revenue cut.",
+      "Pre-cached product catalogs loading instantaneously on touch.",
+      "Integrated custom bespoke measurements portal and VIP styling concierge."
+    ],
+    "metric_before": {
+      "load_time": "4.9s",
+      "pagespeed": "31/100",
+      "bounce_rate": "66%",
+      "lost_revenue": "$12,000/mo"
+    },
+    "metric_after": {
+      "load_time": "0.41s",
+      "pagespeed": "98/100",
+      "bounce_rate": "22%",
+      "conversion_lift": "+38%"
+    }
+  },
+  "platform": "vertical",
+  "total_slides": 4,
+  "slide_paths": [
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_fashion-boutiques_carousel/slide_1.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_fashion-boutiques_carousel/slide_2.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_fashion-boutiques_carousel/slide_3.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_fashion-boutiques_carousel/slide_4.png"
+  ],
+  "directory": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_fashion-boutiques_carousel"
+}

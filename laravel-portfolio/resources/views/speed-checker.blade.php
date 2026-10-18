@@ -220,10 +220,10 @@
                 </div>
 
                 <div class="space-y-2 bg-slate-950/60 p-5 rounded-2xl border border-white/5">
-                    <div class="text-emerald-400 font-bold font-mono text-xs">STEP 3: GUARANTEE</div>
-                    <h4 class="text-white font-bold">Sign 100/100 Performance SLA</h4>
+                    <div class="text-emerald-400 font-bold font-mono text-xs">STEP 3: VERIFICATION</div>
+                    <h4 class="text-white font-bold">Throttled Real-World Mobile SLA</h4>
                     <p class="text-slate-400 text-xs leading-relaxed">
-                        Every build is verified on real mobile 4G throttling with a 100% money-back Core Web Vitals guarantee.
+                        Every build is benchmarked on real mobile 4G throttling against Google Core Web Vitals passing thresholds.
                     </p>
                 </div>
             </div>
@@ -232,10 +232,10 @@
         <!-- HIGH-CONVERTING INBOUND WHATSAPP CONVERSION BOX -->
         <div class="bg-gradient-to-r from-slate-900 via-emerald-950/50 to-slate-900 border border-emerald-500/40 p-8 sm:p-12 rounded-3xl text-center space-y-6 shadow-2xl">
             <div class="max-w-2xl mx-auto space-y-2">
-                <span class="text-xs font-mono font-bold uppercase text-emerald-400 tracking-widest">NEXT ACTION • DIRECT FROM ARCHITECT RAVI</span>
+                <span class="text-xs font-mono font-bold uppercase text-emerald-400 tracking-widest">NEXT ACTION • EXTROVERTNERD ENGINEERING</span>
                 <h3 class="text-3xl font-black text-white">Want the Exact Code Roadmap to Fix Your {{ $result['host'] }} Score?</h3>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Within 24 hours, Lead Web Architect Ravi will record a personalized 3-minute screen teardown analyzing your Core Web Vitals bottlenecks and how a custom Laravel upgrade will boost your revenue.
+                    Within 24 hours, ExtrovertNerd Engineering will record a personalized 3-minute screen teardown analyzing your Core Web Vitals bottlenecks and how custom architecture will accelerate your business.
                 </p>
             </div>
 
@@ -258,7 +258,7 @@
             </div>
 
             <div class="text-xs text-slate-500 font-mono">
-                100% Free • No Obligation • Reviewed Personally by Ravi
+                100% Free • No Obligation • Reviewed by ExtrovertNerd Engineering
             </div>
         </div>
 

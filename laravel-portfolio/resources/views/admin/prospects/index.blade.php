@@ -262,7 +262,7 @@
                         <div class="flex items-center justify-between border-b border-white/10 pb-2">
                             <span class="text-slate-400 font-bold uppercase">Executive Cold Email</span>
                             <button 
-                                @click="navigator.clipboard.writeText('Subject: Mobile speed bottleneck on ' + selectedProspect.domain + '\n\nHi ' + selectedProspect.name + ' team,\n\nI was browsing ' + selectedProspect.domain + ' on mobile in ' + selectedProspect.city + ' and noticed the mobile experience takes over 5.5s to load, failing Google Core Web Vitals.\n\nAt ExtrovertNerd, we build sub-second Laravel web architectures that score 100/100.\n\nWould you like a complimentary 5-point performance video breakdown?\n\nBest,\nRavi\nLead Web Architect • ExtrovertNerd'); copyFeedback = 'Email copied!'" 
+                                @click="navigator.clipboard.writeText('Subject: Mobile speed bottleneck on ' + selectedProspect.domain + '\n\nHi ' + selectedProspect.name + ' team,\n\nI was browsing ' + selectedProspect.domain + ' on mobile in ' + selectedProspect.city + ' and noticed the mobile experience takes over 5.5s to load, failing Google Core Web Vitals.\n\nAt ExtrovertNerd, we build sub-second custom web architectures that pass Core Web Vitals.\n\nWould you like a complimentary 5-point performance video breakdown?\n\nBest,\nExtrovertNerd Engineering\nWeb Architecture Studio'); copyFeedback = 'Email copied!'" 
                                 class="text-indigo-400 hover:underline"
                             >
                                 Copy Script 📋

@@ -252,8 +252,8 @@ class TelegramNotifier:
                 f"🎨 <b>ExtrovertNerd Automated Poster Pack</b>\n\n"
                 f"📍 <b>Market:</b> {city_name} — {niche_name}\n"
                 f"⚡ <b>Architecture:</b> Bespoke Sub-Second Rebuild\n"
-                f"📊 <b>Core Web Vitals:</b> 100/100 Guaranteed\n\n"
-                f"💬 Lead Architect Ravi: <a href=\"https://wa.me/15551234567\">WhatsApp Consultation</a>\n"
+                f"📊 <b>Core Web Vitals:</b> Verified Sub-Second Benchmarks\n\n"
+                f"💬 Studio Contact: <a href=\"https://wa.me/15551234567\">WhatsApp Consultation</a>\n"
                 f"🌐 Portfolio Hub: https://extrovertnerd.com"
             )
 
@@ -269,13 +269,97 @@ class TelegramNotifier:
                 caption = (
                     f"⚡ <b>ExtrovertNerd Tech Tip & Code Breakdown</b>\n\n"
                     f"🛠️ <b>Architecture Optimization:</b> Sub-second latency\n"
-                    f"👨‍💻 Lead Web Architect: Ravi\n"
+                    f"🏢 Studio: ExtrovertNerd Engineering\n"
                     f"🌐 https://extrovertnerd.com"
                 )
                 res = self.send_photo(latest_tip, caption=caption)
                 results.append({"type": "tech_tip", "file": str(latest_tip), "result": res})
 
+        # 3. Find any latest Top 100 breakdown poster
+        top100_dir = graphics_dir / "top100"
+        if top100_dir.exists():
+            posters = sorted(list(top100_dir.glob("*.png")), key=lambda p: p.stat().st_mtime, reverse=True)
+            if posters:
+                latest_poster = posters[0]
+                caption = (
+                    f"🏆 <b>ExtrovertNerd Top 100 Websites Breakdown</b>\n\n"
+                    f"⚡ <b>File:</b> {latest_poster.name}\n"
+                    f"🏢 Studio: ExtrovertNerd Engineering\n"
+                    f"🌐 https://extrovertnerd.com"
+                )
+                res = self.send_photo(latest_poster, caption=caption)
+                results.append({"type": "top100", "file": str(latest_poster), "result": res})
+
+        # 4. Find any latest Tech News poster
+        tech_news_dir = graphics_dir / "tech_news"
+        if tech_news_dir.exists():
+            posters = sorted(list(tech_news_dir.glob("*.png")), key=lambda p: p.stat().st_mtime, reverse=True)
+            if posters:
+                latest_poster = posters[0]
+                caption = (
+                    f"📡 <b>ExtrovertNerd Tech Architecture Radar</b>\n\n"
+                    f"⚡ <b>File:</b> {latest_poster.name}\n"
+                    f"🏢 Studio: ExtrovertNerd Engineering\n"
+                    f"🌐 https://extrovertnerd.com"
+                )
+                res = self.send_photo(latest_poster, caption=caption)
+                results.append({"type": "tech_news", "file": str(latest_poster), "result": res})
+
+        # 5. Find any latest Website Speed & UX Tip poster
+        website_tips_dir = graphics_dir / "website_tips"
+        if website_tips_dir.exists():
+            posters = sorted(list(website_tips_dir.glob("*.png")), key=lambda p: p.stat().st_mtime, reverse=True)
+            if posters:
+                latest_poster = posters[0]
+                caption = (
+                    f"🛠️ <b>ExtrovertNerd Performance Blueprint Tip</b>\n\n"
+                    f"⚡ <b>File:</b> {latest_poster.name}\n"
+                    f"🏢 Studio: ExtrovertNerd Engineering\n"
+                    f"🌐 https://extrovertnerd.com"
+                )
+                res = self.send_photo(latest_poster, caption=caption)
+                results.append({"type": "website_tip", "file": str(latest_poster), "result": res})
+
         return {"ok": True, "dispatches": results}
+
+    def dispatch_top100(self, image_path: Path | str, website: Dict[str, Any]) -> Dict[str, Any]:
+        """Dispatches a Top 100 Website breakdown poster to Telegram."""
+        caption = (
+            f"🏆 <b>Top 100 Websites Breakdown: #{website.get('global_rank', 1)} {website.get('name')}</b>\n\n"
+            f"🌐 <b>Domain:</b> {website.get('domain')}\n"
+            f"🏷️ <b>Category:</b> {website.get('category')}\n"
+            f"⚡ <b>Stack:</b> {', '.join(website.get('architecture_stack', [])[:3])}\n"
+            f"📊 <b>Telemetry:</b> LCP {website.get('telemetry', {}).get('lcp')} | INP {website.get('telemetry', {}).get('inp')} | CLS {website.get('telemetry', {}).get('cls')}\n\n"
+            f"💡 <b>ExtrovertNerd Verdict:</b> {website.get('extrovertnerd_verdict')}\n\n"
+            f"🏢 Studio: ExtrovertNerd Engineering\n"
+            f"🌐 https://extrovertnerd.com"
+        )
+        return self.send_photo(image_path, caption=caption)
+
+    def dispatch_tech_news(self, image_path: Path | str, news: Dict[str, Any]) -> Dict[str, Any]:
+        """Dispatches a Tech News poster to Telegram."""
+        caption = (
+            f"📡 <b>Tech Architecture Radar: {news.get('headline')}</b>\n\n"
+            f"🏷️ <b>Category:</b> {news.get('category')}\n"
+            f"📅 <b>Date:</b> {news.get('date')} | Source: {news.get('source')}\n\n"
+            f"📝 <b>Summary:</b> {news.get('summary')}\n\n"
+            f"⚡ <b>ExtrovertNerd Verdict:</b> {news.get('extrovertnerd_verdict')}\n\n"
+            f"🏢 Studio: ExtrovertNerd Engineering\n"
+            f"🌐 https://extrovertnerd.com"
+        )
+        return self.send_photo(image_path, caption=caption)
+
+    def dispatch_website_tip(self, image_path: Path | str, tip: Dict[str, Any]) -> Dict[str, Any]:
+        """Dispatches a Website Speed & UX Tip poster to Telegram."""
+        caption = (
+            f"🛠️ <b>ExtrovertNerd Performance Blueprint: {tip.get('title')}</b>\n\n"
+            f"🏷️ <b>Category:</b> {tip.get('category')} ({tip.get('tag')})\n"
+            f"⚡ <b>Impact:</b> {tip.get('measured_impact')}\n\n"
+            f"💡 <b>Pro Tip:</b> {tip.get('pro_tip')}\n\n"
+            f"🏢 Studio: ExtrovertNerd Engineering\n"
+            f"🌐 https://extrovertnerd.com"
+        )
+        return self.send_photo(image_path, caption=caption)
 
 
 def main() -> None:

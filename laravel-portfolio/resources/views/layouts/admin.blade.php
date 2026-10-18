@@ -111,8 +111,8 @@
                             <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-slate-900"></span>
                         </div>
                         <div>
-                            <div class="text-xs font-bold text-white leading-none">Ravi</div>
-                            <div class="text-[10px] text-slate-400 font-mono mt-0.5">Lead Web Architect</div>
+                            <div class="text-xs font-bold text-white leading-none">ExtrovertNerd</div>
+                            <div class="text-[10px] text-slate-400 font-mono mt-0.5">System Administrator</div>
                         </div>
                     </div>
                     <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Admin</span>
@@ -233,8 +233,8 @@
 
             <!-- Admin Footer -->
             <footer class="border-t border-white/5 py-4 px-8 text-center text-xs font-mono text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
-                <div>ExtrovertNerd Agency • Lead Web Architect: Ravi</div>
-                <div>Autonomous B2B Pipeline • Zero-Cost Cloud Automation</div>
+                <div>ExtrovertNerd Command Center • Web Architecture Systems</div>
+                <div>Autonomous B2B Pipeline • Cloud Automation</div>
             </footer>
 
         </div>

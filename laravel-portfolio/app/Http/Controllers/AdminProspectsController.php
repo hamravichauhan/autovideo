@@ -102,7 +102,7 @@ class AdminProspectsController
                 'est_monthly_loss' => '$' . number_format(rand(4, 12) * 1000) . '/mo',
                 'status' => 'Scraped',
                 'created_at' => date('Y-m-d H:i:s'),
-                'whatsapp_url' => 'https://wa.me/15551234567?text=' . urlencode("Hey Ravi! Check out speed audit for {$domain}"),
+                'whatsapp_url' => 'https://wa.me/15551234567?text=' . urlencode("Hey ExtrovertNerd! Check out speed audit for {$domain}"),
             ];
 
             array_unshift($prospects, $newProspect);

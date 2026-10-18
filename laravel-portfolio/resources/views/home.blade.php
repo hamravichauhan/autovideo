@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'ExtrovertNerd — Full-Stack Web Engineering & Custom Digital Systems')
-@section('meta_description', 'ExtrovertNerd is a boutique web engineering studio led by Lead Web Architect Ravi. We transform slow, leaking websites into sub-second custom conversion machines with a guaranteed 100/100 Core Web Vitals score.')
+@section('meta_description', 'ExtrovertNerd is a boutique web engineering studio. We transform slow, leaking websites into sub-second custom architectures engineered for speed, clean code, and resilient infrastructure.')
 
 @section('content')
 <div class="space-y-28 md:space-y-36">
@@ -12,13 +12,13 @@
     <section class="max-w-7xl mx-auto px-6 pt-12 md:pt-24 relative">
         <div class="text-center max-w-4xl mx-auto space-y-8">
 
-            <!-- Founder & Lab Pill with Live Tactile Pulse -->
+            <!-- Studio Pill with Live Tactile Pulse -->
             <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold tracking-wide shadow-lg shadow-emerald-500/10">
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span>EXTROVERTNERD BOUTIQUE LAB • LEAD ARCHITECT: RAVI</span>
+                <span>EXTROVERTNERD STUDIO • BESPOKE WEB ARCHITECTURES</span>
             </div>
 
             <!-- Big Editorial Headline (Plus Jakarta Sans + Playfair Display Italic) -->
@@ -27,9 +27,9 @@
                 <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-mint-300 to-teal-200 block sm:inline">Sub-Second Conversion Machines</span>.
             </h1>
 
-            <!-- Prompt-Specified Human Tailored Copy -->
+            <!-- Tailored Copy -->
             <p class="text-slate-300 text-lg md:text-xl font-normal leading-relaxed max-w-3xl mx-auto">
-                Replace bloated WordPress, WooCommerce, and Shopify storefronts with bespoke, sub-second architectures engineered for your exact business requirements. Whether you need high-speed frontend interfaces, robust backend microservices, or custom automation pipelines — Lead Web Architect Ravi builds with whatever stack matches your vision, guaranteed 100/100 Core Web Vitals.
+                Replace bloated WordPress, WooCommerce, and Shopify storefronts with bespoke, sub-second architectures engineered for your exact business requirements. Whether you need high-speed frontend interfaces, robust backend microservices, or custom automation pipelines — ExtrovertNerd builds with whatever stack matches your vision, optimized for Core Web Vitals.
             </p>
 
             <!-- Multi-Page Action CTAs -->
@@ -59,7 +59,7 @@
                 </div>
                 <div class="flex items-center space-x-2">
                     <span class="text-emerald-400 font-bold text-sm">🛡️</span>
-                    <span>100/100 Core Web Vitals Guarantee</span>
+                    <span>Verified Core Web Vitals Standards</span>
                 </div>
                 <div class="flex items-center space-x-2">
                     <span class="text-emerald-400 font-bold text-sm">📈</span>
@@ -221,14 +221,14 @@
             <div class="bg-gradient-to-br from-emerald-950/40 to-slate-900/80 border border-emerald-500/40 rounded-2xl p-7 space-y-3 transition md:col-span-2">
                 <div class="flex items-center justify-between">
                     <span class="font-mono text-xs font-bold text-emerald-300">PHASE 05</span>
-                    <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">100% Guaranteed</span>
+                    <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">Verified Delivery</span>
                 </div>
-                <h3 class="text-xl font-bold text-white">The Contractual 100/100 Guarantee</h3>
+                <h3 class="text-xl font-bold text-white">Real-World Core Web Vitals Verification</h3>
                 <p class="text-xs text-slate-300 leading-relaxed">
-                    If your rebuilt production website does not score in the green tier on Google Mobile Core Web Vitals, you receive a full 100% refund. No fine print.
+                    Every client build is rigorously stress-tested on real mobile 4G latency. We benchmark sub-second LCP and green Core Web Vitals before production deployment.
                 </p>
                 <div class="text-[11px] font-mono text-emerald-300 pt-2 border-t border-emerald-500/20 font-bold">
-                    Zero Risk • Signed Performance SLA
+                    Rigorous Throttled 4G Testing • Real-World Performance
                 </div>
             </div>
         </div>
@@ -247,7 +247,7 @@
                 <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Engineered for Your Exact Requirements</span>.
             </h2>
             <p class="text-slate-300 text-base md:text-lg leading-relaxed">
-                We don't force dogmatic templates or lock you into one framework. Lead Web Architect Ravi builds with whatever tool matches your product roadmap, scale, and performance needs.
+                We don't force dogmatic templates or lock you into one framework. ExtrovertNerd builds with whatever tool matches your product roadmap, scale, and performance needs.
             </p>
         </div>
 
@@ -369,12 +369,12 @@
                 </p>
             </div>
             <a 
-                href="https://wa.me/15551234567?text={{ urlencode('Hey Ravi! I have a project requirement and want to discuss what tech stack is best.') }}" 
+                href="https://wa.me/15551234567?text={{ urlencode('Hey ExtrovertNerd! I have a project requirement and want to discuss what tech stack is best.') }}" 
                 target="_blank" 
                 rel="noopener"
                 class="shrink-0 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider px-6 py-4 rounded-xl shadow-lg shadow-emerald-500/25 transition duration-300"
             >
-                Discuss Your Stack with Ravi ➔
+                Discuss Your Architecture ➔
             </a>
         </div>
     </section>
@@ -473,11 +473,11 @@
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        <span>FOUNDER & LEAD WEB ARCHITECT • ONLINE & CODING</span>
+                        <span>WEB ARCHITECTURE STUDIO • ONLINE & ACTIVE</span>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-black text-white">Crafted Personally by Ravi</h2>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">Engineered by ExtrovertNerd</h2>
                     <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                        "At ExtrovertNerd, we don't pass client work to junior freelancers or configure slow pre-made templates. Whether your vision demands a reactive Next.js/React frontend, a high-throughput Python API, a Node.js websocket backend, or a sub-second Laravel store, every digital architecture is crafted personally by me to match your exact business requirements — with strict 100/100 Core Web Vitals guarantees."
+                        "At ExtrovertNerd, we don't pass client work to junior freelancers or configure slow pre-made templates. Whether your vision demands a reactive Next.js/React frontend, a high-throughput Python API, a Node.js websocket backend, or a sub-second Laravel store, every digital architecture is built with clean code, sub-second latency, and verified Core Web Vitals optimization."
                     </p>
                     <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-4">
                         <a 
@@ -487,7 +487,7 @@
                             class="bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs uppercase px-7 py-4 rounded-xl shadow-xl shadow-emerald-500/25 transition flex items-center space-x-2 hover:scale-105"
                         >
                             <span>💬</span>
-                            <span>Chat Personally with Ravi on WhatsApp</span>
+                            <span>Chat with ExtrovertNerd on WhatsApp</span>
                         </a>
                         <a 
                             href="/speed-checker" 

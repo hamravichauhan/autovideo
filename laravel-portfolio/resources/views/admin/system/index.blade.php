@@ -199,12 +199,12 @@
             <!-- Founder Attribution Row -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div class="space-y-1">
-                    <label class="text-xs font-mono text-slate-400 uppercase">Lead Architect / Founder Name</label>
-                    <input type="text" name="founder_name" value="{{ $envVars['FOUNDER_NAME'] ?? 'Ravi' }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-2 text-white text-sm">
+                    <label class="text-xs font-mono text-slate-400 uppercase">Studio / Founder Attribution</label>
+                    <input type="text" name="founder_name" value="{{ $envVars['FOUNDER_NAME'] ?? 'ExtrovertNerd' }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-2 text-white text-sm">
                 </div>
                 <div class="space-y-1">
-                    <label class="text-xs font-mono text-slate-400 uppercase">Founder Title</label>
-                    <input type="text" name="founder_role" value="{{ $envVars['FOUNDER_ROLE'] ?? 'Lead Web Architect' }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-2 text-white text-sm">
+                    <label class="text-xs font-mono text-slate-400 uppercase">Studio Title / Subtitle</label>
+                    <input type="text" name="founder_role" value="{{ $envVars['FOUNDER_ROLE'] ?? 'Web Architecture Studio' }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-2 text-white text-sm">
                 </div>
             </div>
 
@@ -222,7 +222,7 @@
 
             <div class="space-y-1">
                 <label class="text-xs font-mono text-slate-400 uppercase">Default WhatsApp Click-to-Chat Prompt</label>
-                <input type="text" name="whatsapp_default_message" value="{{ $envVars['WHATSAPP_DEFAULT_MESSAGE'] ?? 'Hey Ravi! I saw ExtrovertNerd and want a free 5-point website speed audit.' }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-2 text-white text-sm">
+                <input type="text" name="whatsapp_default_message" value="{{ $envVars['WHATSAPP_DEFAULT_MESSAGE'] ?? 'Hey ExtrovertNerd! I saw your engineering work and want a free 5-point website speed audit.' }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-2 text-white text-sm">
             </div>
 
             <!-- Telegram Bot Automated Dispatch Settings -->

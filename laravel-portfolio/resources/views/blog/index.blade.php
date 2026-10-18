@@ -77,19 +77,19 @@
     <div class="mt-20 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/40 border border-emerald-500/30 rounded-3xl p-8 md:p-12 text-center space-y-6">
         <h3 class="text-3xl font-black text-white">Want Your Business Tested in Our Lab?</h3>
         <p class="text-slate-300 text-base max-w-xl mx-auto">
-            Run your URL through our free speed checker or chat directly with Lead Architect Ravi for a complimentary 5-point teardown.
+            Run your URL through our free speed checker or chat directly with ExtrovertNerd for a complimentary 5-point teardown.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
             <a href="/speed-checker" class="bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-105 transition">
                 Launch Speed Checker ➔
             </a>
             <a 
-                href="https://wa.me/15551234567?text={{ urlencode('Hey Ravi! I read your case studies on ExtrovertNerd and want a free speed audit of my business.') }}" 
+                href="https://wa.me/15551234567?text={{ urlencode('Hey ExtrovertNerd! I read your case studies on ExtrovertNerd and want a free speed audit of my business.') }}" 
                 target="_blank" 
                 rel="noopener" 
                 class="bg-slate-900 hover:bg-slate-800 text-white border border-white/10 font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition"
             >
-                Message Ravi on WhatsApp
+                Message ExtrovertNerd on WhatsApp
             </a>
         </div>
     </div>

@@ -46,7 +46,7 @@
                 return this.monthlyLeak * 12;
             },
             get whatsappUrl() {
-                let msg = 'Hey Ravi! I used your ExtrovertNerd ROI Calculator. My website receives around ' + this.visitors.toLocaleString() + ' visitors/month with an average order value of $' + this.orderValue + ', and loads in ' + this.loadTime + 's. The calculator estimates we are leaking $' + this.monthlyLeak.toLocaleString() + '/month. Can you record the free 3-minute video breakdown to fix this?';
+                let msg = 'Hey ExtrovertNerd! I used your ROI Calculator. My website receives around ' + this.visitors.toLocaleString() + ' visitors/month with an average order value of $' + this.orderValue + ', and loads in ' + this.loadTime + 's. The calculator estimates we are leaking $' + this.monthlyLeak.toLocaleString() + '/month. Can you record the free 3-minute video breakdown to fix this?';
                 return 'https://wa.me/15551234567?text=' + encodeURIComponent(msg);
             }
         }"
@@ -171,7 +171,7 @@
                         class="w-full bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider py-4 px-6 rounded-xl shadow-lg shadow-emerald-500/25 hover:scale-[1.02] transition flex items-center justify-center space-x-2 text-center"
                     >
                         <span>💬</span>
-                        <span>Claim This Lost Revenue — Chat with Ravi</span>
+                        <span>Claim This Lost Revenue — Chat with ExtrovertNerd</span>
                     </a>
                     <p class="text-center text-[11px] text-slate-400 font-mono">
                         Includes free 3-minute video audit with zero obligation.

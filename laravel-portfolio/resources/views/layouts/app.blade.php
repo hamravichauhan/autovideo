@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'ExtrovertNerd — Full-Stack Web Engineering & Custom Digital Systems')</title>
-    <meta name="description" content="@yield('meta_description', 'Boutique full-stack engineering studio led by Lead Architect Ravi. We build bespoke sub-second web applications, high-converting stores, and automated management dashboards tailored precisely to your business logic.')">
+    <meta name="description" content="@yield('meta_description', 'Boutique full-stack web engineering studio. We build bespoke sub-second web applications, high-converting stores, and automated management dashboards tailored precisely to your business logic.')">
     
     <!-- Tailwind CSS CDN & Alpine.js -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -146,11 +146,11 @@
                             <span class="text-emerald-300 font-mono text-[9px] font-bold tracking-wider uppercase">Online & Coding</span>
                         </span>
                     </div>
-                    <!-- Refined human subtitle: ARCHITECT: RAVI | STATUS: BUILDING EXCLUSIVE SYSTEMS -->
+                    <!-- Refined human subtitle: STUDIO: EXTROVERTNERD | STATUS: BUILDING EXCLUSIVE SYSTEMS -->
                     <span class="text-[10px] font-mono text-slate-400 tracking-wider uppercase block mt-0.5">
-                        <span class="text-slate-300 font-bold">ARCHITECT: RAVI</span>
+                        <span class="text-slate-300 font-bold">STUDIO: EXTROVERTNERD</span>
                         <span class="text-emerald-500/70 mx-1">•</span>
-                        <span class="text-slate-400">STATUS: BUILDING EXCLUSIVE SYSTEMS</span>
+                        <span class="text-slate-400">HIGH-PERFORMANCE ARCHITECTURE</span>
                     </span>
                 </div>
             </a>
@@ -212,13 +212,13 @@
             <!-- CTA Button & Mobile Hamburger -->
             <div class="flex items-center space-x-4">
                 <a 
-                    href="https://wa.me/15551234567?text={{ urlencode('Hey Ravi! I saw ExtrovertNerd and want to see how you can make my website 100/100 fast.') }}" 
+                    href="https://wa.me/15551234567?text={{ urlencode('Hey ExtrovertNerd! I saw your work and want to consult on optimizing my website.') }}" 
                     target="_blank" 
                     rel="noopener" 
                     class="hidden sm:inline-flex bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider px-5 py-3 rounded-xl shadow-lg shadow-emerald-500/25 hover:scale-105 transition items-center space-x-2"
                 >
                     <span>💬</span>
-                    <span>WhatsApp Ravi</span>
+                    <span>WhatsApp ExtrovertNerd</span>
                 </a>
 
                 <!-- Mobile Hamburger Toggle -->
@@ -272,13 +272,13 @@
 
             <div class="pt-4 border-t border-white/10">
                 <a 
-                    href="https://wa.me/15551234567?text={{ urlencode('Hey Ravi! I saw ExtrovertNerd and want to discuss my website speed.') }}" 
+                    href="https://wa.me/15551234567?text={{ urlencode('Hey ExtrovertNerd! I saw your work and want to discuss my website performance.') }}" 
                     target="_blank" 
                     rel="noopener" 
                     class="w-full bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider px-5 py-3.5 rounded-xl shadow-lg shadow-emerald-500/25 flex items-center justify-center space-x-2"
                 >
                     <span>💬</span>
-                    <span>WhatsApp Ravi Directly</span>
+                    <span>WhatsApp ExtrovertNerd</span>
                 </a>
             </div>
         </div>
@@ -302,18 +302,18 @@
                         <span class="text-2xl font-black text-white">Extrovert<span class="text-emerald-400 font-serif italic font-normal">Nerd</span></span>
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed max-w-md">
-                        Boutique digital engineering studio led by Lead Architect Ravi. We build bespoke sub-second web applications, high-converting storefronts, and automated management dashboards with a contractual <strong class="text-white">100/100 Core Web Vitals guarantee</strong>.
+                        Boutique digital engineering studio. We build bespoke sub-second web applications, high-converting storefronts, and automated management dashboards engineered for speed, clean architecture, and reliable performance.
                     </p>
                     <div class="flex items-center space-x-3 pt-2">
                         <div class="w-10 h-10 rounded-2xl bg-slate-900 border border-emerald-500/30 flex items-center justify-center font-bold text-sm text-emerald-400 shadow-inner">
-                            R
+                            ⚡
                         </div>
                         <div class="text-xs">
                             <div class="font-bold text-white flex items-center space-x-1.5">
-                                <span>Lead Web Architect: Ravi</span>
+                                <span>ExtrovertNerd Engineering</span>
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                             </div>
-                            <div class="text-slate-400 font-mono">Bespoke Engineering • Zero Third-Party Bloat</div>
+                            <div class="text-slate-400 font-mono">Bespoke Web Architecture • Zero Third-Party Bloat</div>
                         </div>
                     </div>
                 </div>
@@ -351,7 +351,7 @@
                 <div class="flex items-center space-x-6">
                     <span class="text-emerald-400 flex items-center space-x-1.5">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>100% Mobile Core Web Vitals Pass Guarantee</span>
+                        <span>Verified Core Web Vitals Optimization</span>
                     </span>
                     <a href="https://wa.me/15551234567" target="_blank" rel="noopener" class="hover:text-white transition">Direct WhatsApp ➔</a>
                 </div>

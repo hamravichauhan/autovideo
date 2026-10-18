@@ -1,0 +1,65 @@
+{
+  "batch_id": "dubai_real-estate_carousel",
+  "city": {
+    "id": "dubai",
+    "name": "Dubai",
+    "region": "Emirates",
+    "country": "UAE",
+    "tagline": "Global nexus of luxury commerce, ultra-prime real estate, and hospitality",
+    "districts": [
+      "Downtown Dubai",
+      "Dubai Marina",
+      "Palm Jumeirah",
+      "DIFC",
+      "Business Bay",
+      "JBR"
+    ],
+    "demographics": "Global ultra-high-net-worth clientele demanding bespoke visual aesthetics, multi-currency support, and instantaneous sub-second response times.",
+    "avg_mobile_traffic_pct": 94,
+    "competitor_landscape": "Agencies charging $20,000+ for slow Elementor sites that fail basic Core Web Vitals and lack custom backend automations."
+  },
+  "niche": {
+    "id": "real-estate",
+    "name": "Luxury Real Estate & Villa Brokerages",
+    "singular": "Real Estate Brokerage",
+    "plural": "Real Estate Brokerages & Agencies",
+    "target_client": "Luxury property brokers, real estate founders, and development sales directors",
+    "primary_action": "private viewing inquiries and high-net-worth investor lead capture",
+    "pain_points": [
+      "Listing pages choking under high-resolution villa gallery uploads and 4K property walkthrough embeds.",
+      "Off-the-shelf real estate themes taking 7+ seconds to filter properties by price and location.",
+      "Investor leads slipping through cracks due to lack of an integrated automated CRM lead assignment pipeline."
+    ],
+    "symptoms": [
+      "Filter and search queries taking 4+ seconds to refresh database results",
+      "Mobile users abandoning property listings before images render",
+      "Unbranded generic contact forms failing to convey premium exclusivity"
+    ],
+    "laravel_solution": [
+      "Sub-second faceted property search powered by Laravel Scout and Redis indexing.",
+      "Next-gen automated WebP/AVIF dynamic image compression pipeline.",
+      "Direct broker WhatsApp routing based on property district and price bracket."
+    ],
+    "metric_before": {
+      "load_time": "6.8s",
+      "pagespeed": "22/100",
+      "bounce_rate": "78%",
+      "lost_revenue": "$25,000/mo"
+    },
+    "metric_after": {
+      "load_time": "0.45s",
+      "pagespeed": "97/100",
+      "bounce_rate": "28%",
+      "conversion_lift": "+61%"
+    }
+  },
+  "platform": "vertical",
+  "total_slides": 4,
+  "slide_paths": [
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_real-estate_carousel/slide_1.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_real-estate_carousel/slide_2.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_real-estate_carousel/slide_3.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_real-estate_carousel/slide_4.png"
+  ],
+  "directory": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_real-estate_carousel"
+}

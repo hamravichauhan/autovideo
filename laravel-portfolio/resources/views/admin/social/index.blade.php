@@ -19,34 +19,44 @@
             </p>
         </div>
 
-        <div class="flex flex-wrap items-center gap-2.5">
+        <div class="flex flex-wrap items-center gap-2">
+            <form action="/admin/social/generate" method="POST" class="inline">
+                <input type="hidden" name="type" value="top100">
+                <button type="submit" class="bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-xl shadow-lg transition flex items-center space-x-1.5 hover:scale-105">
+                    <span>🏆</span>
+                    <span>Render Top 100 Daily</span>
+                </button>
+            </form>
+
+            <form action="/admin/social/generate" method="POST" class="inline">
+                <input type="hidden" name="type" value="tech_news">
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-xl shadow-lg transition flex items-center space-x-1.5">
+                    <span>📡</span>
+                    <span>Render Tech News</span>
+                </button>
+            </form>
+
+            <form action="/admin/social/generate" method="POST" class="inline">
+                <input type="hidden" name="type" value="website_tip">
+                <button type="submit" class="bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-xl shadow-lg transition flex items-center space-x-1.5">
+                    <span>🛠️</span>
+                    <span>Render Website Tip</span>
+                </button>
+            </form>
+
             <form action="/admin/social/telegram" method="POST" class="inline">
-                <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl shadow-lg shadow-sky-500/20 transition flex items-center space-x-1.5">
+                <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-xl shadow-lg shadow-sky-500/20 transition flex items-center space-x-1.5">
                     <span>📲</span>
-                    <span>Send to Telegram</span>
+                    <span>Telegram</span>
                 </button>
             </form>
 
             <form action="/admin/social/generate" method="POST" class="inline">
+                <input type="hidden" name="type" value="carousel">
                 <input type="hidden" name="platform" value="vertical">
-                <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl border border-white/10 transition flex items-center space-x-1.5">
+                <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider px-3 py-2.5 rounded-xl border border-white/10 transition flex items-center space-x-1.5">
                     <span>📐</span>
-                    <span>Render Vertical (4:5)</span>
-                </button>
-            </form>
-
-            <form action="/admin/social/generate" method="POST" class="inline">
-                <input type="hidden" name="platform" value="story">
-                <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-xl border border-white/10 transition flex items-center space-x-1.5">
-                    <span>📱</span>
-                    <span>Story (9:16)</span>
-                </button>
-            </form>
-
-            <form action="/admin/social/publish" method="POST" class="inline">
-                <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-500/20 transition flex items-center space-x-1.5">
-                    <span>🚀</span>
-                    <span>Dispatch Queue Live</span>
+                    <span>Local Carousel</span>
                 </button>
             </form>
         </div>

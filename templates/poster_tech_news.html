@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ news.headline }} — ExtrovertNerd Tech News</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #020617;
+      color: #f8fafc;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .font-handwriting { font-family: 'Caveat', cursive; }
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* Canvas Size: 1080 x 1350 (4:5 Vertical Portrait) */
+    .poster-canvas {
+      width: 1080px;
+      height: 1350px;
+      position: relative;
+      overflow: hidden;
+      background-color: #030712;
+      background-image: 
+        radial-gradient(circle at 80% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 20% 85%, rgba(16, 185, 129, 0.10) 0%, transparent 45%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    /* Tactile Frosted Tape Effect */
+    .sticky-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-0.5deg);
+      width: 90px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.65);
+      border-left: 2px dashed rgba(255, 255, 255, 0.7);
+      border-right: 2px dashed rgba(255, 255, 255, 0.7);
+      border-top: 1px solid rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(6px);
+      border-radius: 2px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    /* Yellow Post-it Sticky Note */
+    .sticky-note {
+      background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
+      color: #1c1917;
+      border-radius: 12px;
+      padding: 18px 24px;
+      box-shadow: 0 14px 28px -4px rgba(0, 0, 0, 0.65), 0 8px 12px -3px rgba(0, 0, 0, 0.35);
+      transform: rotate(-1deg);
+      position: relative;
+      border: 1px solid rgba(234, 179, 8, 0.6);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-black">
+
+  <div class="poster-canvas flex flex-col justify-between p-12 select-none">
+
+    <!-- ============================================================== -->
+    <!-- TOP HEADER BAR                                                 -->
+    <!-- ============================================================== -->
+    <div class="space-y-4">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        
+        <!-- Brand & Studio Mark -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-400 to-indigo-300 p-0.5 shadow-lg shadow-indigo-500/20">
+            <div class="w-full h-full bg-[#030712] rounded-[10px] flex items-center justify-center font-black text-indigo-400 text-lg">
+              📡
+            </div>
+          </div>
+          <div>
+            <div class="text-sm font-black tracking-wider uppercase text-white">
+              EXTROVERT<span class="text-indigo-400">NERD</span>
+            </div>
+            <div class="text-[10px] font-mono text-slate-400 tracking-wider uppercase">
+              Web Architecture Studio • Tech Radar
+            </div>
+          </div>
+        </div>
+
+        <!-- Category & Date Badge -->
+        <div class="flex items-center space-x-2">
+          <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 uppercase tracking-widest">
+            {{ news.badge | default('TECH PULSE') }}
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-slate-800 border border-white/10 text-slate-300">
+            {{ news.date }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MAIN CONTENT: BREAKING TECH NEWS & ANALYSIS                    -->
+    <!-- ============================================================== -->
+    <div class="space-y-6">
+
+      <!-- Category Label & Source -->
+      <div class="space-y-2">
+        <div class="flex items-center space-x-3 text-xs font-mono">
+          <span class="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-indigo-950 border border-indigo-500/30 text-indigo-300">
+            {{ news.category }}
+          </span>
+          <span class="text-slate-400">
+            Source: <strong class="text-slate-200">{{ news.source }}</strong>
+          </span>
+        </div>
+
+        <h1 class="text-4xl font-black text-white tracking-tight leading-tight">
+          {{ news.headline }}
+        </h1>
+      </div>
+
+      <!-- Executive Summary Box -->
+      <div class="bg-gradient-to-r from-slate-900/90 to-indigo-950/40 border border-indigo-500/30 rounded-2xl p-6 space-y-2 shadow-xl">
+        <div class="text-[11px] font-mono font-bold uppercase text-indigo-400 tracking-widest">
+          EXECUTIVE SUMMARY
+        </div>
+        <p class="text-slate-200 text-sm leading-relaxed font-medium">
+          {{ news.summary }}
+        </p>
+      </div>
+
+      <!-- Technical Deep Dive Box -->
+      <div class="bg-black/60 border border-white/10 rounded-2xl p-6 space-y-3">
+        <div class="flex items-center space-x-2">
+          <span class="text-emerald-400 text-sm">⚙️</span>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-slate-300">
+            Under The Hood: Architecture Impact
+          </span>
+        </div>
+        <p class="text-slate-300 text-xs leading-relaxed font-mono">
+          {{ news.technical_deep_dive }}
+        </p>
+      </div>
+
+      <!-- What This Means For Your Stack -->
+      <div class="space-y-3">
+        <div class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
+          What This Means For Your Production Stack:
+        </div>
+
+        <div class="grid grid-cols-1 gap-2.5">
+          {% for point in news.stack_impact %}
+          <div class="flex items-start space-x-3.5 bg-black/50 border border-white/10 rounded-xl p-3.5">
+            <span class="w-6 h-6 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center font-mono font-black text-indigo-400 text-xs shrink-0 mt-0.5">
+              ✓
+            </span>
+            <span class="text-xs text-slate-200 leading-snug font-medium">
+              {{ point }}
+            </span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Tactile Yellow Sticky Note: Engineering Verdict -->
+      <div class="sticky-note mt-3">
+        <div class="sticky-tape"></div>
+        <div class="text-base font-handwriting text-stone-900 leading-snug">
+          "⚡ ExtrovertNerd Engineering Verdict: {{ news.extrovertnerd_verdict }}"
+          <span class="font-bold block mt-1 text-xs text-stone-800 font-sans tracking-wide">— ExtrovertNerd Engineering</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- FOOTER CALL TO ACTION                                          -->
+    <!-- ============================================================== -->
+    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+      <div class="flex items-center space-x-2">
+        <span class="text-white font-bold">@extrovertnerd</span>
+        <span>•</span>
+        <span>extrovertnerd.com</span>
+      </div>
+      <div class="text-indigo-400 font-bold flex items-center space-x-1.5">
+        <span>Daily Tech Architecture Updates</span>
+        <span>➔</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

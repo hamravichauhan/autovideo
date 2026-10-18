@@ -45,7 +45,7 @@
     {
       "id": "multi_stack_architecture",
       "hook_formula": "🛠️ Why one size NEVER fits all: How ExtrovertNerd picks the exact tech stack for your business.",
-      "body": "Most agencies try to force every client into whatever template builder they know.\n\nAt ExtrovertNerd, we are 100% tech-agnostic:\n\n• High-Ticket E-Commerce & Portals ➔ Laravel 11 + Redis\n• Dynamic SaaS & AI Dashboards ➔ Next.js 15 + React 19\n• Real-Time APIs & Microservices ➔ Node.js & Python FastAPI\n• High-Throughput Distributed Systems ➔ Go (Golang)\n\nWhatever the stack, our guarantee remains identical: Sub-350ms load times and 100/100 Core Web Vitals.\n\n---\n💬 Have a project in mind? Tap the link in bio or message Lead Architect Ravi on WhatsApp to discuss your architecture."
+      "body": "Most agencies try to force every client into whatever template builder they know.\n\nAt ExtrovertNerd, we are 100% tech-agnostic:\n\n• High-Ticket E-Commerce & Portals ➔ Laravel 11 + Redis\n• Dynamic SaaS & AI Dashboards ➔ Next.js 15 + React 19\n• Real-Time APIs & Microservices ➔ Node.js & Python FastAPI\n• High-Throughput Distributed Systems ➔ Go (Golang)\n\nWhatever the stack, our standard remains identical: Sub-350ms load times and verified Core Web Vitals optimization.\n\n---\n💬 Have a project in mind? Tap the link in bio or message ExtrovertNerd on WhatsApp to discuss your architecture."
     }
   ],
   "tech_tip_captions": [
@@ -68,11 +68,11 @@
     {
       "id": "stack_selection_thread",
       "step_hooks": [
-        "🧵 Stop letting agencies force you into their only framework.\n\nHere is how we choose the right technology stack at ExtrovertNerd to guarantee sub-300ms speed for every client: 👇",
+        "🧵 Stop letting agencies force you into their only framework.\n\nHere is how we choose the right technology stack at ExtrovertNerd to target sub-300ms speed for every client: 👇",
         "1/ For High-Ticket Stores & Operations:\n\nLaravel 11 + Tailwind + Redis.\n\nUnbeatable relational data modeling, built-in queue workers, zero plugin bloat, and zero platform transaction cuts.",
         "2/ For Dynamic SaaS & AI Web Apps:\n\nNext.js 15 + React 19 + TypeScript.\n\nServer Components fetch data at the edge, rendering rich reactive interfaces with near-zero client JavaScript.",
         "3/ For Real-Time APIs & Scraping:\n\nPython FastAPI + Celery / Node.js.\n\nNon-blocking asynchronous throughput with native AI model orchestration and sub-20ms webhook dispatch.",
-        "4/ The Guarantee:\n\nWhatever your stack, every ExtrovertNerd build comes with a contractual 100/100 Core Web Vitals guarantee.\n\nWant to audit your site? Tap our WhatsApp link in bio: {whatsapp_url}"
+        "4/ The Engineering Standard:\n\nWhatever your stack, every ExtrovertNerd build is rigorously benchmarked on throttled mobile 4G against Google Core Web Vitals.\n\nWant to audit your site? Tap our WhatsApp link in bio: {whatsapp_url}"
       ]
     }
   ]

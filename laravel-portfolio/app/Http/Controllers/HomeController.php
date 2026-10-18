@@ -27,7 +27,7 @@ class HomeController
             }
         }
 
-        $whatsappUrl = 'https://wa.me/15551234567?text=' . urlencode('Hey Ravi! I saw ExtrovertNerd and want to see how you can make my website 100/100 fast.');
+        $whatsappUrl = 'https://wa.me/15551234567?text=' . urlencode('Hey ExtrovertNerd! I saw your engineering work and want to see how you can make my website fast.');
 
         return view('home', [
             'recentArticles' => $recentArticles,
@@ -40,7 +40,7 @@ class HomeController
      */
     public function howWeWork()
     {
-        $whatsappUrl = 'https://wa.me/15551234567?text=' . urlencode('Hey Ravi! I read your 5-step engineering blueprint on How We Work and want to get started with Phase 1 audit.');
+        $whatsappUrl = 'https://wa.me/15551234567?text=' . urlencode('Hey ExtrovertNerd! I read your 5-step engineering blueprint on How We Work and want to get started with Phase 1 audit.');
 
         return view('how-we-work', [
             'whatsappUrl' => $whatsappUrl,
@@ -52,7 +52,7 @@ class HomeController
      */
     public function roiCalculator()
     {
-        $whatsappUrl = 'https://wa.me/15551234567?text=' . urlencode('Hey Ravi! I used your ROI calculator and calculated our website latency loss. Can we run the free 3-minute video audit?');
+        $whatsappUrl = 'https://wa.me/15551234567?text=' . urlencode('Hey ExtrovertNerd! I used your ROI calculator and calculated our website latency loss. Can we run the free 3-minute video audit?');
 
         return view('roi-calculator', [
             'whatsappUrl' => $whatsappUrl,

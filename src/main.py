@@ -169,12 +169,15 @@ def main() -> None:
     )
     parser.add_argument(
         "--mode",
-        choices=["daily", "all", "pseo", "graphics", "tech_tip", "social", "prospect", "telegram"],
+        choices=["daily", "all", "top100", "tech_news", "website_tip", "pseo", "graphics", "tech_tip", "social", "prospect", "telegram"],
         default="daily",
         help="Pipeline execution mode",
     )
     parser.add_argument("--city", type=str, help="Specific target city ID (e.g., goa, mumbai, bangalore)")
     parser.add_argument("--niche", type=str, help="Specific target niche ID (e.g., restaurants, boutique-hotels)")
+    parser.add_argument("--website-id", type=str, help="Website rank/ID for top100 breakdown")
+    parser.add_argument("--news-id", type=str, help="News article ID for tech news poster")
+    parser.add_argument("--tip-id", type=str, help="Tip ID for website performance poster")
     parser.add_argument(
         "--angle",
         choices=["local_speed", "tech_comparison", "automation", "random"],
@@ -202,6 +205,36 @@ def main() -> None:
             render_graphics=not args.no_graphics,
             platform=args.platform,
         )
+    elif args.mode == "top100":
+        res = engine.graphics_renderer.render_top100_breakdown(website_id=args.website_id)
+        print(f"\n[ExtrovertNerd Top 100 Breakdown] #{res['website']['global_rank']} {res['website']['name']}")
+        print(f"File: {res['image_path']}")
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            TelegramNotifier().dispatch_top100(res["image_path"], res["website"])
+            print("🚀 Pushed to Telegram channel!")
+        except Exception as e:
+            print(f"Telegram notice: {e}")
+    elif args.mode == "tech_news":
+        res = engine.graphics_renderer.render_tech_news(news_id=args.news_id)
+        print(f"\n[ExtrovertNerd Tech News Poster] {res['news']['headline']}")
+        print(f"File: {res['image_path']}")
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            TelegramNotifier().dispatch_tech_news(res["image_path"], res["news"])
+            print("🚀 Pushed to Telegram channel!")
+        except Exception as e:
+            print(f"Telegram notice: {e}")
+    elif args.mode == "website_tip":
+        res = engine.graphics_renderer.render_website_tip(tip_id=args.tip_id)
+        print(f"\n[ExtrovertNerd Website Tip Poster] {res['tip']['title']}")
+        print(f"File: {res['image_path']}")
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            TelegramNotifier().dispatch_website_tip(res["image_path"], res["tip"])
+            print("🚀 Pushed to Telegram channel!")
+        except Exception as e:
+            print(f"Telegram notice: {e}")
     elif args.mode == "prospect":
         res = engine.prospecting_engine.run_prospecting_batch(
             city_id=args.city, niche_id=args.niche, count=5

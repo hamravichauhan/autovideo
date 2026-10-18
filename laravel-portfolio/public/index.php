@@ -2,7 +2,7 @@
 
 /**
  * ExtrovertNerd Agency - Public Web Entry Point
- * Branded under ExtrovertNerd (Lead Web Architect: Ravi)
+ * Branded under ExtrovertNerd Engineering Studio
  */
 
 // If serving via PHP built-in web server, allow direct serving of static files if they exist

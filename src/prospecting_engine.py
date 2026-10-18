@@ -102,7 +102,7 @@ class ProspectingEngine:
             f"I was browsing local {niche_singular} websites in {city_name} on mobile 4G yesterday and came across your site ({prospect['website']}).\n\n"
             f"Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & {platform} scripts take {load_time} to load (mobile score sits at {score}).\n\n"
             f"I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n"
-            f"— Ravi • Lead Web Architect at ExtrovertNerd ({config.website_url})"
+            f"— ExtrovertNerd Engineering ({config.website_url})"
         )
 
         # 2. Cold Email (Formal B2B with technical diagnostic)
@@ -110,7 +110,7 @@ class ProspectingEngine:
         email_body = (
             f"Hi {biz_name} Team,\n\n"
             f"I hope your week is off to a great start.\n\n"
-            f"My name is Ravi, Lead Web Architect at ExtrovertNerd ({config.website_url}). We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end {prospect['niche']}.\n\n"
+            f"We are ExtrovertNerd ({config.website_url}), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end {prospect['niche']}.\n\n"
             f"While researching leading {prospect['niche']} in {city_name}, our lab ran a mobile Core Web Vitals diagnostic on {prospect['website']}. Here is what our crawler detected:\n\n"
             f"• Mobile PageSpeed Score: {score} (Google Core Web Vitals: Failed)\n"
             f"• Mobile Load Time: {load_time} on 4G network\n"
@@ -121,8 +121,8 @@ class ProspectingEngine:
             f"👉 {speed_checker_url}\n\n"
             f"I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\n"
             f"Best regards,\n\n"
-            f"Ravi\n"
-            f"Lead Web Architect | ExtrovertNerd Agency\n"
+            f"ExtrovertNerd Engineering\n"
+            f"Web Architecture Studio\n"
             f"Portfolio: {config.website_url}\n"
             f"WhatsApp Direct: {config.whatsapp_click_to_chat_url}"
         )
@@ -131,7 +131,7 @@ class ProspectingEngine:
         dm_body = (
             f"Hey team {biz_name}! Found your profile while researching premier {prospect['niche']} in {city_name}. "
             f"Noticed your website takes {load_time} to render on mobile touchscreens due to heavy {platform} scripts. "
-            f"I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — Ravi @ ExtrovertNerd"
+            f"I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd"
         )
 
         return {
@@ -182,7 +182,7 @@ class ProspectingEngine:
         with open(md_file, "w", encoding="utf-8") as f:
             f.write(f"# ExtrovertNerd Outbound Prospecting Deck\n\n")
             f.write(f"> **Market:** {selected_city['name']} • **Niche:** {selected_niche['name']}\n")
-            f.write(f"> **Generated Date:** {datetime.date.today().isoformat()} • **Lead Architect:** Ravi\n\n")
+            f.write(f"> **Generated Date:** {datetime.date.today().isoformat()} • **Studio:** ExtrovertNerd\n\n")
             f.write(f"---\n\n")
 
             for idx, lead in enumerate(enriched_leads, 1):

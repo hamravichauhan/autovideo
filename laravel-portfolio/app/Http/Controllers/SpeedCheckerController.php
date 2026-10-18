@@ -66,7 +66,7 @@ class SpeedCheckerController
         $detectedPlatform = $platforms[abs($hash) % count($platforms)];
 
         // Pre-populated WhatsApp deep link
-        $whatsappMessage = "Hey Ravi! I just ran my site ({$cleanUrl}) through ExtrovertNerd's speed checker and scored {$score}/100 with {$loadTime}s load time. Can you send me the free 3-minute video breakdown of how to fix this?";
+        $whatsappMessage = "Hey ExtrovertNerd! I just ran my site ({$cleanUrl}) through your speed checker and scored {$score}/100 with {$loadTime}s load time. Can you send me the free 3-minute video breakdown of how to fix this?";
         $whatsappUrl = 'https://wa.me/15551234567?text=' . urlencode($whatsappMessage);
 
         return [

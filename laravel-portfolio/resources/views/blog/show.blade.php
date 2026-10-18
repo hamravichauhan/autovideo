@@ -39,7 +39,7 @@
                 <div class="flex items-center space-x-3 text-xs text-slate-400 font-mono pt-2">
                     <span>Published: {{ $meta['date'] ?? date('Y-m-d') }}</span>
                     <span>•</span>
-                    <span>Reviewed by Lead Architect: Ravi</span>
+                    <span>Reviewed by ExtrovertNerd Engineering</span>
                 </div>
             </div>
 
@@ -79,9 +79,9 @@
                         </div>
                     </div>
                     <div>
-                        <div class="text-sm font-extrabold text-white">Ravi</div>
-                        <div class="text-xs text-emerald-400 font-medium">Lead Web Architect</div>
-                        <div class="text-[11px] text-slate-500 font-mono">ExtrovertNerd Agency</div>
+                        <div class="text-sm font-extrabold text-white">ExtrovertNerd</div>
+                        <div class="text-xs text-emerald-400 font-medium">Web Architecture Studio</div>
+                        <div class="text-[11px] text-slate-500 font-mono">High-Performance Engineering</div>
                     </div>
                 </div>
 

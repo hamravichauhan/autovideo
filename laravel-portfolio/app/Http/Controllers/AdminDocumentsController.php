@@ -24,7 +24,7 @@ class AdminDocumentsController
                     'title' => 'Agency Standard Operating Procedures (SOP)',
                     'category' => 'Operations',
                     'updated_at' => date('Y-m-d H:i'),
-                    'content' => "# ExtrovertNerd Agency SOP\n\n1. Run daily prospecting bot targeting local businesses with sub-40 mobile scores.\n2. Dispatch 4-slide before/after carousels to Instagram and X.\n3. Send 1-click WhatsApp speed audit audits within 15 minutes of response.\n4. Deliver 100/100 Core Web Vitals guarantees on all custom Laravel builds.",
+                    'content' => "# ExtrovertNerd Agency SOP\n\n1. Run daily prospecting bot targeting local businesses with sub-40 mobile scores.\n2. Dispatch 4-slide before/after carousels to Instagram and X.\n3. Send 1-click WhatsApp speed audit audits within 15 minutes of response.\n4. Deliver verified Core Web Vitals optimization on all custom builds.",
                 ],
                 [
                     'id' => 'note_2',

@@ -23,13 +23,13 @@ class Config:
     # Brand & Inbound Lead Funnel
     brand_name: str = os.getenv("BRAND_NAME", "ExtrovertNerd")
     brand_handle: str = os.getenv("BRAND_HANDLE", "@extrovertnerd")
-    founder_name: str = os.getenv("FOUNDER_NAME", "Ravi")
-    founder_title: str = os.getenv("FOUNDER_TITLE", "Lead Web Architect")
+    founder_name: str = os.getenv("FOUNDER_NAME", "ExtrovertNerd")
+    founder_title: str = os.getenv("FOUNDER_TITLE", "Web Architecture Studio")
     website_url: str = os.getenv("WEBSITE_URL", "https://extrovertnerd.com")
     whatsapp_phone_number: str = os.getenv("WHATSAPP_PHONE_NUMBER", "15551234567")
     whatsapp_default_message: str = os.getenv(
         "WHATSAPP_DEFAULT_MESSAGE",
-        "Hey Ravi! I saw ExtrovertNerd's website audit and want a free 5-point speed & UX teardown for my business."
+        "Hey ExtrovertNerd! I saw your performance teardown and want to consult on optimizing my website."
     )
     google_form_intake_url: str = os.getenv(
         "GOOGLE_FORM_INTAKE_URL",

@@ -90,7 +90,7 @@ class BlogController
         return view('blog.show', [
             'meta' => $parsed['meta'],
             'html' => $parsed['html'],
-            'whatsappUrl' => 'https://wa.me/15551234567?text=' . urlencode('Hey Ravi! I read your ExtrovertNerd case study on ' . ($parsed['meta']['title'] ?? 'web speed') . ' and want a free audit.'),
+            'whatsappUrl' => 'https://wa.me/15551234567?text=' . urlencode('Hey ExtrovertNerd! I read your case study on ' . ($parsed['meta']['title'] ?? 'web speed') . ' and want a free audit.'),
         ]);
     }
 }

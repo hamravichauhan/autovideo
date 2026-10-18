@@ -1,0 +1,98 @@
+[
+  {
+    "id": "inp-replaces-fid",
+    "category": "Google Core Web Vitals",
+    "badge": "OFFICIAL WEB STANDARD",
+    "headline": "Interaction to Next Paint (INP) is Live: Why 73% of Sluggish Sites Fail",
+    "date": "2026-10-18",
+    "source": "Chrome Web Standards Team",
+    "summary": "Google officially deprecates First Input Delay (FID) in favor of Interaction to Next Paint (INP). INP measures the latency of every single click, tap, and keypress across the entire user session, not just the first one.",
+    "technical_deep_dive": "Heavy JavaScript bundles executing long tasks (>50ms) on the main thread cause massive frame drops. Under INP, if a user taps an accordion or mobile hamburger menu and the screen takes 250ms+ to present the next visual frame, Google ranks your page as 'Poor'.",
+    "stack_impact": [
+      "De-bundle monolithic JS files into route-based code-split chunks",
+      "Yield the main thread to user events via requestIdleCallback or scheduler.yield()",
+      "Replace heavy React/Vue state loops with lightweight signals or native CSS states"
+    ],
+    "extrovertnerd_verdict": "Websites with un-optimized trackers and bloated CMS plugins will see organic mobile rankings drop. Audit your INP telemetry immediately."
+  },
+  {
+    "id": "http3-quic-adoption",
+    "category": "Network Infrastructure",
+    "badge": "PROTOCOL EVOLUTION",
+    "headline": "HTTP/3 & QUIC Now Powers Over 35% of Global Web Traffic",
+    "date": "2026-10-18",
+    "source": "IETF & Cloudflare Telemetry",
+    "summary": "HTTP/3 over UDP-based QUIC eliminates Head-of-Line blocking and slashes mobile TLS connection handshake times from 3 roundtrips down to 0-RTT instant connection resumptions.",
+    "technical_deep_dive": "Traditional TCP required separate handshakes for TCP SYN/ACK and TLS security certificates. When packets dropped on poor mobile 4G/5G connections, the entire TCP window stalled. QUIC multiplexes streams independently over UDP, allowing uninterrupted asset streaming.",
+    "stack_impact": [
+      "Enable HTTP/3 on your edge CDN (Cloudflare, Fastly, AWS CloudFront)",
+      "Mobile visitors on cellular switching from Wi-Fi experience zero connection resets",
+      "Initial Time to First Byte (TTFB) drops by an average of 34% on mobile connections"
+    ],
+    "extrovertnerd_verdict": "If your origin or reverse proxy still forces HTTP/1.1 or legacy TCP, you are throwing away mobile conversion speed."
+  },
+  {
+    "id": "php-84-performance",
+    "category": "Backend Performance",
+    "badge": "RUNTIME BENCHMARK",
+    "headline": "PHP 8.4 Released: Property Hooks, Asymmetric Visibility & OPcache JIT Surges",
+    "date": "2026-10-18",
+    "source": "PHP Foundation",
+    "summary": "PHP 8.4 brings major syntactic and performance leaps, including native Property Hooks (eliminating boilerplate getters/setters) and fine-tuned JIT compilation delivering up to 18% higher request throughput for Laravel 11.",
+    "technical_deep_dive": "Property hooks allow getters and setters to be defined directly on property declarations without method invocation overhead. Combined with enhanced OPcache memory pooling and AVX-512 vector acceleration, backend request cycle times on modern servers drop below 12ms.",
+    "stack_impact": [
+      "Up to 18% reduction in memory consumption on high-traffic Laravel APIs",
+      "Clean domain-driven design models without thousands of lines of boilerplate getter code",
+      "Native curl URL parsing and multi-request pipelining"
+    ],
+    "extrovertnerd_verdict": "Modern PHP 8.4 running under OPcache and Redis easily outperforms heavy Node.js or Python runtimes for high-traffic relational e-commerce."
+  },
+  {
+    "id": "speculation-rules-api",
+    "category": "Browser APIs",
+    "badge": "INSTANT NAVIGATION",
+    "headline": "Speculation Rules API: Achieving True 0ms Page Navigation in Modern Browsers",
+    "date": "2026-10-18",
+    "source": "W3C Web Platform Working Group",
+    "summary": "Browsers can now pre-render entire destination pages silently in background memory before the user finishes clicking a link, making multi-page transitions feel as instantaneous as local software.",
+    "technical_deep_dive": "Using a simple JSON script block `<script type='speculationrules'>`, developers declare rules to prefetch or prerender URLs on hover or pointer-down. When the user taps the link, the browser swaps the pre-rendered document into the viewport with zero network latency.",
+    "stack_impact": [
+      "LCP for subsequent internal page visits drops to 0.00s",
+      "Replaces fragile client-side router prefetching with browser-native process isolation",
+      "Zero memory leaks because unvisited prerendered documents are automatically pruned"
+    ],
+    "extrovertnerd_verdict": "Every multi-page website should deploy Speculation Rules for internal navigation. It delivers instantaneous perceived speed with zero framework bloat."
+  },
+  {
+    "id": "avif-image-standard",
+    "category": "Asset Optimization",
+    "badge": "IMAGE FORMAT REVOLUTION",
+    "headline": "AVIF Image Format Becomes Universally Supported Across All Browsers & Devices",
+    "date": "2026-10-18",
+    "source": "Alliance for Open Media",
+    "summary": "With Apple iOS, macOS, Android, and Chromium all enabling hardware-accelerated AV1 decoding, AVIF has officially displaced JPEG and WebP as the highest-efficiency visual format on the web.",
+    "technical_deep_dive": "AVIF utilizes the AV1 video codec's intra-frame compression algorithms. In benchmark comparisons against standard JPEGs, AVIF cuts byte payload by 50% to 75% at identical perceptual SSIM quality, while preserving 10-bit HDR color depth and transparency.",
+    "stack_impact": [
+      "Hero image payload plummets from 1.8MB JPEG to under 120KB AVIF",
+      "Largest Contentful Paint (LCP) speeds up by 1.2 to 2.4 seconds on mobile 4G networks",
+      "Lower bandwidth transfer bills across cloud storage and CDN egress"
+    ],
+    "extrovertnerd_verdict": "Serving raw JPEGs or uncompressed PNGs in 2026 is technical negligence. Implement automated AVIF pipelines with WebP fallbacks."
+  },
+  {
+    "id": "css-view-transitions",
+    "category": "Frontend Architecture",
+    "badge": "NATIVE APP FEEL",
+    "headline": "Cross-Document View Transitions: Native App Animations Across Multi-Page Apps",
+    "date": "2026-10-18",
+    "source": "CSS Working Group",
+    "summary": "Cross-Document View Transitions (MPA View Transitions) allow traditional multi-page websites to morph headers, hero images, and cards seamlessly during page navigation without requiring complex single-page app frameworks.",
+    "technical_deep_dive": "By adding `@view-transition { navigation: auto; }` to CSS stylesheets and assigning `view-transition-name: hero-image;` to shared elements, the browser captures pseudo-element snapshots and animates them using hardware-accelerated GPU transitions.",
+    "stack_impact": [
+      "Multi-page apps (Laravel, Rails, Django) look and feel identical to custom iOS/Android apps",
+      "Eliminates 300KB+ of client-side animation state libraries like Framer Motion",
+      "Gracefully degrades to instant page swaps on older browsers"
+    ],
+    "extrovertnerd_verdict": "You no longer need a bloated 2MB React SPA just to get smooth card-expansion animations. Native CSS View Transitions do it in 2 lines of code."
+  }
+]

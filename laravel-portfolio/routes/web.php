@@ -39,7 +39,7 @@ $routes->get('/roi-calculator', [HomeController::class, 'roiCalculator']);
 
 // Direct WhatsApp Inbound Redirect
 $routes->get('/audit', function () {
-    $msg = 'Hey Ravi! I saw ExtrovertNerd and want a free 5-point website speed audit.';
+    $msg = 'Hey ExtrovertNerd! I saw your engineering work and want a free 5-point website speed audit.';
     header('Location: https://wa.me/15551234567?text=' . urlencode($msg));
     exit;
 });
