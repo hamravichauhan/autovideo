@@ -97,7 +97,6 @@ class AutomationEngine:
                 # 3c. Automated 30-Second Video Reel (Edge-TTS + Ken Burns Motion + Synced Captions)
                 slide_paths = graphics_result.get("slide_paths", [])
                 if len(slide_paths) >= 4:
-                    from src.generator_video import VideoReelGenerator
                     video_generator = VideoReelGenerator()
                     video_result = video_generator.render_reel(
                         slide_images=slide_paths[:4],
@@ -106,6 +105,19 @@ class AutomationEngine:
                         aspect_ratio="9:16",
                     )
                     logger.info("✅ Rendered 30s Video Reel: %s (%.2f MB)", video_result["video_path"], video_result["filesize_mb"])
+
+                top100_video_result = None
+                if top100_result and top100_result.get("website"):
+                    try:
+                        from src.generator_video import VideoReelGenerator
+                        top100_gen = VideoReelGenerator()
+                        top100_video_result = top100_gen.render_top100_reel(
+                            website_id=top100_result["website"]["global_rank"],
+                            aspect_ratio="9:16",
+                        )
+                        logger.info("✅ Rendered 60s Top 100 Video Reel: %s (%.2f MB)", top100_video_result["video_path"], top100_video_result["filesize_mb"])
+                    except Exception as e_top_v:
+                        logger.warning("Could not render Top 100 video reel: %s", e_top_v)
             except Exception as e:
                 logger.error("⚠️ Graphic/Video rendering encountered error: %s", e)
                 logger.info("Continuing pipeline in text-mode...")
@@ -166,6 +178,16 @@ class AutomationEngine:
                     duration=int(video_result.get("duration", 30)),
                 )
                 logger.info("📲 Telegram Video Reel Dispatch: %s", "Dispatched" if tg_vid.get("ok") else tg_vid.get("error"))
+
+            # 5d. Dispatch 60s Top 100 Video Reel to Telegram (Reels / Shorts / TikTok)
+            if top100_video_result and top100_video_result.get("video_path"):
+                tg_top_vid = notifier.dispatch_top100_video_reel(
+                    video_path=top100_video_result["video_path"],
+                    site=top100_result["website"],
+                    caption=top100_video_result.get("caption_text"),
+                    duration=int(top100_video_result.get("duration", 60)),
+                )
+                logger.info("📲 Telegram Top 100 Video Reel Dispatch: %s", "Dispatched" if tg_top_vid.get("ok") else tg_top_vid.get("error"))
         except Exception as tg_err:
             logger.warning("Telegram dispatch encountered warning: %s", tg_err)
 

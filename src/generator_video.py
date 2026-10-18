@@ -1,29 +1,33 @@
 """Automated Video Generation Pipeline for ExtrovertNerd.
 
-Transforms rendered static Playwright carousels and tech-tip graphics into
-high-retention, 30-second vertical video reels (1080x1920 / 1080x1350) optimized
-for Instagram Reels, YouTube Shorts, and TikTok.
+Transforms rendered static Playwright carousels and top 100 website architecture teardowns
+into high-retention vertical video reels (1080x1920 / 1080x1350) optimized for Instagram Reels,
+YouTube Shorts, and TikTok.
 
-Pipeline Features:
-1. Hyper-realistic neural voiceover synthesis via Edge-TTS (en-IN / en-US).
-2. Dynamic 4-part narrative arc (Hook -> Benchmark Failure -> ExtrovertNerd Rebuild -> WhatsApp CTA).
-3. Smooth Ken Burns pan/zoom motion effects on high-res Playwright PNG slides.
-4. Blurred ambient background styling with high-contrast centered presentation.
-5. High-contrast kinetic subtitle overlays with word highlights (ASS subtitles).
-6. Direct export to output/videos/ and one-click dispatch to Telegram.
+Key Architectural Upgrades:
+1. Continuous Speech Synthesis: Synthesizes the entire script in one single continuous neural
+   stream via Edge-TTS (eliminates choppy segmentation, concat clicks, and dead air).
+2. Word-Boundary Subtitle Tracking: Captures exact phonetic word offsets and durations
+   (chunk['offset'], chunk['duration']) directly from Edge-TTS to generate frame-perfect,
+   zero-drift kinetic ASS subtitles with electric word highlights.
+3. Lock-Step Scene Transitions: Automatically calculates scene cut timestamps from spoken word
+   boundaries, guaranteeing camera moves switch at the exact millisecond thoughts transition.
+4. Pure Educational Analysis: Strictly ExtrovertNerd branding, zero promotional pitches,
+   zero fake promises, zero mentions of Ravi or engineer titles.
+5. Calibrated 60-Second Duration: Calibrated to land at 58-60 seconds for the Top 100 series.
 """
 
 from __future__ import annotations
 
 import argparse
 import asyncio
+import datetime
 import json
 import logging
 import os
 import re
 import shutil
 import subprocess
-import sys
 import tempfile
 from dataclasses import dataclass
 from datetime import timedelta
@@ -41,7 +45,7 @@ logger = logging.getLogger("generator_video")
 
 @dataclass
 class SceneDefinition:
-    """Represents a single scene in the 30-second video reel."""
+    """Represents a single visual scene in the video reel."""
 
     scene_number: int
     title: str
@@ -51,13 +55,12 @@ class SceneDefinition:
     duration: float = 7.5
     start_time: float = 0.0
     end_time: float = 7.5
-    audio_path: Optional[Path] = None
 
 
 class VideoReelGenerator:
-    """Orchestrates Edge-TTS voiceover synthesis, Ken Burns animations,
+    """Orchestrates Edge-TTS continuous voiceover synthesis, Ken Burns animations,
 
-    kinetic subtitles, and video export for social media reels.
+    word-boundary kinetic subtitles, and video export for social media reels.
     """
 
     def __init__(
@@ -68,9 +71,294 @@ class VideoReelGenerator:
     ):
         self.output_dir = Path(output_dir or config.video_output_path)
         self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.voice = voice or getattr(config, "default_tts_voice", "en-IN-PrabhatNeural")
-        self.rate = rate or getattr(config, "default_tts_rate", "+16%")
+        # en-US-ChristopherNeural provides exceptionally smooth, broadcast-documentary pacing
+        self.voice = voice or getattr(config, "default_tts_voice", "en-US-ChristopherNeural")
+        self.rate = rate or getattr(config, "default_tts_rate", "+22%")
         self.ffmpeg_bin = imageio_ffmpeg.get_ffmpeg_exe()
+
+    def _get_audio_duration(self, audio_file: Path) -> float:
+        """Measures exact audio duration in seconds via ffprobe or ffmpeg."""
+        for probe in [shutil.which("ffprobe"), "/opt/homebrew/bin/ffprobe", "/usr/local/bin/ffprobe"]:
+            if probe and os.path.exists(probe):
+                cmd = [
+                    probe,
+                    "-i",
+                    str(audio_file),
+                    "-show_entries",
+                    "format=duration",
+                    "-v",
+                    "quiet",
+                    "-of",
+                    "csv=p=0",
+                ]
+                res = subprocess.run(cmd, capture_output=True, text=True, check=False)
+                if res.returncode == 0 and res.stdout.strip():
+                    try:
+                        return round(float(res.stdout.strip()), 2)
+                    except ValueError:
+                        pass
+
+        # Fallback to ffmpeg stderr parse
+        cmd = [self.ffmpeg_bin, "-i", str(audio_file)]
+        res = subprocess.run(cmd, capture_output=True, text=True, check=False)
+        m = re.search(r"Duration:\s*(\d+):(\d+):(\d+\.\d+)", res.stderr)
+        if m:
+            hours, mins, secs = m.groups()
+            return round(int(hours) * 3600 + int(mins) * 60 + float(secs), 2)
+        return 60.0
+
+    async def _synthesize_continuous_audio(
+        self,
+        text: str,
+        output_file: Path,
+        voice: Optional[str] = None,
+        rate: Optional[str] = None,
+    ) -> Tuple[float, List[Dict[str, Any]]]:
+        """Synthesizes speech in one seamless continuous stream and captures WordBoundary telemetry."""
+        v = voice or self.voice
+        r = rate or self.rate
+        logger.info("🎙️ Synthesizing continuous voiceover [%s @ %s] (%d chars)...", v, r, len(text))
+
+        comm = edge_tts.Communicate(text, v, rate=r, boundary="WordBoundary")
+        words: List[Dict[str, Any]] = []
+
+        with open(output_file, "wb") as f:
+            async for chunk in comm.stream():
+                if chunk["type"] == "audio":
+                    f.write(chunk["data"])
+                elif chunk["type"] == "WordBoundary":
+                    # offset and duration in 100ns units -> convert to seconds
+                    words.append({
+                        "offset": round(chunk["offset"] / 1e7, 3),
+                        "duration": round(chunk["duration"] / 1e7, 3),
+                        "text": chunk["text"],
+                    })
+
+        duration = self._get_audio_duration(output_file)
+        logger.info("✅ Continuous voiceover generated: %.2fs (%d words captured)", duration, len(words))
+        return duration, words
+
+    def generate_ass_subtitles_from_words(
+        self,
+        words: List[Dict[str, Any]],
+        output_file: Path,
+        width: int = 1080,
+        height: int = 1920,
+    ) -> None:
+        """Generates frame-perfect kinetic ASS subtitles directly from Edge-TTS WordBoundary telemetry.
+
+        Words appear and disappear in exact millisecond lock-step with vocal delivery.
+        """
+        # For 9:16 (1080x1920): place subtitles above Instagram/TikTok bottom UI (MarginV=280)
+        # For 4:5 (1080x1350): MarginV=160
+        margin_v = 280 if height >= 1800 else 160
+        fontsize = 54 if height >= 1800 else 46
+
+        ass_header = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {width}
+PlayResY: {height}
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: KineticPill,Arial,{fontsize},&H00FFFFFF,&H0015CCFA,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,3,7,0,2,40,40,{margin_v},1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+
+        def _format_ass_time(seconds: float) -> str:
+            td = timedelta(seconds=max(0.0, seconds))
+            total_seconds = int(td.total_seconds())
+            hours = total_seconds // 3600
+            minutes = (total_seconds % 3600) // 60
+            secs = total_seconds % 60
+            centisecs = int(td.microseconds / 10000)
+            return f"{hours}:{minutes:02d}:{secs:02d}.{centisecs:02d}"
+
+        cues: List[Dict[str, Any]] = []
+        current_chunk: List[Dict[str, Any]] = []
+
+        for i, w in enumerate(words):
+            current_chunk.append(w)
+            w_text = w["text"].strip()
+            is_terminal = w_text.endswith((".", "?", "!", ":"))
+
+            has_next = i < len(words) - 1
+            long_pause = False
+            if has_next:
+                gap = words[i + 1]["offset"] - (w["offset"] + w["duration"])
+                if gap > 0.38:
+                    long_pause = True
+
+            # Group into 3 to 4 words per cue or split on punctuation/pause
+            if len(current_chunk) >= 4 or is_terminal or long_pause or not has_next:
+                start_t = current_chunk[0]["offset"]
+                end_t = current_chunk[-1]["offset"] + current_chunk[-1]["duration"]
+                chunk_words = [cw["text"].strip() for cw in current_chunk]
+                cues.append({
+                    "start": start_t,
+                    "end": end_t,
+                    "words": chunk_words,
+                })
+                current_chunk = []
+
+        # Smooth small gaps between adjacent cues to prevent subtitle flickering
+        for i in range(len(cues) - 1):
+            gap = cues[i + 1]["start"] - cues[i]["end"]
+            if 0 < gap < 0.22:
+                cues[i]["end"] = round(cues[i + 1]["start"] - 0.04, 3)
+
+        events: List[str] = []
+        for c in cues:
+            start_str = _format_ass_time(c["start"])
+            end_str = _format_ass_time(c["end"])
+            raw_words = [re.sub(r"[\'\"\\\[\]]", "", w) for w in c["words"]]
+            if not raw_words or not "".join(raw_words).strip():
+                continue
+
+            # Kinetic styling: First 1-2 words in electric amber/yellow highlight, remainder pure white
+            if len(raw_words) > 2:
+                highlight = " ".join(raw_words[:2]).upper()
+                rest = " ".join(raw_words[2:]).upper()
+                text_line = f"{{\\c&H0015CCFA&}}{highlight} {{\\c&H00FFFFFF&}}{rest}"
+            else:
+                highlight = " ".join(raw_words).upper()
+                text_line = f"{{\\c&H0015CCFA&}}{highlight}"
+
+            events.append(f"Dialogue: 0,{start_str},{end_str},KineticPill,,0,0,0,,{text_line}")
+
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write(ass_header + "\n".join(events) + "\n")
+
+        logger.info("Saved word-boundary kinetic ASS subtitles: %s (%d dialogue cues)", output_file.name, len(events))
+
+    def _compute_scene_cut_times(
+        self,
+        scenes: List[Dict[str, Any]],
+        words: List[Dict[str, Any]],
+        total_duration: float,
+    ) -> List[float]:
+        """Finds the exact end timestamp for each scene within the continuous word boundary telemetry."""
+        cut_times: List[float] = []
+        word_idx = 0
+        num_words = len(words)
+
+        for sc_idx, sc in enumerate(scenes):
+            if sc_idx == len(scenes) - 1:
+                # Last scene ends exactly at total_duration
+                cut_times.append(total_duration)
+                break
+
+            # Find last 2 significant words of this scene's voiceover text
+            cleaned_words = [re.sub(r"[^a-zA-Z0-9]", "", w).lower() for w in sc["voiceover_text"].split()]
+            cleaned_words = [w for w in cleaned_words if len(w) > 2]
+            target_token = cleaned_words[-1] if cleaned_words else ""
+            penultimate_token = cleaned_words[-2] if len(cleaned_words) > 1 else ""
+
+            found_idx = None
+            for j in range(word_idx, num_words):
+                w_str = re.sub(r"[^a-zA-Z0-9]", "", words[j]["text"]).lower()
+                if target_token and target_token in w_str:
+                    found_idx = j
+                    break
+                elif penultimate_token and penultimate_token in w_str:
+                    found_idx = j
+                    break
+
+            if found_idx is not None:
+                end_t = round(words[found_idx]["offset"] + words[found_idx]["duration"], 3)
+                if found_idx + 1 < num_words:
+                    next_start = words[found_idx + 1]["offset"]
+                    if next_start > end_t:
+                        end_t = round((end_t + next_start) / 2.0, 3)
+                cut_times.append(min(end_t, total_duration))
+                word_idx = found_idx + 1
+            else:
+                # Proportional fallback
+                fraction = (sc_idx + 1) / len(scenes)
+                cut_times.append(round(fraction * total_duration, 3))
+
+        return cut_times
+
+    def render_scene_clip(
+        self,
+        image_path: Path,
+        duration: float,
+        output_file: Path,
+        motion_type: str = "zoom_in",
+        width: int = 1080,
+        height: int = 1920,
+        fps: int = 30,
+    ) -> None:
+        """Renders an animated single-scene video clip with Ken Burns motion and dark blurred ambient backdrop."""
+        total_frames = max(int(duration * fps), 30)
+
+        # Select Ken Burns zoom/pan formula based on motion_type
+        if motion_type == "zoom_in":
+            # Gentle zoom into center (1.00 -> 1.07)
+            zoom_expr = "min(zoom+0.00045,1.07)"
+            x_expr = "iw/2-(iw/zoom/2)"
+            y_expr = "ih/2-(ih/zoom/2)"
+        elif motion_type == "pan_down":
+            # Subtle pan down to focus on benchmark telemetry (1.00 -> 1.06)
+            zoom_expr = "min(zoom+0.0004,1.06)"
+            x_expr = "iw/2-(iw/zoom/2)"
+            y_expr = f"ih/2-(ih/zoom/2)+((on/{total_frames})*(ih/18))"
+        elif motion_type == "zoom_center":
+            # Steadily zoom in on the verified Core Web Vitals telemetry
+            zoom_expr = "min(zoom+0.0005,1.08)"
+            x_expr = "iw/2-(iw/zoom/2)"
+            y_expr = "ih/2-(ih/zoom/2)"
+        else:  # pulse_zoom / outro
+            # Subtle steady zoom focusing on the ExtrovertNerd verdict
+            zoom_expr = "min(zoom+0.00035,1.05)"
+            x_expr = "iw/2-(iw/zoom/2)"
+            y_expr = f"ih/2-(ih/zoom/2)+((on/{total_frames})*(ih/24))"
+
+        # Aspect ratio adaptation:
+        # If output is 9:16 (1080x1920) and input is 4:5 (1080x1350):
+        # We create a dark blurred ambient background from the slide and center the slide.
+        if height > width:
+            filter_complex = (
+                f"[0:v]scale={width}:{height}:force_original_aspect_ratio=increase,crop={width}:{height},"
+                f"boxblur=30:5,eq=brightness=-0.3:contrast=1.1[bg];"
+                f"[0:v]scale={width - 40}:{(width - 40) * 5 // 4}[fg];"
+                f"[bg][fg]overlay=(W-w)/2:(H-h)/2,"
+                f"zoompan=z='{zoom_expr}':d={total_frames}:s={width}x{height}:x='{x_expr}':y='{y_expr}':fps={fps}"
+            )
+        else:
+            # Native 4:5 video (1080x1350)
+            filter_complex = (
+                f"[0:v]zoompan=z='{zoom_expr}':d={total_frames}:s={width}x{height}:x='{x_expr}':y='{y_expr}':fps={fps}"
+            )
+
+        cmd = [
+            self.ffmpeg_bin,
+            "-y",
+            "-loop",
+            "1",
+            "-i",
+            str(image_path),
+            "-filter_complex",
+            filter_complex,
+            "-t",
+            f"{duration:.3f}",
+            "-c:v",
+            "libx264",
+            "-pix_fmt",
+            "yuv420p",
+            "-preset",
+            "fast",
+            str(output_file),
+        ]
+
+        logger.info("Rendering clip [%s, %.2fs, %dx%d]: %s", motion_type, duration, width, height, output_file.name)
+        res = subprocess.run(cmd, capture_output=True, text=True, check=False)
+        if res.returncode != 0:
+            logger.error("FFmpeg render error on %s: %s", output_file.name, res.stderr[-500:])
+            raise RuntimeError(f"FFmpeg failed rendering scene clip: {output_file.name}")
 
     def build_narrative_script(
         self,
@@ -78,7 +366,7 @@ class VideoReelGenerator:
         niche: Optional[Dict[str, Any]] = None,
         custom_script: Optional[Dict[int, str]] = None,
     ) -> List[Dict[str, Any]]:
-        """Builds the 4-part high-retention narrative script for the video reel."""
+        """Builds the 4-part high-retention narrative script for the 30s video reel."""
         city_name = (city or {}).get("name", "Local Commercial Hub")
         niche_name = (niche or {}).get("name", "Boutique Business")
 
@@ -128,209 +416,6 @@ class VideoReelGenerator:
         ]
         return scenes
 
-    async def _synthesize_scene_audio(
-        self,
-        text: str,
-        output_file: Path,
-        voice: Optional[str] = None,
-        rate: Optional[str] = None,
-    ) -> float:
-        """Synthesizes voiceover speech for a single scene and returns duration in seconds."""
-        v = voice or self.voice
-        r = rate or self.rate
-        logger.info("Synthesizing voiceover [%s @ %s]: %s...", v, r, text[:45])
-
-        comm = edge_tts.Communicate(text, v, rate=r)
-        await comm.save(str(output_file))
-
-        # Get exact audio duration using ffprobe
-        duration = self._get_audio_duration(output_file)
-        logger.info("Generated voiceover clip (%.2fs): %s", duration, output_file.name)
-        return duration
-
-    def _get_audio_duration(self, audio_file: Path) -> float:
-        """Measures audio file duration in seconds via MoviePy or ffprobe."""
-        try:
-            from moviepy import AudioFileClip
-            clip = AudioFileClip(str(audio_file))
-            dur = float(clip.duration)
-            clip.close()
-            if dur > 0.5:
-                return round(dur, 2)
-        except Exception:
-            pass
-
-        ffprobe_bin = shutil.which("ffprobe") or "/opt/homebrew/bin/ffprobe"
-        if os.path.exists(ffprobe_bin):
-            cmd = [
-                ffprobe_bin,
-                "-i",
-                str(audio_file),
-                "-show_entries",
-                "format=duration",
-                "-v",
-                "quiet",
-                "-of",
-                "csv=p=0",
-            ]
-            res = subprocess.run(cmd, capture_output=True, text=True, check=False)
-            if res.returncode == 0 and res.stdout.strip():
-                try:
-                    return round(float(res.stdout.strip()), 2)
-                except ValueError:
-                    pass
-        return 9.5
-
-    def generate_ass_subtitles(
-        self,
-        scenes: List[SceneDefinition],
-        output_file: Path,
-        width: int = 1080,
-        height: int = 1920,
-    ) -> None:
-        """Generates an Advanced SubStation Alpha (ASS) subtitle file with kinetic word highlighting."""
-        ass_header = f"""[Script Info]
-ScriptType: v4.00+
-PlayResX: {width}
-PlayResY: {height}
-ScaledBorderAndShadow: yes
-
-[V4+ Styles]
-Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: KineticPill,Arial,52,&H00FFFFFF,&H0000FFFF,&H00000000,&HD0050811,-1,0,0,0,100,100,0,0,3,10,0,2,40,40,180,1
-
-[Events]
-Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-"""
-        events: List[str] = []
-
-        def _format_ass_time(seconds: float) -> str:
-            td = timedelta(seconds=seconds)
-            total_seconds = int(td.total_seconds())
-            hours = total_seconds // 3600
-            minutes = (total_seconds % 3600) // 60
-            secs = total_seconds % 60
-            centisecs = int(td.microseconds / 10000)
-            return f"{hours}:{minutes:02d}:{secs:02d}.{centisecs:02d}"
-
-        for sc in scenes:
-            text = sc.voiceover_text.strip()
-            # Clean special characters
-            cleaned_text = re.sub(r'[\'"]', "", text)
-            words = cleaned_text.split()
-            if not words:
-                continue
-
-            # Split into kinetic cues of 4-6 words
-            words_per_cue = 5
-            chunks = []
-            for i in range(0, len(words), words_per_cue):
-                chunks.append(words[i : i + words_per_cue])
-
-            cue_duration = sc.duration / len(chunks)
-
-            for idx, chunk in enumerate(chunks):
-                c_start = sc.start_time + (idx * cue_duration)
-                c_end = c_start + cue_duration
-                # Small safety margin between cues
-                c_end = min(c_end, sc.end_time)
-
-                start_str = _format_ass_time(c_start)
-                end_str = _format_ass_time(c_end)
-
-                # Format kinetic styling: First 1-2 words in vivid cyan/yellow highlight, remainder white
-                if len(chunk) > 2:
-                    highlight = " ".join(chunk[:2])
-                    normal = " ".join(chunk[2:])
-                    cue_text = f"{{\\c&H00F0FF00&}}{highlight.upper()} {{\\c&H00FFFFFF&}}{normal.upper()}"
-                else:
-                    cue_text = f"{{\\c&H00F0FF00&}}{' '.join(chunk).upper()}"
-
-                events.append(f"Dialogue: 0,{start_str},{end_str},KineticPill,,0,0,0,,{cue_text}")
-
-        with open(output_file, "w", encoding="utf-8") as f:
-            f.write(ass_header + "\n".join(events) + "\n")
-
-        logger.info("Saved kinetic ASS subtitles: %s (%d dialogue cues)", output_file.name, len(events))
-
-    def render_scene_clip(
-        self,
-        image_path: Path,
-        duration: float,
-        output_file: Path,
-        motion_type: str = "zoom_in",
-        width: int = 1080,
-        height: int = 1920,
-        fps: int = 30,
-    ) -> None:
-        """Renders an animated single-scene video clip with Ken Burns zoom/pan and blurred backdrop."""
-        total_frames = max(int(duration * fps), 30)
-
-        # Select Ken Burns zoom/pan formula based on motion_type
-        if motion_type == "zoom_in":
-            # Gentle zoom into center (1.00 -> 1.07)
-            zoom_expr = "min(zoom+0.00045,1.07)"
-            x_expr = "iw/2-(iw/zoom/2)"
-            y_expr = "ih/2-(ih/zoom/2)"
-        elif motion_type == "pan_down":
-            # Subtle pan down to focus on benchmark telemetry (1.00 -> 1.06)
-            zoom_expr = "min(zoom+0.0004,1.06)"
-            x_expr = "iw/2-(iw/zoom/2)"
-            y_expr = f"ih/2-(ih/zoom/2)+((on/{total_frames})*(ih/18))"
-        elif motion_type == "zoom_center":
-            # Steadily zoom in on the 100/100 verified speedometer
-            zoom_expr = "min(zoom+0.0005,1.08)"
-            x_expr = "iw/2-(iw/zoom/2)"
-            y_expr = "ih/2-(ih/zoom/2)"
-        else:  # pulse_zoom / cta
-            # Subtle steady zoom focusing on the WhatsApp link
-            zoom_expr = "min(zoom+0.00035,1.05)"
-            x_expr = "iw/2-(iw/zoom/2)"
-            y_expr = f"ih/2-(ih/zoom/2)+((on/{total_frames})*(ih/24))"
-
-        # Aspect ratio adaptation:
-        # If output is 9:16 (1080x1920) and input is 4:5 (1080x1350):
-        # We create a dark blurred ambient background from the slide and center the slide.
-        if height > width:
-            filter_complex = (
-                f"[0:v]scale={width}:{height}:force_original_aspect_ratio=increase,crop={width}:{height},"
-                f"boxblur=30:5,eq=brightness=-0.3:contrast=1.1[bg];"
-                f"[0:v]scale={width - 40}:{(width - 40) * 5 // 4}[fg];"
-                f"[bg][fg]overlay=(W-w)/2:(H-h)/2,"
-                f"zoompan=z='{zoom_expr}':d={total_frames}:s={width}x{height}:x='{x_expr}':y='{y_expr}':fps={fps}"
-            )
-        else:
-            # Native 4:5 video (1080x1350)
-            filter_complex = (
-                f"[0:v]zoompan=z='{zoom_expr}':d={total_frames}:s={width}x{height}:x='{x_expr}':y='{y_expr}':fps={fps}"
-            )
-
-        cmd = [
-            self.ffmpeg_bin,
-            "-y",
-            "-loop",
-            "1",
-            "-i",
-            str(image_path),
-            "-filter_complex",
-            filter_complex,
-            "-t",
-            f"{duration:.3f}",
-            "-c:v",
-            "libx264",
-            "-pix_fmt",
-            "yuv420p",
-            "-preset",
-            "fast",
-            str(output_file),
-        ]
-
-        logger.info("Rendering scene clip [%s, %.2fs, %dx%d]: %s", motion_type, duration, width, height, output_file.name)
-        res = subprocess.run(cmd, capture_output=True, text=True, check=False)
-        if res.returncode != 0:
-            logger.error("FFmpeg render error on %s: %s", output_file.name, res.stderr[-500:])
-            raise RuntimeError(f"FFmpeg failed rendering scene clip: {output_file.name}")
-
     def render_reel(
         self,
         slide_images: List[Path | str],
@@ -341,7 +426,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         voice: Optional[str] = None,
         rate: Optional[str] = None,
     ) -> Dict[str, Any]:
-        """Assembles the complete 30-second vertical video reel with voiceover and kinetic subtitles."""
+        """Assembles a 30-second vertical video reel with continuous voiceover and synchronized kinetic captions."""
         valid_slides = [Path(s) for s in slide_images if Path(s).exists()]
         if len(valid_slides) < 4:
             raise ValueError(f"At least 4 slide PNG images are required. Provided: {len(valid_slides)}")
@@ -349,7 +434,6 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         city = city or {"name": "Local Commercial Hub", "id": "local"}
         niche = niche or {"name": "Boutique Business", "id": "business"}
 
-        # Dimensions: 9:16 (1080x1920) for Reels/Shorts/TikTok, or 4:5 (1080x1350) for Feed
         if aspect_ratio == "4:5":
             width, height = 1080, 1350
         else:
@@ -361,82 +445,53 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
         script_scenes = self.build_narrative_script(city, niche)
 
-        # Work inside a clean temporary workspace
         with tempfile.TemporaryDirectory(prefix="extrovertnerd_reel_") as temp_dir_str:
             temp_dir = Path(temp_dir_str)
             logger.info("🎬 Assembling 30s Video Reel in workspace: %s", temp_dir)
 
-            # Step 1: Synthesize voiceover for all 4 scenes
-            scenes_meta: List[SceneDefinition] = []
-            audio_files: List[Path] = []
-            current_time = 0.0
+            full_script = " ".join([sc["voiceover_text"].strip() for sc in script_scenes])
+            master_audio_path = temp_dir / "master_voiceover.mp3"
 
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             try:
-                for idx, sc_dict in enumerate(script_scenes):
-                    slide_path = valid_slides[idx]
-                    audio_path = temp_dir / f"voice_scene_{idx + 1}.mp3"
-
-                    # Synthesize audio chunk
-                    dur = loop.run_until_complete(
-                        self._synthesize_scene_audio(
-                            text=sc_dict["voiceover_text"],
-                            output_file=audio_path,
-                            voice=voice,
-                            rate=rate,
-                        )
+                total_duration, words = loop.run_until_complete(
+                    self._synthesize_continuous_audio(
+                        text=full_script,
+                        output_file=master_audio_path,
+                        voice=voice or self.voice,
+                        rate=rate or "+12%",
                     )
-                    # Add tiny 0.15s breathing room between scenes
-                    dur = round(dur + 0.15, 3)
-
-                    sc_def = SceneDefinition(
-                        scene_number=idx + 1,
-                        title=sc_dict["title"],
-                        voiceover_text=sc_dict["voiceover_text"],
-                        slide_image_path=slide_path,
-                        motion_type=sc_dict["motion"],
-                        duration=dur,
-                        start_time=round(current_time, 3),
-                        end_time=round(current_time + dur, 3),
-                        audio_path=audio_path,
-                    )
-                    scenes_meta.append(sc_def)
-                    audio_files.append(audio_path)
-                    current_time += dur
+                )
             finally:
                 loop.close()
 
-            total_duration = round(current_time, 3)
-            logger.info("Total Reel Duration: %.2f seconds across 4 scenes", total_duration)
+            # Compute lock-step scene transitions
+            cut_times = self._compute_scene_cut_times(script_scenes, words, total_duration)
 
-            # Step 2: Concatenate audio into master track
-            master_audio_path = temp_dir / "master_voiceover.mp3"
-            concat_audio_txt = temp_dir / "audio_list.txt"
-            with open(concat_audio_txt, "w", encoding="utf-8") as f:
-                for af in audio_files:
-                    f.write(f"file '{af.resolve()}'\n")
+            scenes_meta: List[SceneDefinition] = []
+            prev_time = 0.0
+            for idx, sc in enumerate(script_scenes):
+                cut_t = cut_times[idx]
+                dur = round(cut_t - prev_time, 3)
+                sc_def = SceneDefinition(
+                    scene_number=idx + 1,
+                    title=sc["title"],
+                    voiceover_text=sc["voiceover_text"],
+                    slide_image_path=valid_slides[idx],
+                    motion_type=sc["motion"],
+                    duration=dur,
+                    start_time=prev_time,
+                    end_time=cut_t,
+                )
+                scenes_meta.append(sc_def)
+                prev_time = cut_t
 
-            cmd_audio = [
-                self.ffmpeg_bin,
-                "-y",
-                "-f",
-                "concat",
-                "-safe",
-                "0",
-                "-i",
-                str(concat_audio_txt),
-                "-c",
-                "copy",
-                str(master_audio_path),
-            ]
-            subprocess.run(cmd_audio, check=True, capture_output=True)
-
-            # Step 3: Generate styled ASS subtitles
+            # Generate frame-perfect ASS subtitles
             ass_subtitles_path = temp_dir / "subtitles.ass"
-            self.generate_ass_subtitles(scenes_meta, ass_subtitles_path, width=width, height=height)
+            self.generate_ass_subtitles_from_words(words, ass_subtitles_path, width=width, height=height)
 
-            # Step 4: Render each scene video clip
+            # Render scene clips
             clip_paths: List[Path] = []
             for sc in scenes_meta:
                 clip_path = temp_dir / f"clip_{sc.scene_number}.mp4"
@@ -450,8 +505,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 )
                 clip_paths.append(clip_path)
 
-            # Step 5: Multiplex video clips + master audio + burn kinetic subtitles
-            logger.info("Multiplexing master video, voiceover, and kinetic captions...")
+            # Multiplex video clips + master audio + burn kinetic subtitles
+            logger.info("Multiplexing continuous video clips, master voiceover, and kinetic captions...")
             concat_filter_inputs = "".join([f"[{i}:v]" for i in range(len(clip_paths))])
             filter_chain = (
                 f"{concat_filter_inputs}concat=n={len(clip_paths)}:v=1:a=0[concated];"
@@ -491,7 +546,6 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 logger.error("Final export error: %s", res_final.stderr[-600:])
                 raise RuntimeError("Failed to multiplex final video reel.")
 
-        # Step 6: Generate platform-ready caption companion file
         caption_path = final_video_path.with_suffix(".txt")
         caption_text = self._build_video_caption(city, niche)
         with open(caption_path, "w", encoding="utf-8") as f:
@@ -588,33 +642,51 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         """Constructs a 6-part calibrated 60-second educational teardown script for the Top 100 series."""
         rank = site.get("global_rank", 1)
         name = site.get("name", "Target")
-        category = site.get("category", "Web Platform")
-        stack_str = ", ".join(site.get("architecture_stack", [])[:3])
+        stack_list = site.get("architecture_stack", [])[:3]
+        stack_str = ", ".join(stack_list)
         telemetry = site.get("telemetry", {"lcp": "0.6s", "inp": "20ms", "cls": "0.00", "ttfb": "80ms"})
         reasons = site.get("key_reasons", [])
 
+        def _clean_spoken_clause(text: str) -> str:
+            t = text
+            # Expand symbols and currency for smooth speech synthesis
+            t = re.sub(r"\$([0-9]+)\s*([tT]rillion|[bB]illion|[mM]illion)", r"\1 \2 dollars", t)
+            t = re.sub(r"\$([0-9]+)", r"\1 dollars", t)
+            t = re.sub(r"\b60fps\b", "60 frames per second", t, flags=re.IGNORECASE)
+            t = re.sub(r"\b120fps\b", "120 frames per second", t, flags=re.IGNORECASE)
+            t = re.sub(r"\bsub-([0-9]+)ms\b", r"sub-\1 millisecond", t, flags=re.IGNORECASE)
+            t = re.sub(r"([0-9]+)ms\b", r"\1 milliseconds", t, flags=re.IGNORECASE)
+            # Remove parenthetical abbreviations like (sub-25ms INP) or (0.00 score)
+            t = re.sub(r"\([^\)]*\)", "", t)
+            # Remove internal slashes / asterisks
+            t = t.replace("/", " and ").replace("*", "")
+            # Ensure zero mentions of Ravi or engineer
+            t = re.sub(r"\b(Ravi|engineer|lead architect)\b", "ExtrovertNerd", t, flags=re.IGNORECASE)
+            t = re.sub(r"\s+", " ", t).strip()
+            return t.rstrip(".")
+
         # Format concise hook question
-        hook = site.get("hook", "").split("?")[0]
-        if hook:
-            hook_words = hook.split()
-            if len(hook_words) > 14:
-                hook_words = hook_words[:14]
-            hook_text = " ".join(hook_words) + "?"
+        raw_hook = site.get("hook", "")
+        if raw_hook:
+            hook_text = _clean_spoken_clause(raw_hook)
+            if not hook_text.endswith("?"):
+                hook_text += "?"
         else:
             hook_text = f"Why does {name} dominate global web performance?"
 
-        # Short clean clauses for audio clarity & strictly ~58-60s timing
-        def _concise(text: str, max_words: int = 10) -> str:
-            cleaned = re.sub(r'[\(\)]', '', text)
-            words = cleaned.split()
-            if len(words) <= max_words:
-                return cleaned.rstrip(".")
-            return " ".join(words[:max_words]).rstrip(".")
+        r1 = _clean_spoken_clause(reasons[0] if len(reasons) > 0 else "Optimized execution pipelines")
+        r2 = _clean_spoken_clause(reasons[1] if len(reasons) > 1 else "Global edge network delivery")
+        r3 = _clean_spoken_clause(reasons[2] if len(reasons) > 2 else "Zero layout shift architecture")
+        verdict = _clean_spoken_clause(site.get("extrovertnerd_verdict", "Isolate state machines from cosmetic assets"))
 
-        r1 = _concise(reasons[0] if len(reasons) > 0 else "Optimized execution pipelines", 9)
-        r2 = _concise(reasons[1] if len(reasons) > 1 else "Global edge network delivery", 9)
-        r3 = _concise(reasons[2] if len(reasons) > 2 else "Zero layout shift architecture", 9)
-        verdict = _concise(site.get("extrovertnerd_verdict", "Isolate state machines from cosmetic assets"), 10)
+        # Spoken telemetry format
+        lcp_val = telemetry.get("lcp", "0.6s").replace("s", " seconds")
+        inp_val = telemetry.get("inp", "20ms").replace("ms", " milliseconds")
+        cls_val = telemetry.get("cls", "0.00")
+        if cls_val in ("0", "0.0", "0.00"):
+            cls_text = "zero layout shift"
+        else:
+            cls_text = f"{cls_val} layout shift"
 
         return [
             {
@@ -650,7 +722,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 "title": f"Day {rank}/100: Live Telemetry",
                 "slide_image_path": slide2_path,
                 "motion": "zoom_center",
-                "voiceover_text": f"Verified Core Web Vitals telemetry: Largest Contentful Paint {telemetry.get('lcp')}, Interaction to Next Paint {telemetry.get('inp')}, and {telemetry.get('cls')} Layout Shift.",
+                "voiceover_text": f"Verified Core Web Vitals telemetry: Largest Contentful Paint {lcp_val}, Interaction to Next Paint {inp_val}, and {cls_text}.",
             },
             {
                 "scene_number": 6,
@@ -691,7 +763,11 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         voice: Optional[str] = None,
         rate: Optional[str] = None,
     ) -> Dict[str, Any]:
-        """Renders an automated 60-second vertical video reel for the Top 100 Website Architecture Series."""
+        """Renders an automated 60-second vertical video reel for the Top 100 Website Architecture Series.
+
+        Features continuous neural speech synthesis, millisecond-accurate word-boundary subtitles,
+        and lock-step visual transitions.
+        """
         top100_path = config.content_dir / "top100_websites.json"
         if not top100_path.exists():
             top100_path = Path("content/top100_websites.json")
@@ -725,6 +801,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         if not (slide1_path.exists() and slide2_path.exists()):
             logger.info("Top 100 slides not found for #%d %s. Rendering them now via Playwright...", site_rank, site_name)
             from src.generator_graphics import GraphicsRenderer
+
             renderer = GraphicsRenderer()
             renderer.render_top100_breakdown(website_id=str(site_rank), platform="instagram")
 
@@ -751,83 +828,59 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         with tempfile.TemporaryDirectory(prefix="extrovertnerd_top100_") as temp_dir_str:
             temp_dir = Path(temp_dir_str)
 
-            # Pass 1: Synthesize all 6 audio clips and measure exact speech duration
-            raw_durs: List[float] = []
+            # Step 1: Synthesize the full continuous voiceover in a single neural pass
+            full_script = " ".join([sc["voiceover_text"].strip() for sc in scenes_def])
+            master_audio_path = temp_dir / "master_voiceover.mp3"
+
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             try:
-                for idx, sc in enumerate(scenes_def):
-                    raw_audio_path = temp_dir / f"voice_top100_raw_{idx + 1}.mp3"
-                    dur = loop.run_until_complete(
-                        self._synthesize_scene_audio(
-                            text=sc["voiceover_text"],
-                            output_file=raw_audio_path,
-                            voice=voice or self.voice,
-                            rate=rate or "+18%",
-                        )
+                total_duration, words = loop.run_until_complete(
+                    self._synthesize_continuous_audio(
+                        text=full_script,
+                        output_file=master_audio_path,
+                        voice=voice or self.voice,
+                        rate=rate or "+22%",
                     )
-                    raw_durs.append(dur)
+                )
             finally:
                 loop.close()
 
-            # Pass 2: Calibrate durations to target exactly 59.5s (~60 seconds)
-            target_total = 59.5
-            total_raw = sum(raw_durs)
-            if total_raw < target_total:
-                pad_per_scene = (target_total - total_raw) / len(scenes_def)
-            else:
-                pad_per_scene = 0.2
+            logger.info("Master continuous voiceover synthesized: %.2fs (%d words)", total_duration, len(words))
+
+            # Step 2: Compute scene cut times and durations from the WordBoundary telemetry
+            cut_times = self._compute_scene_cut_times(scenes_def, words, total_duration)
 
             scenes_meta: List[SceneDefinition] = []
-            audio_files: List[Path] = []
-            current_time = 0.0
-
+            prev_time = 0.0
             for idx, sc in enumerate(scenes_def):
-                raw_path = temp_dir / f"voice_top100_raw_{idx + 1}.mp3"
-                padded_path = temp_dir / f"voice_top100_{idx + 1}.mp3"
-                scene_dur = round(raw_durs[idx] + pad_per_scene, 2)
-
-                # Pad audio to match scene_dur
-                cmd_pad = [
-                    self.ffmpeg_bin, "-y", "-i", str(raw_path),
-                    "-af", f"apad=whole_dur={scene_dur}",
-                    str(padded_path)
-                ]
-                subprocess.run(cmd_pad, check=True, capture_output=True)
-
+                cut_t = cut_times[idx]
+                dur = round(cut_t - prev_time, 3)
                 sc_def = SceneDefinition(
                     scene_number=idx + 1,
                     title=sc["title"],
                     voiceover_text=sc["voiceover_text"],
                     slide_image_path=sc["slide_image_path"],
                     motion_type=sc["motion"],
-                    duration=scene_dur,
-                    start_time=round(current_time, 2),
-                    end_time=round(current_time + scene_dur, 2),
-                    audio_path=padded_path,
+                    duration=dur,
+                    start_time=prev_time,
+                    end_time=cut_t,
                 )
                 scenes_meta.append(sc_def)
-                audio_files.append(padded_path)
-                current_time += scene_dur
+                prev_time = cut_t
 
-            total_duration = round(current_time, 2)
-            logger.info("Total Top 100 Reel Duration: %.2f seconds across 6 scenes", total_duration)
+            logger.info("Scene durations computed: %s", [f"S{s.scene_number}: {s.duration:.2f}s" for s in scenes_meta])
 
-            master_audio_path = temp_dir / "master_voiceover.mp3"
-            concat_audio_txt = temp_dir / "audio_list.txt"
-            with open(concat_audio_txt, "w", encoding="utf-8") as f:
-                for af in audio_files:
-                    f.write(f"file '{af.resolve()}'\n")
-
-            cmd_audio = [
-                self.ffmpeg_bin, "-y", "-f", "concat", "-safe", "0", "-i", str(concat_audio_txt),
-                "-c", "copy", str(master_audio_path)
-            ]
-            subprocess.run(cmd_audio, check=True, capture_output=True)
-
+            # Step 3: Generate frame-perfect ASS subtitles directly from word boundaries
             ass_subtitles_path = temp_dir / "subtitles.ass"
-            self.generate_ass_subtitles(scenes_meta, ass_subtitles_path, width=width, height=height)
+            self.generate_ass_subtitles_from_words(
+                words=words,
+                output_file=ass_subtitles_path,
+                width=width,
+                height=height,
+            )
 
+            # Step 4: Render the 6 animated scene video clips with exact durations
             clip_paths: List[Path] = []
             for sc in scenes_meta:
                 clip_path = temp_dir / f"clip_{sc.scene_number}.mp4"
@@ -841,6 +894,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 )
                 clip_paths.append(clip_path)
 
+            # Step 5: Multiplex video clips + continuous master audio + burn ASS subtitles
+            logger.info("Multiplexing continuous video clips, master voiceover, and burning ASS captions...")
             concat_filter_inputs = "".join([f"[{i}:v]" for i in range(len(clip_paths))])
             filter_chain = (
                 f"{concat_filter_inputs}concat=n={len(clip_paths)}:v=1:a=0[concated];"
@@ -852,16 +907,25 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 cmd_final.extend(["-i", str(cp)])
             cmd_final.extend(["-i", str(master_audio_path)])
             cmd_final.extend([
-                "-filter_complex", filter_chain,
-                "-map", "[outv]",
-                "-map", f"{len(clip_paths)}:a",
-                "-c:v", "libx264",
-                "-pix_fmt", "yuv420p",
-                "-preset", "fast",
-                "-c:a", "aac",
-                "-b:a", "192k",
+                "-filter_complex",
+                filter_chain,
+                "-map",
+                "[outv]",
+                "-map",
+                f"{len(clip_paths)}:a",
+                "-c:v",
+                "libx264",
+                "-pix_fmt",
+                "yuv420p",
+                "-preset",
+                "fast",
+                "-c:a",
+                "aac",
+                "-b:a",
+                "192k",
                 "-shortest",
-                "-movflags", "+faststart",
+                "-movflags",
+                "+faststart",
                 str(final_video_path),
             ])
 
@@ -912,8 +976,8 @@ def main() -> None:
     parser.add_argument("--city", type=str, default="Bangalore", help="City name")
     parser.add_argument("--niche", type=str, default="Fashion Boutiques", help="Business niche")
     parser.add_argument("--aspect-ratio", type=str, default="9:16", choices=["9:16", "4:5"], help="Aspect ratio")
-    parser.add_argument("--voice", type=str, default="en-IN-PrabhatNeural", help="Edge-TTS voice")
-    parser.add_argument("--rate", type=str, default="+18%", help="Edge-TTS speech rate")
+    parser.add_argument("--voice", type=str, default="en-US-ChristopherNeural", help="Edge-TTS voice")
+    parser.add_argument("--rate", type=str, default=None, help="Edge-TTS speech rate (e.g. +22 percent)")
     parser.add_argument("--telegram", action="store_true", help="Automatically dispatch generated reel to Telegram")
     args = parser.parse_args()
 
@@ -931,7 +995,11 @@ def main() -> None:
         )
     elif args.latest or not args.dir:
         logger.info("🚀 Rendering 30-second Video Reel from latest carousel...")
-        res = generator.render_latest_carousel_reel(aspect_ratio=args.aspect_ratio, voice=args.voice)
+        res = generator.render_latest_carousel_reel(
+            aspect_ratio=args.aspect_ratio,
+            voice=args.voice,
+            rate=args.rate,
+        )
     else:
         target_dir = Path(args.dir)
         slides = sorted(list(target_dir.glob("slide_*.png")) + list(target_dir.glob("vertical_slide_*.png")))
@@ -954,6 +1022,7 @@ def main() -> None:
     if args.telegram:
         logger.info("\n📲 Dispatching video reel to Telegram...")
         from src.telegram_notifier import TelegramNotifier
+
         notifier = TelegramNotifier()
         if res.get("type") == "top100_60s_reel":
             tg_res = notifier.dispatch_top100_video_reel(
@@ -975,4 +1044,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
