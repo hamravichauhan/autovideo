@@ -788,8 +788,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                     break
 
         if not selected_site:
-            day_of_year = datetime.date.today().timetuple().tm_yday
-            selected_site = websites[(day_of_year - 1) % len(websites)]
+            try:
+                from src.tracker import get_next_top100_rank
+
+                target_r = get_next_top100_rank(advance=False)
+                selected_site = next((w for w in websites if w.get("global_rank") == target_r), None)
+            except Exception:
+                pass
+            if not selected_site:
+                day_of_year = datetime.date.today().timetuple().tm_yday
+                selected_site = websites[(day_of_year - 1) % len(websites)]
 
         site_rank = selected_site["global_rank"]
         site_name = selected_site["name"]
@@ -978,10 +986,51 @@ def main() -> None:
     parser.add_argument("--aspect-ratio", type=str, default="9:16", choices=["9:16", "4:5"], help="Aspect ratio")
     parser.add_argument("--voice", type=str, default="en-US-ChristopherNeural", help="Edge-TTS voice")
     parser.add_argument("--rate", type=str, default=None, help="Edge-TTS speech rate (e.g. +22 percent)")
+    parser.add_argument("--batch", nargs=2, type=int, metavar=("START", "END"), help="Batch render Top 100 reels from START to END")
     parser.add_argument("--telegram", action="store_true", help="Automatically dispatch generated reel to Telegram")
     args = parser.parse_args()
 
     generator = VideoReelGenerator(voice=args.voice, rate=args.rate)
+
+    if args.batch:
+        start_r, end_r = args.batch
+        logger.info("🚀 Starting Batch Generation for Top 100 Reels: Rank #%d to #%d", start_r, end_r)
+        from src.telegram_notifier import TelegramNotifier
+        from src.tracker import set_current_top100_rank
+
+        notifier = TelegramNotifier() if args.telegram else None
+        successful_runs = []
+
+        for r in range(start_r, end_r + 1):
+            logger.info("\n------------------------------------------------------------")
+            logger.info("🎬 [BATCH %d/%d] Rendering Top 100 Reel for Rank #%d", r - start_r + 1, end_r - start_r + 1, r)
+            logger.info("------------------------------------------------------------")
+            try:
+                res = generator.render_top100_reel(
+                    rank=r,
+                    aspect_ratio=args.aspect_ratio,
+                    voice=args.voice,
+                    rate=args.rate,
+                )
+                successful_runs.append(res)
+                print(f"✅ Generated Rank #{r} ({res['website']['name']}): {res['duration']}s | {res['filesize_mb']} MB")
+
+                if notifier:
+                    logger.info("📲 Dispatching Rank #%d video reel to Telegram...", r)
+                    tg_res = notifier.dispatch_top100_video_reel(
+                        video_path=res["video_path"],
+                        site=res["website"],
+                        caption=res["caption_text"],
+                        duration=int(res["duration"]),
+                    )
+                    print(f"Telegram Dispatch: {tg_res.get('ok')}")
+            except Exception as e:
+                logger.error("❌ Failed rendering Rank #%d: %s", r, e)
+
+        set_current_top100_rank(end_r)
+        print(f"\n🎉 BATCH GENERATION COMPLETE: {len(successful_runs)}/{end_r - start_r + 1} video reels generated.")
+        print(f"📌 Tracker set to Rank #{end_r}. Next daily run will start automatically from Rank #{end_r + 1}.")
+        return
 
     if args.top100 or args.rank or args.day or args.website_id:
         target_rank = args.rank or args.day or args.website_id

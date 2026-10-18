@@ -87,7 +87,10 @@ class AutomationEngine:
                 )
 
                 # 3b. Daily Top 100 Website Teardown (2 Slides across Instagram, LinkedIn, and X)
-                top100_result = self.graphics_renderer.render_top100_breakdown(platform="all")
+                from src.tracker import get_next_top100_rank
+
+                daily_rank = get_next_top100_rank(advance=True)
+                top100_result = self.graphics_renderer.render_top100_breakdown(website_id=str(daily_rank), platform="all")
                 logger.info(
                     "✅ Rendered Daily Top 100 Teardown: #%d %s (6 slides across 3 platforms)",
                     top100_result["website"]["global_rank"],

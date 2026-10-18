@@ -456,9 +456,17 @@ class GraphicsRenderer:
                     break
 
         if not selected_site:
-            day_of_year = datetime.date.today().timetuple().tm_yday
-            selected_idx = (day_of_year - 1) % len(websites)
-            selected_site = websites[selected_idx]
+            try:
+                from src.tracker import get_next_top100_rank
+
+                target_r = get_next_top100_rank(advance=False)
+                selected_site = next((w for w in websites if w.get("global_rank") == target_r), None)
+            except Exception:
+                pass
+            if not selected_site:
+                day_of_year = datetime.date.today().timetuple().tm_yday
+                selected_idx = (day_of_year - 1) % len(websites)
+                selected_site = websites[selected_idx]
 
         # Determine target platforms
         platform_normalized = platform.lower()
