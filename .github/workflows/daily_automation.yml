@@ -67,6 +67,11 @@ jobs:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('requirements.txt') }}
 
+      - name: Install System Dependencies (FFmpeg & Fonts)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-liberation
+
       - name: Install Playwright Chromium & System Dependencies
         run: |
           python -m playwright install --with-deps chromium
@@ -91,7 +96,7 @@ jobs:
           TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
           TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
           TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '80208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8580208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw' }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '1432790039' }}
         run: |
           CITY_ARG=""
@@ -119,6 +124,7 @@ jobs:
           name: daily-graphics-and-logs
           path: |
             output/graphics/
+            output/videos/
             output/automation_log.json
             output/social_preview.json
             output/outreach_drafts.md
@@ -130,13 +136,13 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Stage new blog markdown files, manifests, and prospecting dossiers
-          git add output/blogs/ output/automation_log.json output/social_preview.json output/outreach_drafts.md output/prospects.json || true
+          # Stage new blog markdown files, manifests, tracker state, and prospecting dossiers
+          git add output/blogs/ output/automation_log.json output/social_preview.json output/outreach_drafts.md output/prospects.json content/tracker.json || true
           
           # Commit only if changes exist
           if git diff --staged --quiet; then
             echo "No changes to commit. Working tree is clean."
           else
-            git commit -m "automation: publish daily pSEO articles and update content manifest [skip ci]"
+            git commit -m "automation: advance series tracker, publish daily pSEO articles [skip ci]"
             git push origin HEAD:${{ github.ref }}
           fi
