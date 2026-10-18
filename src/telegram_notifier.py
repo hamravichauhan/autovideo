@@ -783,6 +783,43 @@ class TelegramNotifier:
 
         return {"ok": True, "results": results}
 
+    def dispatch_top100_video_reel(
+        self,
+        video_path: Path | str,
+        site: Dict[str, Any],
+        caption: Optional[str] = None,
+        duration: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        """Dispatches an automated 60s Top 100 video reel to Telegram."""
+        path = Path(video_path)
+        if not path.exists():
+            return {"ok": False, "error": f"Video file not found: {path}"}
+
+        rank = site.get("global_rank", 1)
+        name = site.get("name", "Website")
+        domain = site.get("domain", "")
+        telemetry = site.get("telemetry", {})
+
+        video_caption = (
+            f"🎬 <b>[DAY {rank}/100 REEL] 60-Second Web Architecture Teardown: {name}</b>\n"
+            f"🌐 <b>Domain:</b> {domain} (Rank #{rank})\n"
+            f"⚡ <b>Telemetry:</b> LCP {telemetry.get('lcp')} | INP {telemetry.get('inp')} | CLS {telemetry.get('cls')} | TTFB {telemetry.get('ttfb')}\n\n"
+            f"👉 <i>Full ready-to-post description sent below 👇</i>"
+        )
+
+        res_video = self.send_video(path, caption=video_caption, duration=duration)
+        results = {"video": res_video}
+
+        if caption:
+            msg = (
+                f"📋 <b>READY-TO-POST TOP 100 REEL CAPTION // DAY {rank} (Copy & Paste):</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━\n"
+                f"<pre>{caption}</pre>"
+            )
+            results["caption_message"] = self.send_message(msg)
+
+        return {"ok": True, "results": results}
+
     def dispatch_tech_news(self, image_path: Path | str, news: Dict[str, Any]) -> Dict[str, Any]:
         """Dispatches a Tech News poster to Telegram."""
         caption = (

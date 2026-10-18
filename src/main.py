@@ -341,7 +341,11 @@ def main() -> None:
     elif args.mode == "video":
         from src.generator_video import VideoReelGenerator
         gen = VideoReelGenerator()
-        res = gen.render_latest_carousel_reel(aspect_ratio=args.platform if args.platform in ("9:16", "4:5") else "9:16")
+        if args.website_id:
+            res = gen.render_top100_reel(website_id=args.website_id, aspect_ratio=args.platform if args.platform in ("9:16", "4:5") else "9:16")
+        else:
+            res = gen.render_latest_carousel_reel(aspect_ratio=args.platform if args.platform in ("9:16", "4:5") else "9:16")
+
         print("\n=== VIDEO REEL GENERATION COMPLETE ===")
         print(f"🎬 Video File:    {res['video_path']}")
         print(f"⏱️ Duration:      {res['duration']}s")
@@ -351,14 +355,23 @@ def main() -> None:
         try:
             from src.telegram_notifier import TelegramNotifier
             notifier = TelegramNotifier()
-            notifier.dispatch_video_reel(
-                video_path=res["video_path"],
-                city=res["city"],
-                niche=res["niche"],
-                caption=res["caption_text"],
-                duration=int(res["duration"]),
-            )
-            print("🚀 Pushed 30s Video Reel to Telegram channel!")
+            if res.get("type") == "top100_60s_reel":
+                notifier.dispatch_top100_video_reel(
+                    video_path=res["video_path"],
+                    site=res["website"],
+                    caption=res["caption_text"],
+                    duration=int(res["duration"]),
+                )
+                print("🚀 Pushed 60s Top 100 Video Reel to Telegram channel!")
+            else:
+                notifier.dispatch_video_reel(
+                    video_path=res["video_path"],
+                    city=res["city"],
+                    niche=res["niche"],
+                    caption=res["caption_text"],
+                    duration=int(res["duration"]),
+                )
+                print("🚀 Pushed 30s Video Reel to Telegram channel!")
         except Exception as e:
             print(f"Telegram notice: {e}")
     elif args.mode == "tech_tip":
