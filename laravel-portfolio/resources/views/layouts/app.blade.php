@@ -76,6 +76,10 @@
                 </a>
                 <a href="/blog" class="hover:text-white transition">Case Studies</a>
                 <a href="/#architect" class="hover:text-white transition">Lead Architect</a>
+                <a href="/admin" class="hover:text-emerald-400 font-mono text-xs flex items-center space-x-1 text-slate-400 border border-white/10 px-2.5 py-1 rounded-lg hover:border-emerald-500/30 transition">
+                    <span>⚡</span>
+                    <span>Admin</span>
+                </a>
             </nav>
 
             <!-- CTA Button -->

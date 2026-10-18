@@ -6,6 +6,11 @@
 
 define('LARAVEL_START', microtime(true));
 
+// Start session if not started and not in CLI
+if (session_status() === PHP_SESSION_NONE && php_sapi_name() !== 'cli') {
+    @session_start();
+}
+
 // Autoloader for App namespace
 spl_autoload_register(function ($class) {
     $prefix = 'App\\';
@@ -54,3 +59,55 @@ if (!function_exists('abort')) {
         exit;
     }
 }
+
+if (!function_exists('session')) {
+    function session(?string $key = null, $default = null) {
+        if ($key === null) {
+            return $_SESSION ?? [];
+        }
+        if (is_array($key)) {
+            foreach ($key as $k => $v) {
+                $_SESSION[$k] = $v;
+            }
+            return null;
+        }
+        return $_SESSION[$key] ?? $default;
+    }
+}
+
+if (!function_exists('session_flash')) {
+    function session_flash(string $key, $value) {
+        $_SESSION['flash'][$key] = $value;
+    }
+}
+
+if (!function_exists('get_flash')) {
+    function get_flash(string $key, $default = null) {
+        $val = $_SESSION['flash'][$key] ?? $default;
+        unset($_SESSION['flash'][$key]);
+        return $val;
+    }
+}
+
+if (!function_exists('json_response')) {
+    function json_response($data, int $statusCode = 200) {
+        http_response_code($statusCode);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        exit;
+    }
+}
+
+if (!function_exists('project_root')) {
+    function project_root(): string {
+        $dir = __DIR__;
+        for ($i = 0; $i < 6; $i++) {
+            if (file_exists($dir . '/requirements.txt') || file_exists($dir . '/content/blog_topics.json')) {
+                return $dir;
+            }
+            $dir = dirname($dir);
+        }
+        return dirname(__DIR__, 2);
+    }
+}
+

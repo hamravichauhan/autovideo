@@ -41,12 +41,18 @@
 
 ```
 .
-├── laravel-portfolio/                # Boutique ExtrovertNerd Agency Website
+├── laravel-portfolio/                # Boutique ExtrovertNerd Agency Website & Admin Hub
 │   ├── app/
 │   │   ├── Http/Controllers/
 │   │   │   ├── HomeController.php             # Agency Landing Page Controller
 │   │   │   ├── SpeedCheckerController.php     # Interactive Speed Checker Micro-Tool
-│   │   │   └── BlogController.php             # Dynamic pSEO Markdown Case Studies
+│   │   │   ├── BlogController.php             # Dynamic pSEO Markdown Case Studies
+│   │   │   ├── AdminDashboardController.php   # Mission Control & Chart.js Telemetry
+│   │   │   ├── AdminContentController.php     # pSEO Article & Topic Matrix Editor
+│   │   │   ├── AdminSocialController.php      # Carousel Gallery & Publishing Queue
+│   │   │   ├── AdminProspectsController.php   # Local Lead CRM & Pitch Generator
+│   │   │   ├── AdminDocumentsController.php   # File Vault & Markdown Scratchpad
+│   │   │   └── AdminSystemController.php      # 1-Click CLI Automation & Config Editor
 │   │   └── Services/
 │   │       ├── MarkdownService.php            # Pure PHP Frontmatter & Markdown Parser
 │   │       ├── ViewRenderer.php               # Standalone Blade Template Compiler
@@ -54,15 +60,23 @@
 │   ├── bootstrap/
 │   │   └── app.php                            # App Bootstrap & Autoloader
 │   ├── public/
-│   │   └── index.php                          # HTTP Front Controller
+│   │   ├── index.php                          # HTTP Front Controller
+│   │   └── output                             # Symlink to /output (serves graphics & assets)
 │   ├── resources/views/
-│   │   ├── layouts/app.blade.php              # Dark-Mode Boutique Aesthetic (`bg-slate-950`)
-│   │   ├── home.blade.php                     # Hero, Benchmark Bar, Services, Case Studies
+│   │   ├── layouts/
+│   │   │   ├── app.blade.php                  # Public Boutique Dark Aesthetic (`bg-slate-950`)
+│   │   │   └── admin.blade.php                # Admin Mission Control Navigation Layout
+│   │   ├── admin/
+│   │   │   ├── dashboard.blade.php            # Telemetry, Metric Cards & Chart.js Trajectory
+│   │   │   ├── content/                       # Article Table, In-Browser Editor, Topic Matrix
+│   │   │   ├── social/                        # Carousel Previews & Multi-Channel Copy Queue
+│   │   │   ├── prospects/                     # Lead CRM Pipeline & Outreach Drawers
+│   │   │   ├── documents/                     # Secure Upload Vault & Markdown Scratchpad
+│   │   │   └── system/                        # 1-Click Python Triggers, .env Editor, Log Viewer
+│   │   ├── home.blade.php                     # Public Landing Page
 │   │   ├── speed-checker.blade.php            # 24/100 vs 100/100 Side-by-Side Diagnostic
-│   │   └── blog/
-│   │       ├── index.blade.php                # Case Studies Archive & City Filter Pills
-│   │       └── show.blade.php                 # Technical Teardown with Architect Sidebar
-│   ├── routes/web.php                         # Application Web Routes
+│   │   └── blog/                              # Dynamic Case Study Views
+│   ├── routes/web.php                         # Application & Admin Web Routes
 │   ├── composer.json                          # Package Configuration
 │   └── .env.example                           # Agency Environment Configuration
 ├── src/                              # Python Automation Engine

@@ -131,6 +131,9 @@ class ViewRenderer
 
     protected static function evaluatePhp(string $template, array $data): string
     {
+        // 0. @php ... @endphp code blocks
+        $template = preg_replace('/@php\b(.*?)@endphp/s', '<?php $1; ?>', $template);
+
         // 1. Raw {!! $var !!}
         $template = preg_replace('/\{\!\!(.*?)\!\!\}/s', '<?php echo $1; ?>', $template);
 

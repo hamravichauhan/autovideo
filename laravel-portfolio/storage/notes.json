@@ -1,0 +1,16 @@
+[
+    {
+        "id": "note_1",
+        "title": "Agency Standard Operating Procedures (SOP)",
+        "category": "Operations",
+        "updated_at": "2026-10-18 07:55",
+        "content": "# ExtrovertNerd Agency SOP\n\n1. Run daily prospecting bot targeting local businesses with sub-40 mobile scores.\n2. Dispatch 4-slide before/after carousels to Instagram and X.\n3. Send 1-click WhatsApp speed audit audits within 15 minutes of response.\n4. Deliver 100/100 Core Web Vitals guarantees on all custom Laravel builds."
+    },
+    {
+        "id": "note_2",
+        "title": "Laravel 11 Sub-Second Performance Blueprint",
+        "category": "Engineering",
+        "updated_at": "2026-10-18 07:55",
+        "content": "# Performance Architecture Checklist\n\n- Redis full-page response cache (TTFB < 150ms)\n- Inline Tailwind critical CSS + Alpine.js zero-bloat reactivity\n- AVIF/WebP image pipeline via Intervention Image\n- Zero unminified third-party analytics trackers in head tag."
+    }
+]
