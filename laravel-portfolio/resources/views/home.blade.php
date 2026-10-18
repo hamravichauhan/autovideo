@@ -26,7 +26,7 @@
             </h1>
 
             <p class="text-slate-300 text-lg md:text-xl font-normal leading-relaxed max-w-3xl mx-auto">
-                Replace bloated WordPress, WooCommerce, and Shopify storefronts with custom <strong class="text-white">Laravel 11</strong> architectures that load in under 350ms, pass every Google Core Web Vital, and eliminate monthly SaaS fees.
+                Replace bloated WordPress, WooCommerce, and Shopify storefronts with bespoke, sub-second architectures engineered for your exact business requirements. Whether you need <strong class="text-white">Next.js & React, high-speed Laravel 11, Node.js microservices, Python automation, or Go</strong> — Lead Web Architect Ravi builds with whatever stack matches your vision, guaranteed 100/100 Core Web Vitals.
             </p>
 
             <!-- Magnetic Action CTAs -->
@@ -196,18 +196,18 @@
                             <span class="w-9 h-9 rounded-xl bg-indigo-500 text-white font-black font-mono text-base flex items-center justify-center shadow-lg shadow-indigo-500/20">
                                 02
                             </span>
-                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-400">PHASE 2: DECOUPLE & ELIMINATE 30+ PLUGINS</span>
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-400">PHASE 2: DECOUPLE & REBUILD ON YOUR OPTIMAL STACK</span>
                         </div>
                         <h3 class="text-2xl sm:text-3xl font-black text-white">
-                            We Strip Bloated CMS Stacks Down to 140KB of Pure Compiled Code
+                            We Strip Bloated CMS Stacks & Re-engineer in Laravel, Next.js, Node, or Python
                         </h3>
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            WordPress and Shopify stores carry an average of 25–40 plugins just to display a booking form or gallery. We discard this fragile layer and re-architect your business logic into lightweight, compiled <strong>Laravel 11 Blade templates</strong> and minimal Alpine.js reactivity.
+                            WordPress and Shopify stores carry an average of 25–40 plugins just to display a booking form or product grid. We discard this fragile layer and re-architect your core business logic into clean, compiled code using the exact right framework for your requirements: whether a high-speed <strong>Laravel monolith, a dynamic Next.js/React frontend, a real-time Node.js backend, or a Python data pipeline</strong>.
                         </p>
                         <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 pt-2">
                             <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ 96% Payload Reduction</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Any Stack as per Goal</span>
                             <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Zero Vulnerable Plugins</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Pure Tailwind CSS</span>
                         </div>
                     </div>
 
@@ -331,6 +331,153 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TECH-AGNOSTIC ARSENAL: ANY TOOL • ANY STACK                     -->
+    <!-- ============================================================== -->
+    <section id="tech-stack" class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-mono font-bold uppercase tracking-widest shadow-lg shadow-indigo-500/10">
+                <span>TECH-AGNOSTIC CRAFTSMANSHIP</span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
+                Any Tech Stack. Any Tool. <br>
+                <span class="font-serif italic font-normal text-indigo-400">Engineered for Your Exact Requirements</span>.
+            </h2>
+            <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+                We don't force dogmatic templates or lock you into one framework. Lead Web Architect Ravi builds with whatever tool matches your product roadmap, scale, and performance needs.
+            </p>
+        </div>
+
+        <!-- 4 Pillars Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Pillar 1: Modern Frontend -->
+            <div class="bg-slate-900/70 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl font-bold group-hover:scale-110 transition">
+                        ⚛️
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-widest">Frontend & Reactive Web</span>
+                        <h3 class="text-xl font-black text-white mt-1">Next.js, React & Modern UI</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Server Components, App Router, zero-runtime CSS, dynamic SEO metadata, and fluid app-like micro-interactions.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/10 space-y-2">
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Next.js 15</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">React 19</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Vue 3</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">SvelteKit</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Astro</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Tailwind</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">TypeScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 2: High-Throughput Backend -->
+            <div class="bg-slate-900/70 border border-white/10 hover:border-indigo-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl font-bold group-hover:scale-110 transition">
+                        ⚡
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono text-indigo-400 font-bold uppercase tracking-widest">Backends & APIs</span>
+                        <h3 class="text-xl font-black text-white mt-1">Laravel, Node.js, Python & Go</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        From ultra-fast monoliths to high-throughput event queues, AI pipelines, and websocket real-time engines.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/10 space-y-2">
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Laravel 11</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">PHP 8.4</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Node.js</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Python</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">FastAPI</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Go</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 3: Database & Caching -->
+            <div class="bg-slate-900/70 border border-white/10 hover:border-teal-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-2xl font-bold group-hover:scale-110 transition">
+                        🗄️
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono text-teal-400 font-bold uppercase tracking-widest">Data, In-Memory & Realtime</span>
+                        <h3 class="text-xl font-black text-white mt-1">Postgres, Redis & Supabase</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Sub-millisecond Redis RAM caches, ACID-compliant relational schemas, vector indexing, and automatic backups.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/10 space-y-2">
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">PostgreSQL</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Redis RAM</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">MySQL 8</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Supabase</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">MongoDB</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">SQLite</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 4: Mobile, Cloud & Infra -->
+            <div class="bg-slate-900/70 border border-white/10 hover:border-cyan-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl font-bold group-hover:scale-110 transition">
+                        ☁️
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest">Mobile, Cloud & DevOps</span>
+                        <h3 class="text-xl font-black text-white mt-1">Flutter, Cloudflare & AWS</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Cross-platform native iOS/Android apps, edge worker distributions, zero-downtime CI/CD, and serverless tasks.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/10 space-y-2">
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Flutter</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">React Native</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Cloudflare</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">AWS</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Docker</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">PWA</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Callout Banner: "Tell Us What Stack You Want" -->
+        <div class="mt-10 bg-gradient-to-r from-indigo-950/40 via-slate-900 to-emerald-950/40 border border-indigo-500/30 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+            <div class="space-y-2 text-center md:text-left">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-widest">HAVE A SPECIFIC STACK REQUIREMENT?</span>
+                <h4 class="text-2xl font-bold text-white">We Engineer Your Project on Your Terms.</h4>
+                <p class="text-slate-300 text-sm max-w-2xl leading-relaxed">
+                    Have an existing React/Node codebase? Need a Python machine learning integration? Or want a monolithic Laravel application? We assess your product goals and build with the ideal technologies.
+                </p>
+            </div>
+            <a 
+                href="https://wa.me/15551234567?text={{ urlencode('Hey Ravi! I have a project requirement and want to discuss what tech stack is best.') }}" 
+                target="_blank" 
+                rel="noopener"
+                class="shrink-0 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs uppercase tracking-wider px-6 py-4 rounded-xl shadow-lg shadow-indigo-600/25 transition duration-300"
+            >
+                Discuss Your Stack with Ravi ➔
+            </a>
         </div>
     </section>
 
@@ -561,7 +708,7 @@
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-black text-white">Crafted Personally by Ravi</h2>
                     <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                        "At ExtrovertNerd, we do not pass your business to junior freelancers or configure slow pre-made WordPress themes. Every web application is architected directly in clean, verified Laravel 11 code with strict Core Web Vitals guarantees."
+                        "At ExtrovertNerd, we don't pass client work to junior freelancers or configure slow pre-made templates. Whether your vision demands a reactive Next.js/React frontend, a high-throughput Python API, a Node.js websocket backend, or a sub-second Laravel store, every digital architecture is crafted personally by me to match your exact business requirements — with strict 100/100 Core Web Vitals guarantees."
                     </p>
                     <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-4">
                         <a 

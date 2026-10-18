@@ -89,7 +89,7 @@ class SpeedCheckerController
                 'ttfb' => '140ms (Redis RAM Cache)',
                 'cls' => '0.00 (Flawless)',
                 'scripts_count' => '0 Bloat (Pure Tailwind & Alpine)',
-                'platform' => 'ExtrovertNerd Laravel 11 Stack',
+                'platform' => 'ExtrovertNerd Custom Architecture (Tailored Laravel / Next.js / Node.js)',
                 'bounce_rate' => '18%',
                 'conversion_lift' => '+52%',
                 'status' => '100% Green Core Web Vitals',

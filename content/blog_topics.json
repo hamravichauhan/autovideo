@@ -298,6 +298,60 @@
           "laravel": "Robust rock-solid stability with automated tests and CI/CD pipelines."
         }
       ]
+    },
+    {
+      "id": "nextjs-vs-laravel",
+      "title": "Next.js 15 vs Laravel 11: Choosing the Optimal Full-Stack Stack",
+      "summary": "When to deploy React Server Components (Next.js) for rich dynamic client applications vs monolithic Laravel 11 for rapid, secure transaction engines.",
+      "vectors": [
+        {
+          "attribute": "Rendering Strategy",
+          "shopify": "Next.js: React Server Components (RSC) & Streaming SSR for ultra-reactive UI state",
+          "laravel": "Laravel: Blade + Alpine.js / Livewire with instant Redis RAM cache & near-zero client JS"
+        },
+        {
+          "attribute": "Ecosystem & Tooling",
+          "shopify": "Next.js: Massive NPM ecosystem, Tailwind, TypeScript, Vercel & edge deployment",
+          "laravel": "Laravel: Battle-tested ORM (Eloquent), built-in authentication, queues, and artisan tooling"
+        },
+        {
+          "attribute": "Ideal Use Case",
+          "shopify": "Next.js: Interactive SaaS dashboards, AI streaming interfaces, and collaborative workspaces",
+          "laravel": "Laravel: High-ticket e-commerce, complex relational databases, and enterprise CRM systems"
+        },
+        {
+          "attribute": "Performance Guarantee",
+          "shopify": "Next.js: 100/100 Core Web Vitals when decoupled from heavy client bundles",
+          "laravel": "Laravel: 100/100 Core Web Vitals with <150ms TTFB via OPcache & Redis"
+        }
+      ]
+    },
+    {
+      "id": "fastapi-vs-nodejs",
+      "title": "Python FastAPI vs Node.js: High-Throughput APIs & Realtime Web",
+      "summary": "Comparing asynchronous Python FastAPI against Node.js Express/Nest for AI integration, background tasks, and high-concurrency microservices.",
+      "vectors": [
+        {
+          "attribute": "Throughput & Concurrency",
+          "shopify": "Node.js: Single-threaded event loop ideal for millions of concurrent I/O connections",
+          "laravel": "FastAPI: High-speed async/await ASGI framework rivaling Go and NodeJS in performance"
+        },
+        {
+          "attribute": "AI & Data Science Synergy",
+          "shopify": "Node.js: Requires Python bridge or microservice to invoke ML/AI models",
+          "laravel": "FastAPI: Native Python compatibility with LangChain, PyTorch, NumPy, and OpenCV"
+        },
+        {
+          "attribute": "Type Safety & Schema",
+          "shopify": "Node.js: TypeScript compile-time typing requiring separate validation libraries (Zod)",
+          "laravel": "FastAPI: Native Pydantic runtime data validation and automated OpenAPI Swagger docs"
+        },
+        {
+          "attribute": "Our Implementation",
+          "shopify": "ExtrovertNerd builds realtime websocket backends and chat engines with Node.js",
+          "laravel": "ExtrovertNerd deploys automated AI prospect scraping and data funnels with FastAPI"
+        }
+      ]
     }
   ],
   "tech_tips": [
@@ -324,6 +378,22 @@
       "problem_code": "<!-- ❌ BAD: Unsized raw JPEG causing huge CLS layout shifts -->\n<img src=\"/uploads/luxury-hotel-hero.jpg\" class=\"w-full\">",
       "solution_code": "<!-- ✅ PRO: Picture element with aspect-ratio and modern AVIF fallback -->\n<picture>\n  <source srcset=\"/img/hero.avif\" type=\"image/avif\">\n  <img src=\"/img/hero.webp\" width=\"1200\" height=\"800\" class=\"aspect-[3/2] w-full object-cover\" loading=\"eager\" fetchpriority=\"high\">\n</picture>",
       "explanation": "Combining strict aspect-ratio utility classes with next-gen AVIF compression cuts image payload by 82% while locking the layout box in place before the asset finishes loading, guaranteeing a 0.00 CLS score."
+    },
+    {
+      "id": "nextjs-server-components",
+      "title": "Eliminate 250KB of Client JS: Next.js 15 Server Components (RSC)",
+      "summary": "Keep your client bundles featherlight by fetching data and rendering markup directly on the server without shipping JavaScript to the browser.",
+      "problem_code": "// ❌ BAD: Client component downloads 250KB bundle to fetch on mount\n'use client';\nexport default function ProductList() {\n  const [data, setData] = useState([]);\n  useEffect(() => { fetch('/api/products').then(...); }, []);\n  return <div>{data.map(...)}</div>;\n}",
+      "solution_code": "// ✅ PRO: Server Component fetches directly with 0KB client JS bundle\nexport default async function ProductList() {\n  const products = await db.product.findMany();\n  return <div>{products.map(...)}</div>;\n}",
+      "explanation": "By keeping database access in Server Components, client browsers download zero JavaScript runtime for catalog displays, yielding instantaneous First Contentful Paint and 100/100 Core Web Vitals."
+    },
+    {
+      "id": "fastapi-async-worker",
+      "title": "Non-Blocking Webhooks with Python FastAPI & BackgroundTasks",
+      "summary": "Respond to incoming webhooks and CRM alerts in 12 milliseconds while processing lead enrichments asynchronously in the background.",
+      "problem_code": "# ❌ BAD: Synchronous CRM calls delay webhook response and cause timeouts\n@app.post('/webhook')\ndef handle_lead(lead: LeadSchema):\n    enrich_lead_data(lead)  # takes 3.5 seconds!\n    return {'status': 'processed'}",
+      "solution_code": "# ✅ PRO: Return 200 OK instantly and process asynchronously\n@app.post('/webhook')\nasync def handle_lead(lead: LeadSchema, bg_tasks: BackgroundTasks):\n    bg_tasks.add_task(enrich_lead_data, lead)\n    return {'status': 'received', 'latency_ms': 12}",
+      "explanation": "FastAPI's built-in BackgroundTasks dispatches heavy HTTP integrations or scraper tasks without blocking the ASGI event loop, guaranteeing sub-20ms webhook responses."
     }
   ]
 }

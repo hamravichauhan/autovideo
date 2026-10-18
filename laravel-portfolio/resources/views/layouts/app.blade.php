@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'ExtrovertNerd — High-Speed Laravel Web Applications & Agency Hub')</title>
-    <meta name="description" content="@yield('meta_description', 'Boutique digital engineering agency led by Ravi. We build sub-second Laravel e-commerce stores, automated management dashboards, and modern web applications with guaranteed 100/100 Core Web Vitals.')">
+    <title>@yield('title', 'ExtrovertNerd — Full-Stack Web Engineering & Custom Digital Systems')</title>
+    <meta name="description" content="@yield('meta_description', 'Boutique full-stack engineering studio led by Lead Architect Ravi. We build sub-second web applications, high-converting stores, and automated management dashboards across any modern stack: Laravel, Next.js, React, Node.js, Python, or Go.')">
     
     <!-- Tailwind CSS CDN & Alpine.js -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -130,7 +130,7 @@
                     <span class="text-[10px] font-mono text-slate-400 tracking-wider uppercase block -mt-1 flex items-center space-x-1">
                         <span>Architect: Ravi</span>
                         <span class="text-emerald-400">●</span>
-                        <span class="text-slate-500">Goa / Global</span>
+                        <span class="text-slate-400">Full-Stack (Any Tech Stack)</span>
                     </span>
                 </div>
             </a>
@@ -140,6 +140,10 @@
                 <a href="/#how-we-fix" class="hover:text-white transition flex items-center space-x-1">
                     <span>How We Make It Good</span>
                     <span class="text-[10px] text-emerald-400 font-mono font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/30">BLUEPRINT</span>
+                </a>
+                <a href="/#tech-stack" class="hover:text-white transition flex items-center space-x-1">
+                    <span>Tech Arsenal</span>
+                    <span class="text-[10px] text-indigo-400 font-mono font-bold bg-indigo-500/10 px-1.5 py-0.5 rounded border border-indigo-500/30">ANY STACK</span>
                 </a>
                 <a href="/#services" class="hover:text-white transition">Services</a>
                 <a href="/speed-checker" class="hover:text-emerald-400 flex items-center space-x-1.5 transition">

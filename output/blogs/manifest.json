@@ -83,18 +83,30 @@
       "angle": "local_speed",
       "date": "2026-10-18",
       "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/goa-boutique-hotels-local-speed.md"
+    },
+    {
+      "slug": "bangalore-boutique-hotels-tech-comparison",
+      "filename": "bangalore-boutique-hotels-tech-comparison.md",
+      "title": "Boutique Hotels & Luxury Villas in Bangalore: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
+      "city_id": "bangalore",
+      "city_name": "Bangalore",
+      "niche_id": "boutique-hotels",
+      "niche_name": "Boutique Hotels & Luxury Villas",
+      "angle": "tech_comparison",
+      "date": "2026-10-18",
+      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-boutique-hotels-tech-comparison.md"
     }
   ],
   "last_generated": {
-    "slug": "goa-boutique-hotels-local-speed",
-    "filename": "goa-boutique-hotels-local-speed.md",
-    "title": "Why Goa Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "goa",
-    "city_name": "Goa",
+    "slug": "bangalore-boutique-hotels-tech-comparison",
+    "filename": "bangalore-boutique-hotels-tech-comparison.md",
+    "title": "Boutique Hotels & Luxury Villas in Bangalore: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
+    "city_id": "bangalore",
+    "city_name": "Bangalore",
     "niche_id": "boutique-hotels",
     "niche_name": "Boutique Hotels & Luxury Villas",
-    "angle": "local_speed",
+    "angle": "tech_comparison",
     "date": "2026-10-18",
-    "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/goa-boutique-hotels-local-speed.md"
+    "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-boutique-hotels-tech-comparison.md"
   }
 }
