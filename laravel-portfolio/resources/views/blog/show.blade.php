@@ -10,7 +10,7 @@
     <nav class="flex items-center space-x-2 text-xs font-mono text-slate-500 mb-8">
         <a href="/" class="hover:text-slate-300 transition">Home</a>
         <span>/</span>
-        <a href="/blog" class="hover:text-slate-300 transition">Case Studies</a>
+        <a href="/case-studies" class="hover:text-slate-300 transition">Case Studies</a>
         <span>/</span>
         <span class="text-emerald-400 truncate">{{ $meta['city'] ?? 'Local' }} {{ $meta['niche'] ?? 'Audit' }}</span>
     </nav>

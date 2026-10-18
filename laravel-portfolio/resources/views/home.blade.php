@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'ExtrovertNerd — High-Speed Laravel Web Applications & Agency Hub')
-@section('meta_description', 'ExtrovertNerd is a boutique web engineering studio led by Lead Architect Ravi. We transform slow, leaking websites into sub-second Laravel 11 conversion powerhouses with a guaranteed 100/100 Core Web Vitals score.')
+@section('title', 'ExtrovertNerd — Full-Stack Web Engineering & Custom Digital Systems')
+@section('meta_description', 'ExtrovertNerd is a boutique web engineering studio led by Lead Web Architect Ravi. We transform slow, leaking websites into sub-second custom conversion machines with a guaranteed 100/100 Core Web Vitals score.')
 
 @section('content')
-<div class="space-y-32">
+<div class="space-y-28 md:space-y-36">
 
     <!-- ============================================================== -->
     <!-- 1. ARTISTIC HERO SECTION                                       -->
@@ -12,39 +12,42 @@
     <section class="max-w-7xl mx-auto px-6 pt-12 md:pt-24 relative">
         <div class="text-center max-w-4xl mx-auto space-y-8">
 
-            <!-- Founder & Lab Pill -->
+            <!-- Founder & Lab Pill with Live Tactile Pulse -->
             <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold tracking-wide shadow-lg shadow-emerald-500/10">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
                 <span>EXTROVERTNERD BOUTIQUE LAB • LEAD ARCHITECT: RAVI</span>
             </div>
 
-            <!-- Big Editorial Headline -->
+            <!-- Big Editorial Headline (Plus Jakarta Sans + Playfair Display Italic) -->
             <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.08]">
                 We Rebuild Slow Websites Into 
-                <span class="font-serif italic font-normal text-emerald-400 shimmer-text block sm:inline">Sub-Second</span> 
-                Conversion Machines.
+                <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-mint-300 to-teal-200 block sm:inline">Sub-Second Conversion Machines</span>.
             </h1>
 
+            <!-- Prompt-Specified Human Tailored Copy -->
             <p class="text-slate-300 text-lg md:text-xl font-normal leading-relaxed max-w-3xl mx-auto">
-                Replace bloated WordPress, WooCommerce, and Shopify storefronts with bespoke, sub-second architectures engineered for your exact business requirements. Whether you need <strong class="text-white">Next.js & React, high-speed Laravel 11, Node.js microservices, Python automation, or Go</strong> — Lead Web Architect Ravi builds with whatever stack matches your vision, guaranteed 100/100 Core Web Vitals.
+                Replace bloated WordPress, WooCommerce, and Shopify storefronts with bespoke, sub-second architectures engineered for your exact business requirements. Whether you need high-speed frontend interfaces, robust backend microservices, or custom automation pipelines — Lead Web Architect Ravi builds with whatever stack matches your vision, guaranteed 100/100 Core Web Vitals.
             </p>
 
-            <!-- Magnetic Action CTAs -->
+            <!-- Multi-Page Action CTAs -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <a 
-                    href="#how-we-fix" 
+                    href="/speed-checker" 
                     class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-sm uppercase tracking-wider px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/25 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2"
                 >
                     <span>⚡</span>
-                    <span>See How We Make It 100/100 Good</span>
+                    <span>Launch Free Speed Teardown</span>
                 </a>
 
                 <a 
-                    href="/speed-checker" 
+                    href="/how-we-work" 
                     class="w-full sm:w-auto bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-sm px-8 py-4 rounded-2xl border border-white/10 hover:border-emerald-500/40 transition flex items-center justify-center space-x-2 shadow-lg"
                 >
                     <span>🔍</span>
-                    <span>Test Your Website Speed (Free)</span>
+                    <span>Explore How We Work</span>
                 </a>
             </div>
 
@@ -73,13 +76,13 @@
         <!-- ============================================================== -->
         <!-- LIVE BEFORE VS AFTER BENCHMARK SHOWCASE                        -->
         <!-- ============================================================== -->
-        <div class="mt-20 bg-gradient-to-b from-slate-900/90 to-slate-950 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        <div class="mt-20 bg-gradient-to-b from-slate-900/80 to-slate-950 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 blur-3xl pointer-events-none"></div>
 
             <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 border-b border-white/10 gap-4">
                 <div>
                     <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-widest">REAL-WORLD BENCHMARK STUDY</span>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">Legacy Stack vs. ExtrovertNerd Laravel</h2>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">Legacy CMS Stack vs. ExtrovertNerd Custom Engine</h2>
                 </div>
                 <div class="text-xs font-mono text-slate-400 bg-slate-950 px-4 py-2 rounded-xl border border-white/10">
                     Standard 4G Mobile Throttling Emulation (Lighthouse v12)
@@ -97,35 +100,35 @@
                     </div>
                     <div class="text-xs text-rose-300 font-mono">24/100 Mobile Score • 6.2MB Payload</div>
                     <p class="text-xs text-slate-400 leading-relaxed pt-1">
-                        Weighted down by 32 WordPress plugins, unminified tracking scripts, and slow database queries. 53% of mobile visitors abandon before seeing the product.
+                        Weighted down by 32 plugins, unminified tracking scripts, and slow database queries. 53% of mobile visitors abandon before seeing the product.
                     </p>
                 </div>
 
                 <!-- Stat 2: ExtrovertNerd Rebuild -->
                 <div class="space-y-3 bg-emerald-950/20 border border-emerald-500/40 p-6 rounded-2xl relative">
                     <span class="text-[10px] font-mono font-black uppercase text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/30">
-                        EXTROVERTNERD REBUILD
+                        EXTROVERTNERD CUSTOM REBUILD
                     </span>
                     <div class="text-4xl sm:text-5xl font-black text-emerald-400 font-mono mt-2">
                         0.32s <span class="text-sm text-emerald-600 font-normal">instant</span>
                     </div>
                     <div class="text-xs text-emerald-300 font-mono">100/100 Mobile Score • 140KB Payload</div>
                     <p class="text-xs text-slate-400 leading-relaxed pt-1">
-                        Compiled Laravel 11 routes with Redis in-memory RAM caching and instant Tailwind rendering. Pages appear faster than blinking.
+                        Tailored architecture with in-memory RAM caching and purged CSS. Pages render instantaneously on mobile 4G.
                     </p>
                 </div>
 
                 <!-- Stat 3: Commercial ROI Lift -->
-                <div class="space-y-3 bg-slate-950 border border-cyan-500/30 p-6 rounded-2xl relative">
-                    <span class="text-[10px] font-mono font-black uppercase text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/20">
+                <div class="space-y-3 bg-slate-950 border border-teal-500/30 p-6 rounded-2xl relative">
+                    <span class="text-[10px] font-mono font-black uppercase text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-full border border-teal-500/20">
                         BOTTOM LINE IMPACT
                     </span>
-                    <div class="text-4xl sm:text-5xl font-black text-cyan-300 font-mono mt-2">
+                    <div class="text-4xl sm:text-5xl font-black text-teal-300 font-mono mt-2">
                         +52% <span class="text-sm text-slate-400 font-normal">sales</span>
                     </div>
-                    <div class="text-xs text-cyan-400 font-mono">+Zero SaaS Plugin Subscriptions</div>
+                    <div class="text-xs text-teal-400 font-mono">+Zero SaaS Plugin Subscriptions</div>
                     <p class="text-xs text-slate-400 leading-relaxed pt-1">
-                        Frictionless 1-tap mobile checkout and instant booking alerts via direct WhatsApp Cloud webhooks save thousands in monthly app fees.
+                        Frictionless 1-tap mobile checkout and instant booking alerts via direct WhatsApp webhooks save thousands in monthly SaaS fees.
                     </p>
                 </div>
             </div>
@@ -133,218 +136,115 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- 2. "HOW WE MAKE YOUR WEBSITE GOOD" - 5-STEP BLUEPRINT          -->
+    <!-- 2. "HOW WE WORK" - 5-STEP BLUEPRINT SUMMARY TEASER             -->
     <!-- ============================================================== -->
-    <section id="how-we-fix" class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto space-y-4 mb-20">
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest">
-                <span>THE ENGINEERING BLUEPRINT</span>
+    <section class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="space-y-3 max-w-2xl">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest">
+                    <span>THE ENGINEERING BLUEPRINT</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-black text-white tracking-tight">
+                    How We Make Your Website <span class="font-serif italic font-normal text-emerald-400">100/100 Good</span>.
+                </h2>
+                <p class="text-slate-300 text-base leading-relaxed">
+                    We don't sell generic themes or band-aid optimization plugins. Here is our 5-phase forensic methodology to take your website to sub-second speed:
+                </p>
             </div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
-                How ExtrovertNerd Makes Your Website <span class="font-serif italic font-normal text-emerald-400">100/100 Good</span>.
-            </h2>
-            <p class="text-slate-400 text-base md:text-lg leading-relaxed">
-                We don't sell generic themes or band-aid optimization plugins. Here is our exact 5-step engineering framework to transform slow, leaking websites into sub-second revenue machines:
-            </p>
+            <a 
+                href="/how-we-work" 
+                class="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/30 font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition duration-200 shrink-0"
+            >
+                <span>Read Full 5-Step Breakdown</span>
+                <span>➔</span>
+            </a>
         </div>
 
-        <!-- 5 Steps Progression Grid -->
-        <div class="space-y-8">
-
-            <!-- STEP 1 -->
-            <div class="bg-gradient-to-r from-slate-900/90 to-slate-950 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-8 md:p-12 transition duration-300 shadow-xl group">
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                    <div class="space-y-4 max-w-2xl">
-                        <div class="flex items-center space-x-3">
-                            <span class="w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 font-black font-mono text-base flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                                01
-                            </span>
-                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-400">PHASE 1: FORENSIC SPEED AUDIT</span>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-black text-white">
-                            We Extract Every Exact Latency Bottleneck & Quantify Lost Revenue
-                        </h3>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Before touching a line of code, we run deep-packet 4G latency captures on your real mobile visitors. We identify uncompressed 4MB hero graphics, render-blocking third-party trackers, and slow database queries causing bounce rates over 60%.
-                        </p>
-                        <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 pt-2">
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ TTFB Analysis</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ LCP & CLS Extraction</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Third-Party Bloat Audit</span>
-                        </div>
-                    </div>
-
-                    <!-- Step Deliverable Card -->
-                    <div class="bg-slate-950/80 border border-emerald-500/30 rounded-2xl p-6 lg:w-80 shrink-0 space-y-3 text-xs font-mono">
-                        <div class="text-emerald-400 font-bold uppercase">Deliverable to Client:</div>
-                        <div class="text-white font-bold text-sm">3-Minute Video Breakdown</div>
-                        <p class="text-slate-400 leading-relaxed">
-                            Lead Architect Ravi personally records a private 3-minute screen teardown demonstrating where your visitors drop off and how to fix it.
-                        </p>
-                        <a href="https://wa.me/15551234567?text={{ urlencode('Hey Ravi! Send me the free 3-minute video breakdown for my website.') }}" target="_blank" class="inline-block text-emerald-400 hover:underline pt-2 font-bold">
-                            Request Your Video Teardown ➔
-                        </a>
-                    </div>
+        <!-- 5 Steps Preview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-slate-900/50 border border-white/10 hover:border-emerald-500/30 rounded-2xl p-7 space-y-3 transition">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-emerald-400">PHASE 01</span>
+                    <span class="text-[10px] font-mono text-slate-500 uppercase">Audit</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">Forensic Speed Audit</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Chrome DevTools trace isolating 4MB hero graphics, database locks, and render-blocking JavaScript scripts.
+                </p>
+                <div class="text-[11px] font-mono text-slate-300 pt-2 border-t border-white/5">
+                    Deliverable: 3-Min Personalized Video Teardown
                 </div>
             </div>
 
-            <!-- STEP 2 -->
-            <div class="bg-gradient-to-r from-slate-900/90 to-slate-950 border border-white/10 hover:border-indigo-500/40 rounded-3xl p-8 md:p-12 transition duration-300 shadow-xl group">
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                    <div class="space-y-4 max-w-2xl">
-                        <div class="flex items-center space-x-3">
-                            <span class="w-9 h-9 rounded-xl bg-indigo-500 text-white font-black font-mono text-base flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                                02
-                            </span>
-                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-indigo-400">PHASE 2: DECOUPLE & REBUILD ON YOUR OPTIMAL STACK</span>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-black text-white">
-                            We Strip Bloated CMS Stacks & Re-engineer in Laravel, Next.js, Node, or Python
-                        </h3>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            WordPress and Shopify stores carry an average of 25–40 plugins just to display a booking form or product grid. We discard this fragile layer and re-architect your core business logic into clean, compiled code using the exact right framework for your requirements: whether a high-speed <strong>Laravel monolith, a dynamic Next.js/React frontend, a real-time Node.js backend, or a Python data pipeline</strong>.
-                        </p>
-                        <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 pt-2">
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ 96% Payload Reduction</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Any Stack as per Goal</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Zero Vulnerable Plugins</span>
-                        </div>
-                    </div>
-
-                    <!-- Step Deliverable Card -->
-                    <div class="bg-slate-950/80 border border-indigo-500/30 rounded-2xl p-6 lg:w-80 shrink-0 space-y-3 text-xs font-mono">
-                        <div class="text-indigo-400 font-bold uppercase">Before vs. After Payload:</div>
-                        <div class="text-rose-400">Before: 5.8MB (34 Scripts)</div>
-                        <div class="text-emerald-400 font-bold text-sm">After: 140KB (0 Bloat)</div>
-                        <p class="text-slate-400 leading-relaxed pt-1">
-                            Your server uses 90% less CPU and handles 10x higher concurrent user traffic with zero crashes.
-                        </p>
-                    </div>
+            <div class="bg-slate-900/50 border border-white/10 hover:border-teal-500/30 rounded-2xl p-7 space-y-3 transition">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-teal-400">PHASE 02</span>
+                    <span class="text-[10px] font-mono text-slate-500 uppercase">Architecture</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">Decouple & Tailored Rebuild</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Eradicating 96% of payload. Built in your optimal stack (Next.js, Laravel, Node, Python) with zero plugin bloat.
+                </p>
+                <div class="text-[11px] font-mono text-slate-300 pt-2 border-t border-white/5">
+                    Deliverable: 140KB Clean Production Core
                 </div>
             </div>
 
-            <!-- STEP 3 -->
-            <div class="bg-gradient-to-r from-slate-900/90 to-slate-950 border border-white/10 hover:border-teal-500/40 rounded-3xl p-8 md:p-12 transition duration-300 shadow-xl group">
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                    <div class="space-y-4 max-w-2xl">
-                        <div class="flex items-center space-x-3">
-                            <span class="w-9 h-9 rounded-xl bg-teal-400 text-slate-950 font-black font-mono text-base flex items-center justify-center shadow-lg shadow-teal-400/20">
-                                03
-                            </span>
-                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-teal-400">PHASE 3: IN-MEMORY RAM CACHING & WEBP PIPELINE</span>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-black text-white">
-                            We Serve Pages Directly from Server RAM in Under 120ms
-                        </h3>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            We implement enterprise Redis in-memory page caching and automated AVIF/WebP image compression. Visitors receive fully rendered HTML pages before their browser even sends the second packet.
-                        </p>
-                        <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 pt-2">
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Redis RAM Response</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ AVIF/WebP Automated Pipeline</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Edge Cloudflare Routing</span>
-                        </div>
-                    </div>
-
-                    <!-- Step Deliverable Card -->
-                    <div class="bg-slate-950/80 border border-teal-500/30 rounded-2xl p-6 lg:w-80 shrink-0 space-y-3 text-xs font-mono">
-                        <div class="text-teal-400 font-bold uppercase">Response Benchmark:</div>
-                        <div class="text-3xl font-black text-emerald-400 font-mono">118ms TTFB</div>
-                        <p class="text-slate-400 leading-relaxed">
-                            Google rewards ultra-low Time-to-First-Byte with higher organic local rankings across search engines.
-                        </p>
-                    </div>
+            <div class="bg-slate-900/50 border border-white/10 hover:border-emerald-500/30 rounded-2xl p-7 space-y-3 transition">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-emerald-400">PHASE 03</span>
+                    <span class="text-[10px] font-mono text-slate-500 uppercase">Performance</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">In-Memory RAM Caching</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Redis in-memory caching serving pages in 28ms, plus automated AVIF/WebP image pipeline with zero layout shift.
+                </p>
+                <div class="text-[11px] font-mono text-slate-300 pt-2 border-t border-white/5">
+                    Deliverable: Sub-120ms Server TTFB
                 </div>
             </div>
 
-            <!-- STEP 4 -->
-            <div class="bg-gradient-to-r from-slate-900/90 to-slate-950 border border-white/10 hover:border-amber-500/40 rounded-3xl p-8 md:p-12 transition duration-300 shadow-xl group">
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                    <div class="space-y-4 max-w-2xl">
-                        <div class="flex items-center space-x-3">
-                            <span class="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 font-black font-mono text-base flex items-center justify-center shadow-lg shadow-amber-400/20">
-                                04
-                            </span>
-                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-amber-400">PHASE 4: FRICTIONLESS 1-TAP CONVERSION UX</span>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-black text-white">
-                            We Turn Mobile Browsers into Immediate Inbound Inquiries
-                        </h3>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Speed alone isn't enough without conversion science. We eliminate layout shifts (0.00 CLS), re-engineer navigation for single-thumb mobile browsing, and embed high-converting deep links directly into WhatsApp click-to-chat prompts.
-                        </p>
-                        <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 pt-2">
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ 1-Tap WhatsApp Lead Capture</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ 0.00 Cumulative Layout Shift</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-950 border border-white/10">✓ Frictionless Checkout Flow</span>
-                        </div>
-                    </div>
-
-                    <!-- Step Deliverable Card -->
-                    <div class="bg-slate-950/80 border border-amber-500/30 rounded-2xl p-6 lg:w-80 shrink-0 space-y-3 text-xs font-mono">
-                        <div class="text-amber-400 font-bold uppercase">Conversion Metric Lift:</div>
-                        <div class="text-3xl font-black text-amber-300 font-mono">+52% Inquiries</div>
-                        <p class="text-slate-400 leading-relaxed">
-                            Fewer steps between interest and inquiry means direct revenue expansion without increasing ad spend.
-                        </p>
-                    </div>
+            <div class="bg-slate-900/50 border border-white/10 hover:border-teal-500/30 rounded-2xl p-7 space-y-3 transition">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-teal-400">PHASE 04</span>
+                    <span class="text-[10px] font-mono text-slate-500 uppercase">Conversion</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">Frictionless 1-Tap UX</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Direct WhatsApp booking funnels, frictionless checkout, and instant webhook dispatches without third-party SaaS fees.
+                </p>
+                <div class="text-[11px] font-mono text-slate-300 pt-2 border-t border-white/5">
+                    Deliverable: +52% Mobile Inquiry Surge
                 </div>
             </div>
 
-            <!-- STEP 5 -->
-            <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/30 border-2 border-emerald-500/50 rounded-3xl p-8 md:p-12 transition duration-300 shadow-2xl relative overflow-hidden">
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                    <div class="space-y-4 max-w-2xl">
-                        <div class="flex items-center space-x-3">
-                            <span class="w-9 h-9 rounded-xl bg-emerald-400 text-slate-950 font-black font-mono text-base flex items-center justify-center shadow-lg shadow-emerald-400/30">
-                                05
-                            </span>
-                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-300">PHASE 5: THE IRONCLAD 100/100 GUARANTEE</span>
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white">
-                            100/100 Core Web Vitals Pass or You Don't Pay. Period.
-                        </h2>
-                        <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
-                            We back every custom Laravel rebuild with an ironclad contractual performance guarantee. If your rebuilt website does not score in the green tier (95–100/100) on Google PageSpeed Insights under real-world mobile throttling, we refund 100% of your investment.
-                        </p>
-                        <div class="flex items-center space-x-3 text-xs font-mono text-emerald-400 pt-2 font-bold">
-                            <span>🛡️ Zero Financial Risk</span>
-                            <span>•</span>
-                            <span>📋 Signed Performance SLA</span>
-                            <span>•</span>
-                            <span>🤝 Lead Architect Accountability</span>
-                        </div>
-                    </div>
-
-                    <!-- Step Deliverable Card -->
-                    <div class="bg-slate-950 border border-emerald-500/50 rounded-2xl p-6 lg:w-80 shrink-0 space-y-4 text-center">
-                        <div class="text-5xl font-black text-emerald-400 font-mono">100<span class="text-lg text-slate-500">/100</span></div>
-                        <div class="text-xs font-mono text-white font-bold uppercase">Google PageSpeed Verified</div>
-                        <a 
-                            href="https://wa.me/15551234567?text={{ urlencode('Hey Ravi! I saw your 100/100 guarantee. I want to discuss rebuilding my website.') }}" 
-                            target="_blank"
-                            class="block w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider py-3.5 rounded-xl shadow-lg transition"
-                        >
-                            Claim Your Guarantee ➔
-                        </a>
-                    </div>
+            <div class="bg-gradient-to-br from-emerald-950/40 to-slate-900/80 border border-emerald-500/40 rounded-2xl p-7 space-y-3 transition md:col-span-2">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-emerald-300">PHASE 05</span>
+                    <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">100% Guaranteed</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">The Contractual 100/100 Guarantee</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    If your rebuilt production website does not score in the green tier on Google Mobile Core Web Vitals, you receive a full 100% refund. No fine print.
+                </p>
+                <div class="text-[11px] font-mono text-emerald-300 pt-2 border-t border-emerald-500/20 font-bold">
+                    Zero Risk • Signed Performance SLA
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- ============================================================== -->
-    <!-- TECH-AGNOSTIC ARSENAL: ANY TOOL • ANY STACK                     -->
+    <!-- 3. TECH-AGNOSTIC ARSENAL: ANY TOOL • ANY STACK                 -->
     <!-- ============================================================== -->
-    <section id="tech-stack" class="max-w-7xl mx-auto px-6">
+    <section class="max-w-7xl mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-mono font-bold uppercase tracking-widest shadow-lg shadow-indigo-500/10">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-mono font-bold uppercase tracking-widest">
                 <span>TECH-AGNOSTIC CRAFTSMANSHIP</span>
             </div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
+            <h2 class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight">
                 Any Tech Stack. Any Tool. <br>
-                <span class="font-serif italic font-normal text-indigo-400">Engineered for Your Exact Requirements</span>.
+                <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Engineered for Your Exact Requirements</span>.
             </h2>
             <p class="text-slate-300 text-base md:text-lg leading-relaxed">
                 We don't force dogmatic templates or lock you into one framework. Lead Web Architect Ravi builds with whatever tool matches your product roadmap, scale, and performance needs.
@@ -355,7 +255,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
             <!-- Pillar 1: Modern Frontend -->
-            <div class="bg-slate-900/70 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
+            <div class="bg-slate-900/60 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
                 <div class="space-y-4">
                     <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl font-bold group-hover:scale-110 transition">
                         ⚛️
@@ -365,7 +265,7 @@
                         <h3 class="text-xl font-black text-white mt-1">Next.js, React & Modern UI</h3>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
-                        Server Components, App Router, zero-runtime CSS, dynamic SEO metadata, and fluid app-like micro-interactions.
+                        Server Components, App Router, zero-runtime CSS, dynamic SEO metadata, and fluid micro-interactions.
                     </p>
                 </div>
                 <div class="pt-4 border-t border-white/10 space-y-2">
@@ -374,7 +274,6 @@
                         <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">React 19</span>
                         <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Vue 3</span>
                         <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">SvelteKit</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Astro</span>
                         <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Tailwind</span>
                         <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">TypeScript</span>
                     </div>
@@ -382,13 +281,13 @@
             </div>
 
             <!-- Pillar 2: High-Throughput Backend -->
-            <div class="bg-slate-900/70 border border-white/10 hover:border-indigo-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
+            <div class="bg-slate-900/60 border border-white/10 hover:border-teal-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
                 <div class="space-y-4">
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl font-bold group-hover:scale-110 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-2xl font-bold group-hover:scale-110 transition">
                         ⚡
                     </div>
                     <div>
-                        <span class="text-[10px] font-mono text-indigo-400 font-bold uppercase tracking-widest">Backends & APIs</span>
+                        <span class="text-[10px] font-mono text-teal-400 font-bold uppercase tracking-widest">Backends & APIs</span>
                         <h3 class="text-xl font-black text-white mt-1">Laravel, Node.js, Python & Go</h3>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
@@ -408,13 +307,13 @@
             </div>
 
             <!-- Pillar 3: Database & Caching -->
-            <div class="bg-slate-900/70 border border-white/10 hover:border-teal-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
+            <div class="bg-slate-900/60 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
                 <div class="space-y-4">
-                    <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-2xl font-bold group-hover:scale-110 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl font-bold group-hover:scale-110 transition">
                         🗄️
                     </div>
                     <div>
-                        <span class="text-[10px] font-mono text-teal-400 font-bold uppercase tracking-widest">Data, In-Memory & Realtime</span>
+                        <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-widest">Data & In-Memory</span>
                         <h3 class="text-xl font-black text-white mt-1">Postgres, Redis & Supabase</h3>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
@@ -434,13 +333,13 @@
             </div>
 
             <!-- Pillar 4: Mobile, Cloud & Infra -->
-            <div class="bg-slate-900/70 border border-white/10 hover:border-cyan-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
+            <div class="bg-slate-900/60 border border-white/10 hover:border-teal-500/40 rounded-3xl p-6 space-y-5 transition duration-300 shadow-xl group flex flex-col justify-between">
                 <div class="space-y-4">
-                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl font-bold group-hover:scale-110 transition">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-2xl font-bold group-hover:scale-110 transition">
                         ☁️
                     </div>
                     <div>
-                        <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest">Mobile, Cloud & DevOps</span>
+                        <span class="text-[10px] font-mono text-teal-400 font-bold uppercase tracking-widest">Mobile, Cloud & DevOps</span>
                         <h3 class="text-xl font-black text-white mt-1">Flutter, Cloudflare & AWS</h3>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed">
@@ -454,7 +353,6 @@
                         <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Cloudflare</span>
                         <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">AWS</span>
                         <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">Docker</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/10">PWA</span>
                     </div>
                 </div>
             </div>
@@ -462,9 +360,9 @@
         </div>
 
         <!-- Callout Banner: "Tell Us What Stack You Want" -->
-        <div class="mt-10 bg-gradient-to-r from-indigo-950/40 via-slate-900 to-emerald-950/40 border border-indigo-500/30 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div class="mt-10 bg-gradient-to-r from-emerald-950/30 via-slate-900 to-teal-950/30 border border-emerald-500/30 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
             <div class="space-y-2 text-center md:text-left">
-                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-widest">HAVE A SPECIFIC STACK REQUIREMENT?</span>
+                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">HAVE A SPECIFIC STACK REQUIREMENT?</span>
                 <h4 class="text-2xl font-bold text-white">We Engineer Your Project on Your Terms.</h4>
                 <p class="text-slate-300 text-sm max-w-2xl leading-relaxed">
                     Have an existing React/Node codebase? Need a Python machine learning integration? Or want a monolithic Laravel application? We assess your product goals and build with the ideal technologies.
@@ -474,7 +372,7 @@
                 href="https://wa.me/15551234567?text={{ urlencode('Hey Ravi! I have a project requirement and want to discuss what tech stack is best.') }}" 
                 target="_blank" 
                 rel="noopener"
-                class="shrink-0 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs uppercase tracking-wider px-6 py-4 rounded-xl shadow-lg shadow-indigo-600/25 transition duration-300"
+                class="shrink-0 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider px-6 py-4 rounded-xl shadow-lg shadow-emerald-500/25 transition duration-300"
             >
                 Discuss Your Stack with Ravi ➔
             </a>
@@ -482,166 +380,33 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- 3. INTERACTIVE REVENUE RECOVERY CALCULATOR (ALPINE.JS)         -->
+    <!-- 4. REVENUE RECOVERY CALCULATOR TEASER                           -->
     <!-- ============================================================== -->
-    <section id="calculator" class="max-w-5xl mx-auto px-6" x-data="{
-        visitors: 8000,
-        ticket: 120,
-        get currentLoss() {
-            // Formula: ~7% drop per second above 2s latency. Avg 5.5s mobile = ~24% loss of potential purchasers (assuming 2.5% baseline)
-            let baseBuyers = (this.visitors * 0.025);
-            let lostBuyers = baseBuyers * 0.28;
-            return Math.round(lostBuyers * this.ticket);
-        },
-        get annualRecovered() {
-            return this.currentLoss * 12;
-        }
-    }">
-        <div class="bg-gradient-to-br from-slate-900 via-slate-900/90 to-emerald-950/40 border border-emerald-500/30 rounded-3xl p-8 sm:p-14 shadow-2xl space-y-10">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">INTERACTIVE ROI CALCULATOR</span>
-                <h3 class="text-3xl sm:text-4xl font-black text-white">How Much Revenue Are You Leaking to Slow Speed?</h3>
-                <p class="text-slate-400 text-sm">
-                    Drag the sliders below to estimate how much revenue your current mobile latency loses every single month:
+    <section class="max-w-5xl mx-auto px-6">
+        <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-8 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-3 max-w-xl">
+                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">INTERACTIVE CALCULATOR</span>
+                <h3 class="text-3xl font-black text-white">How Much Revenue Are You Leaking to Latency?</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Every 100 milliseconds of mobile lag cuts conversion rates by 7%. Run our proprietary latency model to see your exact dollar leakage and projected recovery.
                 </p>
-            </div>
-
-            <!-- Sliders Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Slider 1: Monthly Visitors -->
-                <div class="bg-slate-950/70 border border-white/10 rounded-2xl p-6 space-y-4">
-                    <div class="flex items-center justify-between text-sm">
-                        <span class="font-bold text-white">Monthly Website Visitors</span>
-                        <span class="font-mono text-emerald-400 font-bold text-base" x-text="Number(visitors).toLocaleString() + ' visits'"></span>
-                    </div>
-                    <input 
-                        type="range" 
-                        min="1000" 
-                        max="50000" 
-                        step="500" 
-                        x-model="visitors"
-                        class="w-full accent-emerald-500 cursor-pointer"
-                    >
-                    <div class="flex justify-between text-[11px] font-mono text-slate-500">
-                        <span>1,000 / mo</span>
-                        <span>25,000 / mo</span>
-                        <span>50,000 / mo</span>
-                    </div>
-                </div>
-
-                <!-- Slider 2: Average Order Value / Lead Value -->
-                <div class="bg-slate-950/70 border border-white/10 rounded-2xl p-6 space-y-4">
-                    <div class="flex items-center justify-between text-sm">
-                        <span class="font-bold text-white">Avg. Order Value / Client Ticket</span>
-                        <span class="font-mono text-emerald-400 font-bold text-base" x-text="'$' + ticket"></span>
-                    </div>
-                    <input 
-                        type="range" 
-                        min="20" 
-                        max="1000" 
-                        step="20" 
-                        x-model="ticket"
-                        class="w-full accent-emerald-500 cursor-pointer"
-                    >
-                    <div class="flex justify-between text-[11px] font-mono text-slate-500">
-                        <span>$20</span>
-                        <span>$500</span>
-                        <span>$1,000+</span>
-                    </div>
+                <div class="pt-2 flex items-center space-x-6 text-xs font-mono text-slate-300 justify-center md:justify-start">
+                    <span>⚡ Real-Time Model</span>
+                    <span>•</span>
+                    <span>📈 +52% Projected Lift</span>
                 </div>
             </div>
-
-            <!-- Dynamic Output Results Bar -->
-            <div class="bg-black/60 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-                <div class="space-y-1">
-                    <div class="text-xs font-mono text-slate-500 uppercase">Estimated Monthly Leak (5.5s Delay)</div>
-                    <div class="text-3xl sm:text-4xl font-black text-rose-500 font-mono" x-text="'$' + Number(currentLoss).toLocaleString() + ' / month'"></div>
-                </div>
-
-                <div class="space-y-1 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-8">
-                    <div class="text-xs font-mono text-emerald-400 uppercase font-bold">Annual Revenue Recovered with Laravel 11</div>
-                    <div class="text-3xl sm:text-4xl font-black text-emerald-400 font-mono" x-text="'+$' + Number(annualRecovered).toLocaleString() + ' / year'"></div>
-                </div>
-
-                <a 
-                    :href="'https://wa.me/15551234567?text=' + encodeURIComponent('Hey Ravi! My website gets ~' + Number(visitors).toLocaleString() + ' visits with $' + ticket + ' ticket. I want to recover the estimated $' + Number(currentLoss).toLocaleString() + '/mo leak with a Laravel rebuild.')"
-                    target="_blank" 
-                    rel="noopener"
-                    class="w-full md:w-auto shrink-0 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider px-6 py-4 rounded-xl shadow-xl shadow-emerald-500/20 hover:scale-105 transition duration-300 text-center"
-                >
-                    Recover This Revenue on WhatsApp ➔
-                </a>
-            </div>
+            <a 
+                href="/roi-calculator" 
+                class="shrink-0 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider px-8 py-4 rounded-xl shadow-xl shadow-emerald-500/20 hover:scale-105 transition"
+            >
+                Open Full-Screen Calculator ➔
+            </a>
         </div>
     </section>
 
     <!-- ============================================================== -->
-    <!-- 4. CORE SERVICES MATRIX                                        -->
-    <!-- ============================================================== -->
-    <section id="services" class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <span class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-400">WHAT WE BUILD</span>
-            <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight">
-                Boutique Web Engineering Services
-            </h2>
-            <p class="text-slate-400 text-base">
-                Engineered from clean source code with zero vulnerable third-party plugins.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Service 1 -->
-            <div class="bg-slate-900/60 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-8 space-y-5 transition duration-300 shadow-xl group">
-                <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-2xl group-hover:scale-110 transition">
-                    🛍️
-                </div>
-                <h3 class="text-2xl font-extrabold text-white">High-Speed Headless E-Commerce</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Custom Laravel storefronts delivering sub-350ms checkout flows. Zero 2% platform transaction penalties, unlimited product variations, and bespoke measurement pipelines.
-                </p>
-                <ul class="space-y-2 text-xs text-slate-300 font-mono pt-2">
-                    <li class="flex items-center space-x-2 text-emerald-400"><span>✓</span> <span>0% Platform Sales Tax</span></li>
-                    <li class="flex items-center space-x-2 text-emerald-400"><span>✓</span> <span>1-Tap Instant Checkout Flow</span></li>
-                    <li class="flex items-center space-x-2 text-emerald-400"><span>✓</span> <span>Sub-second product filtering</span></li>
-                </ul>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="bg-slate-900/60 border border-white/10 hover:border-cyan-500/40 rounded-3xl p-8 space-y-5 transition duration-300 shadow-xl group">
-                <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-2xl group-hover:scale-110 transition">
-                    📱
-                </div>
-                <h3 class="text-2xl font-extrabold text-white">Automated Management Portals</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Internal business dashboards that automate table reservations, villa bookings, and client inquiries via direct WhatsApp Cloud API webhooks with zero monthly SaaS subscriptions.
-                </p>
-                <ul class="space-y-2 text-xs text-slate-300 font-mono pt-2">
-                    <li class="flex items-center space-x-2 text-cyan-400"><span>✓</span> <span>Automated WhatsApp Alerts</span></li>
-                    <li class="flex items-center space-x-2 text-cyan-400"><span>✓</span> <span>Multi-calendar iCal sync</span></li>
-                    <li class="flex items-center space-x-2 text-cyan-400"><span>✓</span> <span>Direct Client CRM Portal</span></li>
-                </ul>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="bg-slate-900/60 border border-white/10 hover:border-indigo-500/40 rounded-3xl p-8 space-y-5 transition duration-300 shadow-xl group">
-                <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-2xl group-hover:scale-110 transition">
-                    ⚡
-                </div>
-                <h3 class="text-2xl font-extrabold text-white">Legacy Re-Architecture & Speed</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Migrate bloated WordPress, WooCommerce, and Shopify stores to lightweight Laravel 11 with Tailwind CSS. Slash page weights from 6MB to under 180KB and secure a 100/100 PageSpeed score.
-                </p>
-                <ul class="space-y-2 text-xs text-slate-300 font-mono pt-2">
-                    <li class="flex items-center space-x-2 text-indigo-400"><span>✓</span> <span>100/100 Google PageSpeed Guarantee</span></li>
-                    <li class="flex items-center space-x-2 text-indigo-400"><span>✓</span> <span>Zero Layout Shift (0.00 CLS)</span></li>
-                    <li class="flex items-center space-x-2 text-indigo-400"><span>✓</span> <span>Sub-350ms TTFB on Mobile 4G</span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================== -->
-    <!-- 5. RECENT FIELD CASE STUDIES                                   -->
+    <!-- 5. RECENT FIELD CASE STUDIES PREVIEW                           -->
     <!-- ============================================================== -->
     <section class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
@@ -649,8 +414,8 @@
                 <span class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-400">REAL DATA & BENCHMARKS</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-white">Recent Engineering Case Studies</h2>
             </div>
-            <a href="/blog" class="text-emerald-400 hover:text-emerald-300 font-bold text-sm flex items-center space-x-1">
-                <span>View All Teardowns</span>
+            <a href="/case-studies" class="text-emerald-400 hover:text-emerald-300 font-bold text-sm flex items-center space-x-1">
+                <span>View All Case Studies</span>
                 <span>➔</span>
             </a>
         </div>
@@ -658,7 +423,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @if(!empty($recentArticles))
             @foreach($recentArticles as $article)
-            <article class="bg-slate-900/80 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-6 flex flex-col justify-between group transition duration-300 shadow-xl hover:-translate-y-1">
+            <article class="bg-slate-900/60 border border-white/10 hover:border-emerald-500/40 rounded-3xl p-6 flex flex-col justify-between group transition duration-300 shadow-xl hover:-translate-y-1">
                 <div class="space-y-3">
                     <div class="flex items-center justify-between text-xs font-mono">
                         <span class="bg-emerald-500/10 text-emerald-400 px-2.5 py-0.5 rounded font-bold border border-emerald-500/20">
@@ -667,7 +432,7 @@
                         <span class="text-slate-500">{{ $article['read_time'] ?? '7 min' }}</span>
                     </div>
                     <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition">
-                        <a href="/blog/{{ $article['slug'] }}">{{ $article['title'] }}</a>
+                        <a href="/case-studies/{{ $article['slug'] }}">{{ $article['title'] }}</a>
                     </h3>
                     <p class="text-xs text-slate-400 line-clamp-3 leading-relaxed">
                         {{ $article['description'] }}
@@ -675,7 +440,7 @@
                 </div>
                 <div class="pt-4 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono">
                     <span class="text-slate-500">{{ $article['date'] ?? date('Y-m-d') }}</span>
-                    <a href="/blog/{{ $article['slug'] }}" class="text-emerald-400 font-bold hover:translate-x-1 transition flex items-center space-x-1">
+                    <a href="/case-studies/{{ $article['slug'] }}" class="text-emerald-400 font-bold hover:translate-x-1 transition flex items-center space-x-1">
                         <span>Read Case Study</span>
                         <span>➔</span>
                     </a>
@@ -691,20 +456,24 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- 6. LEAD ARCHITECT DOSSIER & FINAL DIRECT CTA                    -->
+    <!-- 6. LEAD ARCHITECT DOSSIER & FINAL DIRECT CTA                   -->
     <!-- ============================================================== -->
-    <section id="architect" class="max-w-5xl mx-auto px-6">
-        <div class="bg-gradient-to-br from-slate-900 via-slate-900/90 to-emerald-950/40 border border-emerald-500/40 rounded-3xl p-8 sm:p-14 shadow-2xl relative overflow-hidden">
+    <section class="max-w-5xl mx-auto px-6">
+        <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/30 border border-emerald-500/40 rounded-3xl p-8 sm:p-14 shadow-2xl relative overflow-hidden">
             <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="w-32 h-32 rounded-3xl bg-gradient-to-tr from-emerald-500 via-cyan-400 to-indigo-500 p-1 shadow-2xl shrink-0">
-                    <div class="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center text-emerald-400 font-black text-4xl font-mono">
+                <div class="w-32 h-32 rounded-3xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-indigo-500 p-1 shadow-2xl shrink-0">
+                    <div class="w-full h-full bg-[#020617] rounded-[22px] flex items-center justify-center text-emerald-400 font-black text-4xl font-mono">
                         R
                     </div>
                 </div>
 
                 <div class="space-y-4 text-center md:text-left">
                     <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold">
-                        <span>FOUNDER & LEAD WEB ARCHITECT</span>
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>FOUNDER & LEAD WEB ARCHITECT • ONLINE & CODING</span>
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-black text-white">Crafted Personally by Ravi</h2>
                     <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
@@ -715,14 +484,14 @@
                             href="{{ $whatsappUrl }}" 
                             target="_blank" 
                             rel="noopener" 
-                            class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase px-7 py-4 rounded-xl shadow-xl shadow-emerald-500/25 transition flex items-center space-x-2"
+                            class="bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs uppercase px-7 py-4 rounded-xl shadow-xl shadow-emerald-500/25 transition flex items-center space-x-2 hover:scale-105"
                         >
                             <span>💬</span>
                             <span>Chat Personally with Ravi on WhatsApp</span>
                         </a>
                         <a 
                             href="/speed-checker" 
-                            class="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs px-6 py-4 rounded-xl border border-white/10 transition"
+                            class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-6 py-4 rounded-xl border border-white/10 transition"
                         >
                             Run Free Speed Audit ➔
                         </a>

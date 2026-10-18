@@ -15,19 +15,27 @@ use App\Http\Controllers\AdminSystemController;
  */
 
 // ==============================================================
-// 1. PUBLIC AGENCY HUB ROUTES
+// 1. PUBLIC AGENCY HUB ROUTES (MULTI-PAGE)
 // ==============================================================
 
 // Landing Page
 $routes->get('/', [HomeController::class, 'index']);
 
+// How We Work: The 5-Step Engineering Blueprint & Philosophy
+$routes->get('/how-we-work', [HomeController::class, 'howWeWork']);
+
 // Interactive Speed Checker Micro-Tool
 $routes->get('/speed-checker', [SpeedCheckerController::class, 'index']);
 $routes->post('/speed-checker', [SpeedCheckerController::class, 'audit']);
 
-// Programmatic SEO Case Studies & Blog
+// Case Studies & Technical Performance Logs
+$routes->get('/case-studies', [BlogController::class, 'index']);
+$routes->get('/case-studies/{slug}', [BlogController::class, 'show']);
 $routes->get('/blog', [BlogController::class, 'index']);
 $routes->get('/blog/{slug}', [BlogController::class, 'show']);
+
+// Lost Revenue & ROI Calculator
+$routes->get('/roi-calculator', [HomeController::class, 'roiCalculator']);
 
 // Direct WhatsApp Inbound Redirect
 $routes->get('/audit', function () {

@@ -111,3 +111,21 @@ if (!function_exists('project_root')) {
     }
 }
 
+if (!function_exists('current_path')) {
+    function current_path(): string {
+        $uri = $_SERVER['REQUEST_URI'] ?? '/';
+        $path = parse_url($uri, PHP_URL_PATH) ?: '/';
+        return ($path !== '/' && str_ends_with($path, '/')) ? rtrim($path, '/') : $path;
+    }
+}
+
+if (!function_exists('is_active_path')) {
+    function is_active_path(string $path): bool {
+        $current = current_path();
+        if ($path === '/') {
+            return $current === '/';
+        }
+        return str_starts_with($current, $path);
+    }
+}
+

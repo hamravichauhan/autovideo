@@ -15,8 +15,8 @@
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
             How Much Revenue Is Your Slow Website <span class="font-serif italic font-normal text-rose-400 underline decoration-rose-500/30">Losing Daily</span>?
         </h1>
-        <p class="text-slate-400 text-base md:text-lg leading-relaxed">
-            Enter your website URL below to simulate your real-world mobile 4G/5G latency and compare it directly against ExtrovertNerd’s verified sub-second Laravel architecture.
+        <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+            Enter your website URL below to simulate your real-world mobile 4G/5G latency and compare it directly against ExtrovertNerd’s verified sub-second custom architecture.
         </p>
     </div>
 
