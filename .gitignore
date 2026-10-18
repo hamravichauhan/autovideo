@@ -20,7 +20,10 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Output artifacts (can be committed or kept local; user can choose)
-# Keep blog output tracked, but ignore temp screenshots or intermediate html
+# Output media
+output/graphics/
+output/videos/
+
 templates/__pycache__/
 src/__pycache__/
+
