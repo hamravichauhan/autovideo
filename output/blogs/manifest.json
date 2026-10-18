@@ -25,18 +25,6 @@
       "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/mumbai-fashion-boutiques-tech-comparison.md"
     },
     {
-      "slug": "bangalore-dental-clinics-local-speed",
-      "filename": "bangalore-dental-clinics-local-speed.md",
-      "title": "Why Bangalore Premium Dental, Cosmetic & Wellness Clinics Businesses Lose Customers to Slow Mobile Websites",
-      "city_id": "bangalore",
-      "city_name": "Bangalore",
-      "niche_id": "dental-clinics",
-      "niche_name": "Premium Dental, Cosmetic & Wellness Clinics",
-      "angle": "local_speed",
-      "date": "2026-10-18",
-      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-dental-clinics-local-speed.md"
-    },
-    {
       "slug": "dubai-boutique-hotels-local-speed",
       "filename": "dubai-boutique-hotels-local-speed.md",
       "title": "Why Dubai Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
@@ -59,18 +47,42 @@
       "angle": "local_speed",
       "date": "2026-10-18",
       "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/goa-dental-clinics-local-speed.md"
+    },
+    {
+      "slug": "mumbai-fashion-boutiques-local-speed",
+      "filename": "mumbai-fashion-boutiques-local-speed.md",
+      "title": "Why Mumbai Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "mumbai",
+      "city_name": "Mumbai",
+      "niche_id": "fashion-boutiques",
+      "niche_name": "Boutique Fashion & Designer Labels",
+      "angle": "local_speed",
+      "date": "2026-10-18",
+      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/mumbai-fashion-boutiques-local-speed.md"
+    },
+    {
+      "slug": "bangalore-dental-clinics-local-speed",
+      "filename": "bangalore-dental-clinics-local-speed.md",
+      "title": "Why Bangalore Premium Dental, Cosmetic & Wellness Clinics Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "bangalore",
+      "city_name": "Bangalore",
+      "niche_id": "dental-clinics",
+      "niche_name": "Premium Dental, Cosmetic & Wellness Clinics",
+      "angle": "local_speed",
+      "date": "2026-10-18",
+      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-dental-clinics-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "goa-dental-clinics-local-speed",
-    "filename": "goa-dental-clinics-local-speed.md",
-    "title": "Why Goa Premium Dental, Cosmetic & Wellness Clinics Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "goa",
-    "city_name": "Goa",
+    "slug": "bangalore-dental-clinics-local-speed",
+    "filename": "bangalore-dental-clinics-local-speed.md",
+    "title": "Why Bangalore Premium Dental, Cosmetic & Wellness Clinics Businesses Lose Customers to Slow Mobile Websites",
+    "city_id": "bangalore",
+    "city_name": "Bangalore",
     "niche_id": "dental-clinics",
     "niche_name": "Premium Dental, Cosmetic & Wellness Clinics",
     "angle": "local_speed",
     "date": "2026-10-18",
-    "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/goa-dental-clinics-local-speed.md"
+    "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-dental-clinics-local-speed.md"
   }
 }

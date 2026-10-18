@@ -153,13 +153,29 @@ python -m src.generator_pseo --count 3
 python -m src.generator_pseo --city bangalore --niche dental-clinics --angle automation
 ```
 
-### 3. Render High-Resolution Visual Carousels Only
+### 3. Render High-Resolution Visual Carousels (Multi-Platform Sizing)
+
+Choose your target social platform format:
+- **`instagram`**: $1080 \times 1350\text{ px}$ (4:5 Portrait — captures 25% more screen real estate on mobile feeds)
+- **`linkedin`**: $1080 \times 1350\text{ px}$ (4:5 Portrait — optimal for swipeable PDF document carousels)
+- **`twitter`**: $1200 \times 675\text{ px}$ (16:9 Landscape — fits Twitter feed previews without cropping)
+- **`square`**: $1080 \times 1080\text{ px}$ (1:1 Universal)
+- **`all`**: Automatically generates multi-format sets for Instagram, Twitter, and Square simultaneously!
 
 ```bash
-# Render 4-slide 1080x1080 carousel PNGs
-python -m src.generator_graphics --type carousel --city goa --niche boutique-hotels
+# Render 4:5 Portrait Carousels for Instagram (Default)
+python -m src.generator_graphics --type carousel --city goa --niche restaurants --platform instagram
 
-# Render a Code Snippet / Tech Tip graphic
+# Render 16:9 Landscape Carousels for Twitter / X Threads
+python -m src.generator_graphics --type carousel --city mumbai --niche fashion-boutiques --platform twitter
+
+# Render 4:5 Document Carousels for LinkedIn
+python -m src.generator_graphics --type carousel --city bangalore --niche dental-clinics --platform linkedin
+
+# Render Multi-Platform Sets simultaneously (Instagram 4:5, Twitter 16:9, and Square 1:1)
+python -m src.generator_graphics --type carousel --city dubai --niche real-estate --platform all
+
+# Render a Code Snippet / Tech Tip graphic (Pillar 3)
 python -m src.generator_graphics --type tech_tip
 ```
 
