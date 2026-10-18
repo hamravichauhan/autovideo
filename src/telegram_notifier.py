@@ -364,7 +364,7 @@ class TelegramNotifier:
             f"💡 ExtrovertNerd Engineering Verdict:\n"
             f"\"{verdict}\"\n\n"
             f"📌 Save this post to reference during your next system build.\n"
-            f"💬 Want your website audited for sub-second mobile conversions? Tap the link in our bio (@extrovertnerd) or visit extrovertnerd.com\n\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send us a DM.\n\n"
             f"#WebDevelopment #SoftwareEngineering #{name.replace(' ', '')} #CoreWebVitals #FrontendArchitecture #SystemDesign #ExtrovertNerd #TechStack #WebPerformance"
         )
 
@@ -403,6 +403,7 @@ class TelegramNotifier:
             f"• Server Time to First Byte (TTFB): {telemetry.get('ttfb', 'N/A')}\n\n"
             f"💡 ExtrovertNerd Engineering Verdict:\n"
             f"{verdict}\n\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send us a DM.\n\n"
             f"What architectural principles do your teams prioritize when building high-concurrency flows? Let's discuss in the comments.\n\n"
             f"♻️ Repost this breakdown to share with your engineering network.\n"
             f"Follow @extrovertnerd for daily system architecture briefings (1–100).\n\n"
@@ -436,6 +437,7 @@ class TelegramNotifier:
             f"🛠️ Production Stack: {stack}\n"
             f"⚡ Verified Telemetry: LCP {telemetry.get('lcp')} | INP {telemetry.get('inp')} | CLS {telemetry.get('cls')} | TTFB {telemetry.get('ttfb')}\n\n"
             f"💡 ExtrovertNerd Verdict: {verdict}\n\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send a DM.\n\n"
             f"RT to share with fellow developers 🔁\n"
             f"Follow @extrovertnerd for daily 0-latency architecture teardowns."
         )
@@ -828,6 +830,7 @@ class TelegramNotifier:
             f"📅 <b>Date:</b> {news.get('date')} | Source: {news.get('source')}\n\n"
             f"📝 <b>Summary:</b> {news.get('summary')}\n\n"
             f"⚡ <b>ExtrovertNerd Verdict:</b> {news.get('extrovertnerd_verdict')}\n\n"
+            f"💬 <i>Want any help in your business with websites, custom tools, or software? Send us a DM.</i>\n\n"
             f"🏢 Studio: ExtrovertNerd Engineering\n"
             f"🌐 https://extrovertnerd.com"
         )
@@ -840,6 +843,7 @@ class TelegramNotifier:
             f"🏷️ <b>Category:</b> {tip.get('category')} ({tip.get('tag')})\n"
             f"⚡ <b>Impact:</b> {tip.get('measured_impact')}\n\n"
             f"💡 <b>Pro Tip:</b> {tip.get('pro_tip')}\n\n"
+            f"💬 <i>Want any help in your business with websites, custom tools, or software? Send us a DM.</i>\n\n"
             f"🏢 Studio: ExtrovertNerd Engineering\n"
             f"🌐 https://extrovertnerd.com"
         )

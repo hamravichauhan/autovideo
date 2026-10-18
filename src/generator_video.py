@@ -586,6 +586,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             f"• Heavy scripts and bloated templates degrade Google Core Web Vitals metrics.\n"
             f"• Sub-second response times improve engagement, retention, and mobile search rankings.\n\n"
             f"ExtrovertNerd shares daily web performance teardowns and Core Web Vitals telemetry.\n\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send us a DM.\n\n"
             f"Follow @extrovertnerd for daily performance breakdowns.\n\n"
             f"#WebPerformance #CoreWebVitals #WebsiteSpeed #ExtrovertNerd #{city_name.replace(' ', '')} #{niche_name.replace(' ', '')}"
         )
@@ -751,6 +752,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             f"• TTFB: {telemetry.get('ttfb')}\n\n"
             f"💡 ExtrovertNerd Verdict:\n"
             f"{site.get('extrovertnerd_verdict')}\n\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send us a DM.\n\n"
             f"Follow @extrovertnerd for daily 60-second architecture breakdowns across the top 100 websites in the world.\n\n"
             f"#WebPerformance #WebArchitecture #SystemDesign #ExtrovertNerd #{name.replace(' ', '')} #CoreWebVitals"
         )

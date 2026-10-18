@@ -87,7 +87,8 @@ class CaptionBuilder:
         tags.extend([city_tag, niche_tag])
         hashtags_str = " ".join(tags)
 
-        full_caption = f"{hook}\n\n{body}\n\n.\n.\n.\n{hashtags_str}"
+        cta_dm = "💬 Want any help in your business with websites, custom tools, or software? Send us a DM."
+        full_caption = f"{hook}\n\n{body}\n\n{cta_dm}\n\n.\n.\n.\n{hashtags_str}"
         return full_caption
 
     def build_twitter_thread(
