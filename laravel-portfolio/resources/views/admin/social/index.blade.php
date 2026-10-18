@@ -20,6 +20,13 @@
         </div>
 
         <div class="flex items-center space-x-3">
+            <form action="/admin/social/telegram" method="POST" class="inline">
+                <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl shadow-lg shadow-sky-500/20 transition flex items-center space-x-1.5">
+                    <span>📲</span>
+                    <span>Send to Telegram</span>
+                </button>
+            </form>
+
             <form action="/admin/social/generate" method="POST" class="inline">
                 <input type="hidden" name="platform" value="all">
                 <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl border border-white/10 transition flex items-center space-x-1.5">

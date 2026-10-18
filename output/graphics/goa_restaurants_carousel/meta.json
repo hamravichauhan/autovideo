@@ -53,13 +53,21 @@
       "conversion_lift": "+54%"
     }
   },
-  "platform": "instagram",
-  "total_slides": 4,
+  "platform": "all",
+  "total_slides": 12,
   "slide_paths": [
-    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/slide_1.png",
-    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/slide_2.png",
-    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/slide_3.png",
-    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/slide_4.png"
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/instagram_slide_1.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/instagram_slide_2.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/instagram_slide_3.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/instagram_slide_4.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/twitter_slide_1.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/twitter_slide_2.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/twitter_slide_3.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/twitter_slide_4.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/square_slide_1.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/square_slide_2.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/square_slide_3.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel/square_slide_4.png"
   ],
   "directory": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/goa_restaurants_carousel"
 }

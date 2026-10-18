@@ -65,6 +65,7 @@ $routes->post('/admin/content/generate', [AdminContentController::class, 'genera
 $routes->get('/admin/social', [AdminSocialController::class, 'index']);
 $routes->post('/admin/social/publish', [AdminSocialController::class, 'publish']);
 $routes->post('/admin/social/generate', [AdminSocialController::class, 'generate']);
+$routes->post('/admin/social/telegram', [AdminSocialController::class, 'telegram']);
 
 // Module D: Prospecting & Lead CRM
 $routes->get('/admin/prospects', [AdminProspectsController::class, 'index']);

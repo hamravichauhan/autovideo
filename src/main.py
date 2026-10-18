@@ -80,6 +80,13 @@ class AutomationEngine:
                     graphics_result.get("total_slides", 0),
                     graphics_result.get("directory"),
                 )
+                # Dispatch posters automatically to Telegram Bot
+                try:
+                    from src.telegram_notifier import TelegramNotifier
+                    tg_res = TelegramNotifier().dispatch_latest_graphics()
+                    logger.info("📲 Telegram Poster Dispatch: %s", "Dispatched" if tg_res.get("ok") else tg_res.get("error"))
+                except Exception as tg_err:
+                    logger.warning("Telegram dispatch encountered warning: %s", tg_err)
             except Exception as e:
                 logger.error("⚠️ Graphic rendering encountered error: %s", e)
                 logger.info("Continuing pipeline in text-mode...")
@@ -162,7 +169,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--mode",
-        choices=["daily", "all", "pseo", "graphics", "tech_tip", "social", "prospect"],
+        choices=["daily", "all", "pseo", "graphics", "tech_tip", "social", "prospect", "telegram"],
         default="daily",
         help="Pipeline execution mode",
     )
@@ -215,6 +222,21 @@ def main() -> None:
         print(f"\n[Graphics Generated] {res['batch_id']}")
         for p in res["slide_paths"]:
             print(f"  - {p}")
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            tg_res = TelegramNotifier().dispatch_latest_graphics()
+            print(f"\n[Telegram Bot Dispatch] Status: {tg_res.get('ok')}")
+        except Exception as tg_err:
+            print(f"\n[Telegram Bot Dispatch] Note: {tg_err}")
+    elif args.mode == "telegram":
+        from src.telegram_notifier import TelegramNotifier
+        notifier = TelegramNotifier()
+        test_info = notifier.test_connection()
+        print("\n[Telegram Bot Status]")
+        print(json.dumps(test_info, indent=2))
+        res = notifier.dispatch_latest_graphics()
+        print("\n[Telegram Dispatch Results]")
+        print(json.dumps(res, indent=2))
     elif args.mode == "tech_tip":
         res = engine.graphics_renderer.render_tech_tip()
         print(f"\n[Tech Tip Generated] {res['tip']['title']}")

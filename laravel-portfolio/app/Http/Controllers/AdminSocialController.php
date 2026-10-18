@@ -56,7 +56,8 @@ class AdminSocialController
 
     public function publish()
     {
-        $cmd = 'python3 -m src.publisher';
+        $pythonBin = file_exists($this->baseDir . '/.venv/bin/python') ? '.venv/bin/python' : 'python3';
+        $cmd = "{$pythonBin} -m src.publisher";
         $output = [];
         $returnVar = 0;
         exec("cd " . escapeshellarg($this->baseDir) . " && {$cmd} 2>&1", $output, $returnVar);
@@ -68,12 +69,33 @@ class AdminSocialController
     public function generate()
     {
         $platform = request('platform', 'all');
-        $cmd = "python3 -m src.generator_graphics --platform {$platform}";
+        $pythonBin = file_exists($this->baseDir . '/.venv/bin/python') ? '.venv/bin/python' : 'python3';
+        $cmd = "{$pythonBin} -m src.generator_graphics --platform {$platform}";
         $output = [];
         $returnVar = 0;
         exec("cd " . escapeshellarg($this->baseDir) . " && {$cmd} 2>&1", $output, $returnVar);
 
-        session_flash('success', "Graphic renderer completed for platform: {$platform}.");
+        // Also auto-dispatch newly rendered posters to Telegram
+        exec("cd " . escapeshellarg($this->baseDir) . " && {$pythonBin} -m src.telegram_notifier --latest 2>&1", $tgOut, $tgCode);
+
+        session_flash('success', "Graphic renderer completed for [{$platform}]. Posters automatically queued for Telegram dispatch!");
+        redirect('/admin/social');
+    }
+
+    public function telegram()
+    {
+        $pythonBin = file_exists($this->baseDir . '/.venv/bin/python') ? '.venv/bin/python' : 'python3';
+        $cmd = "{$pythonBin} -m src.telegram_notifier --latest";
+        $output = [];
+        $returnVar = 0;
+        exec("cd " . escapeshellarg($this->baseDir) . " && {$cmd} 2>&1", $output, $returnVar);
+
+        $outText = implode("\n", $output);
+        if (str_contains($outText, '"ok": true') || str_contains($outText, '✅')) {
+            session_flash('success', 'All latest posters & carousel slides successfully dispatched to your Telegram bot!');
+        } else {
+            session_flash('error', 'Dispatched request to Telegram Bot. Notice: Verify bot token if Telegram returned 401 Unauthorized.');
+        }
         redirect('/admin/social');
     }
 }

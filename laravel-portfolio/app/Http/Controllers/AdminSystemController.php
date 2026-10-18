@@ -45,27 +45,31 @@ class AdminSystemController
     public function trigger()
     {
         $action = request('action', 'daily');
+        $pythonBin = file_exists($this->baseDir . '/.venv/bin/python') ? '.venv/bin/python' : 'python3';
         $cmd = '';
 
         switch ($action) {
             case 'daily':
-                $cmd = 'python3 -m src.main --mode daily --platform all';
+                $cmd = "{$pythonBin} -m src.main --mode daily --platform all";
                 break;
             case 'pseo':
-                $cmd = 'python3 -m src.main --mode pseo';
+                $cmd = "{$pythonBin} -m src.main --mode pseo";
                 break;
             case 'graphics':
-                $cmd = 'python3 -m src.main --mode graphics --platform all';
+                $cmd = "{$pythonBin} -m src.main --mode graphics --platform all";
+                break;
+            case 'telegram':
+                $cmd = "{$pythonBin} -m src.main --mode telegram";
                 break;
             case 'prospect':
-                $city = request('city', 'goa');
-                $cmd = "python3 -m src.main --mode prospect --city {$city}";
+                $city = escapeshellarg(request('city', 'goa'));
+                $cmd = "{$pythonBin} -m src.main --mode prospect --city {$city}";
                 break;
             case 'publish':
-                $cmd = 'python3 -m src.main --mode publish';
+                $cmd = "{$pythonBin} -m src.main --mode publish";
                 break;
             default:
-                $cmd = 'python3 -m src.main --help';
+                $cmd = "{$pythonBin} -m src.main --help";
         }
 
         $output = [];
@@ -97,6 +101,8 @@ class AdminSystemController
             'WHATSAPP_PHONE_NUMBER' => request('whatsapp_phone_number', '15551234567'),
             'WHATSAPP_DEFAULT_MESSAGE' => request('whatsapp_default_message', 'Hey Ravi! I saw ExtrovertNerd and want a free 5-point website speed audit.'),
             'GOOGLE_FORM_INTAKE_URL' => request('google_form_intake_url', ''),
+            'TELEGRAM_BOT_TOKEN' => request('telegram_bot_token', '80208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw'),
+            'TELEGRAM_CHAT_ID' => request('telegram_chat_id', '1432790039'),
             'META_ACCESS_TOKEN' => request('meta_access_token', ''),
             'INSTAGRAM_ACCOUNT_ID' => request('instagram_account_id', ''),
             'TWITTER_API_KEY' => request('twitter_api_key', ''),

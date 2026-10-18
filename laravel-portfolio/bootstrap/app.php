@@ -61,7 +61,7 @@ if (!function_exists('abort')) {
 }
 
 if (!function_exists('session')) {
-    function session(?string $key = null, $default = null) {
+    function session($key = null, $default = null) {
         if ($key === null) {
             return $_SESSION ?? [];
         }

@@ -50,7 +50,7 @@
     <!-- ============================================================== -->
     <div x-show="activeSection === 'workflows'" class="space-y-6">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
             <!-- Card 1: Daily Autonomous Run -->
             <div class="bg-gradient-to-b from-emerald-950/20 to-slate-900/90 border border-emerald-500/30 rounded-3xl p-6 flex flex-col justify-between space-y-4 shadow-xl">
@@ -108,6 +108,26 @@
                     <input type="hidden" name="action" value="graphics">
                     <button type="submit" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-black text-xs uppercase tracking-wider py-3 rounded-xl shadow-lg transition">
                         Render All Graphic Sets ➔
+                    </button>
+                </form>
+            </div>
+
+            <!-- Card 4: Telegram Poster Dispatch -->
+            <div class="bg-gradient-to-b from-sky-950/20 to-slate-900/90 border border-sky-500/30 rounded-3xl p-6 flex flex-col justify-between space-y-4 shadow-xl">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono font-bold text-sky-400 uppercase">Telegram Bot</span>
+                        <span class="text-xl">📲</span>
+                    </div>
+                    <h3 class="text-lg font-black text-white">Telegram Dispatch</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Directly sends the latest rendered 4-slide carousels and tech-tip graphics straight to your Telegram chat (@Shirtlust).
+                    </p>
+                </div>
+                <form action="/admin/system/trigger" method="POST">
+                    <input type="hidden" name="action" value="telegram">
+                    <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs uppercase tracking-wider py-3 rounded-xl shadow-lg transition">
+                        Send Posters to Telegram ➔
                     </button>
                 </form>
             </div>
@@ -203,6 +223,30 @@
             <div class="space-y-1">
                 <label class="text-xs font-mono text-slate-400 uppercase">Default WhatsApp Click-to-Chat Prompt</label>
                 <input type="text" name="whatsapp_default_message" value="{{ $envVars['WHATSAPP_DEFAULT_MESSAGE'] ?? 'Hey Ravi! I saw ExtrovertNerd and want a free 5-point website speed audit.' }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-2 text-white text-sm">
+            </div>
+
+            <!-- Telegram Bot Automated Dispatch Settings -->
+            <div class="pt-4 border-t border-white/10 space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-white uppercase font-mono tracking-wider flex items-center space-x-2">
+                            <span>📲</span>
+                            <span>Telegram Bot Automated Poster Dispatch</span>
+                        </h4>
+                        <p class="text-xs text-slate-400 mt-0.5">Automates sending all rendered carousels, slides, and posters to your Telegram account.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-1">
+                        <label class="text-xs font-mono text-sky-400 uppercase font-bold">Telegram Bot HTTP API Token</label>
+                        <input type="text" name="telegram_bot_token" value="{{ $envVars['TELEGRAM_BOT_TOKEN'] ?? '80208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw' }}" class="w-full bg-slate-950 border border-sky-500/30 rounded-xl px-4 py-2 text-white text-xs font-mono" placeholder="1234567890:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-mono text-sky-400 uppercase font-bold">Telegram Chat ID / User ID</label>
+                        <input type="text" name="telegram_chat_id" value="{{ $envVars['TELEGRAM_CHAT_ID'] ?? '1432790039' }}" class="w-full bg-slate-950 border border-sky-500/30 rounded-xl px-4 py-2 text-white text-xs font-mono" placeholder="1432790039 (@Shirtlust)">
+                    </div>
+                </div>
             </div>
 
             <!-- Social API Keys (Optional) -->
