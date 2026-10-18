@@ -5,15 +5,24 @@
   <meta name="viewport" content="width=1080, height=1080, initial-scale=1.0">
   <title>{{ title | default('Carousel Slide') }}</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
     }
 
     body {
@@ -28,25 +37,26 @@
       width: 1080px;
       height: 1080px;
       position: relative;
-      background: radial-gradient(circle at 15% 15%, rgba(30, 41, 59, 0.45) 0%, transparent 60%),
-                  radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-                  #070a10;
+      background: radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+                  radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.10) 0%, transparent 50%),
+                  #080a11;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 72px;
+      padding: 60px 68px;
     }
 
-    /* Ambient noise & grid lines */
-    .grid-pattern {
+    /* Subtle texture grid */
+    .grid-lines {
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 54px 54px;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
     }
 
     .content-layer {
@@ -58,268 +68,421 @@
       justify-content: space-between;
     }
 
-    .glass-card {
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
+    /* Human tactile cards */
+    .tactile-card {
+      background: linear-gradient(145deg, rgba(19, 26, 43, 0.75) 0%, rgba(13, 18, 30, 0.85) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
       border-radius: 20px;
     }
 
-    .glow-emerald {
-      box-shadow: 0 0 45px -10px rgba(16, 185, 129, 0.28);
+    /* Natural highlighter stroke */
+    .highlight-rose {
+      background: linear-gradient(180deg, transparent 65%, rgba(244, 63, 94, 0.28) 65%);
+      padding: 0 4px;
+      border-radius: 4px;
     }
 
-    .glow-rose {
-      box-shadow: 0 0 45px -10px rgba(244, 63, 94, 0.28);
+    .highlight-emerald {
+      background: linear-gradient(180deg, transparent 65%, rgba(16, 185, 129, 0.28) 65%);
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+
+    /* Real rubber stamp */
+    .stamp-box {
+      border: 2px dashed rgba(244, 63, 94, 0.8);
+      color: #fb7185;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      transform: rotate(-3deg);
+      display: inline-block;
+      box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+    }
+
+    .stamp-emerald {
+      border: 2px solid rgba(16, 185, 129, 0.8);
+      color: #34d399;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+      transform: rotate(2deg);
+    }
+
+    /* Tape label */
+    .tape-tag {
+      background: #fef08a;
+      color: #854d0e;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      transform: rotate(-1.5deg);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
   </style>
 </head>
 <body>
 
   <div class="slide-canvas" id="slide-canvas">
-    <div class="grid-pattern"></div>
+    <div class="grid-lines"></div>
 
     <div class="content-layer">
 
-      <!-- TOP BAR: Brand Header, Pill & Slide Counter -->
-      <div class="flex items-center justify-between pb-6 border-b border-white/10">
-        <div class="flex items-center space-x-3">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-400 flex items-center justify-center font-black text-slate-950 text-lg shadow-lg shadow-emerald-500/20">
-            ⚡
+      <!-- ============================================================== -->
+      <!-- HEADER: Human Agency Avatar, Audit Pill, Page Counter          -->
+      <!-- ============================================================== -->
+      <div class="flex items-center justify-between pb-5 border-b border-white/10">
+        <div class="flex items-center space-x-3.5">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 via-emerald-400 to-cyan-300 p-0.5 shadow-md">
+            <div class="w-full h-full rounded-full bg-slate-950 flex items-center justify-center text-emerald-400 font-extrabold text-sm">
+              ⚡
+            </div>
           </div>
           <div>
-            <div class="text-xs tracking-widest uppercase font-bold text-slate-400">{{ brand_name | default('APEX VELOCITY LABS') }}</div>
-            <div class="text-sm font-semibold text-emerald-400">{{ brand_handle | default('@apexvelocitylabs') }}</div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-black tracking-wider uppercase text-white">{{ brand_name | default('APEX VELOCITY LABS') }}</span>
+              <span class="text-[10px] bg-white/10 text-slate-300 px-2 py-0.5 rounded font-mono font-medium">FIELD AUDIT</span>
+            </div>
+            <div class="text-[11px] text-slate-400">Written by Senior Web Architect</div>
           </div>
         </div>
 
-        <div class="flex items-center space-x-4">
-          <div class="px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase border 
-            {% if slide_number == 1 %}bg-indigo-500/10 text-indigo-300 border-indigo-500/30
-            {% elif slide_number == 2 %}bg-rose-500/10 text-rose-300 border-rose-500/30
-            {% elif slide_number == 3 %}bg-emerald-500/10 text-emerald-300 border-emerald-500/30
-            {% else %}bg-cyan-500/10 text-cyan-300 border-cyan-500/30{% endif %}">
-            {{ slide_badge | default('CASE STUDY // WEB PERFORMANCE') }}
+        <div class="flex items-center space-x-3">
+          <div class="tape-tag font-mono">
+            <span>●</span>
+            <span>AUDIT #{{ "%03d"|format(slide_number | default(1) * 31) }}</span>
           </div>
-          <div class="text-sm font-mono font-bold text-slate-400 bg-slate-900/80 px-3.5 py-1.5 rounded-lg border border-white/10">
-            {{ "%02d"|format(slide_number | default(1)) }} / {{ "%02d"|format(total_slides | default(4)) }}
+          <div class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg font-mono text-xs font-bold text-slate-300">
+            {{ "%02d"|format(slide_number | default(1)) }} <span class="text-slate-600">/</span> {{ "%02d"|format(total_slides | default(4)) }}
           </div>
         </div>
       </div>
 
-      <!-- MAIN CONTENT: Dynamic per slide type -->
-      <div class="my-auto py-4">
+      <!-- ============================================================== -->
+      <!-- BODY CONTENT: Refined Human Layouts                            -->
+      <!-- ============================================================== -->
+      <div class="my-auto py-2">
 
         {% if slide_type == 'hook' or slide_number == 1 %}
         <!-- ========================================== -->
-        <!-- SLIDE 1: HOOK / PROBLEM STATEMENT          -->
+        <!-- SLIDE 1: EDITORIAL HOOK & AUDIT DOSSIER    -->
         <!-- ========================================== -->
         <div class="space-y-6">
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-bold uppercase tracking-wider">
-            <span>🚨</span>
-            <span>CRITICAL MOBILE CONVERSION LEAK</span>
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/25 text-rose-300 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+            <span>MOBILE PERFORMANCE AUDIT • {{ city_name | upper }}</span>
           </div>
 
-          <h1 class="text-5xl font-extrabold tracking-tight leading-[1.18] text-white">
-            Is your {{ city_name | default('local') }} {{ niche_singular | default('business') }} silently losing 
-            <span class="bg-gradient-to-r from-rose-400 via-amber-300 to-rose-400 bg-clip-text text-transparent underline decoration-rose-500/40 decoration-4">40%+ of mobile sales</span>?
+          <h1 class="text-[44px] font-extrabold tracking-tight leading-[1.2] text-white">
+            Is your {{ city_name }} {{ niche_singular }} losing 
+            <span class="highlight-rose font-serif italic font-normal text-rose-300">40%+ of mobile sales</span> 
+            to a slow website?
           </h1>
 
-          <p class="text-xl text-slate-300 font-normal leading-relaxed max-w-3xl">
-            When potential clients in <span class="text-white font-semibold">{{ city_name | default('your area') }}</span> click your link on their smartphones, every second of delay kills your revenue. Here is what is happening behind the scenes:
+          <p class="text-[17px] text-slate-300 font-normal leading-relaxed max-w-2xl">
+            We audited local <strong class="text-white font-semibold">{{ niche_plural }}</strong> in {{ city_name }}. When a mobile site takes over 3 seconds to load on mobile 4G/5G, over 53% of potential clients bounce straight to a competitor:
           </p>
 
-          <div class="grid grid-cols-2 gap-5 pt-2">
-            <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-2">
-              <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Average Mobile Drop-Off</div>
-              <div class="text-4xl font-black text-rose-400">53%</div>
-              <div class="text-sm text-slate-400">Leave if loading exceeds 3.0 seconds</div>
+          <!-- AUDIT METRIC SUMMARY DOSSIER -->
+          <div class="tactile-card p-6 border-white/10 relative overflow-hidden">
+            <div class="absolute right-4 top-3">
+              <div class="stamp-box">FAILED BENCHMARK</div>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-2">
-              <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Estimated Lost Revenue</div>
-              <div class="text-4xl font-black text-amber-300">{{ lost_revenue | default('$8,500/mo') }}</div>
-              <div class="text-sm text-slate-400">Draining into direct local competitors</div>
+            <div class="text-[11px] font-mono uppercase text-slate-400 tracking-wider mb-4 flex items-center space-x-2">
+              <span class="text-rose-400 font-bold">●</span>
+              <span>MEASURED ON STANDARD 4G MOBILE CONNECTION</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4">
+              <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                <div class="text-xs text-slate-400 font-medium">Average Mobile Load</div>
+                <div class="text-3xl font-extrabold text-rose-400 font-mono mt-1">{{ load_before | default('5.8s') }}</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Industry Target: Sub-0.5s</div>
+              </div>
+
+              <div class="bg-black/40 border border-white/10 rounded-xl p-4">
+                <div class="text-xs text-slate-400 font-medium">Mobile Bounce Rate</div>
+                <div class="text-3xl font-extrabold text-amber-300 font-mono mt-1">{{ bounce_before | default('69%') }}</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Drop off before viewing menu</div>
+              </div>
+
+              <div class="bg-black/40 border border-rose-500/20 rounded-xl p-4 bg-rose-950/10">
+                <div class="text-xs text-rose-300 font-medium">Estimated Revenue Leak</div>
+                <div class="text-3xl font-extrabold text-white font-mono mt-1">{{ lost_revenue | default('$6,200/mo') }}</div>
+                <div class="text-[11px] text-rose-400 mt-0.5">Leaking to local competitors</div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+              <div>Market: {{ city_name }} ({{ niche_name }})</div>
+              <div>Audit Ref: #{{ city_name[:3] | upper }}-{{ niche_name[:3] | upper }}-2026</div>
             </div>
           </div>
         </div>
 
         {% elif slide_type == 'flaw' or slide_number == 2 %}
         <!-- ========================================== -->
-        <!-- SLIDE 2: UX & SPEED FLAW ANALYSIS (BEFORE)  -->
+        <!-- SLIDE 2: THE DISSECTED SLOW LEGACY STORE   -->
         <!-- ========================================== -->
-        <div class="space-y-6">
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-bold uppercase tracking-wider">
-            <span>⚠️</span>
-            <span>THE BEFORE AUDIT // LEGACY WORDPRESS & SHOPIFY</span>
+        <div class="space-y-5">
+          <div class="flex items-center justify-between">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/25 text-rose-300 text-xs font-semibold">
+              <span>⚠️</span>
+              <span>THE BEFORE STATE • LEGACY CMS / SHOPIFY</span>
+            </div>
+            <div class="stamp-box text-[10px] py-1 px-2.5">CORE WEB VITALS FAIL</div>
           </div>
 
-          <h2 class="text-4xl font-extrabold text-white tracking-tight leading-tight">
-            Why Existing {{ niche_plural | default('Websites') }} Choke on Mobile Devices
+          <h2 class="text-3xl font-extrabold tracking-tight text-white leading-snug">
+            Why Existing {{ niche_plural }} Stumble on Mobile Devices
           </h2>
 
-          <!-- Diagnostic Metrics Bar -->
-          <div class="grid grid-cols-3 gap-4">
-            <div class="glass-card glow-rose p-5 rounded-2xl border border-rose-500/30 text-center space-y-1">
-              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">PageSpeed</div>
-              <div class="text-4xl font-black text-rose-500">{{ pagespeed_before | default('28/100') }}</div>
-              <div class="text-xs font-semibold text-rose-400/80">Fails Core Web Vitals</div>
-            </div>
-            <div class="glass-card p-5 rounded-2xl border border-white/10 text-center space-y-1">
-              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Load Time</div>
-              <div class="text-4xl font-black text-amber-400">{{ load_before | default('5.6s') }}</div>
-              <div class="text-xs font-semibold text-amber-400/80">3.2x Slower Than Standard</div>
-            </div>
-            <div class="glass-card p-5 rounded-2xl border border-white/10 text-center space-y-1">
-              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Bounce Rate</div>
-              <div class="text-4xl font-black text-slate-200">{{ bounce_before | default('72%') }}</div>
-              <div class="text-xs font-semibold text-slate-400">Visitors Leave Immediately</div>
-            </div>
-          </div>
+          <!-- DISSECTION SPLIT -->
+          <div class="grid grid-cols-12 gap-5 items-stretch">
+            
+            <!-- LEFT: Mobile Mockup of Slow Site -->
+            <div class="col-span-5 tactile-card p-4 border-rose-500/25 bg-gradient-to-b from-rose-950/20 to-slate-900/90 flex flex-col justify-between">
+              <!-- Browser Header -->
+              <div>
+                <div class="bg-black/60 rounded-lg px-3 py-1.5 flex items-center space-x-2 border border-white/10">
+                  <span class="text-xs text-rose-400">⚠️</span>
+                  <span class="text-[11px] font-mono text-slate-400 truncate">your-site.com/checkout</span>
+                </div>
+                <!-- Slow progress line -->
+                <div class="w-full bg-slate-800 h-1 mt-2 rounded-full overflow-hidden">
+                  <div class="bg-rose-500 h-full w-[28%]"></div>
+                </div>
+              </div>
 
-          <!-- Flaw Items -->
-          <div class="space-y-3 pt-2">
-            <div class="glass-card p-4 rounded-xl border border-white/10 flex items-start space-x-4">
-              <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-base shrink-0 mt-0.5">✕</div>
-              <div>
-                <div class="text-base font-bold text-white">Plugin Overload & Script Bloat</div>
-                <div class="text-xs text-slate-300 mt-0.5">25+ third-party scripts and marketing tags blocking mobile browser rendering for seconds.</div>
+              <!-- Speedometer SVG Gauge (Red 24/100) -->
+              <div class="my-auto py-3 text-center">
+                <div class="relative inline-flex items-center justify-center">
+                  <svg class="w-28 h-28 transform -rotate-90">
+                    <circle cx="56" cy="56" r="44" stroke="currentColor" stroke-width="7" class="text-slate-800" fill="transparent"/>
+                    <circle cx="56" cy="56" r="44" stroke="currentColor" stroke-width="7" class="text-rose-500" stroke-dasharray="276" stroke-dashoffset="205" stroke-linecap="round" fill="transparent"/>
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-2xl font-black font-mono text-rose-500">{{ pagespeed_before | default('24') }}</span>
+                    <span class="text-[9px] uppercase font-bold text-slate-400">Score</span>
+                  </div>
+                </div>
+                <div class="text-[11px] font-semibold text-rose-300 mt-0.5">Google PageSpeed Failed</div>
+              </div>
+
+              <!-- Diagnostic status -->
+              <div class="bg-rose-500/10 border border-rose-500/20 rounded-lg p-2 text-center">
+                <div class="text-[11px] font-bold text-rose-300">Stalled on Mobile 4G</div>
+                <div class="text-[10px] text-slate-400 font-mono">TTFB: 2.1s • LCP: {{ load_before | default('5.8s') }}</div>
               </div>
             </div>
-            <div class="glass-card p-4 rounded-xl border border-white/10 flex items-start space-x-4">
-              <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-base shrink-0 mt-0.5">✕</div>
-              <div>
-                <div class="text-base font-bold text-white">Unoptimized 5MB Photography & Layout Shifts</div>
-                <div class="text-xs text-slate-300 mt-0.5">Heavy hero banners without responsive dimensions causing content to jump as the user scrolls.</div>
+
+            <!-- RIGHT: Problem Breakdown -->
+            <div class="col-span-7 flex flex-col justify-between space-y-2.5">
+              <div class="tactile-card p-4 border-white/10">
+                <div class="flex items-start space-x-3">
+                  <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✕</div>
+                  <div>
+                    <div class="text-sm font-bold text-white">25+ Bloated Third-Party Plugins</div>
+                    <div class="text-xs text-slate-400 mt-0.5">Shopify apps and WordPress plugins inject 3.8MB of unminified scripts that stall mobile touch interactions.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tactile-card p-4 border-white/10">
+                <div class="flex items-start space-x-3">
+                  <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✕</div>
+                  <div>
+                    <div class="text-sm font-bold text-white">Unoptimized 5MB Hero Photography</div>
+                    <div class="text-xs text-slate-400 mt-0.5">Heavy hero banners without responsive dimensions causing content to jump as the user scrolls (CLS failure).</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tactile-card p-4 border-white/10">
+                <div class="flex items-start space-x-3">
+                  <div class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✕</div>
+                  <div>
+                    <div class="text-sm font-bold text-white">Clunky Multi-Step Booking & Checkout</div>
+                    <div class="text-xs text-slate-400 mt-0.5">No 1-tap WhatsApp booking flow. Customers are forced to type tedious form fields on small screens.</div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="glass-card p-4 rounded-xl border border-white/10 flex items-start space-x-4">
-              <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-base shrink-0 mt-0.5">✕</div>
-              <div>
-                <div class="text-base font-bold text-white">Broken Checkout & Clunky Forms</div>
-                <div class="text-xs text-slate-300 mt-0.5">Multi-step inputs without WhatsApp auto-confirmation, forcing customers into tedious manual typing.</div>
-              </div>
-            </div>
+
           </div>
         </div>
 
         {% elif slide_type == 'solution' or slide_number == 3 %}
         <!-- ========================================== -->
-        <!-- SLIDE 3: LARAVEL REDESIGN (THE AFTER STATE) -->
+        <!-- SLIDE 3: CUSTOM LARAVEL AFTER-STATE        -->
         <!-- ========================================== -->
-        <div class="space-y-6">
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-            <span>⚡</span>
-            <span>THE AFTER STATE // CUSTOM HIGH-SPEED LARAVEL</span>
+        <div class="space-y-5">
+          <div class="flex items-center justify-between">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 text-xs font-semibold">
+              <span>⚡</span>
+              <span>THE FIX • CUSTOM LARAVEL & TAILWIND ARCHITECTURE</span>
+            </div>
+            <div class="stamp-box stamp-emerald text-[10px] py-1 px-2.5">VERIFIED 100/100</div>
           </div>
 
-          <h2 class="text-4xl font-extrabold text-white tracking-tight leading-tight">
-            Engineered for Instant Speed & Maximum Conversions
+          <h2 class="text-3xl font-extrabold tracking-tight text-white leading-snug">
+            Engineered for <span class="highlight-emerald font-serif italic font-normal text-emerald-300">Sub-Second Speed</span> & Profit
           </h2>
 
-          <!-- High Performance Metrics Bar -->
-          <div class="grid grid-cols-3 gap-4">
-            <div class="glass-card glow-emerald p-5 rounded-2xl border border-emerald-500/40 text-center space-y-1">
-              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">PageSpeed</div>
-              <div class="text-4xl font-black text-emerald-400">{{ pagespeed_after | default('99/100') }}</div>
-              <div class="text-xs font-semibold text-emerald-400">Flawless Core Web Vitals</div>
-            </div>
-            <div class="glass-card glow-emerald p-5 rounded-2xl border border-emerald-500/40 text-center space-y-1">
-              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Load Time</div>
-              <div class="text-4xl font-black text-emerald-300">{{ load_after | default('0.38s') }}</div>
-              <div class="text-xs font-semibold text-emerald-400/90">Instantaneous Response</div>
-            </div>
-            <div class="glass-card glow-emerald p-5 rounded-2xl border border-emerald-500/40 text-center space-y-1">
-              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Conversion Lift</div>
-              <div class="text-4xl font-black text-cyan-300">{{ conversion_lift | default('+42%') }}</div>
-              <div class="text-xs font-semibold text-cyan-400">Revenue Multiplier</div>
-            </div>
-          </div>
+          <!-- HIGH-PERFORMANCE MOCKUP SPLIT -->
+          <div class="grid grid-cols-12 gap-5 items-stretch">
+            
+            <!-- LEFT: Modern Phone Mockup (Ultra Fast) -->
+            <div class="col-span-5 tactile-card p-4 border-emerald-500/35 bg-gradient-to-b from-emerald-950/20 to-slate-900/90 flex flex-col justify-between shadow-emerald-500/10 shadow-xl">
+              <!-- Browser Header -->
+              <div>
+                <div class="bg-black/60 rounded-lg px-3 py-1.5 flex items-center space-x-2 border border-emerald-500/30">
+                  <span class="text-xs text-emerald-400">🔒</span>
+                  <span class="text-[11px] font-mono text-emerald-300 truncate">apex-speed.dev</span>
+                  <span class="text-[9px] bg-emerald-500/20 text-emerald-400 px-1 py-0.5 rounded font-mono ml-auto">0.3s</span>
+                </div>
+                <!-- 100% green load line -->
+                <div class="w-full bg-emerald-500 h-1 mt-2 rounded-full shadow-sm shadow-emerald-500/50"></div>
+              </div>
 
-          <!-- Solution Items -->
-          <div class="space-y-3 pt-2">
-            <div class="glass-card p-4 rounded-xl border border-emerald-500/20 flex items-start space-x-4">
-              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-base shrink-0 mt-0.5">✓</div>
-              <div>
-                <div class="text-base font-bold text-white">Sub-350ms TTFB Powered by Redis Caching</div>
-                <div class="text-xs text-slate-300 mt-0.5">Bypasses heavy database queries entirely, delivering pages from RAM faster than a heartbeat.</div>
+              <!-- Speedometer SVG Gauge (Green 100/100) -->
+              <div class="my-auto py-3 text-center">
+                <div class="relative inline-flex items-center justify-center">
+                  <svg class="w-28 h-28 transform -rotate-90">
+                    <circle cx="56" cy="56" r="44" stroke="currentColor" stroke-width="7" class="text-slate-800" fill="transparent"/>
+                    <circle cx="56" cy="56" r="44" stroke="currentColor" stroke-width="7" class="text-emerald-400" stroke-dasharray="276" stroke-dashoffset="6" stroke-linecap="round" fill="transparent"/>
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-2xl font-black font-mono text-emerald-400">{{ pagespeed_after | default('100') }}</span>
+                    <span class="text-[9px] uppercase font-bold text-emerald-300 font-mono">Perfect</span>
+                  </div>
+                </div>
+                <div class="text-[11px] font-semibold text-emerald-300 mt-0.5">Core Web Vitals: 100% Green</div>
+              </div>
+
+              <!-- Success banner -->
+              <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-2 text-center">
+                <div class="text-[11px] font-bold text-emerald-300">⚡ Automated WhatsApp Ping Sent</div>
+                <div class="text-[10px] text-slate-300 font-mono">Conversion Lift: {{ conversion_lift | default('+54%') }}</div>
               </div>
             </div>
-            <div class="glass-card p-4 rounded-xl border border-emerald-500/20 flex items-start space-x-4">
-              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-base shrink-0 mt-0.5">✓</div>
-              <div>
-                <div class="text-base font-bold text-white">Zero-Bloat Tailwind CSS & Instant Mobile Menus</div>
-                <div class="text-xs text-slate-300 mt-0.5">Ultra-lightweight stylesheets and responsive layouts with zero Cumulative Layout Shift.</div>
+
+            <!-- RIGHT: Architectural Highlights -->
+            <div class="col-span-7 flex flex-col justify-between space-y-2.5">
+              <div class="tactile-card p-4 border-emerald-500/20">
+                <div class="flex items-start space-x-3">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</div>
+                  <div>
+                    <div class="text-sm font-bold text-white">Sub-350ms TTFB Powered by Redis Caching</div>
+                    <div class="text-xs text-slate-300 mt-0.5">Server renders instantly from RAM memory. Bypasses database parsing entirely for fluid browsing.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tactile-card p-4 border-emerald-500/20">
+                <div class="flex items-start space-x-3">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</div>
+                  <div>
+                    <div class="text-sm font-bold text-white">Zero-Bloat Tailwind CSS & Instant Mobile UI</div>
+                    <div class="text-xs text-slate-300 mt-0.5">No bulky theme stylesheets. Instant mobile drawer menus and 0.00 Cumulative Layout Shift.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tactile-card p-4 border-emerald-500/20">
+                <div class="flex items-start space-x-3">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</div>
+                  <div>
+                    <div class="text-sm font-bold text-white">Automated WhatsApp API & 0% Platform Tax</div>
+                    <div class="text-xs text-slate-300 mt-0.5">You keep 100% of your sales revenue with zero monthly Shopify app subscriptions or booking cuts.</div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="glass-card p-4 rounded-xl border border-emerald-500/20 flex items-start space-x-4">
-              <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-base shrink-0 mt-0.5">✓</div>
-              <div>
-                <div class="text-base font-bold text-white">Automated WhatsApp API & 0% Platform Fees</div>
-                <div class="text-xs text-slate-300 mt-0.5">Direct notifications dispatched immediately without recurring monthly app subscriptions.</div>
-              </div>
-            </div>
+
           </div>
         </div>
 
         {% else %}
         <!-- ========================================== -->
-        <!-- SLIDE 4: CALL TO ACTION (LEAD CAPTURE)     -->
+        <!-- SLIDE 4: VIP AUDIT PASS (CONVERSION CTA)   -->
         <!-- ========================================== -->
         <div class="space-y-6">
-          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 text-xs font-semibold">
             <span>🎯</span>
-            <span>NEXT STEP // ACCELERATE YOUR REVENUE</span>
+            <span>NEXT STEP • LIMITED CAPACITY (5 AUDITS / WEEK)</span>
           </div>
 
-          <h2 class="text-5xl font-black text-white tracking-tight leading-[1.15]">
-            Ready to Turn Lost Visitors into Paying Clients?
+          <h2 class="text-[40px] font-extrabold tracking-tight leading-[1.2] text-white">
+            Ready to turn lost mobile visitors into 
+            <span class="font-serif italic font-normal text-cyan-300">paying clients</span>?
           </h2>
 
-          <p class="text-lg text-slate-300 font-normal leading-relaxed">
-            Stop losing customers to slow load times in <span class="text-white font-semibold">{{ city_name | default('your city') }}</span>. We will analyze your website completely free of charge.
-          </p>
-
-          <!-- The Audit Offer Card -->
-          <div class="glass-card p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-slate-900/90 to-emerald-950/20 space-y-4">
-            <div class="flex items-center justify-between">
-              <div class="text-sm font-extrabold uppercase tracking-widest text-emerald-400">100% Free • No Obligation</div>
-              <span class="text-xs px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 font-bold">Limited to 5 per week</span>
-            </div>
-            
-            <div class="text-2xl font-bold text-white">Free 5-Point Website Speed & UX Teardown</div>
-            
-            <div class="grid grid-cols-3 gap-3 text-xs text-slate-300 pt-1">
-              <div class="flex items-center space-x-1.5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Core Web Vitals</span>
+          <!-- PHYSICAL STYLE BOARDING PASS / AUDIT TICKET -->
+          <div class="tactile-card p-7 border-emerald-500/35 bg-gradient-to-br from-slate-900 via-slate-900/90 to-emerald-950/20 relative shadow-2xl">
+            <!-- Top Pass Details -->
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></div>
+                <div class="text-xs font-extrabold uppercase tracking-wider text-white">COMPLIMENTARY SPEED & CONVERSION AUDIT PASS</div>
               </div>
-              <div class="flex items-center space-x-1.5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Mobile UX Friction</span>
-              </div>
-              <div class="flex items-center space-x-1.5">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>3-Min Video Roadmap</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step-by-step action pills -->
-          <div class="grid grid-cols-2 gap-4 pt-1">
-            <div class="glass-card p-4 rounded-xl border border-white/10 flex items-center space-x-3">
-              <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg">💬</div>
-              <div>
-                <div class="text-xs text-slate-400 font-bold uppercase">Option A</div>
-                <div class="text-sm font-extrabold text-white">DM Us "AUDIT"</div>
+              <div class="text-[11px] font-mono font-bold text-emerald-300 bg-emerald-500/20 px-2.5 py-0.5 rounded-full">
+                100% FREE • NO PITCH
               </div>
             </div>
 
-            <div class="glass-card p-4 rounded-xl border border-white/10 flex items-center space-x-3">
-              <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg">📱</div>
-              <div>
-                <div class="text-xs text-slate-400 font-bold uppercase">Option B</div>
-                <div class="text-sm font-extrabold text-white">Tap WhatsApp in Bio</div>
+            <!-- Bullet benefits -->
+            <div class="grid grid-cols-3 gap-4 py-5 border-b border-white/10">
+              <div class="space-y-1">
+                <div class="text-xs text-emerald-400 font-bold">01 / Video Teardown</div>
+                <div class="text-xs text-slate-300 leading-relaxed">A personalized 3-minute screen recording analyzing your mobile speed bottlenecks.</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-xs text-emerald-400 font-bold">02 / UX Leak Map</div>
+                <div class="text-xs text-slate-300 leading-relaxed">Exact friction points where mobile visitors are abandoning your booking or checkout.</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-xs text-emerald-400 font-bold">03 / Laravel Roadmap</div>
+                <div class="text-xs text-slate-300 leading-relaxed">Technical plan to slash load times below 400ms and automate WhatsApp lead alerts.</div>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="pt-5 flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <div class="bg-indigo-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl flex items-center space-x-2 shadow-md">
+                  <span>💬</span>
+                  <span>Option A: DM Us "AUDIT"</span>
+                </div>
+                <div class="text-xs text-slate-400 font-mono">or</div>
+                <div class="bg-emerald-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl flex items-center space-x-2 shadow-md">
+                  <span>📱</span>
+                  <span>Option B: Tap WhatsApp in Bio</span>
+                </div>
+              </div>
+
+              <!-- Barcode Simulation -->
+              <div class="flex items-center space-x-1 opacity-70 font-mono text-[9px] text-slate-400">
+                <div class="w-1 h-7 bg-white"></div>
+                <div class="w-2 h-7 bg-white"></div>
+                <div class="w-0.5 h-7 bg-white"></div>
+                <div class="w-1.5 h-7 bg-white"></div>
+                <div class="w-3 h-7 bg-white"></div>
+                <div class="w-1 h-7 bg-white"></div>
+                <div class="w-0.5 h-7 bg-white"></div>
+                <div class="w-2 h-7 bg-white"></div>
+                <div class="w-1 h-7 bg-white"></div>
+                <div class="w-2.5 h-7 bg-white"></div>
               </div>
             </div>
           </div>
@@ -328,20 +491,24 @@
 
       </div>
 
-      <!-- FOOTER BAR: Handles, Website & Swipe Indicator -->
-      <div class="flex items-center justify-between pt-6 border-t border-white/10 text-xs">
-        <div class="flex items-center space-x-4">
-          <span class="font-bold text-slate-300">{{ brand_handle | default('@apexvelocitylabs') }}</span>
-          <span class="text-slate-600">•</span>
-          <span class="font-medium text-slate-400">{{ website_url | default('apexvelocity.dev') }}</span>
+      <!-- ============================================================== -->
+      <!-- FOOTER: Verified Agency Bar, Swipe Prompt                      -->
+      <!-- ============================================================== -->
+      <div class="flex items-center justify-between pt-5 border-t border-white/10 text-xs">
+        <div class="flex items-center space-x-3 text-slate-400 font-mono">
+          <span class="text-white font-bold">{{ brand_handle | default('@apexvelocitylabs') }}</span>
+          <span>•</span>
+          <span>{{ website_url | default('apexvelocity.dev') }}</span>
+          <span>•</span>
+          <span class="text-slate-500">Laravel Engineering</span>
         </div>
 
-        <div class="flex items-center space-x-2 text-slate-400 font-bold tracking-wider uppercase">
+        <div class="flex items-center space-x-2 text-slate-300 font-bold tracking-wider uppercase">
           {% if slide_number < total_slides | default(4) %}
-          <span>Swipe for details</span>
+          <span>Swipe for Fix</span>
           <span class="text-emerald-400 text-sm">➔</span>
           {% else %}
-          <span>Save this post</span>
+          <span>Save Post</span>
           <span class="text-cyan-400 text-sm">🔖</span>
           {% endif %}
         </div>

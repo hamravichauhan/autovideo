@@ -1,24 +1,24 @@
 {
-  "timestamp": "2026-10-18T12:17:19.669535",
-  "duration_seconds": 1.87,
-  "target_city": "Mumbai",
-  "target_niche": "Boutique Fashion & Designer Labels",
+  "timestamp": "2026-10-18T12:22:47.320413",
+  "duration_seconds": 2.76,
+  "target_city": "Dubai",
+  "target_niche": "Boutique Hotels & Luxury Villas",
   "blog_article": {
-    "title": "Boutique Fashion & Designer Labels in Mumbai: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
-    "file": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/mumbai-fashion-boutiques-tech-comparison.md",
-    "slug": "mumbai-fashion-boutiques-tech-comparison"
+    "title": "Why Dubai Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/dubai-boutique-hotels-local-speed.md",
+    "slug": "dubai-boutique-hotels-local-speed"
   },
   "graphics": {
     "total_slides": 4,
     "paths": [
-      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/mumbai_fashion-boutiques_carousel/slide_1.png",
-      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/mumbai_fashion-boutiques_carousel/slide_2.png",
-      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/mumbai_fashion-boutiques_carousel/slide_3.png",
-      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/mumbai_fashion-boutiques_carousel/slide_4.png"
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_boutique-hotels_carousel/slide_1.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_boutique-hotels_carousel/slide_2.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_boutique-hotels_carousel/slide_3.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/dubai_boutique-hotels_carousel/slide_4.png"
     ]
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Mumbai Fashion Boutique silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfortable...",
+    "caption_preview": "\ud83d\udea8 Is your Dubai Boutique Hotel silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfortable tr...",
     "dry_run": true,
     "meta_status": "simulated"
   },

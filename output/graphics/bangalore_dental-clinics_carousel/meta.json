@@ -1,0 +1,63 @@
+{
+  "batch_id": "bangalore_dental-clinics_carousel",
+  "city": {
+    "id": "bangalore",
+    "name": "Bangalore",
+    "region": "Karnataka",
+    "country": "India",
+    "tagline": "India's Silicon Valley and premier tech startup ecosystem",
+    "districts": [
+      "Indiranagar",
+      "Koramangala",
+      "HSR Layout",
+      "Whitefield",
+      "Lavelle Road"
+    ],
+    "demographics": "Tech-savvy consumers and founders who instantly recognize sluggish UI and abandon websites with poor Core Web Vitals.",
+    "avg_mobile_traffic_pct": 86,
+    "competitor_landscape": "Dense density of boutique brands and cafes whose websites suffer from plugin overload and bloated third-party analytics tags."
+  },
+  "niche": {
+    "id": "dental-clinics",
+    "name": "Premium Dental, Cosmetic & Wellness Clinics",
+    "singular": "Cosmetic Dental Clinic",
+    "plural": "Dental & Cosmetic Clinics",
+    "target_client": "Lead cosmetic dentists, clinic directors, and aesthetic medicine practitioners",
+    "primary_action": "high-ticket consultation and treatment bookings",
+    "pain_points": [
+      "Patients leaving for competitor clinics when appointment forms take multiple minutes to submit.",
+      "Generic WordPress templates that lack HIPAA/GDPR-compliant encrypted patient lead capture.",
+      "Front-desk staff manually calling patients for confirmation instead of automated multi-channel reminders."
+    ],
+    "symptoms": [
+      "Clunky multi-page contact forms causing 60%+ drop-off before submission",
+      "Slow mobile load speeds causing Google Ads Quality Scores to plummet and ad costs to skyrocket",
+      "Unresponsive mobile layouts breaking smile transformation galleries"
+    ],
+    "laravel_solution": [
+      "Ultra-fast 2-step consultation booking flow with instantaneous calendar slot verification.",
+      "Secure encrypted patient record intake dashboard with automated WhatsApp reminder pipeline.",
+      "Optimized interactive Before & After visual sliders loading in under 400 milliseconds."
+    ],
+    "metric_before": {
+      "load_time": "5.4s",
+      "pagespeed": "29/100",
+      "bounce_rate": "64%",
+      "lost_revenue": "$9,800/mo"
+    },
+    "metric_after": {
+      "load_time": "0.35s",
+      "pagespeed": "99/100",
+      "bounce_rate": "21%",
+      "conversion_lift": "+47%"
+    }
+  },
+  "total_slides": 4,
+  "slide_paths": [
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_dental-clinics_carousel/slide_1.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_dental-clinics_carousel/slide_2.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_dental-clinics_carousel/slide_3.png",
+    "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_dental-clinics_carousel/slide_4.png"
+  ],
+  "directory": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_dental-clinics_carousel"
+}
