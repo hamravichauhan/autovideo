@@ -131,18 +131,30 @@
       "angle": "local_speed",
       "date": "2026-10-18",
       "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/dubai-dental-clinics-local-speed.md"
+    },
+    {
+      "slug": "goa-boutique-hotels-tech-comparison",
+      "filename": "goa-boutique-hotels-tech-comparison.md",
+      "title": "Boutique Hotels & Luxury Villas in Goa: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
+      "city_id": "goa",
+      "city_name": "Goa",
+      "niche_id": "boutique-hotels",
+      "niche_name": "Boutique Hotels & Luxury Villas",
+      "angle": "tech_comparison",
+      "date": "2026-10-18",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/goa-boutique-hotels-tech-comparison.md"
     }
   ],
   "last_generated": {
-    "slug": "dubai-dental-clinics-local-speed",
-    "filename": "dubai-dental-clinics-local-speed.md",
-    "title": "Why Dubai Premium Dental, Cosmetic & Wellness Clinics Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "dubai",
-    "city_name": "Dubai",
-    "niche_id": "dental-clinics",
-    "niche_name": "Premium Dental, Cosmetic & Wellness Clinics",
-    "angle": "local_speed",
+    "slug": "goa-boutique-hotels-tech-comparison",
+    "filename": "goa-boutique-hotels-tech-comparison.md",
+    "title": "Boutique Hotels & Luxury Villas in Goa: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
+    "city_id": "goa",
+    "city_name": "Goa",
+    "niche_id": "boutique-hotels",
+    "niche_name": "Boutique Hotels & Luxury Villas",
+    "angle": "tech_comparison",
     "date": "2026-10-18",
-    "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/dubai-dental-clinics-local-speed.md"
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/goa-boutique-hotels-tech-comparison.md"
   }
 }
