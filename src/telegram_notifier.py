@@ -585,7 +585,7 @@ class TelegramNotifier:
             f"• Legacy Baseline: {metric_before.get('pagespeed')}/100 PageSpeed ({metric_before.get('load_time')} mobile load)\n"
             f"• ExtrovertNerd Rebuild: {metric_after.get('pagespeed')}/100 PageSpeed ({metric_after.get('load_time')} mobile load)\n"
             f"• Projected Conversion Lift: +{metric_after.get('conversion_lift')}% direct bookings/sales\n\n"
-            f"💬 <b>Direct Consultation WhatsApp Link:</b>\n"
+            f"💬 <b>Want any help in your business with websites, custom tools, or software? Send us a DM or chat on WhatsApp:</b>\n"
             f"{config.whatsapp_click_to_chat_url}"
         )
         results["blog_dispatch"] = self.send_message(blog_message)

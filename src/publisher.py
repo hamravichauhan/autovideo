@@ -124,6 +124,11 @@ class CaptionBuilder:
             )
             formatted_tweets.append(formatted)
 
+        if formatted_tweets:
+            dm_line = "\n\n💬 Want any help in your business with websites, custom tools, or software? Send us a DM."
+            if dm_line.strip() not in formatted_tweets[-1]:
+                formatted_tweets[-1] += dm_line
+
         return formatted_tweets
 
 
