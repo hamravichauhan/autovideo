@@ -93,8 +93,21 @@ class AutomationEngine:
                     top100_result["website"]["global_rank"],
                     top100_result["website"]["name"],
                 )
+
+                # 3c. Automated 30-Second Video Reel (Edge-TTS + Ken Burns Motion + Synced Captions)
+                slide_paths = graphics_result.get("slide_paths", [])
+                if len(slide_paths) >= 4:
+                    from src.generator_video import VideoReelGenerator
+                    video_generator = VideoReelGenerator()
+                    video_result = video_generator.render_reel(
+                        slide_images=slide_paths[:4],
+                        city=city,
+                        niche=niche,
+                        aspect_ratio="9:16",
+                    )
+                    logger.info("✅ Rendered 30s Video Reel: %s (%.2f MB)", video_result["video_path"], video_result["filesize_mb"])
             except Exception as e:
-                logger.error("⚠️ Graphic rendering encountered error: %s", e)
+                logger.error("⚠️ Graphic/Video rendering encountered error: %s", e)
                 logger.info("Continuing pipeline in text-mode...")
                 graphics_result = {
                     "total_slides": 0,
@@ -142,6 +155,17 @@ class AutomationEngine:
                 instagram_caption=campaign_summary.get("caption"),
             )
             logger.info("📲 Telegram Blog & X Thread Dispatch: %s", "Dispatched" if tg_blog.get("ok") else tg_blog.get("error"))
+
+            # 5c. Dispatch 30s High-Retention Video Reel to Telegram (Reels / Shorts / TikTok)
+            if video_result and video_result.get("video_path"):
+                tg_vid = notifier.dispatch_video_reel(
+                    video_path=video_result["video_path"],
+                    city=city,
+                    niche=niche,
+                    caption=video_result.get("caption_text"),
+                    duration=int(video_result.get("duration", 30)),
+                )
+                logger.info("📲 Telegram Video Reel Dispatch: %s", "Dispatched" if tg_vid.get("ok") else tg_vid.get("error"))
         except Exception as tg_err:
             logger.warning("Telegram dispatch encountered warning: %s", tg_err)
 
@@ -203,7 +227,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--mode",
-        choices=["daily", "all", "top100", "tech_news", "website_tip", "pseo", "graphics", "tech_tip", "social", "prospect", "telegram"],
+        choices=["daily", "all", "video", "top100", "tech_news", "website_tip", "pseo", "graphics", "tech_tip", "social", "prospect", "telegram"],
         default="daily",
         help="Pipeline execution mode",
     )
@@ -314,6 +338,29 @@ def main() -> None:
         res = notifier.dispatch_latest_graphics()
         print("\n[Telegram Dispatch Results]")
         print(json.dumps(res, indent=2))
+    elif args.mode == "video":
+        from src.generator_video import VideoReelGenerator
+        gen = VideoReelGenerator()
+        res = gen.render_latest_carousel_reel(aspect_ratio=args.platform if args.platform in ("9:16", "4:5") else "9:16")
+        print("\n=== VIDEO REEL GENERATION COMPLETE ===")
+        print(f"🎬 Video File:    {res['video_path']}")
+        print(f"⏱️ Duration:      {res['duration']}s")
+        print(f"💾 File Size:     {res['filesize_mb']} MB")
+        print(f"📐 Resolution:    {res['resolution']}")
+        print(f"📋 Caption File:  {res['caption_path']}")
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            notifier = TelegramNotifier()
+            notifier.dispatch_video_reel(
+                video_path=res["video_path"],
+                city=res["city"],
+                niche=res["niche"],
+                caption=res["caption_text"],
+                duration=int(res["duration"]),
+            )
+            print("🚀 Pushed 30s Video Reel to Telegram channel!")
+        except Exception as e:
+            print(f"Telegram notice: {e}")
     elif args.mode == "tech_tip":
         res = engine.graphics_renderer.render_tech_tip()
         print(f"\n[Tech Tip Generated] {res['tip']['title']}")

@@ -244,6 +244,88 @@ class TelegramNotifier:
                 time.sleep(3.0 * attempt)
         return {"ok": False, "error": "Max retries exceeded"}
 
+    def send_video(
+        self,
+        video_path: Path | str,
+        caption: Optional[str] = None,
+        duration: Optional[int] = None,
+        width: int = 1080,
+        height: int = 1920,
+    ) -> Dict[str, Any]:
+        """Sends an MP4 video (Instagram Reel / YouTube Short / TikTok) with retry handling."""
+        path = Path(video_path)
+        if not path.exists():
+            return {"ok": False, "error": f"File not found: {path}"}
+
+        url = f"{self.base_url}/sendVideo"
+        boundary = f"----WebKitFormBoundary{uuid.uuid4().hex}"
+        body = bytearray()
+
+        # chat_id
+        body.extend(f"--{boundary}\r\n".encode("utf-8"))
+        body.extend(f'Content-Disposition: form-data; name="chat_id"\r\n\r\n{self.chat_id}\r\n'.encode("utf-8"))
+
+        # supports_streaming
+        body.extend(f"--{boundary}\r\n".encode("utf-8"))
+        body.extend('Content-Disposition: form-data; name="supports_streaming"\r\n\r\ntrue\r\n'.encode("utf-8"))
+
+        # width & height
+        body.extend(f"--{boundary}\r\n".encode("utf-8"))
+        body.extend(f'Content-Disposition: form-data; name="width"\r\n\r\n{width}\r\n'.encode("utf-8"))
+        body.extend(f"--{boundary}\r\n".encode("utf-8"))
+        body.extend(f'Content-Disposition: form-data; name="height"\r\n\r\n{height}\r\n'.encode("utf-8"))
+
+        if duration:
+            body.extend(f"--{boundary}\r\n".encode("utf-8"))
+            body.extend(f'Content-Disposition: form-data; name="duration"\r\n\r\n{int(duration)}\r\n'.encode("utf-8"))
+
+        # caption
+        if caption:
+            body.extend(f"--{boundary}\r\n".encode("utf-8"))
+            body.extend('Content-Disposition: form-data; name="caption"\r\n\r\n'.encode("utf-8"))
+            body.extend(f"{caption}\r\n".encode("utf-8"))
+            body.extend(f"--{boundary}\r\n".encode("utf-8"))
+            body.extend('Content-Disposition: form-data; name="parse_mode"\r\n\r\nHTML\r\n'.encode("utf-8"))
+
+        # video file
+        filename = path.name
+        body.extend(f"--{boundary}\r\n".encode("utf-8"))
+        body.extend(f'Content-Disposition: form-data; name="video"; filename="{filename}"\r\n'.encode("utf-8"))
+        body.extend(b"Content-Type: video/mp4\r\n\r\n")
+        with open(path, "rb") as f:
+            body.extend(f.read())
+        body.extend(b"\r\n")
+
+        # closing boundary
+        body.extend(f"--{boundary}--\r\n".encode("utf-8"))
+
+        headers = {
+            "Content-Type": f"multipart/form-data; boundary={boundary}",
+            "User-Agent": "ExtrovertNerdBot/1.0",
+            "Connection": "close",
+        }
+
+        for attempt in range(1, 4):
+            try:
+                time.sleep(1.5)
+                req = urllib.request.Request(url, data=bytes(body), headers=headers)
+                with urllib.request.urlopen(req, timeout=90) as response:
+                    result = json.loads(response.read().decode("utf-8"))
+                    logger.info("✅ Sent video reel to Telegram: %s", filename)
+                    return result
+            except urllib.error.HTTPError as e:
+                error_body = e.read().decode("utf-8", errors="ignore")
+                logger.warning("Telegram send_video HTTP %d (attempt %d/3): %s", e.code, attempt, error_body)
+                if attempt == 3:
+                    return {"ok": False, "error": error_body, "code": e.code}
+                time.sleep(3.0 * attempt)
+            except Exception as e:
+                logger.warning("Telegram send_video network error (attempt %d/3): %s", attempt, e)
+                if attempt == 3:
+                    return {"ok": False, "error": str(e)}
+                time.sleep(3.0 * attempt)
+        return {"ok": False, "error": "Max retries exceeded"}
+
     # =========================================================================
     # PLATFORM-SPECIFIC CAPTION BUILDERS
     # =========================================================================
@@ -641,7 +723,65 @@ class TelegramNotifier:
                 res = self.send_photo(latest_poster, caption=caption)
                 results.append({"type": "website_tip", "file": str(latest_poster), "result": res})
 
+        # 5. Find any latest 30s Video Reel (Reels / Shorts / TikTok)
+        video_dir = getattr(config, "video_output_path", Path("output/videos"))
+        if video_dir.exists():
+            videos = sorted(list(video_dir.glob("*.mp4")), key=lambda p: p.stat().st_mtime, reverse=True)
+            if videos:
+                latest_video = videos[0]
+                caption_file = latest_video.with_suffix(".txt")
+                caption_text = ""
+                if caption_file.exists():
+                    try:
+                        with open(caption_file, "r", encoding="utf-8") as f:
+                            caption_text = f.read().strip()
+                    except Exception:
+                        pass
+                res_v = self.dispatch_video_reel(
+                    video_path=latest_video,
+                    city={"name": "Target Local Market"},
+                    niche={"name": "High-Ticket Vertical"},
+                    caption=caption_text,
+                )
+                results.append({"type": "video_reel", "file": str(latest_video), "result": res_v})
+
         return {"ok": True, "dispatches": results}
+
+    def dispatch_video_reel(
+        self,
+        video_path: Path | str,
+        city: Optional[Dict[str, Any]] = None,
+        niche: Optional[Dict[str, Any]] = None,
+        caption: Optional[str] = None,
+        duration: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        """Dispatches an automated 30s video reel to Telegram with clear platform labels and copy-paste caption."""
+        path = Path(video_path)
+        if not path.exists():
+            return {"ok": False, "error": f"Video file not found: {path}"}
+
+        city_name = (city or {}).get("name", "Target Local Market")
+        niche_name = (niche or {}).get("name", "High-Ticket Vertical")
+
+        video_caption = (
+            f"🎬 <b>[FOR REELS / SHORTS / TIKTOK] 30s High-Retention Video Reel</b>\n"
+            f"📍 <b>Market:</b> {city_name} — {niche_name}\n"
+            f"⚡ <b>Engine:</b> Edge-TTS Voiceover + Ken Burns Motion + Synced Captions\n\n"
+            f"👉 <i>Copy-paste ready caption sent below 👇</i>"
+        )
+
+        res_video = self.send_video(path, caption=video_caption, duration=duration)
+        results = {"video": res_video}
+
+        if caption:
+            msg = (
+                f"📋 <b>READY-TO-POST REELS / SHORTS / TIKTOK CAPTION (Copy & Paste):</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━\n"
+                f"<pre>{caption}</pre>"
+            )
+            results["caption_message"] = self.send_message(msg)
+
+        return {"ok": True, "results": results}
 
     def dispatch_tech_news(self, image_path: Path | str, news: Dict[str, Any]) -> Dict[str, Any]:
         """Dispatches a Tech News poster to Telegram."""

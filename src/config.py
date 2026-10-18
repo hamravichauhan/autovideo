@@ -39,8 +39,13 @@ class Config:
     # Output paths
     portfolio_blog_path: Path = BASE_DIR / os.getenv("PORTFOLIO_BLOG_PATH", "output/blogs")
     graphics_output_path: Path = BASE_DIR / os.getenv("GRAPHICS_OUTPUT_PATH", "output/graphics")
+    video_output_path: Path = BASE_DIR / os.getenv("VIDEO_OUTPUT_PATH", "output/videos")
     templates_dir: Path = BASE_DIR / "templates"
     content_dir: Path = BASE_DIR / "content"
+
+    # Video & Voiceover Engine (Edge-TTS)
+    default_tts_voice: str = os.getenv("DEFAULT_TTS_VOICE", "en-IN-PrabhatNeural")
+    default_tts_rate: str = os.getenv("DEFAULT_TTS_RATE", "+15%")
 
     # Meta Graph API (Instagram & Facebook)
     meta_access_token: str = os.getenv("META_ACCESS_TOKEN", "").strip()
