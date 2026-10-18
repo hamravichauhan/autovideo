@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1080, height=1080, initial-scale=1.0">
-  <title>{{ title | default('Laravel Tech Tip') }}</title>
+  <meta name="viewport" content="width={{ width | default(1080) }}, height={{ height | default(1350) }}, initial-scale=1.0">
+  <title>{{ title | default('Laravel Architecture Tech Tip') }}</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,39 +18,53 @@
     }
 
     code, pre {
-      font-family: 'Fira Code', monospace;
+      font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .font-handwriting {
+      font-family: 'Caveat', cursive;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
     }
 
     body {
-      background-color: #07090e;
+      background-color: #030712;
       color: #f8fafc;
-      width: 1080px;
-      height: 1080px;
+      width: {{ width | default(1080) }}px;
+      height: {{ height | default(1350) }}px;
       overflow: hidden;
     }
 
     .slide-canvas {
-      width: 1080px;
-      height: 1080px;
+      width: {{ width | default(1080) }}px;
+      height: {{ height | default(1350) }}px;
       position: relative;
-      background: radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
-                  #070a10;
+      background: 
+        radial-gradient(circle at 85% 12%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 15% 85%, rgba(99, 102, 241, 0.16) 0%, transparent 50%),
+        #030712;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 72px;
+      padding: 52px 64px;
     }
 
     .grid-pattern {
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
     }
 
     .content-layer {
@@ -61,12 +76,51 @@
       justify-content: space-between;
     }
 
+    .tactile-card {
+      background: linear-gradient(150deg, rgba(17, 24, 39, 0.85) 0%, rgba(11, 17, 29, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(24px);
+      border-radius: 20px;
+    }
+
     .code-window {
-      background: #0f172a;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
+      background: #080c16;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Authentic Yellow Sticky Post-it Note */
+    .sticky-note {
+      background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
+      color: #1c1917;
+      border-radius: 8px;
+      padding: 16px 22px;
+      box-shadow: 
+        0 14px 28px -4px rgba(0, 0, 0, 0.6), 
+        0 8px 12px -3px rgba(0, 0, 0, 0.3);
+      transform: rotate(-1.5deg);
+      position: relative;
+      border: 1px solid rgba(234, 179, 8, 0.5);
+    }
+
+    .sticky-tape {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-0.5deg);
+      width: 80px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.62);
+      border-left: 2px dashed rgba(255, 255, 255, 0.7);
+      border-right: 2px dashed rgba(255, 255, 255, 0.7);
+      border-top: 1px solid rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(5px);
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
   </style>
 </head>
@@ -77,56 +131,69 @@
 
     <div class="content-layer">
 
-      <!-- TOP BAR -->
-      <div class="flex items-center justify-between pb-6 border-b border-white/10">
-        <div class="flex items-center space-x-3">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-emerald-400 flex items-center justify-center font-black text-slate-950 text-lg shadow-lg">
-            ⚡
+      <!-- TOP HEADER BAR -->
+      <div class="flex items-center justify-between pb-5 border-b border-white/10 shrink-0">
+        <div class="flex items-center space-x-3.5">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 via-emerald-400 to-cyan-300 p-0.5 shadow-lg shadow-emerald-500/10">
+            <div class="w-full h-full rounded-2xl bg-slate-950 flex items-center justify-center text-emerald-400 font-black text-xl">
+              ⚡
+            </div>
           </div>
           <div>
-            <div class="text-xs tracking-widest uppercase font-bold text-slate-400">{{ brand_name | default('EXTROVERTNERD') }}</div>
-            <div class="text-sm font-semibold text-emerald-400">{{ brand_handle | default('@extrovertnerd') }}</div>
+            <div class="flex items-center space-x-2">
+              <span class="text-sm font-black tracking-wider uppercase text-white">{{ brand_name | default('EXTROVERTNERD') }}</span>
+              <span class="text-[10px] bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">
+                PRO ARCHITECTURE
+              </span>
+            </div>
+            <div class="text-xs text-slate-400 font-medium">
+              Lead Web Architect: <span class="text-slate-200 font-semibold">{{ founder_name | default('Ravi') }}</span> • Sub-Second Systems
+            </div>
           </div>
         </div>
 
-        <div class="px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase border bg-indigo-500/10 text-indigo-300 border-indigo-500/30">
+        <div class="px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold tracking-wider uppercase border bg-indigo-500/15 text-indigo-300 border-indigo-500/30 shadow-md">
           PRO TIPS // CODE ARCHITECTURE
         </div>
       </div>
 
       <!-- MAIN CONTENT -->
-      <div class="my-auto py-4 space-y-5">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider">
-          <span>⚡</span>
-          <span>HIGH-PERFORMANCE LARAVEL TIP</span>
+      <div class="flex-1 flex flex-col justify-between py-6">
+        
+        <div class="space-y-3">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold tracking-wider uppercase">
+            <span>⚡</span>
+            <span>HIGH-PERFORMANCE LARAVEL ARCHITECTURE</span>
+          </div>
+
+          <h1 class="text-[44px] font-black text-white tracking-tight leading-tight">
+            {{ tip_title | default('Stop Murdering Your Database: Solve the N+1 Query Problem') }}
+          </h1>
         </div>
 
-        <h1 class="text-3xl font-extrabold text-white tracking-tight leading-snug">
-          {{ tip_title | default('Stop Murdering Your Database: Solve the N+1 Query Problem') }}
-        </h1>
-
-        <!-- CODE WINDOW: BAD VS GOOD -->
-        <div class="grid grid-cols-2 gap-4">
+        <!-- CODE WINDOW: BAD VS GOOD COMPARISON -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-2">
+          
           <!-- Problem Code -->
-          <div class="code-window border-rose-500/30">
-            <div class="bg-rose-950/40 px-4 py-2 border-b border-rose-500/20 flex items-center justify-between text-xs">
-              <span class="font-bold text-rose-400 flex items-center space-x-1.5">
-                <span>✕</span> <span>SLUGGISH / N+1 QUERIES</span>
+          <div class="code-window border-rose-500/35 bg-gradient-to-b from-rose-950/20 to-slate-950">
+            <div class="bg-rose-950/50 px-4 py-3 border-b border-rose-500/25 flex items-center justify-between text-xs font-mono">
+              <span class="font-bold text-rose-400 flex items-center space-x-2">
+                <span class="text-sm">✕</span> <span>SLUGGISH / N+1 QUERIES (2.4s TTFB)</span>
               </span>
               <div class="flex space-x-1.5">
-                <div class="w-2.5 h-2.5 rounded-full bg-rose-500/40"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-amber-500/40"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/40"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
               </div>
             </div>
-            <pre class="p-4 text-xs leading-relaxed text-slate-300 overflow-x-auto whitespace-pre-wrap"><code>{{ problem_code | e }}</code></pre>
+            <pre class="p-5 text-[13px] leading-relaxed text-slate-300 overflow-x-auto whitespace-pre-wrap"><code>{{ problem_code | e }}</code></pre>
           </div>
 
           <!-- Solution Code -->
-          <div class="code-window border-emerald-500/30">
-            <div class="bg-emerald-950/40 px-4 py-2 border-b border-emerald-500/20 flex items-center justify-between text-xs">
-              <span class="font-bold text-emerald-400 flex items-center space-x-1.5">
-                <span>✓</span> <span>OPTIMIZED / EAGER LOADED</span>
+          <div class="code-window border-emerald-500/35 bg-gradient-to-b from-emerald-950/20 to-slate-950">
+            <div class="bg-emerald-950/50 px-4 py-3 border-b border-emerald-500/25 flex items-center justify-between text-xs font-mono">
+              <span class="font-bold text-emerald-400 flex items-center space-x-2">
+                <span class="text-sm">✓</span> <span>OPTIMIZED / EAGER LOADED (18ms)</span>
               </span>
               <div class="flex space-x-1.5">
                 <div class="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
@@ -134,27 +201,49 @@
                 <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
               </div>
             </div>
-            <pre class="p-4 text-xs leading-relaxed text-emerald-300 overflow-x-auto whitespace-pre-wrap"><code>{{ solution_code | e }}</code></pre>
+            <pre class="p-5 text-[13px] leading-relaxed text-emerald-300 overflow-x-auto whitespace-pre-wrap"><code>{{ solution_code | e }}</code></pre>
           </div>
         </div>
 
-        <!-- EXPLANATION CARD -->
-        <div class="bg-slate-900/70 border border-white/10 rounded-xl p-4 text-xs text-slate-300 leading-relaxed">
-          <span class="font-bold text-white">Why this matters:</span> {{ explanation | default('Eager loading relationships cuts database calls by up to 90% and prevents server CPU spikes during peak traffic.') }}
+        <!-- TELEMETRY IMPACT CARD -->
+        <div class="tactile-card p-6 border-white/10 flex items-center justify-between">
+          <div class="space-y-1">
+            <div class="text-xs font-mono uppercase text-slate-400 font-bold">Performance Impact Diagnostic</div>
+            <div class="text-sm text-slate-200 leading-relaxed max-w-xl">
+              {{ explanation | default('Eager loading relationships cuts database calls by up to 90% and prevents server CPU spikes during peak traffic.') }}
+            </div>
+          </div>
+          <div class="text-right shrink-0 pl-6 border-l border-white/10">
+            <div class="text-xs font-mono text-slate-400">Latency Reduction</div>
+            <div class="text-4xl font-black text-emerald-400 font-mono mt-0.5">99.2%</div>
+            <div class="text-[11px] text-emerald-300 font-mono">2,400ms ➔ 18ms</div>
+          </div>
         </div>
+
+        <!-- AUTHENTIC YELLOW STICKY NOTE -->
+        <div class="sticky-note">
+          <div class="sticky-tape"></div>
+          <div class="text-lg font-handwriting text-stone-900 leading-snug">
+            "💡 In production, a single un-indexed N+1 query loop can take down an entire server during traffic spikes. Eager load and cache in Redis."
+            <span class="font-bold block mt-1 text-sm text-stone-800 font-sans">— Ravi, Lead Web Architect</span>
+          </div>
+        </div>
+
       </div>
 
       <!-- FOOTER BAR -->
-      <div class="flex items-center justify-between pt-6 border-t border-white/10 text-xs">
-        <div class="flex items-center space-x-4">
-          <span class="font-bold text-slate-300">{{ brand_handle | default('@apexvelocitylabs') }}</span>
-          <span class="text-slate-600">•</span>
-          <span class="font-medium text-slate-400">Save for later</span>
+      <div class="flex items-center justify-between pt-5 border-t border-white/10 text-xs shrink-0">
+        <div class="flex items-center space-x-3 text-slate-400 font-mono">
+          <span class="text-white font-bold">{{ brand_handle | default('@extrovertnerd') }}</span>
+          <span>•</span>
+          <span>{{ website_url | default('extrovertnerd.com') }}</span>
+          <span>•</span>
+          <span class="text-slate-500">Laravel Performance Architecture</span>
         </div>
 
-        <div class="flex items-center space-x-2 text-slate-400 font-bold tracking-wider uppercase">
+        <div class="flex items-center space-x-2 text-slate-200 font-black tracking-wider uppercase">
           <span>Need custom web engineering?</span>
-          <span class="text-emerald-400">DM us ➔</span>
+          <span class="text-emerald-400 text-sm">Tap WhatsApp ➔</span>
         </div>
       </div>
 

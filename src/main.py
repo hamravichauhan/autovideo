@@ -46,7 +46,7 @@ class AutomationEngine:
         niche_id: Optional[str] = None,
         angle: str = "local_speed",
         render_graphics: bool = True,
-        platform: str = "instagram",
+        platform: str = "vertical",
     ) -> Dict[str, Any]:
         """Executes full daily client acquisition funnel."""
         start_time = datetime.datetime.now()
@@ -183,9 +183,9 @@ def main() -> None:
     )
     parser.add_argument(
         "--platform",
-        choices=["instagram", "linkedin", "twitter", "square", "all"],
-        default="instagram",
-        help="Target platform layout (instagram: 1080x1350, twitter: 1200x675, square: 1080x1080, all: multi-format)",
+        choices=["vertical", "instagram", "linkedin", "twitter", "story", "square", "twitter_landscape", "all"],
+        default="vertical",
+        help="Target platform layout (vertical/instagram/linkedin/twitter: 1080x1350, story: 1080x1920, square: 1080x1080, all: multi-format)",
     )
     parser.add_argument("--no-graphics", action="store_true", help="Skip Playwright graphic rendering")
     parser.add_argument("--dry-run", action="store_true", default=None, help="Force dry-run simulation mode")

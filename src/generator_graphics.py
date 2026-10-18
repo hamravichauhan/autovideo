@@ -27,33 +27,54 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger(__name__)
 
 PLATFORM_PRESETS: Dict[str, Dict[str, Any]] = {
+    "vertical": {
+        "width": 1080,
+        "height": 1350,
+        "aspect_ratio": "4:5",
+        "name": "Universal Vertical Poster (4:5)",
+        "description": "Standard high-impact portrait format for Instagram, LinkedIn, and X/Twitter feeds",
+    },
     "instagram": {
         "width": 1080,
         "height": 1350,
         "aspect_ratio": "4:5",
-        "name": "Instagram Carousel",
-        "description": "Optimized 4:5 portrait format for maximum feed screen real estate",
+        "name": "Instagram Portrait Post (4:5)",
+        "description": "Optimal 4:5 vertical post (1080x1350) for maximum feed screen real estate",
     },
     "linkedin": {
         "width": 1080,
         "height": 1350,
         "aspect_ratio": "4:5",
-        "name": "LinkedIn Document / Carousel",
-        "description": "Professional 4:5 portrait format for PDF slide documents",
+        "name": "LinkedIn Vertical Carousel (4:5)",
+        "description": "Professional 4:5 vertical format for high-authority slide carousels",
     },
     "twitter": {
-        "width": 1200,
-        "height": 675,
-        "aspect_ratio": "16:9",
-        "name": "Twitter / X Thread Card",
-        "description": "Landscape 16:9 format fitting Twitter feed cards without cropping",
+        "width": 1080,
+        "height": 1350,
+        "aspect_ratio": "4:5",
+        "name": "X / Twitter Vertical Post (4:5)",
+        "description": "Full vertical 4:5 poster (1080x1350) commanding maximum mobile feed attention",
+    },
+    "story": {
+        "width": 1080,
+        "height": 1920,
+        "aspect_ratio": "9:16",
+        "name": "Story & Reel Fullscreen Poster (9:16)",
+        "description": "Full-height vertical 9:16 poster (1080x1920) for Stories and Reels",
     },
     "square": {
         "width": 1080,
         "height": 1080,
         "aspect_ratio": "1:1",
-        "name": "Universal Square",
+        "name": "Universal Square (1:1)",
         "description": "Classic 1:1 square for Facebook, Instagram, and general feeds",
+    },
+    "twitter_landscape": {
+        "width": 1600,
+        "height": 900,
+        "aspect_ratio": "16:9",
+        "name": "Twitter / X Desktop Landscape (16:9)",
+        "description": "Desktop 16:9 format fitting Twitter web in-stream cards",
     },
 }
 
@@ -195,8 +216,8 @@ class GraphicsRenderer:
         html_content: str,
         output_file: Path,
         width: int = 1080,
-        height: int = 1080,
-        device_scale_factor: int = 1,
+        height: int = 1350,
+        device_scale_factor: int = 2,
     ) -> Path:
         """Loads HTML content into headless Playwright browser and captures screenshot."""
         try:
@@ -242,7 +263,7 @@ class GraphicsRenderer:
 
             await browser.close()
 
-        logger.info("Saved graphic asset [%dx%d]: %s", width, height, output_file)
+        logger.info("Saved graphic asset [%dx%d @%dx]: %s", width, height, device_scale_factor, output_file)
         return output_file
 
     def render_carousel_set(
@@ -250,13 +271,13 @@ class GraphicsRenderer:
         city_id: Optional[str] = None,
         niche_id: Optional[str] = None,
         batch_id: Optional[str] = None,
-        platform: str = "instagram",
+        platform: str = "vertical",
     ) -> Dict[str, Any]:
         """Synchronously renders all 4 slides of a carousel customized for a target platform."""
         city, niche = self._get_city_and_niche(city_id, niche_id)
 
         target_platforms = (
-            ["instagram", "twitter", "square"] if platform == "all" else [platform]
+            ["vertical", "story", "square"] if platform == "all" else [platform]
         )
 
         batch_name = batch_id or f"{city['id']}_{niche['id']}_carousel"
@@ -267,7 +288,7 @@ class GraphicsRenderer:
         all_rendered_images: List[str] = []
 
         async def _run_for_platform(plt: str) -> List[Path]:
-            preset = PLATFORM_PRESETS.get(plt, PLATFORM_PRESETS["instagram"])
+            preset = PLATFORM_PRESETS.get(plt, PLATFORM_PRESETS["vertical"])
             slides_context = self.build_carousel_slides_context(city, niche, platform=plt)
             tasks = []
             for slide_ctx in slides_context:
@@ -285,6 +306,7 @@ class GraphicsRenderer:
                         slide_path,
                         width=preset["width"],
                         height=preset["height"],
+                        device_scale_factor=2,
                     )
                 )
             return await asyncio.gather(*tasks)
@@ -319,6 +341,7 @@ class GraphicsRenderer:
         self,
         tip_id: Optional[str] = None,
         output_filename: Optional[str] = None,
+        platform: str = "vertical",
     ) -> Dict[str, Any]:
         """Renders a code snippet / tech tip graphic (Pillar 3)."""
         tips = self.topics_data.get("tech_tips", [])
@@ -333,6 +356,7 @@ class GraphicsRenderer:
                     break
 
         selected_tip = selected_tip or random.choice(tips)
+        preset = PLATFORM_PRESETS.get(platform, PLATFORM_PRESETS["vertical"])
 
         context = {
             "brand_name": config.brand_name,
@@ -344,6 +368,8 @@ class GraphicsRenderer:
             "problem_code": selected_tip["problem_code"],
             "solution_code": selected_tip["solution_code"],
             "explanation": selected_tip["explanation"],
+            "width": preset["width"],
+            "height": preset["height"],
         }
 
         template = self.jinja_env.get_template("tech_tip.html")
@@ -353,7 +379,13 @@ class GraphicsRenderer:
         output_file = self.output_dir / "tech_tips" / file_name
 
         async def _run() -> Path:
-            return await self._render_html_to_png(html, output_file, width=1080, height=1080)
+            return await self._render_html_to_png(
+                html,
+                output_file,
+                width=preset["width"],
+                height=preset["height"],
+                device_scale_factor=2,
+            )
 
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -376,9 +408,9 @@ def main() -> None:
     parser.add_argument("--niche", type=str, help="Target niche ID (e.g. restaurants)")
     parser.add_argument(
         "--platform",
-        choices=["instagram", "linkedin", "twitter", "square", "all"],
-        default="instagram",
-        help="Target platform preset (instagram: 1080x1350, twitter: 1200x675, square: 1080x1080, all: multi-format)",
+        choices=["vertical", "instagram", "linkedin", "twitter", "story", "square", "twitter_landscape", "all"],
+        default="vertical",
+        help="Target platform preset (vertical/instagram/linkedin/twitter: 1080x1350, story: 1080x1920, square: 1080x1080, all: multi-format)",
     )
     parser.add_argument("--tip", type=str, help="Tech tip ID for code snippet graphic")
     parser.add_argument("--batch-id", type=str, help="Custom folder name for carousel slides")
@@ -387,7 +419,7 @@ def main() -> None:
     renderer = GraphicsRenderer()
 
     if args.type == "tech_tip":
-        result = renderer.render_tech_tip(tip_id=args.tip)
+        result = renderer.render_tech_tip(tip_id=args.tip, platform=args.platform)
         print(f"\n[Generated Tech Tip Graphic]\nTitle: {result['tip']['title']}")
         print(f"Path: {result['image_path']}\n")
     else:

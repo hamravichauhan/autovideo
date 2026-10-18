@@ -19,7 +19,7 @@
             </p>
         </div>
 
-        <div class="flex items-center space-x-3">
+        <div class="flex flex-wrap items-center gap-2.5">
             <form action="/admin/social/telegram" method="POST" class="inline">
                 <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl shadow-lg shadow-sky-500/20 transition flex items-center space-x-1.5">
                     <span>📲</span>
@@ -28,10 +28,18 @@
             </form>
 
             <form action="/admin/social/generate" method="POST" class="inline">
-                <input type="hidden" name="platform" value="all">
+                <input type="hidden" name="platform" value="vertical">
                 <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl border border-white/10 transition flex items-center space-x-1.5">
-                    <span>🎨</span>
-                    <span>Re-Render Graphics</span>
+                    <span>📐</span>
+                    <span>Render Vertical (4:5)</span>
+                </button>
+            </form>
+
+            <form action="/admin/social/generate" method="POST" class="inline">
+                <input type="hidden" name="platform" value="story">
+                <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-xl border border-white/10 transition flex items-center space-x-1.5">
+                    <span>📱</span>
+                    <span>Story (9:16)</span>
                 </button>
             </form>
 
@@ -160,7 +168,7 @@
                     @foreach($set['images'] as $img)
                     <div 
                         @click="activeImage = '{{ $img }}'; previewModal = true"
-                        class="aspect-square rounded-xl overflow-hidden bg-black/40 border border-white/10 hover:border-emerald-400 cursor-pointer group relative transition shadow-md"
+                        class="aspect-[4/5] rounded-xl overflow-hidden bg-black/40 border border-white/10 hover:border-emerald-400 cursor-pointer group relative transition shadow-md"
                     >
                         <img src="{{ $img }}" alt="Slide" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xs font-mono">
