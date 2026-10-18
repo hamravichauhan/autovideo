@@ -23,6 +23,8 @@ class Config:
     # Brand & Inbound Lead Funnel
     brand_name: str = os.getenv("BRAND_NAME", "Apex Velocity Labs")
     brand_handle: str = os.getenv("BRAND_HANDLE", "@apexvelocitylabs")
+    founder_name: str = os.getenv("FOUNDER_NAME", "Ravi")
+    founder_title: str = os.getenv("FOUNDER_TITLE", "Lead Web Architect")
     website_url: str = os.getenv("WEBSITE_URL", "https://apexvelocity.dev")
     whatsapp_phone_number: str = os.getenv("WHATSAPP_PHONE_NUMBER", "15551234567")
     whatsapp_default_message: str = os.getenv(

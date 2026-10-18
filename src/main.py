@@ -44,6 +44,7 @@ class AutomationEngine:
         niche_id: Optional[str] = None,
         angle: str = "local_speed",
         render_graphics: bool = True,
+        platform: str = "instagram",
     ) -> Dict[str, Any]:
         """Executes full daily client acquisition funnel."""
         start_time = datetime.datetime.now()
@@ -55,6 +56,7 @@ class AutomationEngine:
         city, niche = self.pseo_generator.get_next_city_and_niche(city_id, niche_id)
         logger.info("📍 Target Market Selected: %s (%s, %s)", city["name"], city["region"], city["country"])
         logger.info("🏢 Target Business Niche: %s", niche["name"])
+        logger.info("📱 Target Social Platform: %s", platform.upper())
 
         # 2. Generate Programmatic SEO Blog
         logger.info("\n--- [STEP 1/4] Generating Programmatic SEO Article ---")
@@ -66,10 +68,10 @@ class AutomationEngine:
         # 3. Render High-Resolution Visual Carousel
         graphics_result: Dict[str, Any] = {}
         if render_graphics:
-            logger.info("\n--- [STEP 2/4] Headless Rendering 4-Slide Visual Carousel ---")
+            logger.info("\n--- [STEP 2/4] Headless Rendering 4-Slide Visual Carousel (%s) ---", platform)
             try:
                 graphics_result = self.graphics_renderer.render_carousel_set(
-                    city_id=city["id"], niche_id=niche["id"]
+                    city_id=city["id"], niche_id=niche["id"], platform=platform
                 )
                 logger.info(
                     "✅ Rendered %d Carousel Slides to: %s",
@@ -159,6 +161,12 @@ def main() -> None:
         default="local_speed",
         help="Content angle for pSEO generation",
     )
+    parser.add_argument(
+        "--platform",
+        choices=["instagram", "linkedin", "twitter", "square", "all"],
+        default="instagram",
+        help="Target platform layout (instagram: 1080x1350, twitter: 1200x675, square: 1080x1080, all: multi-format)",
+    )
     parser.add_argument("--no-graphics", action="store_true", help="Skip Playwright graphic rendering")
     parser.add_argument("--dry-run", action="store_true", default=None, help="Force dry-run simulation mode")
 
@@ -172,6 +180,7 @@ def main() -> None:
             niche_id=args.niche,
             angle=args.angle,
             render_graphics=not args.no_graphics,
+            platform=args.platform,
         )
     elif args.mode == "pseo":
         res = engine.pseo_generator.generate_article(
@@ -181,7 +190,7 @@ def main() -> None:
         print(f"Path: {res['filepath']}")
     elif args.mode == "graphics":
         res = engine.graphics_renderer.render_carousel_set(
-            city_id=args.city, niche_id=args.niche
+            city_id=args.city, niche_id=args.niche, platform=args.platform
         )
         print(f"\n[Graphics Generated] {res['batch_id']}")
         for p in res["slide_paths"]:

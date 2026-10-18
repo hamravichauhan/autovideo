@@ -1,7 +1,11 @@
 """Headless Graphic & Carousel Renderer.
 
 Uses Playwright headless Chromium to render Jinja2/Tailwind CSS templates
-into high-resolution 1080x1080 PNG assets for social media carousels and posts.
+into platform-optimized PNG image assets:
+- Instagram: 1080 x 1350 px (4:5 Portrait - maximum feed screen real estate)
+- LinkedIn: 1080 x 1350 px (4:5 Portrait - optimal for swipeable PDF slide docs)
+- Twitter / X: 1200 x 675 px (16:9 Landscape - native feed preview without cropping)
+- Square: 1080 x 1080 px (1:1 Universal)
 """
 
 from __future__ import annotations
@@ -22,9 +26,40 @@ from src.config import config
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
+PLATFORM_PRESETS: Dict[str, Dict[str, Any]] = {
+    "instagram": {
+        "width": 1080,
+        "height": 1350,
+        "aspect_ratio": "4:5",
+        "name": "Instagram Carousel",
+        "description": "Optimized 4:5 portrait format for maximum feed screen real estate",
+    },
+    "linkedin": {
+        "width": 1080,
+        "height": 1350,
+        "aspect_ratio": "4:5",
+        "name": "LinkedIn Document / Carousel",
+        "description": "Professional 4:5 portrait format for PDF slide documents",
+    },
+    "twitter": {
+        "width": 1200,
+        "height": 675,
+        "aspect_ratio": "16:9",
+        "name": "Twitter / X Thread Card",
+        "description": "Landscape 16:9 format fitting Twitter feed cards without cropping",
+    },
+    "square": {
+        "width": 1080,
+        "height": 1080,
+        "aspect_ratio": "1:1",
+        "name": "Universal Square",
+        "description": "Classic 1:1 square for Facebook, Instagram, and general feeds",
+    },
+}
+
 
 class GraphicsRenderer:
-    """Renders HTML templates into 1080x1080 PNG image graphics using Playwright."""
+    """Renders HTML templates into multi-platform PNG image graphics using Playwright."""
 
     def __init__(
         self,
@@ -78,15 +113,21 @@ class GraphicsRenderer:
         return selected_city, selected_niche
 
     def build_carousel_slides_context(
-        self, city: Dict[str, Any], niche: Dict[str, Any]
+        self,
+        city: Dict[str, Any],
+        niche: Dict[str, Any],
+        platform: str = "instagram",
     ) -> List[Dict[str, Any]]:
-        """Constructs data contexts for the 4 carousel slides."""
+        """Constructs data contexts for the 4 carousel slides customized by platform."""
+        preset = PLATFORM_PRESETS.get(platform, PLATFORM_PRESETS["instagram"])
         total_slides = 4
         slides = []
 
         base_ctx = {
             "brand_name": config.brand_name,
             "brand_handle": config.brand_handle,
+            "founder_name": config.founder_name,
+            "founder_title": config.founder_title,
             "website_url": config.website_url,
             "city_name": city["name"],
             "niche_name": niche["name"],
@@ -101,6 +142,10 @@ class GraphicsRenderer:
             "bounce_after": niche["metric_after"].get("bounce_rate", "24%"),
             "conversion_lift": niche["metric_after"].get("conversion_lift", "+42%"),
             "total_slides": total_slides,
+            "platform": platform,
+            "aspect_ratio": preset["aspect_ratio"],
+            "width": preset["width"],
+            "height": preset["height"],
         }
 
         # Slide 1: Hook / Problem Statement
@@ -186,7 +231,7 @@ class GraphicsRenderer:
             await page.set_content(html_content, wait_until="networkidle", timeout=15000)
 
             # Extra short pause to allow web fonts/Tailwind CSS animations to paint
-            await page.wait_for_timeout(400)
+            await page.wait_for_timeout(450)
 
             # Screenshot exact canvas element or full viewport
             canvas = await page.query_selector("#slide-canvas")
@@ -197,7 +242,7 @@ class GraphicsRenderer:
 
             await browser.close()
 
-        logger.info("Saved graphic asset: %s", output_file)
+        logger.info("Saved graphic asset [%dx%d]: %s", width, height, output_file)
         return output_file
 
     def render_carousel_set(
@@ -205,32 +250,52 @@ class GraphicsRenderer:
         city_id: Optional[str] = None,
         niche_id: Optional[str] = None,
         batch_id: Optional[str] = None,
+        platform: str = "instagram",
     ) -> Dict[str, Any]:
-        """Synchronously renders all 4 slides of a carousel."""
+        """Synchronously renders all 4 slides of a carousel customized for a target platform."""
         city, niche = self._get_city_and_niche(city_id, niche_id)
-        slides_context = self.build_carousel_slides_context(city, niche)
+
+        target_platforms = (
+            ["instagram", "twitter", "square"] if platform == "all" else [platform]
+        )
 
         batch_name = batch_id or f"{city['id']}_{niche['id']}_carousel"
         batch_folder = self.output_dir / batch_name
         batch_folder.mkdir(parents=True, exist_ok=True)
 
         template = self.jinja_env.get_template("carousel_slide.html")
-        rendered_images = []
+        all_rendered_images: List[str] = []
 
-        async def _run_all() -> List[Path]:
+        async def _run_for_platform(plt: str) -> List[Path]:
+            preset = PLATFORM_PRESETS.get(plt, PLATFORM_PRESETS["instagram"])
+            slides_context = self.build_carousel_slides_context(city, niche, platform=plt)
             tasks = []
             for slide_ctx in slides_context:
                 html = template.render(**slide_ctx)
                 slide_num = slide_ctx["slide_number"]
-                slide_path = batch_folder / f"slide_{slide_num}.png"
-                tasks.append(self._render_html_to_png(html, slide_path))
+                filename = (
+                    f"slide_{slide_num}.png"
+                    if len(target_platforms) == 1
+                    else f"{plt}_slide_{slide_num}.png"
+                )
+                slide_path = batch_folder / filename
+                tasks.append(
+                    self._render_html_to_png(
+                        html,
+                        slide_path,
+                        width=preset["width"],
+                        height=preset["height"],
+                    )
+                )
             return await asyncio.gather(*tasks)
 
         # Run async event loop
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         try:
-            rendered_images = loop.run_until_complete(_run_all())
+            for plt in target_platforms:
+                imgs = loop.run_until_complete(_run_for_platform(plt))
+                all_rendered_images.extend([str(p) for p in imgs])
         finally:
             loop.close()
 
@@ -238,8 +303,9 @@ class GraphicsRenderer:
             "batch_id": batch_name,
             "city": city,
             "niche": niche,
-            "total_slides": len(rendered_images),
-            "slide_paths": [str(p) for p in rendered_images],
+            "platform": platform,
+            "total_slides": len(all_rendered_images),
+            "slide_paths": all_rendered_images,
             "directory": str(batch_folder),
         }
 
@@ -271,6 +337,8 @@ class GraphicsRenderer:
         context = {
             "brand_name": config.brand_name,
             "brand_handle": config.brand_handle,
+            "founder_name": config.founder_name,
+            "founder_title": config.founder_title,
             "tip_title": selected_tip["title"],
             "tip_summary": selected_tip["summary"],
             "problem_code": selected_tip["problem_code"],
@@ -285,7 +353,7 @@ class GraphicsRenderer:
         output_file = self.output_dir / "tech_tips" / file_name
 
         async def _run() -> Path:
-            return await self._render_html_to_png(html, output_file)
+            return await self._render_html_to_png(html, output_file, width=1080, height=1080)
 
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -306,6 +374,12 @@ def main() -> None:
     parser.add_argument("--type", choices=["carousel", "tech_tip"], default="carousel")
     parser.add_argument("--city", type=str, help="Target city ID (e.g. goa, mumbai)")
     parser.add_argument("--niche", type=str, help="Target niche ID (e.g. restaurants)")
+    parser.add_argument(
+        "--platform",
+        choices=["instagram", "linkedin", "twitter", "square", "all"],
+        default="instagram",
+        help="Target platform preset (instagram: 1080x1350, twitter: 1200x675, square: 1080x1080, all: multi-format)",
+    )
     parser.add_argument("--tip", type=str, help="Tech tip ID for code snippet graphic")
     parser.add_argument("--batch-id", type=str, help="Custom folder name for carousel slides")
     args = parser.parse_args()
@@ -318,9 +392,12 @@ def main() -> None:
         print(f"Path: {result['image_path']}\n")
     else:
         result = renderer.render_carousel_set(
-            city_id=args.city, niche_id=args.niche, batch_id=args.batch_id
+            city_id=args.city,
+            niche_id=args.niche,
+            batch_id=args.batch_id,
+            platform=args.platform,
         )
-        print(f"\n[Generated Carousel Set]")
+        print(f"\n[Generated Carousel Set for {args.platform.upper()}]")
         print(f"Target: {result['city']['name']} - {result['niche']['name']}")
         print(f"Slides generated ({result['total_slides']}):")
         for p in result["slide_paths"]:
