@@ -43,6 +43,13 @@ class Router
             $path = rtrim($path, '/');
         }
 
+        // Parse query string into $_GET
+        $queryString = parse_url($uri, PHP_URL_QUERY);
+        if ($queryString) {
+            parse_str($queryString, $queryParams);
+            $_GET = array_merge($_GET, $queryParams);
+        }
+
         $routesForMethod = $this->routes[$method] ?? [];
 
         // 1. Direct exact match

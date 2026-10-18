@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('title', 'Free Mobile Speed Checker & Core Web Vitals Diagnostic | ExtrovertNerd')
-@section('meta_description', 'Test your website mobile speed score. See how much revenue your business is losing to slow load times and discover how a custom Laravel architecture achieves 100/100 Core Web Vitals.')
+@section('meta_description', 'Test your website mobile speed score. See how much revenue your business is losing to slow load times and discover how an ExtrovertNerd custom Laravel architecture achieves 100/100 Core Web Vitals.')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-6 py-12">
+<div class="max-w-7xl mx-auto px-6 py-12 space-y-16">
 
     <!-- HERO SECTION -->
-    <div class="text-center max-w-3xl mx-auto space-y-4">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold tracking-wide">
+    <div class="text-center max-w-3xl mx-auto space-y-5">
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold tracking-wide shadow-lg shadow-emerald-500/10">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
             <span>EXTROVERTNERD LAB • INSTANT SPEED AUDIT</span>
         </div>
-        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
             How Much Revenue Is Your Slow Website <span class="font-serif italic font-normal text-rose-400 underline decoration-rose-500/30">Losing Daily</span>?
         </h1>
         <p class="text-slate-400 text-base md:text-lg leading-relaxed">
@@ -21,8 +21,8 @@
     </div>
 
     <!-- URL INPUT FORM -->
-    <div class="max-w-2xl mx-auto mt-8">
-        <form action="/speed-checker" method="GET" class="flex flex-col sm:flex-row items-center gap-3 bg-slate-900/90 border border-white/10 p-2.5 rounded-2xl shadow-2xl focus-within:border-emerald-500/50 transition">
+    <div class="max-w-2xl mx-auto">
+        <form action="/speed-checker" method="GET" class="flex flex-col sm:flex-row items-center gap-3 bg-slate-900/90 border border-white/10 p-2.5 rounded-2xl shadow-2xl focus-within:border-emerald-500/50 transition duration-300">
             <div class="flex items-center space-x-3 px-3 w-full">
                 <span class="text-slate-500 font-mono text-sm">https://</span>
                 <input 
@@ -34,19 +34,21 @@
                     class="bg-transparent border-0 text-white placeholder-slate-500 text-base focus:ring-0 w-full outline-none font-medium"
                 >
             </div>
-            <button type="submit" class="w-full sm:w-auto shrink-0 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm uppercase tracking-wider px-7 py-3.5 rounded-xl shadow-lg shadow-emerald-500/25 hover:scale-105 transition">
+            <button type="submit" class="w-full sm:w-auto shrink-0 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg shadow-emerald-500/25 hover:scale-105 transition">
                 Analyze Speed ➔
             </button>
         </form>
 
         <!-- Quick seed suggestions -->
-        <div class="flex items-center justify-center space-x-2 text-xs text-slate-500 mt-3 font-mono">
-            <span>Try demo:</span>
+        <div class="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500 mt-4 font-mono">
+            <span>Try demo audits:</span>
             <a href="/speed-checker?url=luxurygoavillas.com" class="text-slate-400 hover:text-emerald-400 underline">luxurygoavillas.com</a>
             <span>•</span>
             <a href="/speed-checker?url=mumbaicouture.in" class="text-slate-400 hover:text-emerald-400 underline">mumbaicouture.in</a>
             <span>•</span>
             <a href="/speed-checker?url=bangaloresmiles.com" class="text-slate-400 hover:text-emerald-400 underline">bangaloresmiles.com</a>
+            <span>•</span>
+            <a href="/speed-checker?url=dubaiproperties.ae" class="text-slate-400 hover:text-emerald-400 underline">dubaiproperties.ae</a>
         </div>
     </div>
 
@@ -54,17 +56,19 @@
     <!-- ============================================================== -->
     <!-- AUDIT RESULTS: BEFORE VS AFTER SIDE-BY-SIDE BENCHMARK          -->
     <!-- ============================================================== -->
-    <div class="mt-16 space-y-8 animate-fade-in">
+    <div class="space-y-12">
 
         <!-- Result Summary Bar -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl bg-slate-900 border border-white/10 text-sm">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 rounded-2xl bg-slate-900/90 border border-white/10 text-sm shadow-xl">
             <div class="flex items-center space-x-3">
                 <span class="w-3 h-3 rounded-full bg-rose-500 animate-pulse"></span>
                 <span class="text-slate-400">Diagnostic completed for:</span>
                 <span class="text-white font-mono font-bold">{{ $result['host'] }}</span>
             </div>
-            <div class="text-xs text-slate-500 font-mono mt-2 sm:mt-0">
-                Audited by ExtrovertNerd Lab Engine • Standard 4G Mobile Emulation
+            <div class="text-xs text-slate-400 font-mono mt-2 sm:mt-0 flex items-center space-x-2">
+                <span>Audited by ExtrovertNerd Lab Engine</span>
+                <span>•</span>
+                <span class="text-emerald-400 font-bold">Standard 4G Throttling</span>
             </div>
         </div>
 
@@ -73,20 +77,22 @@
 
             <!-- LEFT COLUMN: CURRENT WEBSITE (THE BOTTLENECK) -->
             <div class="bg-gradient-to-b from-rose-950/20 to-slate-900/90 border border-rose-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative overflow-hidden">
-                <div class="absolute -right-4 -top-2">
-                    <span class="border-2 border-rose-500 text-rose-400 font-black text-xs uppercase px-3 py-1 rounded rotate-3 inline-block">FAILS CORE WEB VITALS</span>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-widest">Current Website Architecture</span>
+                    <span class="border-2 border-rose-500 text-rose-400 font-black text-[10px] font-mono uppercase px-2.5 py-0.5 rounded rotate-2 inline-block">
+                        FAILS CORE WEB VITALS
+                    </span>
                 </div>
 
                 <div class="space-y-1">
-                    <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-widest">Current Website Architecture</span>
-                    <h2 class="text-2xl font-black text-white">Sluggish & Leaking Conversions</h2>
+                    <h2 class="text-2xl font-black text-white">Sluggish & Leaking Visitors</h2>
                     <p class="text-xs text-slate-400 font-mono">{{ $result['current']['platform'] }}</p>
                 </div>
 
                 <!-- Speedometer Display -->
-                <div class="bg-black/40 border border-white/10 rounded-2xl p-6 text-center">
+                <div class="bg-black/50 border border-rose-500/20 rounded-2xl p-6 text-center space-y-2">
                     <div class="text-5xl font-black font-mono text-rose-500">{{ $result['current']['score'] }}<span class="text-xl text-slate-500">/100</span></div>
-                    <div class="text-xs font-bold text-rose-400 mt-1 uppercase tracking-wider">Critical Mobile Latency</div>
+                    <div class="text-xs font-bold text-rose-400 uppercase tracking-wider">Critical Mobile Latency</div>
                 </div>
 
                 <!-- Key Metrics Grid -->
@@ -110,10 +116,10 @@
                 </div>
 
                 <!-- Diagnosis Bullets -->
-                <div class="space-y-2 text-xs text-slate-300 pt-2 border-t border-white/10">
+                <div class="space-y-2 text-xs text-slate-300 pt-2 border-t border-white/10 font-mono">
                     <div class="flex items-center space-x-2 text-rose-400">
                         <span>✕</span>
-                        <span>{{ $result['current']['scripts_count'] }} external tracking scripts and plugin payloads</span>
+                        <span>{{ $result['current']['scripts_count'] }} external tracking scripts & plugin payloads</span>
                     </div>
                     <div class="flex items-center space-x-2 text-rose-400">
                         <span>✕</span>
@@ -121,27 +127,29 @@
                     </div>
                     <div class="flex items-center space-x-2 text-rose-400">
                         <span>✕</span>
-                        <span>No automated WhatsApp booking notification pipeline</span>
+                        <span>No automated WhatsApp booking alert webhooks</span>
                     </div>
                 </div>
             </div>
 
             <!-- RIGHT COLUMN: EXTROVERTNERD LARAVEL BENCHMARK (THE FIX) -->
             <div class="bg-gradient-to-b from-emerald-950/25 to-slate-900/90 border border-emerald-500/40 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative glow-emerald">
-                <div class="absolute -right-4 -top-2">
-                    <span class="border-2 border-emerald-400 text-emerald-300 font-black text-xs uppercase px-3 py-1 rounded -rotate-2 inline-block">100% GREEN CORE WEB VITALS</span>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">ExtrovertNerd Re-Architecture</span>
+                    <span class="border-2 border-emerald-400 text-emerald-300 font-black text-[10px] font-mono uppercase px-2.5 py-0.5 rounded -rotate-2 inline-block">
+                        100% GREEN CORE WEB VITALS
+                    </span>
                 </div>
 
                 <div class="space-y-1">
-                    <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">ExtrovertNerd Re-Architecture</span>
                     <h2 class="text-2xl font-black text-white">Sub-Second Speed & Revenue Growth</h2>
                     <p class="text-xs text-slate-400 font-mono">{{ $result['laravel_benchmark']['platform'] }}</p>
                 </div>
 
                 <!-- Speedometer Display -->
-                <div class="bg-black/40 border border-emerald-500/30 rounded-2xl p-6 text-center">
+                <div class="bg-black/50 border border-emerald-500/30 rounded-2xl p-6 text-center space-y-2">
                     <div class="text-5xl font-black font-mono text-emerald-400">{{ $result['laravel_benchmark']['score'] }}<span class="text-xl text-emerald-600">/100</span></div>
-                    <div class="text-xs font-bold text-emerald-300 mt-1 uppercase tracking-wider">Flawless Mobile Core Web Vitals</div>
+                    <div class="text-xs font-bold text-emerald-300 uppercase tracking-wider">Flawless Mobile Core Web Vitals</div>
                 </div>
 
                 <!-- Key Metrics Grid -->
@@ -165,7 +173,7 @@
                 </div>
 
                 <!-- Feature Bullets -->
-                <div class="space-y-2 text-xs text-slate-200 pt-2 border-t border-white/10">
+                <div class="space-y-2 text-xs text-slate-200 pt-2 border-t border-white/10 font-mono">
                     <div class="flex items-center space-x-2 text-emerald-400">
                         <span>✓</span>
                         <span>Redis in-memory caching serving pages in 28 milliseconds</span>
@@ -183,22 +191,68 @@
 
         </div>
 
+        <!-- ============================================================== -->
+        <!-- ACTION PLAN: HOW WE FIX THIS EXACT SITE                        -->
+        <!-- ============================================================== -->
+        <div class="bg-slate-900/80 border border-white/10 rounded-3xl p-8 md:p-10 space-y-8 shadow-xl">
+            <div class="border-b border-white/10 pb-4">
+                <span class="text-xs font-mono font-bold uppercase text-emerald-400 tracking-widest">ROADMAP TO 100/100</span>
+                <h3 class="text-2xl font-black text-white mt-1">
+                    How ExtrovertNerd Upgrades {{ $result['host'] }} to a 100/100 Score
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div class="space-y-2 bg-slate-950/60 p-5 rounded-2xl border border-white/5">
+                    <div class="text-emerald-400 font-bold font-mono text-xs">STEP 1: PURGE BLOAT</div>
+                    <h4 class="text-white font-bold">Strip {{ $result['current']['scripts_count'] }} Plugin Dependencies</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        We extract only your essential business logic and discard unminified trackers, cutting code payload from 5MB+ down to 140KB.
+                    </p>
+                </div>
+
+                <div class="space-y-2 bg-slate-950/60 p-5 rounded-2xl border border-white/5">
+                    <div class="text-emerald-400 font-bold font-mono text-xs">STEP 2: RAM CACHE</div>
+                    <h4 class="text-white font-bold">Deploy Redis RAM Infrastructure</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        We configure in-memory caching to slash your Time to First Byte from {{ $result['current']['ttfb'] }} down to 140ms.
+                    </p>
+                </div>
+
+                <div class="space-y-2 bg-slate-950/60 p-5 rounded-2xl border border-white/5">
+                    <div class="text-emerald-400 font-bold font-mono text-xs">STEP 3: GUARANTEE</div>
+                    <h4 class="text-white font-bold">Sign 100/100 Performance SLA</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Every build is verified on real mobile 4G throttling with a 100% money-back Core Web Vitals guarantee.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- HIGH-CONVERTING INBOUND WHATSAPP CONVERSION BOX -->
-        <div class="bg-gradient-to-r from-slate-900 via-emerald-950/40 to-slate-900 border border-emerald-500/40 p-8 rounded-3xl text-center space-y-6 shadow-2xl">
+        <div class="bg-gradient-to-r from-slate-900 via-emerald-950/50 to-slate-900 border border-emerald-500/40 p-8 sm:p-12 rounded-3xl text-center space-y-6 shadow-2xl">
             <div class="max-w-2xl mx-auto space-y-2">
                 <span class="text-xs font-mono font-bold uppercase text-emerald-400 tracking-widest">NEXT ACTION • DIRECT FROM ARCHITECT RAVI</span>
                 <h3 class="text-3xl font-black text-white">Want the Exact Code Roadmap to Fix Your {{ $result['host'] }} Score?</h3>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Within 24 hours, Lead Web Architect Ravi will record a personalized 3-minute screen recording analyzing your Core Web Vitals bottlenecks and how a custom Laravel upgrade will boost your revenue.
+                    Within 24 hours, Lead Web Architect Ravi will record a personalized 3-minute screen teardown analyzing your Core Web Vitals bottlenecks and how a custom Laravel upgrade will boost your revenue.
                 </p>
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-                <a href="{{ $result['whatsapp_url'] }}" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-base px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/25 hover:scale-105 transition">
-                    <span>📱</span>
+                <a 
+                    href="{{ $result['whatsapp_url'] }}" 
+                    target="_blank" 
+                    rel="noopener" 
+                    class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-sm uppercase px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/25 hover:scale-105 transition"
+                >
+                    <span>💬</span>
                     <span>Claim Free 3-Minute Video Breakdown on WhatsApp ➔</span>
                 </a>
-                <a href="/blog" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm px-6 py-4 rounded-2xl transition border border-white/10">
+                <a 
+                    href="/blog" 
+                    class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm px-6 py-4 rounded-2xl transition border border-white/10"
+                >
                     <span>Read Verified Case Studies</span>
                 </a>
             </div>
