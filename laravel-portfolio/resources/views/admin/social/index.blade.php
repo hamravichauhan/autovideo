@@ -22,9 +22,10 @@
         <div class="flex flex-wrap items-center gap-2">
             <form action="/admin/social/generate" method="POST" class="inline">
                 <input type="hidden" name="type" value="top100">
+                <input type="hidden" name="platform" value="all">
                 <button type="submit" class="bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-black text-xs uppercase tracking-wider px-3.5 py-2.5 rounded-xl shadow-lg transition flex items-center space-x-1.5 hover:scale-105">
                     <span>🏆</span>
-                    <span>Render Top 100 Daily</span>
+                    <span>Render Top 100 (All Platforms)</span>
                 </button>
             </form>
 

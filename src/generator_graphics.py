@@ -430,11 +430,13 @@ class GraphicsRenderer:
     def render_top100_breakdown(
         self,
         website_id: Optional[Any] = None,
+        platform: str = "all",
         output_filename: Optional[str] = None,
     ) -> Dict[str, Any]:
-        """Renders a 4:5 vertical poster breaking down one of the Top 100 Websites in the world.
-
-        By default, rotates automatically daily (1 website daily).
+        """Renders 4:5 vertical multi-slide posters (Slide 1: Hook, Slide 2: Why/Breakdown)
+        breaking down one of the Top 100 Websites in the world.
+        
+        Customized across Instagram, LinkedIn, and X/Twitter.
         """
         websites = self.top100_data
         if not websites:
@@ -458,41 +460,122 @@ class GraphicsRenderer:
             selected_idx = (day_of_year - 1) % len(websites)
             selected_site = websites[selected_idx]
 
-        context = {
-            "website": selected_site,
-            "today_date": datetime.date.today().strftime("%B %d, %Y"),
-            "brand_name": config.brand_name,
-            "brand_handle": config.brand_handle,
-            "website_url": config.website_url,
+        # Determine target platforms
+        platform_normalized = platform.lower()
+        if platform_normalized == "all":
+            target_platforms = ["instagram", "linkedin", "twitter"]
+        elif platform_normalized in ("vertical", "instagram"):
+            target_platforms = ["instagram"]
+        elif platform_normalized in ("linkedin", "twitter"):
+            target_platforms = [platform_normalized]
+        else:
+            target_platforms = ["instagram"]
+
+        platform_meta_map = {
+            "instagram": {
+                "platform_name": "Instagram",
+                "header_pill": "INSTAGRAM EXCLUSIVE • CAROUSEL",
+                "slide1_pagination": "● ○ SLIDE 1 OF 2",
+                "slide2_pagination": "○ ● SLIDE 2 OF 2",
+                "swipe_cta": "SWIPE LEFT FOR BREAKDOWN & WHY ➔",
+                "swipe_sub": "👉 Swipe to inspect 3 Architectural Decisions, Tech Stack & Telemetry",
+                "action_hint": "📌 Save to reference during your next web build",
+                "footer_cta": "Follow @extrovertnerd for Daily 1–100 Website Teardowns • Tap Save 📌",
+                "tagline": "Web Architecture Studio • Breakdown Series",
+            },
+            "linkedin": {
+                "platform_name": "LinkedIn",
+                "header_pill": "ENGINEERING BRIEFING • DOCUMENT",
+                "slide1_pagination": "DOCUMENT SLIDE [1 / 2]",
+                "slide2_pagination": "DOCUMENT SLIDE [2 / 2]",
+                "swipe_cta": "SWIPE TO INSPECT THE ARCHITECTURE ➔",
+                "swipe_sub": "👉 Slide 2: Deep dive into tech stack, database sharding & Core Web Vitals",
+                "action_hint": "♻️ Repost to share with your engineering network",
+                "footer_cta": "ExtrovertNerd • Repost to your network ♻️ • Follow for daily system architecture",
+                "tagline": "System Architecture & Engineering Briefings",
+            },
+            "twitter": {
+                "platform_name": "X / Twitter",
+                "header_pill": "X ARCHITECTURE THREAD",
+                "slide1_pagination": "THREAD 1/2 🧵",
+                "slide2_pagination": "THREAD 2/2 🧵",
+                "swipe_cta": "SWIPE / READ FULL BREAKDOWN ➔",
+                "swipe_sub": "🧵 Slide 2: Production stack, server telemetry & engineering verdict",
+                "action_hint": "💬 Bookmark & RT to save the teardown",
+                "footer_cta": "Follow @extrovertnerd • Retweet to share • Daily 0-latency teardowns",
+                "tagline": "Zero-Latency Teardowns • Web Architecture",
+            },
         }
 
-        template = self.jinja_env.get_template("poster_top100_breakdown.html")
-        html = template.render(**context)
+        template_slide1 = self.jinja_env.get_template("top100_slide_1_hook.html")
+        template_slide2 = self.jinja_env.get_template("top100_slide_2_why.html")
 
         slug = selected_site["name"].lower().replace(" ", "_").replace("/", "_")
-        file_name = output_filename or f"top100_rank_{selected_site['global_rank']:03d}_{slug}.png"
-        output_file = self.output_dir / "top100" / file_name
+        rank = selected_site["global_rank"]
 
-        async def _run() -> Path:
-            return await self._render_html_to_png(
-                html,
-                output_file,
-                width=1080,
-                height=1350,
-                device_scale_factor=2,
-            )
+        all_rendered_paths: List[str] = []
+        platform_slides: Dict[str, List[str]] = {}
+
+        async def _render_platform_slides(plt: str) -> List[Path]:
+            meta = platform_meta_map.get(plt, platform_meta_map["instagram"])
+            context = {
+                "website": selected_site,
+                "meta": meta,
+                "today_date": datetime.date.today().strftime("%B %d, %Y"),
+                "brand_name": config.brand_name,
+                "brand_handle": config.brand_handle,
+                "website_url": config.website_url,
+            }
+
+            html1 = template_slide1.render(**context)
+            html2 = template_slide2.render(**context)
+
+            out_dir = self.output_dir / "top100" / plt
+            out_dir.mkdir(parents=True, exist_ok=True)
+
+            file1 = out_dir / f"rank_{rank:03d}_{slug}_slide1.png"
+            file2 = out_dir / f"rank_{rank:03d}_{slug}_slide2.png"
+
+            task1 = self._render_html_to_png(html1, file1, width=1080, height=1350, device_scale_factor=2)
+            task2 = self._render_html_to_png(html2, file2, width=1080, height=1350, device_scale_factor=2)
+
+            return await asyncio.gather(task1, task2)
 
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         try:
-            rendered_path = loop.run_until_complete(_run())
+            for plt in target_platforms:
+                paths = loop.run_until_complete(_render_platform_slides(plt))
+                p_strs = [str(p) for p in paths]
+                platform_slides[plt] = p_strs
+                all_rendered_paths.extend(p_strs)
+
+                # For convenience, also copy or save primary platform files in root top100 folder
+                if plt == target_platforms[0]:
+                    root_top100_dir = self.output_dir / "top100"
+                    root_file1 = root_top100_dir / f"top100_rank_{rank:03d}_{slug}_slide1.png"
+                    root_file2 = root_top100_dir / f"top100_rank_{rank:03d}_{slug}_slide2.png"
+                    try:
+                        import shutil
+                        shutil.copyfile(paths[0], root_file1)
+                        shutil.copyfile(paths[1], root_file2)
+                    except Exception as e:
+                        logger.warning("Could not copy root top100 files: %s", e)
         finally:
             loop.close()
+
+        primary_plat = target_platforms[0]
+        primary_slides = platform_slides.get(primary_plat, all_rendered_paths[:2])
 
         return {
             "type": "top100",
             "website": selected_site,
-            "image_path": str(rendered_path),
+            "platform": platform,
+            "target_platforms": target_platforms,
+            "platform_slides": platform_slides,
+            "image_paths": primary_slides,
+            "image_path": primary_slides[0] if primary_slides else "",
+            "all_slides": all_rendered_paths,
         }
 
     def render_tech_news(
@@ -643,13 +726,17 @@ def main() -> None:
             logger.warning("Could not initialize TelegramNotifier: %s", e)
 
     if args.type == "top100":
-        result = renderer.render_top100_breakdown(website_id=args.website_id)
+        result = renderer.render_top100_breakdown(website_id=args.website_id, platform=args.platform)
         print(f"\n[Generated Top 100 Website Breakdown #{result['website']['global_rank']}]")
         print(f"Website: {result['website']['name']} ({result['website']['domain']})")
-        print(f"Path: {result['image_path']}\n")
+        print(f"Target Platforms: {', '.join(result.get('target_platforms', []))}")
+        for plat, slides in result.get("platform_slides", {}).items():
+            print(f"  • {plat.upper()}:")
+            for s in slides:
+                print(f"      - {s}")
         if telegram_notifier:
-            telegram_notifier.dispatch_top100(result["image_path"], result["website"])
-            print("🚀 Successfully pushed Top 100 breakdown to Telegram!\n")
+            telegram_notifier.dispatch_top100(result.get("image_paths", result.get("image_path")), result["website"])
+            print("🚀 Successfully pushed Top 100 breakdown album to Telegram!\n")
 
     elif args.type == "tech_news":
         result = renderer.render_tech_news(news_id=args.news_id)
@@ -677,8 +764,8 @@ def main() -> None:
     elif args.type == "all":
         # Render 1 of each of the 3 primary pillars + carousel
         print("\n🚀 [Rendering Master Multi-Pillar Suite]...")
-        top100_res = renderer.render_top100_breakdown()
-        print(f"✅ Top 100 Breakdown: {top100_res['image_path']}")
+        top100_res = renderer.render_top100_breakdown(platform=args.platform)
+        print(f"✅ Top 100 Breakdown: {len(top100_res.get('all_slides', []))} slides generated across {', '.join(top100_res.get('target_platforms', []))}")
 
         news_res = renderer.render_tech_news()
         print(f"✅ Tech News: {news_res['image_path']}")
@@ -689,10 +776,10 @@ def main() -> None:
         carousel_res = renderer.render_carousel_set(
             city_id=args.city, niche_id=args.niche, batch_id=args.batch_id, platform=args.platform
         )
-        print(f"✅ Local Carousel ({carousel_res['total_slides']} slides): {carousel_res['output_dir']}\n")
+        print(f"✅ Local Carousel ({carousel_res['total_slides']} slides): {carousel_res['directory']}\n")
 
         if telegram_notifier:
-            telegram_notifier.dispatch_top100(top100_res["image_path"], top100_res["website"])
+            telegram_notifier.dispatch_top100(top100_res.get("image_paths", top100_res["image_path"]), top100_res["website"])
             telegram_notifier.dispatch_tech_news(news_res["image_path"], news_res["news"])
             telegram_notifier.dispatch_website_tip(tip_res["image_path"], tip_res["tip"])
             print("🚀 All 3 daily pillars pushed to Telegram!\n")

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ website.name }} Cover & Hook — ExtrovertNerd Top 100 Websites</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #020617;
+      color: #f8fafc;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .font-handwriting { font-family: 'Caveat', cursive; }
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* Canvas Size: 1080 x 1350 (4:5 Vertical Portrait) */
+    .poster-canvas {
+      width: 1080px;
+      height: 1350px;
+      position: relative;
+      overflow: hidden;
+      background-color: #030712;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    /* Swipe Pulse Glow */
+    .swipe-pill-glow {
+      box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.45), 0 0 15px -3px rgba(16, 185, 129, 0.3);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-black">
+
+  <div class="poster-canvas flex flex-col justify-between p-12 select-none">
+
+    <!-- ============================================================== -->
+    <!-- TOP HEADER BAR                                                 -->
+    <!-- ============================================================== -->
+    <div class="space-y-3">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        
+        <!-- Brand & Studio Mark -->
+        <div class="flex items-center space-x-3.5">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-300 p-0.5 shadow-lg shadow-emerald-500/20">
+            <div class="w-full h-full bg-[#030712] rounded-[10px] flex items-center justify-center font-black text-emerald-400 text-xl">
+              ⚡
+            </div>
+          </div>
+          <div>
+            <div class="text-base font-black tracking-wider uppercase text-white flex items-center space-x-1.5">
+              <span>EXTROVERT</span><span class="text-emerald-400">NERD</span>
+            </div>
+            <div class="text-[10px] font-mono text-slate-400 tracking-wider uppercase">
+              {{ meta.tagline }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Series Pill & Platform Badge -->
+        <div class="flex items-center space-x-2.5">
+          <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 uppercase tracking-widest">
+            {{ meta.header_pill }}
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-mono font-black bg-emerald-500/20 border border-emerald-500/40 text-emerald-300">
+            #{{ website.global_rank }} OF 100
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MAIN HERO SECTION                                              -->
+    <!-- ============================================================== -->
+    <div class="space-y-6 my-auto">
+
+      <!-- Meta Badges: Rank & Category -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <span class="px-3 py-1 rounded-lg text-xs font-mono font-black uppercase tracking-wider bg-emerald-500/15 border border-emerald-500/40 text-emerald-400">
+            GLOBAL RANK #{{ website.global_rank }}
+          </span>
+          <span class="px-3 py-1 rounded-lg text-xs font-mono font-bold uppercase tracking-wider bg-slate-800 border border-white/10 text-slate-300">
+            {{ website.category }}
+          </span>
+        </div>
+        <div class="px-3 py-1 rounded-lg bg-black/60 border border-white/10 font-mono text-xs text-slate-400">
+          🌐 <strong class="text-white">{{ website.domain }}</strong>
+        </div>
+      </div>
+
+      <!-- Website Name Hero Banner -->
+      <div class="space-y-2">
+        <div class="text-[12px] font-mono font-bold tracking-widest text-emerald-400 uppercase">
+          TOP 100 WEBSITES IN THE WORLD • TEARDOWN
+        </div>
+        <h1 class="text-6xl font-black text-white tracking-tight leading-none">
+          {{ website.name }}
+        </h1>
+      </div>
+
+      <!-- CARD 1: WHAT IT DOES -->
+      <div class="bg-slate-900/90 border border-white/10 rounded-2xl p-6 space-y-2.5 shadow-2xl backdrop-blur-md relative overflow-hidden">
+        <div class="flex items-center space-x-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-xs font-mono font-bold uppercase text-slate-400 tracking-wider">
+            WHAT DOES IT DO?
+          </span>
+        </div>
+        <p class="text-slate-200 text-lg leading-relaxed font-medium">
+          {{ website.what_it_does }}
+        </p>
+      </div>
+
+      <!-- CARD 2: THE HOOK -->
+      <div class="bg-gradient-to-br from-emerald-950/50 via-slate-900/90 to-slate-950 border border-emerald-500/40 rounded-2xl p-6 space-y-3 shadow-2xl backdrop-blur-md relative overflow-hidden">
+        <div class="absolute -top-16 -right-16 w-44 h-44 bg-emerald-500/15 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold uppercase text-emerald-400 tracking-widest flex items-center space-x-1.5">
+            <span>🔥</span>
+            <span>THE 100X ARCHITECTURAL HOOK</span>
+          </span>
+          <span class="text-[10px] font-mono text-slate-400">ENGINEERING CASE STUDY</span>
+        </div>
+
+        <p class="text-white text-xl font-bold leading-snug">
+          "{{ website.hook }}"
+        </p>
+
+        <div class="text-xs font-mono text-slate-400 pt-1 flex items-center space-x-2">
+          <span>⚡</span>
+          <span>How does their engineering stack solve this without dropping a single frame?</span>
+        </div>
+      </div>
+
+      <!-- SWIPE CALL TO ACTION CONTAINER -->
+      <div class="space-y-3 pt-2">
+        
+        <!-- Big Tactile Swipe Button -->
+        <div class="swipe-pill-glow bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400 p-[2px] rounded-2xl">
+          <div class="bg-[#030712] rounded-[14px] py-4 px-6 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-sm">
+                ➔
+              </span>
+              <div>
+                <div class="text-base font-black uppercase text-white tracking-wide">
+                  {{ meta.swipe_cta }}
+                </div>
+                <div class="text-[11px] font-mono text-slate-400">
+                  {{ meta.swipe_sub }}
+                </div>
+              </div>
+            </div>
+
+            <div class="font-mono text-xs font-bold text-emerald-400 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 shrink-0">
+              SLIDE 2 ➔
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Tactile Action Hint -->
+        <div class="flex items-center justify-between px-2 text-xs font-mono text-slate-400">
+          <div class="flex items-center space-x-2">
+            <span>{{ meta.action_hint }}</span>
+          </div>
+          <div class="font-bold text-slate-300">
+            {{ meta.slide1_pagination }}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- FOOTER CALL TO ACTION                                          -->
+    <!-- ============================================================== -->
+    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+      <div class="flex items-center space-x-2">
+        <span class="text-white font-bold">@extrovertnerd</span>
+        <span>•</span>
+        <span>extrovertnerd.com</span>
+      </div>
+      <div class="text-emerald-400 font-bold flex items-center space-x-1.5">
+        <span>Part of ExtrovertNerd Top 100 World Series</span>
+        <span>⚡</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

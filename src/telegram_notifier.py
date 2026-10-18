@@ -275,20 +275,28 @@ class TelegramNotifier:
                 res = self.send_photo(latest_tip, caption=caption)
                 results.append({"type": "tech_tip", "file": str(latest_tip), "result": res})
 
-        # 3. Find any latest Top 100 breakdown poster
+        # 3. Find any latest Top 100 breakdown poster (Slide 1 Hook + Slide 2 Why)
         top100_dir = graphics_dir / "top100"
         if top100_dir.exists():
             posters = sorted(list(top100_dir.glob("*.png")), key=lambda p: p.stat().st_mtime, reverse=True)
             if posters:
-                latest_poster = posters[0]
+                latest_p = posters[0]
+                base_stem = latest_p.stem.replace("_slide1", "").replace("_slide2", "")
+                s1 = top100_dir / f"{base_stem}_slide1.png"
+                s2 = top100_dir / f"{base_stem}_slide2.png"
+                pair = [s1, s2] if (s1.exists() and s2.exists()) else []
+
                 caption = (
-                    f"🏆 <b>ExtrovertNerd Top 100 Websites Breakdown</b>\n\n"
-                    f"⚡ <b>File:</b> {latest_poster.name}\n"
+                    f"🏆 <b>ExtrovertNerd Top 100 Websites Teardown</b>\n\n"
+                    f"⚡ <b>Series:</b> {base_stem}\n"
                     f"🏢 Studio: ExtrovertNerd Engineering\n"
                     f"🌐 https://extrovertnerd.com"
                 )
-                res = self.send_photo(latest_poster, caption=caption)
-                results.append({"type": "top100", "file": str(latest_poster), "result": res})
+                if pair:
+                    res = self.send_media_group(pair, caption=caption)
+                else:
+                    res = self.send_photo(latest_p, caption=caption)
+                results.append({"type": "top100", "file": str(latest_p), "result": res})
 
         # 4. Find any latest Tech News poster
         tech_news_dir = graphics_dir / "tech_news"
@@ -322,19 +330,29 @@ class TelegramNotifier:
 
         return {"ok": True, "dispatches": results}
 
-    def dispatch_top100(self, image_path: Path | str, website: Dict[str, Any]) -> Dict[str, Any]:
-        """Dispatches a Top 100 Website breakdown poster to Telegram."""
+    def dispatch_top100(
+        self,
+        image_paths: Union[List[Path | str], Path | str],
+        website: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        """Dispatches Top 100 Website breakdown (Slide 1 Hook + Slide 2 Why) to Telegram."""
         caption = (
             f"🏆 <b>Top 100 Websites Breakdown: #{website.get('global_rank', 1)} {website.get('name')}</b>\n\n"
             f"🌐 <b>Domain:</b> {website.get('domain')}\n"
             f"🏷️ <b>Category:</b> {website.get('category')}\n"
+            f"📌 <b>What It Does:</b> {website.get('what_it_does', '')}\n\n"
+            f"🔥 <b>The Hook:</b> {website.get('hook', '')}\n\n"
             f"⚡ <b>Stack:</b> {', '.join(website.get('architecture_stack', [])[:3])}\n"
             f"📊 <b>Telemetry:</b> LCP {website.get('telemetry', {}).get('lcp')} | INP {website.get('telemetry', {}).get('inp')} | CLS {website.get('telemetry', {}).get('cls')}\n\n"
             f"💡 <b>ExtrovertNerd Verdict:</b> {website.get('extrovertnerd_verdict')}\n\n"
             f"🏢 Studio: ExtrovertNerd Engineering\n"
             f"🌐 https://extrovertnerd.com"
         )
-        return self.send_photo(image_path, caption=caption)
+        if isinstance(image_paths, (list, tuple)):
+            if len(image_paths) == 1:
+                return self.send_photo(image_paths[0], caption=caption)
+            return self.send_media_group(list(image_paths), caption=caption)
+        return self.send_photo(image_paths, caption=caption)
 
     def dispatch_tech_news(self, image_path: Path | str, news: Dict[str, Any]) -> Dict[str, Any]:
         """Dispatches a Tech News poster to Telegram."""

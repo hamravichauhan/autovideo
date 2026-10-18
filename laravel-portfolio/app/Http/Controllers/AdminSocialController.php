@@ -23,11 +23,20 @@ class AdminSocialController
             $dirs = glob($this->graphicsPath . '/*', GLOB_ONLYDIR);
             foreach ($dirs as $dir) {
                 $dirName = basename($dir);
-                $images = glob($dir . '/*.png');
+                $images = glob($dir . '/*.png') ?: [];
                 $relativeImages = [];
                 foreach ($images as $img) {
-                    // Path relative to public/output
                     $relativeImages[] = '/output/graphics/' . $dirName . '/' . basename($img);
+                }
+
+                // Check subdirectories (e.g., top100/instagram, top100/linkedin, top100/twitter)
+                $subdirs = glob($dir . '/*', GLOB_ONLYDIR) ?: [];
+                foreach ($subdirs as $subdir) {
+                    $subName = basename($subdir);
+                    $subImages = glob($subdir . '/*.png') ?: [];
+                    foreach ($subImages as $simg) {
+                        $relativeImages[] = '/output/graphics/' . $dirName . '/' . $subName . '/' . basename($simg);
+                    }
                 }
 
                 if (!empty($relativeImages)) {

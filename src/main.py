@@ -18,6 +18,9 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+# Ensure project root is in sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from src.config import config
 from src.generator_graphics import GraphicsRenderer
 from src.generator_pseo import PSEOGenerator
@@ -206,13 +209,23 @@ def main() -> None:
             platform=args.platform,
         )
     elif args.mode == "top100":
-        res = engine.graphics_renderer.render_top100_breakdown(website_id=args.website_id)
+        res = engine.graphics_renderer.render_top100_breakdown(
+            website_id=args.website_id,
+            platform=args.platform,
+        )
         print(f"\n[ExtrovertNerd Top 100 Breakdown] #{res['website']['global_rank']} {res['website']['name']}")
-        print(f"File: {res['image_path']}")
+        print(f"Target Platforms: {', '.join(res.get('target_platforms', []))}")
+        for plat, slides in res.get("platform_slides", {}).items():
+            print(f"  • {plat.upper()}:")
+            for s in slides:
+                print(f"      - {s}")
         try:
             from src.telegram_notifier import TelegramNotifier
-            TelegramNotifier().dispatch_top100(res["image_path"], res["website"])
-            print("🚀 Pushed to Telegram channel!")
+            TelegramNotifier().dispatch_top100(
+                res.get("image_paths", res.get("image_path")),
+                res["website"],
+            )
+            print("🚀 Pushed multi-slide album to Telegram channel!")
         except Exception as e:
             print(f"Telegram notice: {e}")
     elif args.mode == "tech_news":
