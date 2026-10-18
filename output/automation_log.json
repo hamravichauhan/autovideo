@@ -1,19 +1,32 @@
 {
-  "timestamp": "2026-10-18T13:01:41.664257",
-  "duration_seconds": 0.67,
-  "target_city": "Goa",
-  "target_niche": "Boutique Hotels & Luxury Villas",
+  "timestamp": "2026-10-18T18:41:03.279645",
+  "duration_seconds": 25.87,
+  "target_city": "Bangalore",
+  "target_niche": "Upscale Restaurants, Cafes & Lounges",
   "blog_article": {
-    "title": "Why Goa Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/goa-boutique-hotels-local-speed.md",
-    "slug": "goa-boutique-hotels-local-speed"
+    "title": "Why Bangalore Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-restaurants-local-speed.md",
+    "slug": "bangalore-restaurants-local-speed"
   },
   "graphics": {
-    "total_slides": 0,
-    "paths": []
+    "total_slides": 12,
+    "paths": [
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/vertical_slide_1.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/vertical_slide_2.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/vertical_slide_3.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/vertical_slide_4.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/story_slide_1.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/story_slide_2.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/story_slide_3.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/story_slide_4.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/square_slide_1.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/square_slide_2.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/square_slide_3.png",
+      "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/graphics/bangalore_restaurants_carousel/square_slide_4.png"
+    ]
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Goa Boutique Hotel silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfortable trut...",
+    "caption_preview": "\ud83d\udea8 Is your Bangalore Fine-Dining Restaurant silently losing 40%+ of mobile customers to a slow website?\n\nHere is the unco...",
     "dry_run": true,
     "meta_status": "simulated"
   },
@@ -22,7 +35,7 @@
     "deck": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/outreach_drafts.md"
   },
   "lead_capture": {
-    "whatsapp_cta": "https://wa.me/15551234567?text=Hey+Ravi%21+I+saw+ExtrovertNerd%27s+website+audit+and+want+a+free+5-point+speed+%26+UX+teardown+for+my+business.",
-    "intake_form": "https://forms.gle/your-free-speed-audit-intake"
+    "whatsapp_cta": "https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+performance+teardown+and+want+to+consult+on+optimizing+my+website.",
+    "intake_form": ""
   }
 }

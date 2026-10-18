@@ -95,18 +95,42 @@
       "angle": "tech_comparison",
       "date": "2026-10-18",
       "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-boutique-hotels-tech-comparison.md"
+    },
+    {
+      "slug": "delhi-ncr-boutique-hotels-local-speed",
+      "filename": "delhi-ncr-boutique-hotels-local-speed.md",
+      "title": "Why Delhi NCR Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "delhi-ncr",
+      "city_name": "Delhi NCR",
+      "niche_id": "boutique-hotels",
+      "niche_name": "Boutique Hotels & Luxury Villas",
+      "angle": "local_speed",
+      "date": "2026-10-18",
+      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/delhi-ncr-boutique-hotels-local-speed.md"
+    },
+    {
+      "slug": "bangalore-restaurants-local-speed",
+      "filename": "bangalore-restaurants-local-speed.md",
+      "title": "Why Bangalore Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "bangalore",
+      "city_name": "Bangalore",
+      "niche_id": "restaurants",
+      "niche_name": "Upscale Restaurants, Cafes & Lounges",
+      "angle": "local_speed",
+      "date": "2026-10-18",
+      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-restaurants-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "bangalore-boutique-hotels-tech-comparison",
-    "filename": "bangalore-boutique-hotels-tech-comparison.md",
-    "title": "Boutique Hotels & Luxury Villas in Bangalore: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
+    "slug": "bangalore-restaurants-local-speed",
+    "filename": "bangalore-restaurants-local-speed.md",
+    "title": "Why Bangalore Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
     "city_id": "bangalore",
     "city_name": "Bangalore",
-    "niche_id": "boutique-hotels",
-    "niche_name": "Boutique Hotels & Luxury Villas",
-    "angle": "tech_comparison",
+    "niche_id": "restaurants",
+    "niche_name": "Upscale Restaurants, Cafes & Lounges",
+    "angle": "local_speed",
     "date": "2026-10-18",
-    "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-boutique-hotels-tech-comparison.md"
+    "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-restaurants-local-speed.md"
   }
 }

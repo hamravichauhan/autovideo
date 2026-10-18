@@ -2,8 +2,8 @@ name: 24/7 Automated Client Acquisition Engine
 
 on:
   schedule:
-    # Runs daily at 09:00 UTC (14:30 IST / 05:00 EDT)
-    - cron: '0 9 * * *'
+    # Runs daily at 02:30 UTC (08:00 AM IST / 22:30 EDT prev day)
+    - cron: '30 2 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -91,6 +91,8 @@ jobs:
           TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
           TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
           TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '80208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw' }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '1432790039' }}
         run: |
           CITY_ARG=""
           NICHE_ARG=""

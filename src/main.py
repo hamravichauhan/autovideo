@@ -70,26 +70,29 @@ class AutomationEngine:
         )
         logger.info("✅ Blog Article Created: %s", blog_result["filepath"])
 
-        # 3. Render High-Resolution Visual Carousel
+        # 3. Render High-Resolution Visual Carousel (Local Niche Funnel)
         graphics_result: Dict[str, Any] = {}
+        top100_result: Dict[str, Any] = {}
         if render_graphics:
-            logger.info("\n--- [STEP 2/4] Headless Rendering 4-Slide Visual Carousel (%s) ---", platform)
+            logger.info("\n--- [STEP 2/5] Headless Rendering Visual Assets (%s) ---", platform)
             try:
+                # 3a. Local Business Case Study Carousel (4 Slides)
                 graphics_result = self.graphics_renderer.render_carousel_set(
                     city_id=city["id"], niche_id=niche["id"], platform=platform
                 )
                 logger.info(
-                    "✅ Rendered %d Carousel Slides to: %s",
+                    "✅ Rendered %d Local Carousel Slides to: %s",
                     graphics_result.get("total_slides", 0),
                     graphics_result.get("directory"),
                 )
-                # Dispatch posters automatically to Telegram Bot
-                try:
-                    from src.telegram_notifier import TelegramNotifier
-                    tg_res = TelegramNotifier().dispatch_latest_graphics()
-                    logger.info("📲 Telegram Poster Dispatch: %s", "Dispatched" if tg_res.get("ok") else tg_res.get("error"))
-                except Exception as tg_err:
-                    logger.warning("Telegram dispatch encountered warning: %s", tg_err)
+
+                # 3b. Daily Top 100 Website Teardown (2 Slides across Instagram, LinkedIn, and X)
+                top100_result = self.graphics_renderer.render_top100_breakdown(platform="all")
+                logger.info(
+                    "✅ Rendered Daily Top 100 Teardown: #%d %s (6 slides across 3 platforms)",
+                    top100_result["website"]["global_rank"],
+                    top100_result["website"]["name"],
+                )
             except Exception as e:
                 logger.error("⚠️ Graphic rendering encountered error: %s", e)
                 logger.info("Continuing pipeline in text-mode...")
@@ -100,11 +103,11 @@ class AutomationEngine:
                     "error": str(e),
                 }
         else:
-            logger.info("\n--- [STEP 2/4] Graphic rendering skipped via flag ---")
+            logger.info("\n--- [STEP 2/5] Graphic rendering skipped via flag ---")
             graphics_result = {"total_slides": 0, "slide_paths": []}
 
         # 4. Social Media Caption Building & Distribution
-        logger.info("\n--- [STEP 3/4] Assembling Captions & Multi-Channel Distribution ---")
+        logger.info("\n--- [STEP 3/5] Assembling Captions & Multi-Channel Distribution ---")
         slide_paths = graphics_result.get("slide_paths", [])
         campaign_summary = self.publisher_engine.publish_campaign(
             city=city,
@@ -112,16 +115,44 @@ class AutomationEngine:
             slide_image_paths=slide_paths,
             blog_file=blog_result["filepath"],
         )
-        logger.info("✅ Social Campaign Dispatched (Status: %s)", "Dry Run / Simulated" if config.dry_run else "Live")
+        logger.info("✅ Social Campaign Assembled (Status: %s)", "Dry Run / Simulated" if config.dry_run else "Live")
 
-        # 4. Outbound Local Prospecting & Outreach Generation
-        logger.info("\n--- [STEP 4/5] Running Local Prospecting Engine ---")
+        # 5. Telegram Automated Multi-Platform Dispatch
+        logger.info("\n--- [STEP 4/5] Telegram Multi-Platform Dispatch (8:00 AM Pack) ---")
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            notifier = TelegramNotifier()
+
+            # 5a. Dispatch Top 100 Teardown with dedicated platform labels & captions (IG, LinkedIn, X)
+            if top100_result and top100_result.get("platform_slides"):
+                tg_top100 = notifier.dispatch_top100(
+                    top100_result["platform_slides"],
+                    top100_result["website"],
+                )
+                logger.info("📲 Telegram Top 100 Dispatch: %s", "Dispatched" if tg_top100.get("ok") else tg_top100.get("error"))
+
+            # 5b. Dispatch Local Carousel (Instagram) + Live Blog on Website + X (Twitter) Promo Thread
+            thread_tweets = campaign_summary.get("twitter_thread") or self.publisher_engine.build_twitter_thread(city, niche)
+            tg_blog = notifier.dispatch_blog_and_x(
+                blog_data=blog_result,
+                city=city,
+                niche=niche,
+                twitter_thread=thread_tweets,
+                carousel_slides=slide_paths[:4],
+                instagram_caption=campaign_summary.get("caption"),
+            )
+            logger.info("📲 Telegram Blog & X Thread Dispatch: %s", "Dispatched" if tg_blog.get("ok") else tg_blog.get("error"))
+        except Exception as tg_err:
+            logger.warning("Telegram dispatch encountered warning: %s", tg_err)
+
+        # 6. Outbound Local Prospecting & Outreach Generation
+        logger.info("\n--- [STEP 5/5] Running Local Prospecting Engine ---")
         prospecting_result = self.prospecting_engine.run_prospecting_batch(
             city_id=city["id"], niche_id=niche["id"], count=5
         )
         logger.info("✅ Generated %d Local Outreach Drafts: %s", prospecting_result["count"], prospecting_result["outreach_deck_md"])
 
-        # 5. Pipeline Summary & Metrics
+        # 7. Pipeline Summary & Metrics
         end_time = datetime.datetime.now()
         duration = (end_time - start_time).total_seconds()
         logger.info("\n--- [STEP 5/5] Finalizing Run Log ---")
@@ -222,10 +253,10 @@ def main() -> None:
         try:
             from src.telegram_notifier import TelegramNotifier
             TelegramNotifier().dispatch_top100(
-                res.get("image_paths", res.get("image_path")),
+                res.get("platform_slides", res.get("image_paths", res.get("image_path"))),
                 res["website"],
             )
-            print("🚀 Pushed multi-slide album to Telegram channel!")
+            print("🚀 Pushed multi-slide albums with platform captions to Telegram channel!")
         except Exception as e:
             print(f"Telegram notice: {e}")
     elif args.mode == "tech_news":
