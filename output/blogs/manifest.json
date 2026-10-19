@@ -143,18 +143,30 @@
       "angle": "tech_comparison",
       "date": "2026-10-18",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/goa-boutique-hotels-tech-comparison.md"
+    },
+    {
+      "slug": "hyderabad-real-estate-local-speed",
+      "filename": "hyderabad-real-estate-local-speed.md",
+      "title": "Why Hyderabad Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "hyderabad",
+      "city_name": "Hyderabad",
+      "niche_id": "real-estate",
+      "niche_name": "Luxury Real Estate & Villa Brokerages",
+      "angle": "local_speed",
+      "date": "2026-10-19",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/hyderabad-real-estate-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "goa-boutique-hotels-tech-comparison",
-    "filename": "goa-boutique-hotels-tech-comparison.md",
-    "title": "Boutique Hotels & Luxury Villas in Goa: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
-    "city_id": "goa",
-    "city_name": "Goa",
-    "niche_id": "boutique-hotels",
-    "niche_name": "Boutique Hotels & Luxury Villas",
-    "angle": "tech_comparison",
-    "date": "2026-10-18",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/goa-boutique-hotels-tech-comparison.md"
+    "slug": "hyderabad-real-estate-local-speed",
+    "filename": "hyderabad-real-estate-local-speed.md",
+    "title": "Why Hyderabad Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites",
+    "city_id": "hyderabad",
+    "city_name": "Hyderabad",
+    "niche_id": "real-estate",
+    "niche_name": "Luxury Real Estate & Villa Brokerages",
+    "angle": "local_speed",
+    "date": "2026-10-19",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/hyderabad-real-estate-local-speed.md"
   }
 }
