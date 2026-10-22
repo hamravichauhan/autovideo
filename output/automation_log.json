@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-21T07:55:12.721271",
-  "duration_seconds": 37.45,
-  "target_city": "Hyderabad",
-  "target_niche": "Boutique Hotels & Luxury Villas",
+  "timestamp": "2026-10-22T07:56:15.998832",
+  "duration_seconds": 43.95,
+  "target_city": "Delhi NCR",
+  "target_niche": "Boutique Fashion & Designer Labels",
   "blog_article": {
-    "title": "Why Hyderabad Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/home/runner/work/autovideo/autovideo/output/blogs/hyderabad-boutique-hotels-local-speed.md",
-    "slug": "hyderabad-boutique-hotels-local-speed"
+    "title": "Why Delhi NCR Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-fashion-boutiques-local-speed.md",
+    "slug": "delhi-ncr-fashion-boutiques-local-speed"
   },
   "graphics": {
     "total_slides": 0,
     "paths": []
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Hyderabad Boutique Hotel silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfortabl...",
+    "caption_preview": "\ud83d\udea8 Is your Delhi NCR Fashion Boutique silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomforta...",
     "dry_run": false,
     "meta_status": "simulated"
   },
