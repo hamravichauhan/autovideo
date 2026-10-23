@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-22T07:56:15.998832",
-  "duration_seconds": 43.95,
-  "target_city": "Delhi NCR",
-  "target_niche": "Boutique Fashion & Designer Labels",
+  "timestamp": "2026-10-23T07:50:31.855515",
+  "duration_seconds": 40.56,
+  "target_city": "Dubai",
+  "target_niche": "Upscale Restaurants, Cafes & Lounges",
   "blog_article": {
-    "title": "Why Delhi NCR Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-fashion-boutiques-local-speed.md",
-    "slug": "delhi-ncr-fashion-boutiques-local-speed"
+    "title": "Why Dubai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/home/runner/work/autovideo/autovideo/output/blogs/dubai-restaurants-local-speed.md",
+    "slug": "dubai-restaurants-local-speed"
   },
   "graphics": {
     "total_slides": 0,
     "paths": []
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Delhi NCR Fashion Boutique silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomforta...",
+    "caption_preview": "\ud83d\udea8 Is your Dubai Fine-Dining Restaurant silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfor...",
     "dry_run": false,
     "meta_status": "simulated"
   },

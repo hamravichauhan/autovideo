@@ -191,18 +191,30 @@
       "angle": "local_speed",
       "date": "2026-10-22",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-fashion-boutiques-local-speed.md"
+    },
+    {
+      "slug": "dubai-restaurants-local-speed",
+      "filename": "dubai-restaurants-local-speed.md",
+      "title": "Why Dubai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "dubai",
+      "city_name": "Dubai",
+      "niche_id": "restaurants",
+      "niche_name": "Upscale Restaurants, Cafes & Lounges",
+      "angle": "local_speed",
+      "date": "2026-10-23",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/dubai-restaurants-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "delhi-ncr-fashion-boutiques-local-speed",
-    "filename": "delhi-ncr-fashion-boutiques-local-speed.md",
-    "title": "Why Delhi NCR Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "delhi-ncr",
-    "city_name": "Delhi NCR",
-    "niche_id": "fashion-boutiques",
-    "niche_name": "Boutique Fashion & Designer Labels",
+    "slug": "dubai-restaurants-local-speed",
+    "filename": "dubai-restaurants-local-speed.md",
+    "title": "Why Dubai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "city_id": "dubai",
+    "city_name": "Dubai",
+    "niche_id": "restaurants",
+    "niche_name": "Upscale Restaurants, Cafes & Lounges",
     "angle": "local_speed",
-    "date": "2026-10-22",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-fashion-boutiques-local-speed.md"
+    "date": "2026-10-23",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/dubai-restaurants-local-speed.md"
   }
 }
