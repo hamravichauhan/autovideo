@@ -203,18 +203,30 @@
       "angle": "local_speed",
       "date": "2026-10-23",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/dubai-restaurants-local-speed.md"
+    },
+    {
+      "slug": "mumbai-restaurants-local-speed",
+      "filename": "mumbai-restaurants-local-speed.md",
+      "title": "Why Mumbai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "mumbai",
+      "city_name": "Mumbai",
+      "niche_id": "restaurants",
+      "niche_name": "Upscale Restaurants, Cafes & Lounges",
+      "angle": "local_speed",
+      "date": "2026-10-24",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-restaurants-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "dubai-restaurants-local-speed",
-    "filename": "dubai-restaurants-local-speed.md",
-    "title": "Why Dubai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "dubai",
-    "city_name": "Dubai",
+    "slug": "mumbai-restaurants-local-speed",
+    "filename": "mumbai-restaurants-local-speed.md",
+    "title": "Why Mumbai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "city_id": "mumbai",
+    "city_name": "Mumbai",
     "niche_id": "restaurants",
     "niche_name": "Upscale Restaurants, Cafes & Lounges",
     "angle": "local_speed",
-    "date": "2026-10-23",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/dubai-restaurants-local-speed.md"
+    "date": "2026-10-24",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-restaurants-local-speed.md"
   }
 }

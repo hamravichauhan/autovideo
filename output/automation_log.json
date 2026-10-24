@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-23T07:50:31.855515",
-  "duration_seconds": 40.56,
-  "target_city": "Dubai",
+  "timestamp": "2026-10-24T07:32:15.014074",
+  "duration_seconds": 40.09,
+  "target_city": "Mumbai",
   "target_niche": "Upscale Restaurants, Cafes & Lounges",
   "blog_article": {
-    "title": "Why Dubai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/home/runner/work/autovideo/autovideo/output/blogs/dubai-restaurants-local-speed.md",
-    "slug": "dubai-restaurants-local-speed"
+    "title": "Why Mumbai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-restaurants-local-speed.md",
+    "slug": "mumbai-restaurants-local-speed"
   },
   "graphics": {
     "total_slides": 0,
     "paths": []
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Dubai Fine-Dining Restaurant silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfor...",
+    "caption_preview": "\ud83d\udea8 Is your Mumbai Fine-Dining Restaurant silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfo...",
     "dry_run": false,
     "meta_status": "simulated"
   },
