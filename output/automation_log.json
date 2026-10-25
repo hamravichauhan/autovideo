@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-24T07:32:15.014074",
-  "duration_seconds": 40.09,
+  "timestamp": "2026-10-25T07:45:40.689723",
+  "duration_seconds": 42.32,
   "target_city": "Mumbai",
-  "target_niche": "Upscale Restaurants, Cafes & Lounges",
+  "target_niche": "Boutique Hotels & Luxury Villas",
   "blog_article": {
-    "title": "Why Mumbai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-restaurants-local-speed.md",
-    "slug": "mumbai-restaurants-local-speed"
+    "title": "Why Mumbai Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-boutique-hotels-local-speed.md",
+    "slug": "mumbai-boutique-hotels-local-speed"
   },
   "graphics": {
     "total_slides": 0,
     "paths": []
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Mumbai Fine-Dining Restaurant silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfo...",
+    "caption_preview": "\ud83d\udea8 Is your Mumbai Boutique Hotel silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfortable t...",
     "dry_run": false,
     "meta_status": "simulated"
   },

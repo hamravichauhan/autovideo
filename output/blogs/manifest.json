@@ -215,18 +215,30 @@
       "angle": "local_speed",
       "date": "2026-10-24",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-restaurants-local-speed.md"
+    },
+    {
+      "slug": "mumbai-boutique-hotels-local-speed",
+      "filename": "mumbai-boutique-hotels-local-speed.md",
+      "title": "Why Mumbai Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "mumbai",
+      "city_name": "Mumbai",
+      "niche_id": "boutique-hotels",
+      "niche_name": "Boutique Hotels & Luxury Villas",
+      "angle": "local_speed",
+      "date": "2026-10-25",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-boutique-hotels-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "mumbai-restaurants-local-speed",
-    "filename": "mumbai-restaurants-local-speed.md",
-    "title": "Why Mumbai Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "slug": "mumbai-boutique-hotels-local-speed",
+    "filename": "mumbai-boutique-hotels-local-speed.md",
+    "title": "Why Mumbai Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
     "city_id": "mumbai",
     "city_name": "Mumbai",
-    "niche_id": "restaurants",
-    "niche_name": "Upscale Restaurants, Cafes & Lounges",
+    "niche_id": "boutique-hotels",
+    "niche_name": "Boutique Hotels & Luxury Villas",
     "angle": "local_speed",
-    "date": "2026-10-24",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-restaurants-local-speed.md"
+    "date": "2026-10-25",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-boutique-hotels-local-speed.md"
   }
 }
