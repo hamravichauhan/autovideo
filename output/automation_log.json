@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-25T07:45:40.689723",
-  "duration_seconds": 42.32,
-  "target_city": "Mumbai",
-  "target_niche": "Boutique Hotels & Luxury Villas",
+  "timestamp": "2026-10-27T08:14:25.667309",
+  "duration_seconds": 38.42,
+  "target_city": "Hyderabad",
+  "target_niche": "Boutique Fashion & Designer Labels",
   "blog_article": {
-    "title": "Why Mumbai Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-boutique-hotels-local-speed.md",
-    "slug": "mumbai-boutique-hotels-local-speed"
+    "title": "Why Hyderabad Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/home/runner/work/autovideo/autovideo/output/blogs/hyderabad-fashion-boutiques-local-speed.md",
+    "slug": "hyderabad-fashion-boutiques-local-speed"
   },
   "graphics": {
     "total_slides": 0,
     "paths": []
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Mumbai Boutique Hotel silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfortable t...",
+    "caption_preview": "\ud83d\udea8 Is your Hyderabad Fashion Boutique silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomforta...",
     "dry_run": false,
     "meta_status": "simulated"
   },
