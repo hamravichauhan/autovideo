@@ -1,24 +1,24 @@
 # ExtrovertNerd Outbound Prospecting Deck
 
-> **Market:** Dubai • **Niche:** Boutique Fashion & Designer Labels
-> **Generated Date:** 2026-10-28 • **Studio:** ExtrovertNerd
+> **Market:** Mumbai • **Niche:** Premium Dental, Cosmetic & Wellness Clinics
+> **Generated Date:** 2026-10-29 • **Studio:** ExtrovertNerd
 
 ---
 
-## 1. Atelier Olive (Palm Jumeirah, Dubai)
+## 1. Khar Aesthetic Smile Studio (Khar, Mumbai)
 
-- **Website:** https://www.atelierolive.com
-- **Current Mobile Speed:** `6.5s` (PageSpeed: `38/100`)
+- **Website:** https://www.kharaestheticsmilestudio.com
+- **Current Mobile Speed:** `5.5s` (PageSpeed: `31/100`)
 - **Platform Detected:** Shopify (23 Apps)
-- **Est. Revenue Leak:** $12,000/mo
+- **Est. Revenue Leak:** $9,800/mo
 
 ### 📱 Copy/Paste WhatsApp Message:
 ```text
-Hey Atelier Olive team! 👋
+Hey Khar Aesthetic Smile Studio team! 👋
 
-I was browsing local Fashion Boutique websites in Dubai on mobile 4G yesterday and came across your site (https://www.atelierolive.com).
+I was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.kharaestheticsmilestudio.com).
 
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 6.5s to load (mobile score sits at 38/100).
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 5.5s to load (mobile score sits at 31/100).
 
 I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
 
@@ -26,26 +26,26 @@ I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and 
 ```
 
 ### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Atelier Olive (Dubai) — 38/100 PageSpeed teardown`
+**Subject:** `Mobile speed audit for Khar Aesthetic Smile Studio (Mumbai) — 31/100 PageSpeed teardown`
 
 ```text
-Hi Atelier Olive Team,
+Hi Khar Aesthetic Smile Studio Team,
 
 I hope your week is off to a great start.
 
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
 
-While researching leading Boutique Fashion & Designer Labels in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.atelierolive.com. Here is what our crawler detected:
+While researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.kharaestheticsmilestudio.com. Here is what our crawler detected:
 
-• Mobile PageSpeed Score: 38/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 6.5s on 4G network
+• Mobile PageSpeed Score: 31/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 5.5s on 4G network
 • Detected Architecture: Shopify (23 Apps)
 • Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
 
 In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
 
 You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.atelierolive.com
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.kharaestheticsmilestudio.com
 
 I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
 
@@ -59,25 +59,25 @@ WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+
 
 ### 💬 Copy/Paste Instagram/LinkedIn DM:
 ```text
-Hey team Atelier Olive! Found your profile while researching premier Boutique Fashion & Designer Labels in Dubai. Noticed your website takes 6.5s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+Hey team Khar Aesthetic Smile Studio! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 5.5s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
 ```
 
 ---
 
-## 2. Maison Aura (Dubai Marina, Dubai)
+## 2. Azure Cosmetic Dental Care (Colaba, Mumbai)
 
-- **Website:** https://www.maisonaura.com
-- **Current Mobile Speed:** `7.1s` (PageSpeed: `28/100`)
-- **Platform Detected:** Shopify (23 Apps)
-- **Est. Revenue Leak:** $12,000/mo
+- **Website:** https://www.azurecosmeticdentalcare.com
+- **Current Mobile Speed:** `6.9s` (PageSpeed: `44/100`)
+- **Platform Detected:** WordPress (Elementor / WooCommerce)
+- **Est. Revenue Leak:** $9,800/mo
 
 ### 📱 Copy/Paste WhatsApp Message:
 ```text
-Hey Maison Aura team! 👋
+Hey Azure Cosmetic Dental Care team! 👋
 
-I was browsing local Fashion Boutique websites in Dubai on mobile 4G yesterday and came across your site (https://www.maisonaura.com).
+I was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.azurecosmeticdentalcare.com).
 
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 7.1s to load (mobile score sits at 28/100).
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 6.9s to load (mobile score sits at 44/100).
 
 I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
 
@@ -85,26 +85,85 @@ I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and 
 ```
 
 ### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Maison Aura (Dubai) — 28/100 PageSpeed teardown`
+**Subject:** `Mobile speed audit for Azure Cosmetic Dental Care (Mumbai) — 44/100 PageSpeed teardown`
 
 ```text
-Hi Maison Aura Team,
+Hi Azure Cosmetic Dental Care Team,
 
 I hope your week is off to a great start.
 
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
 
-While researching leading Boutique Fashion & Designer Labels in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.maisonaura.com. Here is what our crawler detected:
+While researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.azurecosmeticdentalcare.com. Here is what our crawler detected:
 
-• Mobile PageSpeed Score: 28/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 7.1s on 4G network
+• Mobile PageSpeed Score: 44/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 6.9s on 4G network
+• Detected Architecture: WordPress (Elementor / WooCommerce)
+• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
+
+In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
+
+You can verify your live diagnostic on our free interactive speed checker tool:
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.azurecosmeticdentalcare.com
+
+I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
+
+Best regards,
+
+ExtrovertNerd Engineering
+Web Architecture Studio
+Portfolio: https://extrovertnerd.com
+WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
+```
+
+### 💬 Copy/Paste Instagram/LinkedIn DM:
+```text
+Hey team Azure Cosmetic Dental Care! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 6.9s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+```
+
+---
+
+## 3. Dr. Mirage Wellness Center (BKC, Mumbai)
+
+- **Website:** https://www.dr.miragewellnesscenter.com
+- **Current Mobile Speed:** `7.2s` (PageSpeed: `40/100`)
+- **Platform Detected:** Shopify (23 Apps)
+- **Est. Revenue Leak:** $9,800/mo
+
+### 📱 Copy/Paste WhatsApp Message:
+```text
+Hey Dr. Mirage Wellness Center team! 👋
+
+I was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.dr.miragewellnesscenter.com).
+
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 7.2s to load (mobile score sits at 40/100).
+
+I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
+
+— ExtrovertNerd Engineering (https://extrovertnerd.com)
+```
+
+### ✉️ Copy/Paste Cold Email:
+**Subject:** `Mobile speed audit for Dr. Mirage Wellness Center (Mumbai) — 40/100 PageSpeed teardown`
+
+```text
+Hi Dr. Mirage Wellness Center Team,
+
+I hope your week is off to a great start.
+
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
+
+While researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.dr.miragewellnesscenter.com. Here is what our crawler detected:
+
+• Mobile PageSpeed Score: 40/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 7.2s on 4G network
 • Detected Architecture: Shopify (23 Apps)
 • Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
 
 In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
 
 You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.maisonaura.com
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.dr.miragewellnesscenter.com
 
 I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
 
@@ -118,25 +177,25 @@ WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+
 
 ### 💬 Copy/Paste Instagram/LinkedIn DM:
 ```text
-Hey team Maison Aura! Found your profile while researching premier Boutique Fashion & Designer Labels in Dubai. Noticed your website takes 7.1s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+Hey team Dr. Mirage Wellness Center! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 7.2s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
 ```
 
 ---
 
-## 3. Luna Couture Dubai Marina (Dubai Marina, Dubai)
+## 4. Dr. Zia Wellness Center (Khar, Mumbai)
 
-- **Website:** https://www.lunacouturedubaimarina.com
-- **Current Mobile Speed:** `6.5s` (PageSpeed: `25/100`)
-- **Platform Detected:** Custom PHP 5.6 Legacy
-- **Est. Revenue Leak:** $12,000/mo
+- **Website:** https://www.dr.ziawellnesscenter.com
+- **Current Mobile Speed:** `6.2s` (PageSpeed: `24/100`)
+- **Platform Detected:** Shopify (23 Apps)
+- **Est. Revenue Leak:** $9,800/mo
 
 ### 📱 Copy/Paste WhatsApp Message:
 ```text
-Hey Luna Couture Dubai Marina team! 👋
+Hey Dr. Zia Wellness Center team! 👋
 
-I was browsing local Fashion Boutique websites in Dubai on mobile 4G yesterday and came across your site (https://www.lunacouturedubaimarina.com).
+I was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.dr.ziawellnesscenter.com).
 
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 6.5s to load (mobile score sits at 25/100).
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 6.2s to load (mobile score sits at 24/100).
 
 I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
 
@@ -144,26 +203,26 @@ I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and 
 ```
 
 ### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Luna Couture Dubai Marina (Dubai) — 25/100 PageSpeed teardown`
+**Subject:** `Mobile speed audit for Dr. Zia Wellness Center (Mumbai) — 24/100 PageSpeed teardown`
 
 ```text
-Hi Luna Couture Dubai Marina Team,
+Hi Dr. Zia Wellness Center Team,
 
 I hope your week is off to a great start.
 
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
 
-While researching leading Boutique Fashion & Designer Labels in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.lunacouturedubaimarina.com. Here is what our crawler detected:
+While researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.dr.ziawellnesscenter.com. Here is what our crawler detected:
 
-• Mobile PageSpeed Score: 25/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 6.5s on 4G network
-• Detected Architecture: Custom PHP 5.6 Legacy
+• Mobile PageSpeed Score: 24/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 6.2s on 4G network
+• Detected Architecture: Shopify (23 Apps)
 • Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
 
 In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
 
 You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.lunacouturedubaimarina.com
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.dr.ziawellnesscenter.com
 
 I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
 
@@ -177,25 +236,25 @@ WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+
 
 ### 💬 Copy/Paste Instagram/LinkedIn DM:
 ```text
-Hey team Luna Couture Dubai Marina! Found your profile while researching premier Boutique Fashion & Designer Labels in Dubai. Noticed your website takes 6.5s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+Hey team Dr. Zia Wellness Center! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 6.2s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
 ```
 
 ---
 
-## 4. Aura Couture Downtown Dubai (Downtown Dubai, Dubai)
+## 5. Dr. Zia Wellness Center (Bandra West, Mumbai)
 
-- **Website:** https://www.auracouturedowntowndubai.com
-- **Current Mobile Speed:** `7.1s` (PageSpeed: `33/100`)
+- **Website:** https://www.dr.ziawellnesscenter.com
+- **Current Mobile Speed:** `7.0s` (PageSpeed: `32/100`)
 - **Platform Detected:** WordPress (Elementor / WooCommerce)
-- **Est. Revenue Leak:** $12,000/mo
+- **Est. Revenue Leak:** $9,800/mo
 
 ### 📱 Copy/Paste WhatsApp Message:
 ```text
-Hey Aura Couture Downtown Dubai team! 👋
+Hey Dr. Zia Wellness Center team! 👋
 
-I was browsing local Fashion Boutique websites in Dubai on mobile 4G yesterday and came across your site (https://www.auracouturedowntowndubai.com).
+I was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.dr.ziawellnesscenter.com).
 
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 7.1s to load (mobile score sits at 33/100).
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 7.0s to load (mobile score sits at 32/100).
 
 I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
 
@@ -203,26 +262,26 @@ I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and 
 ```
 
 ### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Aura Couture Downtown Dubai (Dubai) — 33/100 PageSpeed teardown`
+**Subject:** `Mobile speed audit for Dr. Zia Wellness Center (Mumbai) — 32/100 PageSpeed teardown`
 
 ```text
-Hi Aura Couture Downtown Dubai Team,
+Hi Dr. Zia Wellness Center Team,
 
 I hope your week is off to a great start.
 
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
 
-While researching leading Boutique Fashion & Designer Labels in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.auracouturedowntowndubai.com. Here is what our crawler detected:
+While researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.dr.ziawellnesscenter.com. Here is what our crawler detected:
 
-• Mobile PageSpeed Score: 33/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 7.1s on 4G network
+• Mobile PageSpeed Score: 32/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 7.0s on 4G network
 • Detected Architecture: WordPress (Elementor / WooCommerce)
 • Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
 
 In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
 
 You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.auracouturedowntowndubai.com
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.dr.ziawellnesscenter.com
 
 I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
 
@@ -236,66 +295,7 @@ WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+
 
 ### 💬 Copy/Paste Instagram/LinkedIn DM:
 ```text
-Hey team Aura Couture Downtown Dubai! Found your profile while researching premier Boutique Fashion & Designer Labels in Dubai. Noticed your website takes 7.1s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
-```
-
----
-
-## 5. Azure Studio (Business Bay, Dubai)
-
-- **Website:** https://www.azurestudio.com
-- **Current Mobile Speed:** `5.8s` (PageSpeed: `36/100`)
-- **Platform Detected:** WordPress (Elementor / WooCommerce)
-- **Est. Revenue Leak:** $12,000/mo
-
-### 📱 Copy/Paste WhatsApp Message:
-```text
-Hey Azure Studio team! 👋
-
-I was browsing local Fashion Boutique websites in Dubai on mobile 4G yesterday and came across your site (https://www.azurestudio.com).
-
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 5.8s to load (mobile score sits at 36/100).
-
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
-
-— ExtrovertNerd Engineering (https://extrovertnerd.com)
-```
-
-### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Azure Studio (Dubai) — 36/100 PageSpeed teardown`
-
-```text
-Hi Azure Studio Team,
-
-I hope your week is off to a great start.
-
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
-
-While researching leading Boutique Fashion & Designer Labels in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.azurestudio.com. Here is what our crawler detected:
-
-• Mobile PageSpeed Score: 36/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 5.8s on 4G network
-• Detected Architecture: WordPress (Elementor / WooCommerce)
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
-
-In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
-
-You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.azurestudio.com
-
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
-
-Best regards,
-
-ExtrovertNerd Engineering
-Web Architecture Studio
-Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
-```
-
-### 💬 Copy/Paste Instagram/LinkedIn DM:
-```text
-Hey team Azure Studio! Found your profile while researching premier Boutique Fashion & Designer Labels in Dubai. Noticed your website takes 5.8s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+Hey team Dr. Zia Wellness Center! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 7.0s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
 ```
 
 ---
