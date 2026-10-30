@@ -263,18 +263,30 @@
       "angle": "local_speed",
       "date": "2026-10-29",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-dental-clinics-local-speed.md"
+    },
+    {
+      "slug": "delhi-ncr-restaurants-local-speed",
+      "filename": "delhi-ncr-restaurants-local-speed.md",
+      "title": "Why Delhi NCR Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "delhi-ncr",
+      "city_name": "Delhi NCR",
+      "niche_id": "restaurants",
+      "niche_name": "Upscale Restaurants, Cafes & Lounges",
+      "angle": "local_speed",
+      "date": "2026-10-30",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-restaurants-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "mumbai-dental-clinics-local-speed",
-    "filename": "mumbai-dental-clinics-local-speed.md",
-    "title": "Why Mumbai Premium Dental, Cosmetic & Wellness Clinics Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "mumbai",
-    "city_name": "Mumbai",
-    "niche_id": "dental-clinics",
-    "niche_name": "Premium Dental, Cosmetic & Wellness Clinics",
+    "slug": "delhi-ncr-restaurants-local-speed",
+    "filename": "delhi-ncr-restaurants-local-speed.md",
+    "title": "Why Delhi NCR Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "city_id": "delhi-ncr",
+    "city_name": "Delhi NCR",
+    "niche_id": "restaurants",
+    "niche_name": "Upscale Restaurants, Cafes & Lounges",
     "angle": "local_speed",
-    "date": "2026-10-29",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-dental-clinics-local-speed.md"
+    "date": "2026-10-30",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-restaurants-local-speed.md"
   }
 }

@@ -1,104 +1,104 @@
 {
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "leads": [
     {
-      "id": "mumbai_dental-clinics_1",
-      "business_name": "Khar Aesthetic Smile Studio",
-      "city": "Mumbai",
-      "district": "Khar",
-      "niche": "Premium Dental, Cosmetic & Wellness Clinics",
-      "niche_singular": "Cosmetic Dental Clinic",
-      "website": "https://www.kharaestheticsmilestudio.com",
-      "detected_platform": "Shopify (23 Apps)",
-      "current_pagespeed": "31/100",
-      "current_load_time": "5.5s",
-      "estimated_monthly_leak": "$9,800/mo",
-      "date_discovered": "2026-10-29",
-      "outreach_drafts": {
-        "whatsapp": "Hey Khar Aesthetic Smile Studio team! \ud83d\udc4b\n\nI was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.kharaestheticsmilestudio.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 5.5s to load (mobile score sits at 31/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
-        "email_subject": "Mobile speed audit for Khar Aesthetic Smile Studio (Mumbai) \u2014 31/100 PageSpeed teardown",
-        "email_body": "Hi Khar Aesthetic Smile Studio Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.\n\nWhile researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.kharaestheticsmilestudio.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 31/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 5.5s on 4G network\n\u2022 Detected Architecture: Shopify (23 Apps)\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.kharaestheticsmilestudio.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
-        "instagram_dm": "Hey team Khar Aesthetic Smile Studio! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 5.5s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
-      }
-    },
-    {
-      "id": "mumbai_dental-clinics_2",
-      "business_name": "Azure Cosmetic Dental Care",
-      "city": "Mumbai",
-      "district": "Colaba",
-      "niche": "Premium Dental, Cosmetic & Wellness Clinics",
-      "niche_singular": "Cosmetic Dental Clinic",
-      "website": "https://www.azurecosmeticdentalcare.com",
-      "detected_platform": "WordPress (Elementor / WooCommerce)",
-      "current_pagespeed": "44/100",
-      "current_load_time": "6.9s",
-      "estimated_monthly_leak": "$9,800/mo",
-      "date_discovered": "2026-10-29",
-      "outreach_drafts": {
-        "whatsapp": "Hey Azure Cosmetic Dental Care team! \ud83d\udc4b\n\nI was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.azurecosmeticdentalcare.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 6.9s to load (mobile score sits at 44/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
-        "email_subject": "Mobile speed audit for Azure Cosmetic Dental Care (Mumbai) \u2014 44/100 PageSpeed teardown",
-        "email_body": "Hi Azure Cosmetic Dental Care Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.\n\nWhile researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.azurecosmeticdentalcare.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 44/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 6.9s on 4G network\n\u2022 Detected Architecture: WordPress (Elementor / WooCommerce)\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.azurecosmeticdentalcare.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
-        "instagram_dm": "Hey team Azure Cosmetic Dental Care! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 6.9s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
-      }
-    },
-    {
-      "id": "mumbai_dental-clinics_3",
-      "business_name": "Dr. Mirage Wellness Center",
-      "city": "Mumbai",
-      "district": "BKC",
-      "niche": "Premium Dental, Cosmetic & Wellness Clinics",
-      "niche_singular": "Cosmetic Dental Clinic",
-      "website": "https://www.dr.miragewellnesscenter.com",
-      "detected_platform": "Shopify (23 Apps)",
-      "current_pagespeed": "40/100",
-      "current_load_time": "7.2s",
-      "estimated_monthly_leak": "$9,800/mo",
-      "date_discovered": "2026-10-29",
-      "outreach_drafts": {
-        "whatsapp": "Hey Dr. Mirage Wellness Center team! \ud83d\udc4b\n\nI was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.dr.miragewellnesscenter.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 7.2s to load (mobile score sits at 40/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
-        "email_subject": "Mobile speed audit for Dr. Mirage Wellness Center (Mumbai) \u2014 40/100 PageSpeed teardown",
-        "email_body": "Hi Dr. Mirage Wellness Center Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.\n\nWhile researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.dr.miragewellnesscenter.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 40/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 7.2s on 4G network\n\u2022 Detected Architecture: Shopify (23 Apps)\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.dr.miragewellnesscenter.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
-        "instagram_dm": "Hey team Dr. Mirage Wellness Center! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 7.2s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
-      }
-    },
-    {
-      "id": "mumbai_dental-clinics_4",
-      "business_name": "Dr. Zia Wellness Center",
-      "city": "Mumbai",
-      "district": "Khar",
-      "niche": "Premium Dental, Cosmetic & Wellness Clinics",
-      "niche_singular": "Cosmetic Dental Clinic",
-      "website": "https://www.dr.ziawellnesscenter.com",
-      "detected_platform": "Shopify (23 Apps)",
-      "current_pagespeed": "24/100",
-      "current_load_time": "6.2s",
-      "estimated_monthly_leak": "$9,800/mo",
-      "date_discovered": "2026-10-29",
-      "outreach_drafts": {
-        "whatsapp": "Hey Dr. Zia Wellness Center team! \ud83d\udc4b\n\nI was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.dr.ziawellnesscenter.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 6.2s to load (mobile score sits at 24/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
-        "email_subject": "Mobile speed audit for Dr. Zia Wellness Center (Mumbai) \u2014 24/100 PageSpeed teardown",
-        "email_body": "Hi Dr. Zia Wellness Center Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.\n\nWhile researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.dr.ziawellnesscenter.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 24/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 6.2s on 4G network\n\u2022 Detected Architecture: Shopify (23 Apps)\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.dr.ziawellnesscenter.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
-        "instagram_dm": "Hey team Dr. Zia Wellness Center! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 6.2s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
-      }
-    },
-    {
-      "id": "mumbai_dental-clinics_5",
-      "business_name": "Dr. Zia Wellness Center",
-      "city": "Mumbai",
-      "district": "Bandra West",
-      "niche": "Premium Dental, Cosmetic & Wellness Clinics",
-      "niche_singular": "Cosmetic Dental Clinic",
-      "website": "https://www.dr.ziawellnesscenter.com",
-      "detected_platform": "WordPress (Elementor / WooCommerce)",
+      "id": "delhi-ncr_restaurants_1",
+      "business_name": "Verde Culinary Lounge",
+      "city": "Delhi NCR",
+      "district": "Vasant Kunj",
+      "niche": "Upscale Restaurants, Cafes & Lounges",
+      "niche_singular": "Fine-Dining Restaurant",
+      "website": "https://www.verdeculinarylounge.com",
+      "detected_platform": "Custom PHP 5.6 Legacy",
       "current_pagespeed": "32/100",
-      "current_load_time": "7.0s",
-      "estimated_monthly_leak": "$9,800/mo",
-      "date_discovered": "2026-10-29",
+      "current_load_time": "5.2s",
+      "estimated_monthly_leak": "$6,200/mo",
+      "date_discovered": "2026-10-30",
       "outreach_drafts": {
-        "whatsapp": "Hey Dr. Zia Wellness Center team! \ud83d\udc4b\n\nI was browsing local Cosmetic Dental Clinic websites in Mumbai on mobile 4G yesterday and came across your site (https://www.dr.ziawellnesscenter.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 7.0s to load (mobile score sits at 32/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
-        "email_subject": "Mobile speed audit for Dr. Zia Wellness Center (Mumbai) \u2014 32/100 PageSpeed teardown",
-        "email_body": "Hi Dr. Zia Wellness Center Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.\n\nWhile researching leading Premium Dental, Cosmetic & Wellness Clinics in Mumbai, our lab ran a mobile Core Web Vitals diagnostic on https://www.dr.ziawellnesscenter.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 32/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 7.0s on 4G network\n\u2022 Detected Architecture: WordPress (Elementor / WooCommerce)\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.dr.ziawellnesscenter.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
-        "instagram_dm": "Hey team Dr. Zia Wellness Center! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Mumbai. Noticed your website takes 7.0s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
+        "whatsapp": "Hey Verde Culinary Lounge team! \ud83d\udc4b\n\nI was browsing local Fine-Dining Restaurant websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.verdeculinarylounge.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 5.2s to load (mobile score sits at 32/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
+        "email_subject": "Mobile speed audit for Verde Culinary Lounge (Delhi NCR) \u2014 32/100 PageSpeed teardown",
+        "email_body": "Hi Verde Culinary Lounge Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Upscale Restaurants, Cafes & Lounges.\n\nWhile researching leading Upscale Restaurants, Cafes & Lounges in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.verdeculinarylounge.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 32/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 5.2s on 4G network\n\u2022 Detected Architecture: Custom PHP 5.6 Legacy\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.verdeculinarylounge.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
+        "instagram_dm": "Hey team Verde Culinary Lounge! Found your profile while researching premier Upscale Restaurants, Cafes & Lounges in Delhi NCR. Noticed your website takes 5.2s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
+      }
+    },
+    {
+      "id": "delhi-ncr_restaurants_2",
+      "business_name": "The Golf Course Road Bistro",
+      "city": "Delhi NCR",
+      "district": "Golf Course Road",
+      "niche": "Upscale Restaurants, Cafes & Lounges",
+      "niche_singular": "Fine-Dining Restaurant",
+      "website": "https://www.thegolfcourseroadbistro.com",
+      "detected_platform": "Shopify (23 Apps)",
+      "current_pagespeed": "37/100",
+      "current_load_time": "4.9s",
+      "estimated_monthly_leak": "$6,200/mo",
+      "date_discovered": "2026-10-30",
+      "outreach_drafts": {
+        "whatsapp": "Hey The Golf Course Road Bistro team! \ud83d\udc4b\n\nI was browsing local Fine-Dining Restaurant websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.thegolfcourseroadbistro.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 4.9s to load (mobile score sits at 37/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
+        "email_subject": "Mobile speed audit for The Golf Course Road Bistro (Delhi NCR) \u2014 37/100 PageSpeed teardown",
+        "email_body": "Hi The Golf Course Road Bistro Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Upscale Restaurants, Cafes & Lounges.\n\nWhile researching leading Upscale Restaurants, Cafes & Lounges in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.thegolfcourseroadbistro.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 37/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 4.9s on 4G network\n\u2022 Detected Architecture: Shopify (23 Apps)\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.thegolfcourseroadbistro.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
+        "instagram_dm": "Hey team The Golf Course Road Bistro! Found your profile while researching premier Upscale Restaurants, Cafes & Lounges in Delhi NCR. Noticed your website takes 4.9s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
+      }
+    },
+    {
+      "id": "delhi-ncr_restaurants_3",
+      "business_name": "Villa Saffron Kitchen",
+      "city": "Delhi NCR",
+      "district": "Golf Course Road",
+      "niche": "Upscale Restaurants, Cafes & Lounges",
+      "niche_singular": "Fine-Dining Restaurant",
+      "website": "https://www.villasaffronkitchen.com",
+      "detected_platform": "WordPress (Elementor / WooCommerce)",
+      "current_pagespeed": "24/100",
+      "current_load_time": "7.2s",
+      "estimated_monthly_leak": "$6,200/mo",
+      "date_discovered": "2026-10-30",
+      "outreach_drafts": {
+        "whatsapp": "Hey Villa Saffron Kitchen team! \ud83d\udc4b\n\nI was browsing local Fine-Dining Restaurant websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.villasaffronkitchen.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 7.2s to load (mobile score sits at 24/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
+        "email_subject": "Mobile speed audit for Villa Saffron Kitchen (Delhi NCR) \u2014 24/100 PageSpeed teardown",
+        "email_body": "Hi Villa Saffron Kitchen Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Upscale Restaurants, Cafes & Lounges.\n\nWhile researching leading Upscale Restaurants, Cafes & Lounges in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.villasaffronkitchen.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 24/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 7.2s on 4G network\n\u2022 Detected Architecture: WordPress (Elementor / WooCommerce)\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.villasaffronkitchen.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
+        "instagram_dm": "Hey team Villa Saffron Kitchen! Found your profile while researching premier Upscale Restaurants, Cafes & Lounges in Delhi NCR. Noticed your website takes 7.2s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
+      }
+    },
+    {
+      "id": "delhi-ncr_restaurants_4",
+      "business_name": "The Connaught Place Bistro",
+      "city": "Delhi NCR",
+      "district": "Connaught Place",
+      "niche": "Upscale Restaurants, Cafes & Lounges",
+      "niche_singular": "Fine-Dining Restaurant",
+      "website": "https://www.theconnaughtplacebistro.com",
+      "detected_platform": "Custom PHP 5.6 Legacy",
+      "current_pagespeed": "40/100",
+      "current_load_time": "6.5s",
+      "estimated_monthly_leak": "$6,200/mo",
+      "date_discovered": "2026-10-30",
+      "outreach_drafts": {
+        "whatsapp": "Hey The Connaught Place Bistro team! \ud83d\udc4b\n\nI was browsing local Fine-Dining Restaurant websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.theconnaughtplacebistro.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 6.5s to load (mobile score sits at 40/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
+        "email_subject": "Mobile speed audit for The Connaught Place Bistro (Delhi NCR) \u2014 40/100 PageSpeed teardown",
+        "email_body": "Hi The Connaught Place Bistro Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Upscale Restaurants, Cafes & Lounges.\n\nWhile researching leading Upscale Restaurants, Cafes & Lounges in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.theconnaughtplacebistro.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 40/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 6.5s on 4G network\n\u2022 Detected Architecture: Custom PHP 5.6 Legacy\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.theconnaughtplacebistro.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
+        "instagram_dm": "Hey team The Connaught Place Bistro! Found your profile while researching premier Upscale Restaurants, Cafes & Lounges in Delhi NCR. Noticed your website takes 6.5s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
+      }
+    },
+    {
+      "id": "delhi-ncr_restaurants_5",
+      "business_name": "The Cyber Hub Bistro",
+      "city": "Delhi NCR",
+      "district": "Cyber Hub",
+      "niche": "Upscale Restaurants, Cafes & Lounges",
+      "niche_singular": "Fine-Dining Restaurant",
+      "website": "https://www.thecyberhubbistro.com",
+      "detected_platform": "WordPress (Elementor / WooCommerce)",
+      "current_pagespeed": "29/100",
+      "current_load_time": "5.5s",
+      "estimated_monthly_leak": "$6,200/mo",
+      "date_discovered": "2026-10-30",
+      "outreach_drafts": {
+        "whatsapp": "Hey The Cyber Hub Bistro team! \ud83d\udc4b\n\nI was browsing local Fine-Dining Restaurant websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.thecyberhubbistro.com).\n\nLove the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 5.5s to load (mobile score sits at 29/100).\n\nI recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?\n\n\u2014 ExtrovertNerd Engineering (https://extrovertnerd.com)",
+        "email_subject": "Mobile speed audit for The Cyber Hub Bistro (Delhi NCR) \u2014 29/100 PageSpeed teardown",
+        "email_body": "Hi The Cyber Hub Bistro Team,\n\nI hope your week is off to a great start.\n\nWe are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Upscale Restaurants, Cafes & Lounges.\n\nWhile researching leading Upscale Restaurants, Cafes & Lounges in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.thecyberhubbistro.com. Here is what our crawler detected:\n\n\u2022 Mobile PageSpeed Score: 29/100 (Google Core Web Vitals: Failed)\n\u2022 Mobile Load Time: 5.5s on 4G network\n\u2022 Detected Architecture: WordPress (Elementor / WooCommerce)\n\u2022 Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts\n\nIn our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.\n\nYou can verify your live diagnostic on our free interactive speed checker tool:\n\ud83d\udc49 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.thecyberhubbistro.com\n\nI\u2019ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.\n\nBest regards,\n\nExtrovertNerd Engineering\nWeb Architecture Studio\nPortfolio: https://extrovertnerd.com\nWhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.",
+        "instagram_dm": "Hey team The Cyber Hub Bistro! Found your profile while researching premier Upscale Restaurants, Cafes & Lounges in Delhi NCR. Noticed your website takes 5.5s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? \u2014 ExtrovertNerd"
       }
     }
   ]
