@@ -275,18 +275,30 @@
       "angle": "local_speed",
       "date": "2026-10-30",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-restaurants-local-speed.md"
+    },
+    {
+      "slug": "hyderabad-restaurants-local-speed",
+      "filename": "hyderabad-restaurants-local-speed.md",
+      "title": "Why Hyderabad Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "hyderabad",
+      "city_name": "Hyderabad",
+      "niche_id": "restaurants",
+      "niche_name": "Upscale Restaurants, Cafes & Lounges",
+      "angle": "local_speed",
+      "date": "2026-10-31",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/hyderabad-restaurants-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "delhi-ncr-restaurants-local-speed",
-    "filename": "delhi-ncr-restaurants-local-speed.md",
-    "title": "Why Delhi NCR Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "delhi-ncr",
-    "city_name": "Delhi NCR",
+    "slug": "hyderabad-restaurants-local-speed",
+    "filename": "hyderabad-restaurants-local-speed.md",
+    "title": "Why Hyderabad Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "city_id": "hyderabad",
+    "city_name": "Hyderabad",
     "niche_id": "restaurants",
     "niche_name": "Upscale Restaurants, Cafes & Lounges",
     "angle": "local_speed",
-    "date": "2026-10-30",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-restaurants-local-speed.md"
+    "date": "2026-10-31",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/hyderabad-restaurants-local-speed.md"
   }
 }

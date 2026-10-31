@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-30T08:52:29.005574",
-  "duration_seconds": 40.08,
-  "target_city": "Delhi NCR",
+  "timestamp": "2026-10-31T08:41:41.007225",
+  "duration_seconds": 42.95,
+  "target_city": "Hyderabad",
   "target_niche": "Upscale Restaurants, Cafes & Lounges",
   "blog_article": {
-    "title": "Why Delhi NCR Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-restaurants-local-speed.md",
-    "slug": "delhi-ncr-restaurants-local-speed"
+    "title": "Why Hyderabad Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/home/runner/work/autovideo/autovideo/output/blogs/hyderabad-restaurants-local-speed.md",
+    "slug": "hyderabad-restaurants-local-speed"
   },
   "graphics": {
     "total_slides": 0,
     "paths": []
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Delhi NCR Fine-Dining Restaurant silently losing 40%+ of mobile customers to a slow website?\n\nHere is the unco...",
+    "caption_preview": "\ud83d\udea8 Is your Hyderabad Fine-Dining Restaurant silently losing 40%+ of mobile customers to a slow website?\n\nHere is the unco...",
     "dry_run": false,
     "meta_status": "simulated"
   },
