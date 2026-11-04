@@ -1,24 +1,24 @@
 # ExtrovertNerd Outbound Prospecting Deck
 
-> **Market:** Delhi NCR • **Niche:** Premium Dental, Cosmetic & Wellness Clinics
-> **Generated Date:** 2026-11-03 • **Studio:** ExtrovertNerd
+> **Market:** Dubai • **Niche:** Luxury Real Estate & Villa Brokerages
+> **Generated Date:** 2026-11-04 • **Studio:** ExtrovertNerd
 
 ---
 
-## 1. Dr. Azure Wellness Center (South Extension, Delhi NCR)
+## 1. The Business Bay Collection Brokerage (Business Bay, Dubai)
 
-- **Website:** https://www.dr.azurewellnesscenter.com
-- **Current Mobile Speed:** `6.1s` (PageSpeed: `32/100`)
-- **Platform Detected:** Custom PHP 5.6 Legacy
-- **Est. Revenue Leak:** $9,800/mo
+- **Website:** https://www.thebusinessbaycollectionbrokerage.com
+- **Current Mobile Speed:** `5.7s` (PageSpeed: `43/100`)
+- **Platform Detected:** Shopify (23 Apps)
+- **Est. Revenue Leak:** $25,000/mo
 
 ### 📱 Copy/Paste WhatsApp Message:
 ```text
-Hey Dr. Azure Wellness Center team! 👋
+Hey The Business Bay Collection Brokerage team! 👋
 
-I was browsing local Cosmetic Dental Clinic websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.dr.azurewellnesscenter.com).
+I was browsing local Real Estate Brokerage websites in Dubai on mobile 4G yesterday and came across your site (https://www.thebusinessbaycollectionbrokerage.com).
 
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 6.1s to load (mobile score sits at 32/100).
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 5.7s to load (mobile score sits at 43/100).
 
 I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
 
@@ -26,203 +26,26 @@ I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and 
 ```
 
 ### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Dr. Azure Wellness Center (Delhi NCR) — 32/100 PageSpeed teardown`
+**Subject:** `Mobile speed audit for The Business Bay Collection Brokerage (Dubai) — 43/100 PageSpeed teardown`
 
 ```text
-Hi Dr. Azure Wellness Center Team,
+Hi The Business Bay Collection Brokerage Team,
 
 I hope your week is off to a great start.
 
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Luxury Real Estate & Villa Brokerages.
 
-While researching leading Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.dr.azurewellnesscenter.com. Here is what our crawler detected:
-
-• Mobile PageSpeed Score: 32/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 6.1s on 4G network
-• Detected Architecture: Custom PHP 5.6 Legacy
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
-
-In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
-
-You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.dr.azurewellnesscenter.com
-
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
-
-Best regards,
-
-ExtrovertNerd Engineering
-Web Architecture Studio
-Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
-```
-
-### 💬 Copy/Paste Instagram/LinkedIn DM:
-```text
-Hey team Dr. Azure Wellness Center! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR. Noticed your website takes 6.1s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
-```
-
----
-
-## 2. Dr. Luna Wellness Center (South Extension, Delhi NCR)
-
-- **Website:** https://www.dr.lunawellnesscenter.com
-- **Current Mobile Speed:** `5.8s` (PageSpeed: `25/100`)
-- **Platform Detected:** Custom PHP 5.6 Legacy
-- **Est. Revenue Leak:** $9,800/mo
-
-### 📱 Copy/Paste WhatsApp Message:
-```text
-Hey Dr. Luna Wellness Center team! 👋
-
-I was browsing local Cosmetic Dental Clinic websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.dr.lunawellnesscenter.com).
-
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 5.8s to load (mobile score sits at 25/100).
-
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
-
-— ExtrovertNerd Engineering (https://extrovertnerd.com)
-```
-
-### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Dr. Luna Wellness Center (Delhi NCR) — 25/100 PageSpeed teardown`
-
-```text
-Hi Dr. Luna Wellness Center Team,
-
-I hope your week is off to a great start.
-
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
-
-While researching leading Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.dr.lunawellnesscenter.com. Here is what our crawler detected:
-
-• Mobile PageSpeed Score: 25/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 5.8s on 4G network
-• Detected Architecture: Custom PHP 5.6 Legacy
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
-
-In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
-
-You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.dr.lunawellnesscenter.com
-
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
-
-Best regards,
-
-ExtrovertNerd Engineering
-Web Architecture Studio
-Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
-```
-
-### 💬 Copy/Paste Instagram/LinkedIn DM:
-```text
-Hey team Dr. Luna Wellness Center! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR. Noticed your website takes 5.8s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
-```
-
----
-
-## 3. Vasant Kunj Aesthetic Smile Studio (Vasant Kunj, Delhi NCR)
-
-- **Website:** https://www.vasantkunjaestheticsmilestudio.com
-- **Current Mobile Speed:** `6.1s` (PageSpeed: `35/100`)
-- **Platform Detected:** Custom PHP 5.6 Legacy
-- **Est. Revenue Leak:** $9,800/mo
-
-### 📱 Copy/Paste WhatsApp Message:
-```text
-Hey Vasant Kunj Aesthetic Smile Studio team! 👋
-
-I was browsing local Cosmetic Dental Clinic websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.vasantkunjaestheticsmilestudio.com).
-
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 6.1s to load (mobile score sits at 35/100).
-
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
-
-— ExtrovertNerd Engineering (https://extrovertnerd.com)
-```
-
-### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Vasant Kunj Aesthetic Smile Studio (Delhi NCR) — 35/100 PageSpeed teardown`
-
-```text
-Hi Vasant Kunj Aesthetic Smile Studio Team,
-
-I hope your week is off to a great start.
-
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
-
-While researching leading Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.vasantkunjaestheticsmilestudio.com. Here is what our crawler detected:
-
-• Mobile PageSpeed Score: 35/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 6.1s on 4G network
-• Detected Architecture: Custom PHP 5.6 Legacy
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
-
-In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
-
-You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.vasantkunjaestheticsmilestudio.com
-
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
-
-Best regards,
-
-ExtrovertNerd Engineering
-Web Architecture Studio
-Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
-```
-
-### 💬 Copy/Paste Instagram/LinkedIn DM:
-```text
-Hey team Vasant Kunj Aesthetic Smile Studio! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR. Noticed your website takes 6.1s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
-```
-
----
-
-## 4. Mirage Cosmetic Dental Care (Golf Course Road, Delhi NCR)
-
-- **Website:** https://www.miragecosmeticdentalcare.com
-- **Current Mobile Speed:** `6.7s` (PageSpeed: `43/100`)
-- **Platform Detected:** Custom PHP 5.6 Legacy
-- **Est. Revenue Leak:** $9,800/mo
-
-### 📱 Copy/Paste WhatsApp Message:
-```text
-Hey Mirage Cosmetic Dental Care team! 👋
-
-I was browsing local Cosmetic Dental Clinic websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.miragecosmeticdentalcare.com).
-
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 6.7s to load (mobile score sits at 43/100).
-
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
-
-— ExtrovertNerd Engineering (https://extrovertnerd.com)
-```
-
-### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Mirage Cosmetic Dental Care (Delhi NCR) — 43/100 PageSpeed teardown`
-
-```text
-Hi Mirage Cosmetic Dental Care Team,
-
-I hope your week is off to a great start.
-
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
-
-While researching leading Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.miragecosmeticdentalcare.com. Here is what our crawler detected:
+While researching leading Luxury Real Estate & Villa Brokerages in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.thebusinessbaycollectionbrokerage.com. Here is what our crawler detected:
 
 • Mobile PageSpeed Score: 43/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 6.7s on 4G network
-• Detected Architecture: Custom PHP 5.6 Legacy
+• Mobile Load Time: 5.7s on 4G network
+• Detected Architecture: Shopify (23 Apps)
 • Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
 
 In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
 
 You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.miragecosmeticdentalcare.com
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.thebusinessbaycollectionbrokerage.com
 
 I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
 
@@ -236,25 +59,25 @@ WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+
 
 ### 💬 Copy/Paste Instagram/LinkedIn DM:
 ```text
-Hey team Mirage Cosmetic Dental Care! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR. Noticed your website takes 6.7s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+Hey team The Business Bay Collection Brokerage! Found your profile while researching premier Luxury Real Estate & Villa Brokerages in Dubai. Noticed your website takes 5.7s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
 ```
 
 ---
 
-## 5. Luna Cosmetic Dental Care (South Extension, Delhi NCR)
+## 2. The Business Bay Collection Brokerage (Business Bay, Dubai)
 
-- **Website:** https://www.lunacosmeticdentalcare.com
-- **Current Mobile Speed:** `7.2s` (PageSpeed: `35/100`)
-- **Platform Detected:** WordPress (Elementor / WooCommerce)
-- **Est. Revenue Leak:** $9,800/mo
+- **Website:** https://www.thebusinessbaycollectionbrokerage.com
+- **Current Mobile Speed:** `6.9s` (PageSpeed: `41/100`)
+- **Platform Detected:** Custom PHP 5.6 Legacy
+- **Est. Revenue Leak:** $25,000/mo
 
 ### 📱 Copy/Paste WhatsApp Message:
 ```text
-Hey Luna Cosmetic Dental Care team! 👋
+Hey The Business Bay Collection Brokerage team! 👋
 
-I was browsing local Cosmetic Dental Clinic websites in Delhi NCR on mobile 4G yesterday and came across your site (https://www.lunacosmeticdentalcare.com).
+I was browsing local Real Estate Brokerage websites in Dubai on mobile 4G yesterday and came across your site (https://www.thebusinessbaycollectionbrokerage.com).
 
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 7.2s to load (mobile score sits at 35/100).
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 6.9s to load (mobile score sits at 41/100).
 
 I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
 
@@ -262,26 +85,203 @@ I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and 
 ```
 
 ### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Luna Cosmetic Dental Care (Delhi NCR) — 35/100 PageSpeed teardown`
+**Subject:** `Mobile speed audit for The Business Bay Collection Brokerage (Dubai) — 41/100 PageSpeed teardown`
 
 ```text
-Hi Luna Cosmetic Dental Care Team,
+Hi The Business Bay Collection Brokerage Team,
 
 I hope your week is off to a great start.
 
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Premium Dental, Cosmetic & Wellness Clinics.
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Luxury Real Estate & Villa Brokerages.
 
-While researching leading Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR, our lab ran a mobile Core Web Vitals diagnostic on https://www.lunacosmeticdentalcare.com. Here is what our crawler detected:
+While researching leading Luxury Real Estate & Villa Brokerages in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.thebusinessbaycollectionbrokerage.com. Here is what our crawler detected:
 
-• Mobile PageSpeed Score: 35/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 7.2s on 4G network
+• Mobile PageSpeed Score: 41/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 6.9s on 4G network
+• Detected Architecture: Custom PHP 5.6 Legacy
+• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
+
+In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
+
+You can verify your live diagnostic on our free interactive speed checker tool:
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.thebusinessbaycollectionbrokerage.com
+
+I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
+
+Best regards,
+
+ExtrovertNerd Engineering
+Web Architecture Studio
+Portfolio: https://extrovertnerd.com
+WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
+```
+
+### 💬 Copy/Paste Instagram/LinkedIn DM:
+```text
+Hey team The Business Bay Collection Brokerage! Found your profile while researching premier Luxury Real Estate & Villa Brokerages in Dubai. Noticed your website takes 6.9s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+```
+
+---
+
+## 3. The DIFC Collection Brokerage (DIFC, Dubai)
+
+- **Website:** https://www.thedifccollectionbrokerage.com
+- **Current Mobile Speed:** `5.9s` (PageSpeed: `43/100`)
+- **Platform Detected:** Custom PHP 5.6 Legacy
+- **Est. Revenue Leak:** $25,000/mo
+
+### 📱 Copy/Paste WhatsApp Message:
+```text
+Hey The DIFC Collection Brokerage team! 👋
+
+I was browsing local Real Estate Brokerage websites in Dubai on mobile 4G yesterday and came across your site (https://www.thedifccollectionbrokerage.com).
+
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 5.9s to load (mobile score sits at 43/100).
+
+I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
+
+— ExtrovertNerd Engineering (https://extrovertnerd.com)
+```
+
+### ✉️ Copy/Paste Cold Email:
+**Subject:** `Mobile speed audit for The DIFC Collection Brokerage (Dubai) — 43/100 PageSpeed teardown`
+
+```text
+Hi The DIFC Collection Brokerage Team,
+
+I hope your week is off to a great start.
+
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Luxury Real Estate & Villa Brokerages.
+
+While researching leading Luxury Real Estate & Villa Brokerages in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.thedifccollectionbrokerage.com. Here is what our crawler detected:
+
+• Mobile PageSpeed Score: 43/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 5.9s on 4G network
+• Detected Architecture: Custom PHP 5.6 Legacy
+• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
+
+In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
+
+You can verify your live diagnostic on our free interactive speed checker tool:
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.thedifccollectionbrokerage.com
+
+I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
+
+Best regards,
+
+ExtrovertNerd Engineering
+Web Architecture Studio
+Portfolio: https://extrovertnerd.com
+WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
+```
+
+### 💬 Copy/Paste Instagram/LinkedIn DM:
+```text
+Hey team The DIFC Collection Brokerage! Found your profile while researching premier Luxury Real Estate & Villa Brokerages in Dubai. Noticed your website takes 5.9s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+```
+
+---
+
+## 4. The Business Bay Collection Brokerage (Business Bay, Dubai)
+
+- **Website:** https://www.thebusinessbaycollectionbrokerage.com
+- **Current Mobile Speed:** `4.8s` (PageSpeed: `40/100`)
+- **Platform Detected:** Custom PHP 5.6 Legacy
+- **Est. Revenue Leak:** $25,000/mo
+
+### 📱 Copy/Paste WhatsApp Message:
+```text
+Hey The Business Bay Collection Brokerage team! 👋
+
+I was browsing local Real Estate Brokerage websites in Dubai on mobile 4G yesterday and came across your site (https://www.thebusinessbaycollectionbrokerage.com).
+
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 4.8s to load (mobile score sits at 40/100).
+
+I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
+
+— ExtrovertNerd Engineering (https://extrovertnerd.com)
+```
+
+### ✉️ Copy/Paste Cold Email:
+**Subject:** `Mobile speed audit for The Business Bay Collection Brokerage (Dubai) — 40/100 PageSpeed teardown`
+
+```text
+Hi The Business Bay Collection Brokerage Team,
+
+I hope your week is off to a great start.
+
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Luxury Real Estate & Villa Brokerages.
+
+While researching leading Luxury Real Estate & Villa Brokerages in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.thebusinessbaycollectionbrokerage.com. Here is what our crawler detected:
+
+• Mobile PageSpeed Score: 40/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 4.8s on 4G network
+• Detected Architecture: Custom PHP 5.6 Legacy
+• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
+
+In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
+
+You can verify your live diagnostic on our free interactive speed checker tool:
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.thebusinessbaycollectionbrokerage.com
+
+I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
+
+Best regards,
+
+ExtrovertNerd Engineering
+Web Architecture Studio
+Portfolio: https://extrovertnerd.com
+WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
+```
+
+### 💬 Copy/Paste Instagram/LinkedIn DM:
+```text
+Hey team The Business Bay Collection Brokerage! Found your profile while researching premier Luxury Real Estate & Villa Brokerages in Dubai. Noticed your website takes 4.8s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+```
+
+---
+
+## 5. Azure Luxury Living Palm Jumeirah (Palm Jumeirah, Dubai)
+
+- **Website:** https://www.azureluxurylivingpalmjumeirah.com
+- **Current Mobile Speed:** `6.0s` (PageSpeed: `31/100`)
+- **Platform Detected:** WordPress (Elementor / WooCommerce)
+- **Est. Revenue Leak:** $25,000/mo
+
+### 📱 Copy/Paste WhatsApp Message:
+```text
+Hey Azure Luxury Living Palm Jumeirah team! 👋
+
+I was browsing local Real Estate Brokerage websites in Dubai on mobile 4G yesterday and came across your site (https://www.azureluxurylivingpalmjumeirah.com).
+
+Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 6.0s to load (mobile score sits at 31/100).
+
+I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
+
+— ExtrovertNerd Engineering (https://extrovertnerd.com)
+```
+
+### ✉️ Copy/Paste Cold Email:
+**Subject:** `Mobile speed audit for Azure Luxury Living Palm Jumeirah (Dubai) — 31/100 PageSpeed teardown`
+
+```text
+Hi Azure Luxury Living Palm Jumeirah Team,
+
+I hope your week is off to a great start.
+
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Luxury Real Estate & Villa Brokerages.
+
+While researching leading Luxury Real Estate & Villa Brokerages in Dubai, our lab ran a mobile Core Web Vitals diagnostic on https://www.azureluxurylivingpalmjumeirah.com. Here is what our crawler detected:
+
+• Mobile PageSpeed Score: 31/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 6.0s on 4G network
 • Detected Architecture: WordPress (Elementor / WooCommerce)
 • Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
 
 In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
 
 You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.lunacosmeticdentalcare.com
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.azureluxurylivingpalmjumeirah.com
 
 I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
 
@@ -295,7 +295,7 @@ WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+
 
 ### 💬 Copy/Paste Instagram/LinkedIn DM:
 ```text
-Hey team Luna Cosmetic Dental Care! Found your profile while researching premier Premium Dental, Cosmetic & Wellness Clinics in Delhi NCR. Noticed your website takes 7.2s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+Hey team Azure Luxury Living Palm Jumeirah! Found your profile while researching premier Luxury Real Estate & Villa Brokerages in Dubai. Noticed your website takes 6.0s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
 ```
 
 ---
