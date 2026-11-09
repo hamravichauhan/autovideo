@@ -1,7 +1,7 @@
 ---
 title: "Why Hyderabad Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites"
 slug: "hyderabad-real-estate-local-speed"
-date: "2026-10-19"
+date: "2026-11-09"
 author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Hyderabad"
