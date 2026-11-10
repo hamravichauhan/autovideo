@@ -1,7 +1,7 @@
 ---
 title: "Why Goa Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites"
 slug: "goa-boutique-hotels-local-speed"
-date: "2026-10-18"
+date: "2026-11-10"
 author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Goa"
