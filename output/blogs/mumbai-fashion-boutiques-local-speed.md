@@ -1,8 +1,8 @@
 ---
 title: "Why Mumbai Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites"
 slug: "mumbai-fashion-boutiques-local-speed"
-date: "2026-10-18"
-author: "Apex Velocity Labs"
+date: "2026-11-12"
+author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Mumbai"
 niche: "Boutique Fashion & Designer Labels"
@@ -119,8 +119,8 @@ We offer a **100% Free, No-Obligation Speed & Conversion Audit** for local busin
 - A step-by-step roadmap to slash your load times below 1 second.
 
 ### How to Get Your Free Audit:
-- 📱 **Chat Directly on WhatsApp:** [Click here to send us a message](https://wa.me/15551234567?text=Hi+Apex+Velocity+Labs%21+I+read+your+article+on+Mumbai+Boutiques+%26+Designer+Labels+and+would+love+a+free+5-point+website+speed+audit.)
+- 📱 **Chat Directly on WhatsApp:** [Click here to send us a message](https://wa.me/15551234567?text=Hi+ExtrovertNerd%21+I+read+your+article+on+Mumbai+Boutiques+%26+Designer+Labels+and+would+love+a+free+5-point+website+speed+audit.)
 - 📋 **Fill Out the Quick Intake Form:** [Open the 60-Second Audit Request Form](https://forms.gle/your-free-speed-audit-intake)
-- 💬 **Direct Message:** Send the word **"AUDIT"** to our team at **@apexvelocitylabs**
+- 💬 **Direct Message:** Send the word **"AUDIT"** to our team at **@extrovertnerd**
 
 *Stop losing customers to slow load times. Upgrade your digital infrastructure today.*

@@ -49,18 +49,6 @@
       "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/goa-dental-clinics-local-speed.md"
     },
     {
-      "slug": "mumbai-fashion-boutiques-local-speed",
-      "filename": "mumbai-fashion-boutiques-local-speed.md",
-      "title": "Why Mumbai Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
-      "city_id": "mumbai",
-      "city_name": "Mumbai",
-      "niche_id": "fashion-boutiques",
-      "niche_name": "Boutique Fashion & Designer Labels",
-      "angle": "local_speed",
-      "date": "2026-10-18",
-      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/mumbai-fashion-boutiques-local-speed.md"
-    },
-    {
       "slug": "bangalore-boutique-hotels-tech-comparison",
       "filename": "bangalore-boutique-hotels-tech-comparison.md",
       "title": "Boutique Hotels & Luxury Villas in Bangalore: Laravel vs Shopify & WordPress (Speed & Profit Breakdown)",
@@ -383,18 +371,30 @@
       "angle": "local_speed",
       "date": "2026-11-11",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/bangalore-dental-clinics-local-speed.md"
+    },
+    {
+      "slug": "mumbai-fashion-boutiques-local-speed",
+      "filename": "mumbai-fashion-boutiques-local-speed.md",
+      "title": "Why Mumbai Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "mumbai",
+      "city_name": "Mumbai",
+      "niche_id": "fashion-boutiques",
+      "niche_name": "Boutique Fashion & Designer Labels",
+      "angle": "local_speed",
+      "date": "2026-11-12",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-fashion-boutiques-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "bangalore-dental-clinics-local-speed",
-    "filename": "bangalore-dental-clinics-local-speed.md",
-    "title": "Why Bangalore Premium Dental, Cosmetic & Wellness Clinics Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "bangalore",
-    "city_name": "Bangalore",
-    "niche_id": "dental-clinics",
-    "niche_name": "Premium Dental, Cosmetic & Wellness Clinics",
+    "slug": "mumbai-fashion-boutiques-local-speed",
+    "filename": "mumbai-fashion-boutiques-local-speed.md",
+    "title": "Why Mumbai Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
+    "city_id": "mumbai",
+    "city_name": "Mumbai",
+    "niche_id": "fashion-boutiques",
+    "niche_name": "Boutique Fashion & Designer Labels",
     "angle": "local_speed",
-    "date": "2026-11-11",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/bangalore-dental-clinics-local-speed.md"
+    "date": "2026-11-12",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-fashion-boutiques-local-speed.md"
   }
 }
