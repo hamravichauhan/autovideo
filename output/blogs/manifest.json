@@ -241,18 +241,6 @@
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/hyderabad-restaurants-local-speed.md"
     },
     {
-      "slug": "mumbai-real-estate-local-speed",
-      "filename": "mumbai-real-estate-local-speed.md",
-      "title": "Why Mumbai Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites",
-      "city_id": "mumbai",
-      "city_name": "Mumbai",
-      "niche_id": "real-estate",
-      "niche_name": "Luxury Real Estate & Villa Brokerages",
-      "angle": "local_speed",
-      "date": "2026-11-01",
-      "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-real-estate-local-speed.md"
-    },
-    {
       "slug": "goa-real-estate-local-speed",
       "filename": "goa-real-estate-local-speed.md",
       "title": "Why Goa Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites",
@@ -383,18 +371,30 @@
       "angle": "local_speed",
       "date": "2026-11-12",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-fashion-boutiques-local-speed.md"
+    },
+    {
+      "slug": "mumbai-real-estate-local-speed",
+      "filename": "mumbai-real-estate-local-speed.md",
+      "title": "Why Mumbai Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "mumbai",
+      "city_name": "Mumbai",
+      "niche_id": "real-estate",
+      "niche_name": "Luxury Real Estate & Villa Brokerages",
+      "angle": "local_speed",
+      "date": "2026-11-13",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-real-estate-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "mumbai-fashion-boutiques-local-speed",
-    "filename": "mumbai-fashion-boutiques-local-speed.md",
-    "title": "Why Mumbai Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
+    "slug": "mumbai-real-estate-local-speed",
+    "filename": "mumbai-real-estate-local-speed.md",
+    "title": "Why Mumbai Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites",
     "city_id": "mumbai",
     "city_name": "Mumbai",
-    "niche_id": "fashion-boutiques",
-    "niche_name": "Boutique Fashion & Designer Labels",
+    "niche_id": "real-estate",
+    "niche_name": "Luxury Real Estate & Villa Brokerages",
     "angle": "local_speed",
-    "date": "2026-11-12",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-fashion-boutiques-local-speed.md"
+    "date": "2026-11-13",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-real-estate-local-speed.md"
   }
 }

@@ -1,7 +1,7 @@
 ---
 title: "Why Mumbai Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites"
 slug: "mumbai-real-estate-local-speed"
-date: "2026-11-01"
+date: "2026-11-13"
 author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Mumbai"

@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-11-12T10:05:32.987210",
-  "duration_seconds": 45.07,
+  "timestamp": "2026-11-13T09:52:06.570367",
+  "duration_seconds": 40.09,
   "target_city": "Mumbai",
-  "target_niche": "Boutique Fashion & Designer Labels",
+  "target_niche": "Luxury Real Estate & Villa Brokerages",
   "blog_article": {
-    "title": "Why Mumbai Boutique Fashion & Designer Labels Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-fashion-boutiques-local-speed.md",
-    "slug": "mumbai-fashion-boutiques-local-speed"
+    "title": "Why Mumbai Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-real-estate-local-speed.md",
+    "slug": "mumbai-real-estate-local-speed"
   },
   "graphics": {
     "total_slides": 0,
     "paths": []
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Mumbai Fashion Boutique silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfortable...",
+    "caption_preview": "\ud83d\udea8 Is your Mumbai Real Estate Brokerage silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfor...",
     "dry_run": false,
     "meta_status": "simulated"
   },
