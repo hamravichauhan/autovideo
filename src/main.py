@@ -43,6 +43,211 @@ class AutomationEngine:
         self.publisher_engine = SocialPublisherEngine()
         self.prospecting_engine = ProspectingEngine()
 
+    def run_dev_track(
+        self,
+        website_id: Optional[str] = None,
+        tip_id: Optional[str] = None,
+        render_graphics: bool = True,
+        render_video: bool = True,
+    ) -> Dict[str, Any]:
+        """Executes isolated Track 1: Dev Content & Architecture.
+        
+        Renders Top 100 System Architecture breakdown (Instagram & LinkedIn),
+        renders Developer Performance Blueprint code snippet,
+        renders 60s Architecture Video Reel,
+        and dispatches to Telegram under the strict Track 1 Dev Header.
+        """
+        logger.info("=======================================================")
+        logger.info("🛠️ [TRACK 1] RUNNING DEV CONTENT & SYSTEM ARCHITECTURE")
+        logger.info("=======================================================")
+
+        from src.tracker import get_next_top100_rank
+        daily_rank = int(website_id) if website_id else get_next_top100_rank(advance=True)
+
+        top100_result: Dict[str, Any] = {}
+        tip_result: Dict[str, Any] = {}
+        top100_video_result: Optional[Dict[str, Any]] = None
+
+        if render_graphics:
+            try:
+                top100_result = self.graphics_renderer.render_top100_breakdown(
+                    website_id=str(daily_rank), platform="all"
+                )
+                logger.info("✅ Rendered Top 100 Teardown: #%d %s", top100_result["website"]["global_rank"], top100_result["website"]["name"])
+            except Exception as e:
+                logger.error("⚠️ Error rendering Top 100 slides: %s", e)
+
+            try:
+                tip_result = self.graphics_renderer.render_website_tip(tip_id=tip_id)
+                logger.info("✅ Rendered Dev Performance Blueprint: %s", tip_result["tip"]["title"])
+            except Exception as e:
+                logger.error("⚠️ Error rendering Dev tip poster: %s", e)
+
+            if render_video and top100_result and top100_result.get("website"):
+                try:
+                    from src.generator_video import VideoReelGenerator
+                    top100_gen = VideoReelGenerator()
+                    top100_video_result = top100_gen.render_top100_reel(
+                        website_id=top100_result["website"]["global_rank"],
+                        aspect_ratio="9:16",
+                    )
+                    logger.info("✅ Rendered 60s Top 100 Video Reel: %s", top100_video_result["video_path"])
+                except Exception as e:
+                    logger.warning("Could not render Top 100 video reel: %s", e)
+
+        # Telegram Dispatch under strict Track 1 Isolation
+        tg_res: Dict[str, Any] = {}
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            notifier = TelegramNotifier()
+            tg_res = notifier.dispatch_dev_track(
+                top100_platforms=top100_result.get("platform_slides"),
+                website=top100_result.get("website"),
+                dev_tip_path=tip_result.get("image_path"),
+                dev_tip=tip_result.get("tip"),
+                video_path=top100_video_result.get("video_path") if top100_video_result else None,
+                video_caption=top100_video_result.get("caption_text") if top100_video_result else None,
+            )
+            logger.info("📲 Telegram Track 1 (Dev) Dispatched: %s", tg_res.get("ok"))
+        except Exception as tg_err:
+            logger.warning("Telegram Track 1 dispatch error: %s", tg_err)
+
+        return {
+            "track": "dev",
+            "top100": top100_result,
+            "tip": tip_result,
+            "video": top100_video_result,
+            "telegram": tg_res,
+        }
+
+    def run_news_track(
+        self,
+        news_id: Optional[str] = None,
+        render_graphics: bool = True,
+    ) -> Dict[str, Any]:
+        """Executes isolated Track 2: Breaking Tech News & Industry Radar.
+        
+        Renders breaking Tech News poster, builds X (Twitter) breaking news post,
+        and dispatches to Telegram under the strict Track 2 News Header.
+        """
+        logger.info("=======================================================")
+        logger.info("📡 [TRACK 2] RUNNING BREAKING TECH NEWS & RADAR")
+        logger.info("=======================================================")
+
+        news_result: Dict[str, Any] = {}
+        if render_graphics:
+            try:
+                news_result = self.graphics_renderer.render_tech_news(news_id=news_id)
+                logger.info("✅ Rendered Tech News Poster: %s", news_result["news"]["headline"])
+            except Exception as e:
+                logger.error("⚠️ Error rendering Tech News poster: %s", e)
+
+        tg_res: Dict[str, Any] = {}
+        if news_result and news_result.get("image_path"):
+            try:
+                from src.telegram_notifier import TelegramNotifier
+                notifier = TelegramNotifier()
+                tg_res = notifier.dispatch_news_track(
+                    image_path=news_result["image_path"],
+                    news=news_result["news"],
+                )
+                logger.info("📲 Telegram Track 2 (News) Dispatched: %s", tg_res.get("ok"))
+            except Exception as tg_err:
+                logger.warning("Telegram Track 2 dispatch error: %s", tg_err)
+
+        return {
+            "track": "news",
+            "news": news_result,
+            "telegram": tg_res,
+        }
+
+    def run_local_track(
+        self,
+        city_id: Optional[str] = None,
+        niche_id: Optional[str] = None,
+        angle: str = "local_speed",
+        render_graphics: bool = True,
+        render_video: bool = True,
+        platform: str = "vertical",
+    ) -> Dict[str, Any]:
+        """Executes isolated Track 3: Local B2B Client Acquisition Funnel.
+        
+        Generates pSEO blog case study, renders 4-slide local carousel,
+        renders 30s local speed audit reel, runs outbound prospecting,
+        and dispatches to Telegram under the strict Track 3 Local Header.
+        """
+        logger.info("=======================================================")
+        logger.info("📍 [TRACK 3] RUNNING LOCAL B2B CLIENT ACQUISITION")
+        logger.info("=======================================================")
+
+        city, niche = self.pseo_generator.get_next_city_and_niche(city_id, niche_id)
+        logger.info("📍 Target Market: %s — %s", city["name"], niche["name"])
+
+        blog_result = self.pseo_generator.generate_article(
+            city_id=city["id"], niche_id=niche["id"], angle=angle, save=True
+        )
+
+        graphics_result: Dict[str, Any] = {}
+        video_result: Optional[Dict[str, Any]] = None
+
+        if render_graphics:
+            try:
+                graphics_result = self.graphics_renderer.render_carousel_set(
+                    city_id=city["id"], niche_id=niche["id"], platform=platform
+                )
+                slide_paths = graphics_result.get("slide_paths", [])
+                if render_video and len(slide_paths) >= 4:
+                    from src.generator_video import VideoReelGenerator
+                    v_gen = VideoReelGenerator()
+                    video_result = v_gen.render_reel(
+                        slide_images=slide_paths[:4],
+                        city=city,
+                        niche=niche,
+                        aspect_ratio="9:16",
+                    )
+            except Exception as e:
+                logger.error("⚠️ Local graphics rendering error: %s", e)
+
+        slide_paths = graphics_result.get("slide_paths", [])
+        campaign_summary = self.publisher_engine.publish_campaign(
+            city=city,
+            niche=niche,
+            slide_image_paths=slide_paths,
+            blog_file=blog_result["filepath"],
+        )
+
+        tg_res: Dict[str, Any] = {}
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            notifier = TelegramNotifier()
+            tg_res = notifier.dispatch_local_track(
+                blog_data=blog_result,
+                city=city,
+                niche=niche,
+                carousel_slides=slide_paths[:4],
+                instagram_caption=campaign_summary.get("caption"),
+                video_path=video_result.get("video_path") if video_result else None,
+                video_caption=video_result.get("caption_text") if video_result else None,
+            )
+            logger.info("📲 Telegram Track 3 (Local) Dispatched: %s", tg_res.get("ok"))
+        except Exception as tg_err:
+            logger.warning("Telegram Track 3 dispatch error: %s", tg_err)
+
+        prospecting_result = self.prospecting_engine.run_prospecting_batch(
+            city_id=city["id"], niche_id=niche["id"], count=5
+        )
+
+        return {
+            "track": "local",
+            "city": city,
+            "niche": niche,
+            "blog": blog_result,
+            "graphics": graphics_result,
+            "video": video_result,
+            "prospecting": prospecting_result,
+            "telegram": tg_res,
+        }
+
     def run_daily_funnel(
         self,
         city_id: Optional[str] = None,
@@ -51,197 +256,42 @@ class AutomationEngine:
         render_graphics: bool = True,
         platform: str = "vertical",
     ) -> Dict[str, Any]:
-        """Executes full daily client acquisition funnel."""
+        """Sequentially executes each isolated track with clean boundaries."""
         start_time = datetime.datetime.now()
         logger.info("=======================================================")
-        logger.info("🚀 STARTING AUTOMATED CLIENT ACQUISITION FUNNEL RUN")
+        logger.info("🚀 STARTING AUTOMATED MULTI-TRACK DAILY SUITE")
         logger.info("=======================================================")
 
-        # 1. Select City and Niche
-        city, niche = self.pseo_generator.get_next_city_and_niche(city_id, niche_id)
-        logger.info("📍 Target Market Selected: %s (%s, %s)", city["name"], city["region"], city["country"])
-        logger.info("🏢 Target Business Niche: %s", niche["name"])
-        logger.info("📱 Target Social Platform: %s", platform.upper())
+        # Track 1: Dev Content & Architecture
+        dev_res = self.run_dev_track(render_graphics=render_graphics, render_video=render_graphics)
 
-        # 2. Generate Programmatic SEO Blog
-        logger.info("\n--- [STEP 1/4] Generating Programmatic SEO Article ---")
-        blog_result = self.pseo_generator.generate_article(
-            city_id=city["id"], niche_id=niche["id"], angle=angle, save=True
+        # Track 2: Breaking Tech News & Radar
+        news_res = self.run_news_track(render_graphics=render_graphics)
+
+        # Track 3: Local B2B Client Acquisition
+        local_res = self.run_local_track(
+            city_id=city_id, niche_id=niche_id, angle=angle, render_graphics=render_graphics, platform=platform
         )
-        logger.info("✅ Blog Article Created: %s", blog_result["filepath"])
 
-        # 3. Render High-Resolution Visual Carousel (Local Niche Funnel)
-        graphics_result: Dict[str, Any] = {}
-        top100_result: Dict[str, Any] = {}
-        if render_graphics:
-            logger.info("\n--- [STEP 2/5] Headless Rendering Visual Assets (%s) ---", platform)
-            try:
-                # 3a. Local Business Case Study Carousel (4 Slides)
-                graphics_result = self.graphics_renderer.render_carousel_set(
-                    city_id=city["id"], niche_id=niche["id"], platform=platform
-                )
-                logger.info(
-                    "✅ Rendered %d Local Carousel Slides to: %s",
-                    graphics_result.get("total_slides", 0),
-                    graphics_result.get("directory"),
-                )
-
-                # 3b. Daily Top 100 Website Teardown (2 Slides across Instagram, LinkedIn, and X)
-                from src.tracker import get_next_top100_rank
-
-                daily_rank = get_next_top100_rank(advance=True)
-                top100_result = self.graphics_renderer.render_top100_breakdown(website_id=str(daily_rank), platform="all")
-                logger.info(
-                    "✅ Rendered Daily Top 100 Teardown: #%d %s (6 slides across 3 platforms)",
-                    top100_result["website"]["global_rank"],
-                    top100_result["website"]["name"],
-                )
-
-                # 3c. Automated 30-Second Video Reel (Edge-TTS + Ken Burns Motion + Synced Captions)
-                slide_paths = graphics_result.get("slide_paths", [])
-                if len(slide_paths) >= 4:
-                    video_generator = VideoReelGenerator()
-                    video_result = video_generator.render_reel(
-                        slide_images=slide_paths[:4],
-                        city=city,
-                        niche=niche,
-                        aspect_ratio="9:16",
-                    )
-                    logger.info("✅ Rendered 30s Video Reel: %s (%.2f MB)", video_result["video_path"], video_result["filesize_mb"])
-
-                top100_video_result = None
-                if top100_result and top100_result.get("website"):
-                    try:
-                        from src.generator_video import VideoReelGenerator
-                        top100_gen = VideoReelGenerator()
-                        top100_video_result = top100_gen.render_top100_reel(
-                            website_id=top100_result["website"]["global_rank"],
-                            aspect_ratio="9:16",
-                        )
-                        logger.info("✅ Rendered 60s Top 100 Video Reel: %s (%.2f MB)", top100_video_result["video_path"], top100_video_result["filesize_mb"])
-                    except Exception as e_top_v:
-                        logger.warning("Could not render Top 100 video reel: %s", e_top_v)
-            except Exception as e:
-                logger.error("⚠️ Graphic/Video rendering encountered error: %s", e)
-                logger.info("Continuing pipeline in text-mode...")
-                graphics_result = {
-                    "total_slides": 0,
-                    "slide_paths": [],
-                    "directory": None,
-                    "error": str(e),
-                }
-        else:
-            logger.info("\n--- [STEP 2/5] Graphic rendering skipped via flag ---")
-            graphics_result = {"total_slides": 0, "slide_paths": []}
-
-        # 4. Social Media Caption Building & Distribution
-        logger.info("\n--- [STEP 3/5] Assembling Captions & Multi-Channel Distribution ---")
-        slide_paths = graphics_result.get("slide_paths", [])
-        campaign_summary = self.publisher_engine.publish_campaign(
-            city=city,
-            niche=niche,
-            slide_image_paths=slide_paths,
-            blog_file=blog_result["filepath"],
-        )
-        logger.info("✅ Social Campaign Assembled (Status: %s)", "Dry Run / Simulated" if config.dry_run else "Live")
-
-        # 5. Telegram Automated Multi-Platform Dispatch
-        logger.info("\n--- [STEP 4/5] Telegram Multi-Platform Dispatch (8:00 AM Pack) ---")
-        try:
-            from src.telegram_notifier import TelegramNotifier
-            notifier = TelegramNotifier()
-
-            # 5a. Dispatch Top 100 Teardown with dedicated platform labels & captions (IG, LinkedIn, X)
-            if top100_result and top100_result.get("platform_slides"):
-                tg_top100 = notifier.dispatch_top100(
-                    top100_result["platform_slides"],
-                    top100_result["website"],
-                )
-                logger.info("📲 Telegram Top 100 Dispatch: %s", "Dispatched" if tg_top100.get("ok") else tg_top100.get("error"))
-
-            # 5b. Dispatch Local Carousel (Instagram) + Live Blog on Website + X (Twitter) Promo Thread
-            thread_tweets = campaign_summary.get("twitter_thread") or self.publisher_engine.build_twitter_thread(city, niche)
-            tg_blog = notifier.dispatch_blog_and_x(
-                blog_data=blog_result,
-                city=city,
-                niche=niche,
-                twitter_thread=thread_tweets,
-                carousel_slides=slide_paths[:4],
-                instagram_caption=campaign_summary.get("caption"),
-            )
-            logger.info("📲 Telegram Blog & X Thread Dispatch: %s", "Dispatched" if tg_blog.get("ok") else tg_blog.get("error"))
-
-            # 5c. Dispatch 30s High-Retention Video Reel to Telegram (Reels / Shorts / TikTok)
-            if video_result and video_result.get("video_path"):
-                tg_vid = notifier.dispatch_video_reel(
-                    video_path=video_result["video_path"],
-                    city=city,
-                    niche=niche,
-                    caption=video_result.get("caption_text"),
-                    duration=int(video_result.get("duration", 30)),
-                )
-                logger.info("📲 Telegram Video Reel Dispatch: %s", "Dispatched" if tg_vid.get("ok") else tg_vid.get("error"))
-
-            # 5d. Dispatch 60s Top 100 Video Reel to Telegram (Reels / Shorts / TikTok)
-            if top100_video_result and top100_video_result.get("video_path"):
-                tg_top_vid = notifier.dispatch_top100_video_reel(
-                    video_path=top100_video_result["video_path"],
-                    site=top100_result["website"],
-                    caption=top100_video_result.get("caption_text"),
-                    duration=int(top100_video_result.get("duration", 60)),
-                )
-                logger.info("📲 Telegram Top 100 Video Reel Dispatch: %s", "Dispatched" if tg_top_vid.get("ok") else tg_top_vid.get("error"))
-        except Exception as tg_err:
-            logger.warning("Telegram dispatch encountered warning: %s", tg_err)
-
-        # 6. Outbound Local Prospecting & Outreach Generation
-        logger.info("\n--- [STEP 5/5] Running Local Prospecting Engine ---")
-        prospecting_result = self.prospecting_engine.run_prospecting_batch(
-            city_id=city["id"], niche_id=niche["id"], count=5
-        )
-        logger.info("✅ Generated %d Local Outreach Drafts: %s", prospecting_result["count"], prospecting_result["outreach_deck_md"])
-
-        # 7. Pipeline Summary & Metrics
         end_time = datetime.datetime.now()
         duration = (end_time - start_time).total_seconds()
-        logger.info("\n--- [STEP 5/5] Finalizing Run Log ---")
 
         run_log = {
             "timestamp": start_time.isoformat(),
             "duration_seconds": round(duration, 2),
-            "target_city": city["name"],
-            "target_niche": niche["name"],
-            "blog_article": {
-                "title": blog_result["context"]["title"],
-                "file": str(blog_result["filepath"]),
-                "slug": blog_result["context"]["slug"],
-            },
-            "graphics": {
-                "total_slides": graphics_result.get("total_slides", 0),
-                "paths": graphics_result.get("slide_paths", []),
-            },
-            "social": {
-                "caption_preview": campaign_summary.get("caption", "")[:120] + "...",
-                "dry_run": config.dry_run,
-                "meta_status": campaign_summary.get("meta_result", {}).get("status"),
-            },
-            "prospecting": {
-                "leads_count": prospecting_result["count"],
-                "deck": prospecting_result["outreach_deck_md"],
-            },
-            "lead_capture": {
-                "whatsapp_cta": config.whatsapp_click_to_chat_url,
-                "intake_form": config.google_form_intake_url,
-            },
+            "dev_track": {"status": "completed", "rank": dev_res.get("top100", {}).get("website", {}).get("global_rank")},
+            "news_track": {"status": "completed", "headline": news_res.get("news", {}).get("news", {}).get("headline")},
+            "local_track": {"status": "completed", "city": local_res.get("city", {}).get("name"), "niche": local_res.get("niche", {}).get("name")},
         }
 
-        # Save run log
         log_file = config.portfolio_blog_path.parent / "automation_log.json"
-        with open(log_file, "w", encoding="utf-8") as f:
-            json.dump(run_log, f, indent=2)
+        try:
+            with open(log_file, "w", encoding="utf-8") as f:
+                json.dump(run_log, f, indent=2)
+        except Exception:
+            pass
 
-        logger.info("🏁 Pipeline completed successfully in %.2f seconds!", duration)
-        logger.info("Log file updated: %s\n", log_file)
+        logger.info("🏁 Multi-track daily run completed successfully in %.2f seconds!", duration)
         return run_log
 
 
@@ -252,9 +302,9 @@ def main() -> None:
     )
     parser.add_argument(
         "--mode",
-        choices=["daily", "all", "video", "top100", "tech_news", "website_tip", "pseo", "graphics", "tech_tip", "social", "prospect", "telegram"],
+        choices=["daily", "dev", "news", "local", "all", "video", "top100", "tech_news", "website_tip", "pseo", "graphics", "tech_tip", "social", "prospect", "telegram"],
         default="daily",
-        help="Pipeline execution mode",
+        help="Pipeline execution mode: 'dev' (Dev content/code), 'news' (Tech news radar), 'local' (Client acquisition), 'daily' (All isolated tracks)",
     )
     parser.add_argument("--city", type=str, help="Specific target city ID (e.g., goa, mumbai, bangalore)")
     parser.add_argument("--niche", type=str, help="Specific target niche ID (e.g., restaurants, boutique-hotels)")
@@ -280,7 +330,42 @@ def main() -> None:
 
     engine = AutomationEngine()
 
-    if args.mode in ("daily", "all"):
+    if args.mode == "dev":
+        res = engine.run_dev_track(
+            website_id=args.website_id,
+            tip_id=args.tip_id,
+            render_graphics=not args.no_graphics,
+            render_video=not args.no_graphics,
+        )
+        print(f"\n[ExtrovertNerd Dev Track Complete]")
+        print(f"Top 100 Rank: {res.get('top100', {}).get('website', {}).get('global_rank')}")
+        print(f"Website Tip: {res.get('tip', {}).get('tip', {}).get('title')}")
+        print("🚀 Dispatched strictly to LinkedIn & Instagram queue on Telegram!")
+
+    elif args.mode == "news":
+        res = engine.run_news_track(
+            news_id=args.news_id,
+            render_graphics=not args.no_graphics,
+        )
+        print(f"\n[ExtrovertNerd Tech News Track Complete]")
+        print(f"Headline: {res.get('news', {}).get('news', {}).get('headline')}")
+        print("🚀 Dispatched strictly to X (Twitter) queue on Telegram!")
+
+    elif args.mode == "local":
+        res = engine.run_local_track(
+            city_id=args.city,
+            niche_id=args.niche,
+            angle=args.angle,
+            render_graphics=not args.no_graphics,
+            render_video=not args.no_graphics,
+            platform=args.platform,
+        )
+        print(f"\n[ExtrovertNerd Local Acquisition Funnel Complete]")
+        print(f"Target: {res['city']['name']} — {res['niche']['name']}")
+        print(f"Blog: {res['blog']['filepath']}")
+        print("🚀 Dispatched strictly to Website Blog & Local IG/FB queue on Telegram!")
+
+    elif args.mode in ("daily", "all"):
         engine.run_daily_funnel(
             city_id=args.city,
             niche_id=args.niche,

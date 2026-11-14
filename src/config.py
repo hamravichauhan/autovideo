@@ -63,6 +63,28 @@ class Config:
     # Automation Flags
     dry_run: bool = os.getenv("DRY_RUN", "true").lower() in ("true", "1", "yes")
 
+    # Telegram Multi-Track Channel / Topic Routing (Track Isolation)
+    telegram_bot_token: str = os.getenv("TELEGRAM_BOT_TOKEN", "8580208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw").strip()
+    telegram_chat_id: str = os.getenv("TELEGRAM_CHAT_ID", "1432790039").strip()
+    telegram_dev_chat_id: str = os.getenv("TELEGRAM_DEV_CHAT_ID", "").strip()
+    telegram_news_chat_id: str = os.getenv("TELEGRAM_NEWS_CHAT_ID", "").strip()
+    telegram_dev_topic_id: Optional[int] = (
+        int(os.getenv("TELEGRAM_DEV_TOPIC_ID")) if os.getenv("TELEGRAM_DEV_TOPIC_ID") else None
+    )
+    telegram_news_topic_id: Optional[int] = (
+        int(os.getenv("TELEGRAM_NEWS_TOPIC_ID")) if os.getenv("TELEGRAM_NEWS_TOPIC_ID") else None
+    )
+
+    @property
+    def dev_chat_id(self) -> str:
+        """Dedicated chat ID for Dev content track (falls back to main chat ID)."""
+        return self.telegram_dev_chat_id or self.telegram_chat_id
+
+    @property
+    def news_chat_id(self) -> str:
+        """Dedicated chat ID for Tech News track (falls back to main chat ID)."""
+        return self.telegram_news_chat_id or self.telegram_chat_id
+
     @property
     def whatsapp_message_encoded(self) -> str:
         """URL-encoded default message for WhatsApp click-to-chat links."""

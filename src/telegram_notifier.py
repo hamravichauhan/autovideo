@@ -35,17 +35,35 @@ class TelegramNotifier:
         self,
         bot_token: Optional[str] = None,
         chat_id: Optional[str] = None,
+        dev_chat_id: Optional[str] = None,
+        news_chat_id: Optional[str] = None,
     ):
         self.bot_token = (
             bot_token
+            or getattr(config, "telegram_bot_token", None)
             or os.getenv("TELEGRAM_BOT_TOKEN")
-            or "80208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw"
+            or "8580208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw"
         ).strip()
         self.chat_id = (
             chat_id
+            or getattr(config, "telegram_chat_id", None)
             or os.getenv("TELEGRAM_CHAT_ID")
             or "1432790039"
         ).strip()
+        self.dev_chat_id = (
+            dev_chat_id
+            or getattr(config, "dev_chat_id", None)
+            or os.getenv("TELEGRAM_DEV_CHAT_ID")
+            or self.chat_id
+        ).strip()
+        self.news_chat_id = (
+            news_chat_id
+            or getattr(config, "news_chat_id", None)
+            or os.getenv("TELEGRAM_NEWS_CHAT_ID")
+            or self.chat_id
+        ).strip()
+        self.dev_topic_id = getattr(config, "telegram_dev_topic_id", None)
+        self.news_topic_id = getattr(config, "telegram_news_topic_id", None)
         self.base_url = f"https://api.telegram.org/bot{self.bot_token}"
 
     def test_connection(self) -> Dict[str, Any]:
@@ -78,15 +96,24 @@ class TelegramNotifier:
                 "error": str(e),
             }
 
-    def send_message(self, text: str, parse_mode: str = "HTML") -> Dict[str, Any]:
+    def send_message(
+        self,
+        text: str,
+        parse_mode: str = "HTML",
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
+    ) -> Dict[str, Any]:
         """Sends a text message to the configured chat with retry handling."""
+        target_chat = (chat_id or self.chat_id).strip()
         url = f"{self.base_url}/sendMessage"
-        payload = {
-            "chat_id": self.chat_id,
+        payload: Dict[str, Any] = {
+            "chat_id": target_chat,
             "text": text,
             "parse_mode": parse_mode,
             "disable_web_page_preview": False,
         }
+        if message_thread_id is not None:
+            payload["message_thread_id"] = message_thread_id
         data = urllib.parse.urlencode(payload).encode("utf-8")
 
         for attempt in range(1, 4):
@@ -108,19 +135,30 @@ class TelegramNotifier:
                 time.sleep(2.0 * attempt)
         return {"ok": False, "error": "Max retries exceeded"}
 
-    def send_photo(self, photo_path: Path | str, caption: Optional[str] = None) -> Dict[str, Any]:
+    def send_photo(
+        self,
+        photo_path: Path | str,
+        caption: Optional[str] = None,
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
+    ) -> Dict[str, Any]:
         """Sends a single photo using multipart/form-data with retry handling."""
         path = Path(photo_path)
         if not path.exists():
             return {"ok": False, "error": f"File not found: {path}"}
 
+        target_chat = (chat_id or self.chat_id).strip()
         url = f"{self.base_url}/sendPhoto"
         boundary = f"----WebKitFormBoundary{uuid.uuid4().hex}"
         body = bytearray()
 
         # chat_id field
         body.extend(f"--{boundary}\r\n".encode("utf-8"))
-        body.extend(f'Content-Disposition: form-data; name="chat_id"\r\n\r\n{self.chat_id}\r\n'.encode("utf-8"))
+        body.extend(f'Content-Disposition: form-data; name="chat_id"\r\n\r\n{target_chat}\r\n'.encode("utf-8"))
+
+        if message_thread_id is not None:
+            body.extend(f"--{boundary}\r\n".encode("utf-8"))
+            body.extend(f'Content-Disposition: form-data; name="message_thread_id"\r\n\r\n{message_thread_id}\r\n'.encode("utf-8"))
 
         # caption field
         if caption:
@@ -170,7 +208,13 @@ class TelegramNotifier:
                 time.sleep(2.5 * attempt)
         return {"ok": False, "error": "Max retries exceeded"}
 
-    def send_media_group(self, photo_paths: List[Path | str], caption: Optional[str] = None) -> Dict[str, Any]:
+    def send_media_group(
+        self,
+        photo_paths: List[Path | str],
+        caption: Optional[str] = None,
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
+    ) -> Dict[str, Any]:
         """Sends a set of carousel slides as an interactive swipeable album (media group) with retry handling."""
         valid_paths = [Path(p) for p in photo_paths if Path(p).exists()]
         if not valid_paths:
@@ -179,13 +223,18 @@ class TelegramNotifier:
         # Telegram limits media groups to max 10 items
         valid_paths = valid_paths[:10]
 
+        target_chat = (chat_id or self.chat_id).strip()
         url = f"{self.base_url}/sendMediaGroup"
         boundary = f"----WebKitFormBoundary{uuid.uuid4().hex}"
         body = bytearray()
 
         # chat_id
         body.extend(f"--{boundary}\r\n".encode("utf-8"))
-        body.extend(f'Content-Disposition: form-data; name="chat_id"\r\n\r\n{self.chat_id}\r\n'.encode("utf-8"))
+        body.extend(f'Content-Disposition: form-data; name="chat_id"\r\n\r\n{target_chat}\r\n'.encode("utf-8"))
+
+        if message_thread_id is not None:
+            body.extend(f"--{boundary}\r\n".encode("utf-8"))
+            body.extend(f'Content-Disposition: form-data; name="message_thread_id"\r\n\r\n{message_thread_id}\r\n'.encode("utf-8"))
 
         # media JSON array
         media_list = []
@@ -251,19 +300,26 @@ class TelegramNotifier:
         duration: Optional[int] = None,
         width: int = 1080,
         height: int = 1920,
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
     ) -> Dict[str, Any]:
         """Sends an MP4 video (Instagram Reel / YouTube Short / TikTok) with retry handling."""
         path = Path(video_path)
         if not path.exists():
             return {"ok": False, "error": f"File not found: {path}"}
 
+        target_chat = (chat_id or self.chat_id).strip()
         url = f"{self.base_url}/sendVideo"
         boundary = f"----WebKitFormBoundary{uuid.uuid4().hex}"
         body = bytearray()
 
         # chat_id
         body.extend(f"--{boundary}\r\n".encode("utf-8"))
-        body.extend(f'Content-Disposition: form-data; name="chat_id"\r\n\r\n{self.chat_id}\r\n'.encode("utf-8"))
+        body.extend(f'Content-Disposition: form-data; name="chat_id"\r\n\r\n{target_chat}\r\n'.encode("utf-8"))
+
+        if message_thread_id is not None:
+            body.extend(f"--{boundary}\r\n".encode("utf-8"))
+            body.extend(f'Content-Disposition: form-data; name="message_thread_id"\r\n\r\n{message_thread_id}\r\n'.encode("utf-8"))
 
         # supports_streaming
         body.extend(f"--{boundary}\r\n".encode("utf-8"))
@@ -442,6 +498,111 @@ class TelegramNotifier:
             f"Follow @extrovertnerd for daily 0-latency architecture teardowns."
         )
 
+    @staticmethod
+    def build_tech_news_twitter_post(news: Dict[str, Any]) -> str:
+        """Constructs a high-impact X (Twitter) breaking news alert thread opener."""
+        headline = news.get("headline", "Breaking Web Architecture Update")
+        category = news.get("category", "Web Standards")
+        source = news.get("source", "Industry Telemetry")
+        summary = news.get("summary", "")
+        verdict = news.get("extrovertnerd_verdict", "")
+        stack_impact = news.get("stack_impact", [])
+        impact_fmt = "\n".join([f"• {p}" for p in stack_impact[:3]])
+
+        return (
+            f"📡 BREAKING WEB ARCHITECTURE ALERT // {category.upper()}\n\n"
+            f"\"{headline}\"\n\n"
+            f"📝 Industry Summary (via {source}):\n"
+            f"{summary}\n\n"
+            f"⚡ Production Impact:\n"
+            f"{impact_fmt}\n\n"
+            f"💡 ExtrovertNerd Engineering Verdict:\n"
+            f"{verdict}\n\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send us a DM.\n\n"
+            f"RT to keep engineering teams ahead 🔁\n"
+            f"Follow @extrovertnerd for real-time web standards & architecture radar.\n\n"
+            f"#TechNews #WebStandards #WebPerformance #SoftwareEngineering #Architecture #ExtrovertNerd"
+        )
+
+    @staticmethod
+    def build_tech_news_linkedin_post(news: Dict[str, Any]) -> str:
+        """Constructs an executive LinkedIn briefing for breaking industry news & web standards."""
+        headline = news.get("headline", "Industry Architecture Update")
+        category = news.get("category", "Web Standards")
+        date = news.get("date", str(datetime.date.today()))
+        source = news.get("source", "Web Platform Working Group")
+        summary = news.get("summary", "")
+        deep_dive = news.get("technical_deep_dive", "")
+        verdict = news.get("extrovertnerd_verdict", "")
+        stack_impact = news.get("stack_impact", [])
+        impact_fmt = "\n".join([f"  {i+1}️⃣ {p}" for i, p in enumerate(stack_impact[:3])])
+
+        return (
+            f"📡 Web Architecture Radar: {headline}\n\n"
+            f"🏷️ Domain: {category} | 📅 {date} | Source: {source}\n\n"
+            f"\"{summary}\"\n\n"
+            f"🔍 Technical Architecture Breakdown:\n"
+            f"{deep_dive}\n\n"
+            f"🛠️ Direct Production Impact:\n"
+            f"{impact_fmt}\n\n"
+            f"💡 ExtrovertNerd Engineering Verdict:\n"
+            f"{verdict}\n\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send us a DM.\n\n"
+            f"What impact does this update have on your current technical roadmap? Let's discuss below.\n\n"
+            f"♻️ Repost to share with your technical network.\n"
+            f"Follow @extrovertnerd for daily system architecture briefings.\n\n"
+            f"#SoftwareEngineering #WebStandards #TechNews #SystemDesign #ExtrovertNerd"
+        )
+
+    @staticmethod
+    def build_dev_tip_linkedin_post(tip: Dict[str, Any]) -> str:
+        """Constructs an engineering performance blueprint for LinkedIn."""
+        title = tip.get("title", "")
+        category = tip.get("category", "Frontend Architecture")
+        problem = tip.get("problem", "")
+        impact = tip.get("measured_impact", "")
+        pro_tip = tip.get("pro_tip", "")
+        code = tip.get("code_snippet", "")
+
+        return (
+            f"🛠️ Engineering Blueprint: {title} [{category}]\n\n"
+            f"🚨 The Architectural Bottleneck:\n"
+            f"{problem}\n\n"
+            f"📊 Measured Performance Impact:\n"
+            f"⚡ {impact}\n\n"
+            f"💻 Implementation Pattern:\n"
+            f"{code}\n\n"
+            f"💡 ExtrovertNerd Pro Tip:\n"
+            f"{pro_tip}\n\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send us a DM.\n\n"
+            f"Save this blueprint for your next system build 📌\n"
+            f"Follow @extrovertnerd for daily production-tested engineering patterns.\n\n"
+            f"#WebPerformance #SoftwareEngineering #CleanCode #FullStack #SystemDesign #ExtrovertNerd"
+        )
+
+    @staticmethod
+    def build_dev_tip_instagram_caption(tip: Dict[str, Any]) -> str:
+        """Constructs an Instagram caption for code & architecture tips."""
+        title = tip.get("title", "")
+        category = tip.get("category", "Engineering Pattern")
+        problem = tip.get("problem", "")
+        impact = tip.get("measured_impact", "")
+        pro_tip = tip.get("pro_tip", "")
+
+        return (
+            f"⚡ Quick Engineering Pattern: {title}\n"
+            f"🏷️ {category}\n\n"
+            f"❌ THE BOTTLENECK:\n"
+            f"{problem}\n\n"
+            f"🚀 MEASURED PERFORMANCE LIFT:\n"
+            f"⚡ {impact}\n\n"
+            f"💡 EXTROVERTNERD PRO TIP:\n"
+            f"{pro_tip}\n\n"
+            f"📌 Save this post to reference in your codebase.\n"
+            f"💬 Want any help in your business with websites, custom tools, or software? Send us a DM.\n\n"
+            f"#WebDevelopment #SoftwareEngineering #CodeSnippets #CleanCode #Architecture #ExtrovertNerd #TechStack #WebPerformance"
+        )
+
     # =========================================================================
     # DISPATCH METHODS
     # =========================================================================
@@ -451,6 +612,8 @@ class TelegramNotifier:
         slides: List[Path | str],
         website: Dict[str, Any],
         platform: str,
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
     ) -> Dict[str, Any]:
         """Dispatches a Top 100 2-slide pair with explicit platform badge and platform-specific caption."""
         platform_normalized = platform.lower()
@@ -497,7 +660,7 @@ class TelegramNotifier:
             label = platform.upper()
 
         # Step 1: Send the 2 slides as an interactive album
-        album_res = self.send_media_group(valid_slides, caption=album_caption)
+        album_res = self.send_media_group(valid_slides, caption=album_caption, chat_id=chat_id, message_thread_id=message_thread_id)
 
         # Step 2: Send companion message with the exact copy-paste text formatted for that platform
         text_message = (
@@ -505,7 +668,7 @@ class TelegramNotifier:
             f"━━━━━━━━━━━━━━━━━━━━\n"
             f"<pre>{caption_text}</pre>"
         )
-        msg_res = self.send_message(text_message)
+        msg_res = self.send_message(text_message, chat_id=chat_id, message_thread_id=message_thread_id)
 
         return {
             "ok": True,
@@ -519,41 +682,201 @@ class TelegramNotifier:
         image_paths: Any,
         website: Dict[str, Any],
         platform: Optional[str] = None,
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
     ) -> Dict[str, Any]:
         """Dispatches Top 100 breakdown across platforms with platform-specific captions."""
         # Case A: Dict with multiple platforms { "instagram": [...], "linkedin": [...], "twitter": [...] }
         if isinstance(image_paths, dict):
             dispatches = {}
             for plat, slides in image_paths.items():
-                res = self.dispatch_top100_for_platform(slides, website, platform=plat)
+                res = self.dispatch_top100_for_platform(
+                    slides, website, platform=plat, chat_id=chat_id, message_thread_id=message_thread_id
+                )
                 dispatches[plat] = res
             return {"ok": True, "dispatches": dispatches}
 
         # Case B: List or Path for a specific platform
         target_plat = platform or "instagram"
         slides = list(image_paths) if isinstance(image_paths, (list, tuple)) else [image_paths]
-        return self.dispatch_top100_for_platform(slides, website, platform=target_plat)
+        return self.dispatch_top100_for_platform(
+            slides, website, platform=target_plat, chat_id=chat_id, message_thread_id=message_thread_id
+        )
 
-    def dispatch_blog_and_x(
+    def dispatch_dev_track(
+        self,
+        top100_platforms: Optional[Dict[str, List[Path | str]]] = None,
+        website: Optional[Dict[str, Any]] = None,
+        dev_tip_path: Optional[Path | str] = None,
+        dev_tip: Optional[Dict[str, Any]] = None,
+        video_path: Optional[Path | str] = None,
+        video_caption: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Dispatches Track 1: Dev Content (Top 100 System Architecture + Performance Blueprints).
+        
+        Strictly isolated from Tech News and Local Business Audits.
+        Target Platforms: LinkedIn (Engineering Network) & Instagram (Visual Carousel).
+        """
+        results = {}
+        target_chat = self.dev_chat_id
+        target_topic = self.dev_topic_id
+
+        # 1. Prominent Isolation Banner
+        banner = (
+            f"🛠️ <b>════════════════════════════════════════</b>\n"
+            f"🛠️ <b>TRACK 1: DEV CONTENT // SYSTEM ARCHITECTURE & CODE</b>\n"
+            f"🛠️ <b>════════════════════════════════════════</b>\n"
+            f"🎯 <b>PRIMARY PLATFORMS:</b> LinkedIn & Instagram (Engineering Network)\n"
+            f"⚠️ <b>ISOLATION:</b> This is technical engineering & code architecture. Do NOT post to breaking news channels."
+        )
+        results["banner"] = self.send_message(banner, chat_id=target_chat, message_thread_id=target_topic)
+
+        # 2. Dispatch Top 100 Breakdown for LinkedIn & Instagram
+        if top100_platforms and website:
+            top100_res = {}
+            for plat in ("linkedin", "instagram"):
+                if plat in top100_platforms:
+                    res = self.dispatch_top100_for_platform(
+                        top100_platforms[plat],
+                        website,
+                        platform=plat,
+                        chat_id=target_chat,
+                        message_thread_id=target_topic,
+                    )
+                    top100_res[plat] = res
+            results["top100"] = top100_res
+
+        # 3. Dispatch Performance Blueprint / Dev Tip (if available)
+        if dev_tip_path and Path(dev_tip_path).exists() and dev_tip:
+            tip_caption = (
+                f"🛠️ <b>[FOR LINKEDIN & DEV COMMUNITY] Performance Blueprint & Code Fix</b>\n\n"
+                f"⚡ <b>Title:</b> {dev_tip.get('title')}\n"
+                f"🏷️ <b>Category:</b> {dev_tip.get('category')} ({dev_tip.get('tag')})\n"
+                f"🚀 <b>Measured Impact:</b> {dev_tip.get('measured_impact')}\n\n"
+                f"👉 <i>Full ready-to-copy LinkedIn / Dev post sent below 👇</i>"
+            )
+            res_photo = self.send_photo(dev_tip_path, caption=tip_caption, chat_id=target_chat, message_thread_id=target_topic)
+            msg_text = (
+                f"📋 <b>READY-TO-POST DEV BLUEPRINT // LINKEDIN (Copy & Paste):</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━━\n"
+                f"<pre>{self.build_dev_tip_linkedin_post(dev_tip)}</pre>"
+            )
+            res_msg = self.send_message(msg_text, chat_id=target_chat, message_thread_id=target_topic)
+            results["dev_tip"] = {"photo": res_photo, "message": res_msg}
+
+        # 4. Dispatch 60s Architecture Video Reel (if available)
+        if video_path and Path(video_path).exists() and website:
+            rank = website.get("global_rank", 1)
+            name = website.get("name", "Website")
+            domain = website.get("domain", "")
+            telemetry = website.get("telemetry", {})
+
+            v_caption = (
+                f"🎬 <b>[DAY {rank}/100 REEL] 60-Second Web Architecture Teardown: {name}</b>\n"
+                f"🌐 <b>Domain:</b> {domain} (Rank #{rank})\n"
+                f"⚡ <b>Telemetry:</b> LCP {telemetry.get('lcp')} | INP {telemetry.get('inp')} | CLS {telemetry.get('cls')}\n\n"
+                f"👉 <i>Full ready-to-post description sent below 👇</i>"
+            )
+            res_v = self.send_video(video_path, caption=v_caption, duration=60, chat_id=target_chat, message_thread_id=target_topic)
+            v_msg = None
+            if video_caption:
+                caption_msg = (
+                    f"📋 <b>READY-TO-POST TOP 100 REEL CAPTION // DAY {rank} (Copy & Paste):</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━\n"
+                    f"<pre>{video_caption}</pre>"
+                )
+                v_msg = self.send_message(caption_msg, chat_id=target_chat, message_thread_id=target_topic)
+            results["video_reel"] = {"video": res_v, "caption": v_msg}
+
+        return {"ok": True, "track": "dev", "results": results}
+
+    def dispatch_news_track(
+        self,
+        image_path: Path | str,
+        news: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        """Dispatches Track 2: Breaking Tech News & Industry Radar.
+        
+        Strictly isolated from Dev Code Blueprints and Local Business Audits.
+        Target Platforms: X (Twitter) & Tech News Communities.
+        """
+        results = {}
+        target_chat = self.news_chat_id
+        target_topic = self.news_topic_id
+
+        # 1. Prominent Isolation Banner
+        banner = (
+            f"📡 <b>════════════════════════════════════════</b>\n"
+            f"📡 <b>TRACK 2: TECH NEWS // BREAKING INDUSTRY RADAR</b>\n"
+            f"📡 <b>════════════════════════════════════════</b>\n"
+            f"🎯 <b>PRIMARY PLATFORMS:</b> X (Twitter) & Tech News Communities\n"
+            f"⚠️ <b>ISOLATION:</b> This is breaking industry news & web standards. Do NOT post to developer code tip feeds."
+        )
+        results["banner"] = self.send_message(banner, chat_id=target_chat, message_thread_id=target_topic)
+
+        # 2. Tech News Poster
+        poster_caption = (
+            f"📡 <b>[FOR X / TWITTER & TECH COMMUNITIES] Breaking Radar Card</b>\n\n"
+            f"⚡ <b>Headline:</b> {news.get('headline')}\n"
+            f"🏷️ <b>Category:</b> {news.get('category')}\n"
+            f"📅 <b>Date:</b> {news.get('date')} | Source: {news.get('source')}\n\n"
+            f"👉 <i>Ready-to-copy X (Twitter) breaking news post sent below 👇</i>"
+        )
+        res_poster = self.send_photo(image_path, caption=poster_caption, chat_id=target_chat, message_thread_id=target_topic)
+        results["poster"] = res_poster
+
+        # 3. Ready-To-Post on X (Twitter) Breaking News Post
+        twitter_text = self.build_tech_news_twitter_post(news)
+        tw_msg = (
+            f"📋 <b>READY-TO-POST ON X (TWITTER) // BREAKING NEWS (Copy & Paste):</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"<pre>{twitter_text}</pre>"
+        )
+        res_tw = self.send_message(tw_msg, chat_id=target_chat, message_thread_id=target_topic)
+        results["twitter_post"] = res_tw
+
+        # 4. Community Radar Bulletin
+        bulletin_text = (
+            f"📡 <b>TECH ARCHITECTURE RADAR BULLETIN:</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"<b>{news.get('headline')}</b>\n\n"
+            f"📝 <b>Summary:</b> {news.get('summary')}\n\n"
+            f"⚡ <b>ExtrovertNerd Verdict:</b> {news.get('extrovertnerd_verdict')}\n\n"
+            f"🌐 https://extrovertnerd.com"
+        )
+        results["bulletin"] = self.send_message(bulletin_text, chat_id=target_chat, message_thread_id=target_topic)
+
+        return {"ok": True, "track": "news", "results": results}
+
+    def dispatch_local_track(
         self,
         blog_data: Dict[str, Any],
         city: Dict[str, Any],
         niche: Dict[str, Any],
-        twitter_thread: Optional[List[str]] = None,
         carousel_slides: Optional[List[str]] = None,
         instagram_caption: Optional[str] = None,
+        video_path: Optional[Path | str] = None,
+        video_caption: Optional[str] = None,
     ) -> Dict[str, Any]:
-        """Dispatches daily website blog article launch notification + ready-to-post X (Twitter) thread."""
-        title = blog_data.get("title") or blog_data.get("context", {}).get("title", "Daily Performance Case Study")
-        slug = blog_data.get("slug") or blog_data.get("context", {}).get("slug", "")
-        blog_url = f"{config.website_url}/blog/{slug}" if slug else config.website_url
-
-        metric_before = niche.get("metric_before", {"load_time": "5.8s", "pagespeed": 28})
-        metric_after = niche.get("metric_after", {"load_time": "0.32s", "pagespeed": 100, "conversion_lift": 45})
-
+        """Dispatches Track 3: Local B2B Client Acquisition Funnel.
+        
+        Strictly isolated from Dev Code Blueprints and Tech News.
+        Target Platforms: ExtrovertNerd Website Blog, Local Instagram/FB, WhatsApp Outreach.
+        """
         results = {}
+        target_chat = self.chat_id
 
-        # 1. If 4-slide local carousel was generated, send to Telegram with clear Instagram label
+        # 1. Prominent Isolation Banner
+        banner = (
+            f"📍 <b>════════════════════════════════════════</b>\n"
+            f"📍 <b>TRACK 3: LOCAL B2B CLIENT ACQUISITION FUNNEL</b>\n"
+            f"📍 <b>════════════════════════════════════════</b>\n"
+            f"🎯 <b>PRIMARY PLATFORMS:</b> ExtrovertNerd Website Blog, Local Instagram/FB, WhatsApp Outreach\n"
+            f"⚠️ <b>ISOLATION:</b> This is local client conversion & pSEO case studies. Do NOT mix with dev architecture teardowns."
+        )
+        results["banner"] = self.send_message(banner, chat_id=target_chat)
+
+        # 2. Local 4-Slide Case Study Carousel
         if carousel_slides:
             valid_slides = [Path(p) for p in carousel_slides if Path(p).exists()]
             if valid_slides:
@@ -563,7 +886,7 @@ class TelegramNotifier:
                     f"⚡ <b>Focus:</b> Mobile Speed Audit & Custom Rebuild\n\n"
                     f"👉 <i>Full ready-to-post local client acquisition caption sent below 👇</i>"
                 )
-                res_ig = self.send_media_group(valid_slides[:10], caption=ig_album_caption)
+                res_ig = self.send_media_group(valid_slides[:10], caption=ig_album_caption, chat_id=target_chat)
                 results["carousel_album"] = res_ig
 
                 if instagram_caption:
@@ -572,9 +895,16 @@ class TelegramNotifier:
                         f"━━━━━━━━━━━━━━━━━━━━\n"
                         f"<pre>{instagram_caption}</pre>"
                     )
-                    results["carousel_caption"] = self.send_message(ig_msg)
+                    results["carousel_caption"] = self.send_message(ig_msg, chat_id=target_chat)
 
-        # 2. Send the Website Blog Publication Briefing
+        # 3. Website Blog Publication Alert
+        title = blog_data.get("title") or blog_data.get("context", {}).get("title", "Daily Performance Case Study")
+        slug = blog_data.get("slug") or blog_data.get("context", {}).get("slug", "")
+        blog_url = f"{config.website_url}/blog/{slug}" if slug else config.website_url
+
+        metric_before = niche.get("metric_before", {"load_time": "5.8s", "pagespeed": 28})
+        metric_after = niche.get("metric_after", {"load_time": "0.32s", "pagespeed": 100, "conversion_lift": 45})
+
         blog_message = (
             f"📰 <b>NEW BLOG ARTICLE PUBLISHED ON EXTROVERTNERD.COM</b>\n"
             f"━━━━━━━━━━━━━━━━━━━━\n"
@@ -588,164 +918,210 @@ class TelegramNotifier:
             f"💬 <b>Want any help in your business with websites, custom tools, or software? Send us a DM or chat on WhatsApp:</b>\n"
             f"{config.whatsapp_click_to_chat_url}"
         )
-        results["blog_dispatch"] = self.send_message(blog_message)
+        results["blog_dispatch"] = self.send_message(blog_message, chat_id=target_chat)
 
-        # 3. Send the Ready-To-Post X (Twitter) Promo Thread
-        if twitter_thread:
-            thread_formatted = "\n\n".join([f"<b>Tweet {i+1}/{len(twitter_thread)}:</b>\n{tweet}" for i, tweet in enumerate(twitter_thread)])
-            twitter_message = (
-                f"🐦 <b>READY-TO-POST ON X (TWITTER) // PROMO THREAD</b>\n"
-                f"━━━━━━━━━━━━━━━━━━━━\n"
-                f"<i>Copy and post this thread to X to promote the new blog article:</i>\n\n"
-                f"{thread_formatted}"
+        # 4. 30s Local Video Reel
+        if video_path and Path(video_path).exists():
+            v_caption = (
+                f"🎬 <b>[FOR REELS / SHORTS / TIKTOK] 30s High-Retention Video Reel</b>\n"
+                f"📍 <b>Market:</b> {city.get('name')} — {niche.get('name')}\n"
+                f"⚡ <b>Engine:</b> Edge-TTS Voiceover + Ken Burns Motion + Synced Captions\n\n"
+                f"👉 <i>Copy-paste ready caption sent below 👇</i>"
             )
-            results["twitter_thread"] = self.send_message(twitter_message)
+            res_v = self.send_video(video_path, caption=v_caption, duration=30, chat_id=target_chat)
+            results["video_reel"] = res_v
+            if video_caption:
+                v_msg = (
+                    f"📋 <b>READY-TO-POST REELS / SHORTS / TIKTOK CAPTION (Copy & Paste):</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━\n"
+                    f"<pre>{video_caption}</pre>"
+                )
+                results["video_caption"] = self.send_message(v_msg, chat_id=target_chat)
 
-        return {"ok": True, "results": results}
+        return {"ok": True, "track": "local", "results": results}
 
-    def dispatch_latest_graphics(self) -> Dict[str, Any]:
-        """Dispatches the most recently generated carousel, Top 100 platform packs, and blog briefs."""
+    def dispatch_blog_and_x(
+        self,
+        blog_data: Dict[str, Any],
+        city: Dict[str, Any],
+        niche: Dict[str, Any],
+        twitter_thread: Optional[List[str]] = None,
+        carousel_slides: Optional[List[str]] = None,
+        instagram_caption: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Dispatches daily website blog article launch notification + ready-to-post X (Twitter) thread."""
+        return self.dispatch_local_track(
+            blog_data=blog_data,
+            city=city,
+            niche=niche,
+            carousel_slides=carousel_slides,
+            instagram_caption=instagram_caption,
+        )
+
+    def dispatch_latest_graphics(self, track: str = "all") -> Dict[str, Any]:
+        """Dispatches the most recently generated assets with strict track isolation.
+        
+        Args:
+            track: "all", "dev", "news", or "local".
+        """
+        track_norm = track.lower().strip()
         graphics_dir = config.graphics_output_path
         results = []
 
-        # 1. Find latest local business carousel (Instagram 4-slide set)
-        if graphics_dir.exists():
+        # 1. TRACK 1: DEV CONTENT
+        if track_norm in ("all", "dev"):
+            top100_dir = graphics_dir / "top100"
+            top100_platforms = {}
+            detected_rank = None
+            if top100_dir.exists():
+                for plat in ("instagram", "linkedin", "twitter"):
+                    plat_dir = top100_dir / plat
+                    if plat_dir.exists():
+                        slide1_files = sorted(list(plat_dir.glob("*_slide1.png")), key=lambda p: p.stat().st_mtime, reverse=True)
+                        if slide1_files:
+                            s1 = slide1_files[0]
+                            s2 = Path(str(s1).replace("_slide1.png", "_slide2.png"))
+                            top100_platforms[plat] = [str(s1), str(s2)] if s2.exists() else [str(s1)]
+                            if detected_rank is None:
+                                match = re.search(r"rank_(\d+)", s1.name)
+                                if match:
+                                    detected_rank = int(match.group(1))
+
+            site = None
+            if top100_platforms:
+                try:
+                    with open("content/top100_websites.json", "r", encoding="utf-8") as f:
+                        websites = json.load(f)
+                        if detected_rank is not None:
+                            site = next((w for w in websites if w.get("global_rank") == detected_rank), None)
+                        if site is None:
+                            site = websites[0]
+                except Exception:
+                    pass
+
+            # Find latest website tip / dev tip
+            dev_tip_path = None
+            dev_tip_data = None
+            tips_dir = graphics_dir / "website_tips"
+            if tips_dir.exists():
+                posters = sorted(list(tips_dir.glob("*.png")), key=lambda p: p.stat().st_mtime, reverse=True)
+                if posters:
+                    dev_tip_path = posters[0]
+                    try:
+                        with open("content/website_tips.json", "r", encoding="utf-8") as f:
+                            tips = json.load(f)
+                            tip_id = dev_tip_path.stem.replace("tip_", "")
+                            dev_tip_data = next((t for t in tips if t.get("id") == tip_id), tips[0])
+                    except Exception:
+                        pass
+
+            # Find latest 60s top100 video reel
+            video_dir = getattr(config, "video_output_path", Path("output/videos"))
+            top100_vid = None
+            top100_vid_caption = None
+            if video_dir.exists():
+                top_vids = sorted(list(video_dir.glob("*top100*.mp4")), key=lambda p: p.stat().st_mtime, reverse=True)
+                if top_vids:
+                    top100_vid = top_vids[0]
+                    cap_f = top100_vid.with_suffix(".txt")
+                    if cap_f.exists():
+                        try:
+                            with open(cap_f, "r", encoding="utf-8") as f:
+                                top100_vid_caption = f.read().strip()
+                        except Exception:
+                            pass
+
+            if top100_platforms or dev_tip_path:
+                res_dev = self.dispatch_dev_track(
+                    top100_platforms=top100_platforms,
+                    website=site,
+                    dev_tip_path=dev_tip_path,
+                    dev_tip=dev_tip_data,
+                    video_path=top100_vid,
+                    video_caption=top100_vid_caption,
+                )
+                results.append({"type": "dev_track", "result": res_dev})
+
+        # 2. TRACK 2: TECH NEWS
+        if track_norm in ("all", "news"):
+            tech_news_dir = graphics_dir / "tech_news"
+            if tech_news_dir.exists():
+                posters = sorted(list(tech_news_dir.glob("*.png")), key=lambda p: p.stat().st_mtime, reverse=True)
+                if posters:
+                    latest_poster = posters[0]
+                    news_data = None
+                    try:
+                        with open("content/tech_news.json", "r", encoding="utf-8") as f:
+                            news_items = json.load(f)
+                            news_id = latest_poster.stem.replace("tech_news_", "")
+                            news_data = next((n for n in news_items if n.get("id") == news_id), news_items[0])
+                    except Exception:
+                        pass
+                    if not news_data:
+                        news_data = {
+                            "headline": latest_poster.stem.replace("tech_news_", "").replace("-", " ").title(),
+                            "category": "Web Standards",
+                            "source": "Chrome & W3C Telemetry",
+                            "summary": "Key performance updates across web architecture and browser runtime engines.",
+                            "extrovertnerd_verdict": "Keep server response times and script execution under 50ms.",
+                            "stack_impact": ["Optimize asset bundles", "Audit main-thread work", "Verify Core Web Vitals"]
+                        }
+                    res_news = self.dispatch_news_track(latest_poster, news_data)
+                    results.append({"type": "news_track", "result": res_news})
+
+        # 3. TRACK 3: LOCAL B2B FUNNEL
+        if track_norm in ("all", "local"):
             carousel_dirs = [d for d in graphics_dir.glob("*_carousel") if d.is_dir()]
             carousel_dirs.sort(key=lambda d: d.stat().st_mtime, reverse=True)
-
             if carousel_dirs:
                 latest_dir = carousel_dirs[0]
                 slides = sorted(list(latest_dir.glob("vertical_slide_*.png")) + list(latest_dir.glob("slide_*.png")))
                 if not slides:
                     slides = sorted(list(latest_dir.glob("*.png")))
-
-                # Check meta and social preview
-                meta_file = latest_dir / "meta.json"
                 meta = {}
+                meta_file = latest_dir / "meta.json"
                 if meta_file.exists():
                     try:
                         with open(meta_file, "r", encoding="utf-8") as f:
                             meta = json.load(f)
                     except Exception:
                         pass
-
                 city = meta.get("city", {"name": "Local Commercial Hub"})
                 niche = meta.get("niche", {"name": "Boutique Business"})
-
-                # Read caption & thread from social_preview.json
                 caption = ""
-                thread = []
                 preview_file = Path("output/social_preview.json")
                 if preview_file.exists():
                     try:
                         with open(preview_file, "r", encoding="utf-8") as f:
-                            p_data = json.load(f)
-                            caption = p_data.get("caption", "")
-                            thread = p_data.get("thread", [])
+                            caption = json.load(f).get("caption", "")
                     except Exception:
                         pass
-
-                res_carousel = self.dispatch_blog_and_x(
+                # Find latest local 30s video reel
+                local_vid = None
+                local_vid_cap = None
+                video_dir = getattr(config, "video_output_path", Path("output/videos"))
+                if video_dir.exists():
+                    vids = sorted(list(video_dir.glob("*.mp4")), key=lambda p: p.stat().st_mtime, reverse=True)
+                    local_vids = [v for v in vids if "top100" not in v.name]
+                    if local_vids:
+                        local_vid = local_vids[0]
+                        cap_f = local_vid.with_suffix(".txt")
+                        if cap_f.exists():
+                            try:
+                                with open(cap_f, "r", encoding="utf-8") as f:
+                                    local_vid_cap = f.read().strip()
+                            except Exception:
+                                pass
+                res_local = self.dispatch_local_track(
                     blog_data={"title": f"Why {city.get('name')} {niche.get('name')} Lose Customers to Slow Mobile Websites", "slug": f"{city.get('name', '').lower()}-{niche.get('name', '').lower()}"},
                     city=city,
                     niche=niche,
-                    twitter_thread=thread,
                     carousel_slides=[str(s) for s in slides[:4]],
                     instagram_caption=caption,
+                    video_path=local_vid,
+                    video_caption=local_vid_cap,
                 )
-                results.append({"type": "daily_carousel_and_blog", "result": res_carousel})
-
-        # 2. Find and dispatch latest Top 100 breakdown slides for Instagram, LinkedIn, and Twitter
-        top100_dir = graphics_dir / "top100"
-        if top100_dir.exists():
-            top100_platforms = {}
-            detected_rank = None
-            for plat in ("instagram", "linkedin", "twitter"):
-                plat_dir = top100_dir / plat
-                if plat_dir.exists():
-                    slide1_files = sorted(list(plat_dir.glob("*_slide1.png")), key=lambda p: p.stat().st_mtime, reverse=True)
-                    if slide1_files:
-                        s1 = slide1_files[0]
-                        s2 = Path(str(s1).replace("_slide1.png", "_slide2.png"))
-                        if s2.exists():
-                            top100_platforms[plat] = [str(s1), str(s2)]
-                        else:
-                            top100_platforms[plat] = [str(s1)]
-
-                        if detected_rank is None:
-                            match = re.search(r"rank_(\d+)", s1.name)
-                            if match:
-                                detected_rank = int(match.group(1))
-
-            if top100_platforms:
-                # Load website data from content/top100_websites.json
-                try:
-                    with open("content/top100_websites.json", "r", encoding="utf-8") as f:
-                        websites = json.load(f)
-                        if detected_rank is not None:
-                            site = next((w for w in websites if w.get("global_rank") == detected_rank), None)
-                        else:
-                            site = None
-                        if site is None:
-                            day_of_year = datetime.date.today().timetuple().tm_yday
-                            site = websites[(day_of_year - 1) % len(websites)]
-                except Exception:
-                    site = {"global_rank": 1, "name": "Stripe", "domain": "stripe.com", "category": "Fintech & Payments Infrastructure", "what_it_does": "Global payments infrastructure", "hook": "How does Stripe process $1T at 60fps?", "why_they_are_best": "Hardware accelerated WebGL", "key_reasons": ["WebGL offloads visuals to GPU", "Multi-region edge routing", "0.00 CLS"], "architecture_stack": ["Ruby/Sorbet", "Go", "React"], "telemetry": {"lcp": "0.62s", "inp": "24ms", "cls": "0.00", "ttfb": "85ms"}, "extrovertnerd_verdict": "Isolate state machines."}
-
-                res_top100 = self.dispatch_top100(top100_platforms, site)
-                results.append({"type": "top100_platforms", "result": res_top100})
-
-        # 3. Find any latest Tech News poster
-        tech_news_dir = graphics_dir / "tech_news"
-        if tech_news_dir.exists():
-            posters = sorted(list(tech_news_dir.glob("*.png")), key=lambda p: p.stat().st_mtime, reverse=True)
-            if posters:
-                latest_poster = posters[0]
-                caption = (
-                    f"📡 <b>[FOR TECH NEWS / COMMUNITY] Tech Architecture Radar</b>\n\n"
-                    f"⚡ <b>File:</b> {latest_poster.name}\n"
-                    f"🏢 Studio: ExtrovertNerd Engineering\n"
-                    f"🌐 https://extrovertnerd.com"
-                )
-                res = self.send_photo(latest_poster, caption=caption)
-                results.append({"type": "tech_news", "file": str(latest_poster), "result": res})
-
-        # 4. Find any latest Website Speed & UX Tip poster
-        website_tips_dir = graphics_dir / "website_tips"
-        if website_tips_dir.exists():
-            posters = sorted(list(website_tips_dir.glob("*.png")), key=lambda p: p.stat().st_mtime, reverse=True)
-            if posters:
-                latest_poster = posters[0]
-                caption = (
-                    f"🛠️ <b>[FOR DEVELOPERS / BUILDERS] Performance Blueprint Tip</b>\n\n"
-                    f"⚡ <b>File:</b> {latest_poster.name}\n"
-                    f"🏢 Studio: ExtrovertNerd Engineering\n"
-                    f"🌐 https://extrovertnerd.com"
-                )
-                res = self.send_photo(latest_poster, caption=caption)
-                results.append({"type": "website_tip", "file": str(latest_poster), "result": res})
-
-        # 5. Find any latest 30s Video Reel (Reels / Shorts / TikTok)
-        video_dir = getattr(config, "video_output_path", Path("output/videos"))
-        if video_dir.exists():
-            videos = sorted(list(video_dir.glob("*.mp4")), key=lambda p: p.stat().st_mtime, reverse=True)
-            if videos:
-                latest_video = videos[0]
-                caption_file = latest_video.with_suffix(".txt")
-                caption_text = ""
-                if caption_file.exists():
-                    try:
-                        with open(caption_file, "r", encoding="utf-8") as f:
-                            caption_text = f.read().strip()
-                    except Exception:
-                        pass
-                res_v = self.dispatch_video_reel(
-                    video_path=latest_video,
-                    city={"name": "Target Local Market"},
-                    niche={"name": "High-Ticket Vertical"},
-                    caption=caption_text,
-                )
-                results.append({"type": "video_reel", "file": str(latest_video), "result": res_v})
+                results.append({"type": "local_track", "result": res_local})
 
         return {"ok": True, "dispatches": results}
 
@@ -756,6 +1132,8 @@ class TelegramNotifier:
         niche: Optional[Dict[str, Any]] = None,
         caption: Optional[str] = None,
         duration: Optional[int] = None,
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
     ) -> Dict[str, Any]:
         """Dispatches an automated 30s video reel to Telegram with clear platform labels and copy-paste caption."""
         path = Path(video_path)
@@ -772,7 +1150,7 @@ class TelegramNotifier:
             f"👉 <i>Copy-paste ready caption sent below 👇</i>"
         )
 
-        res_video = self.send_video(path, caption=video_caption, duration=duration)
+        res_video = self.send_video(path, caption=video_caption, duration=duration, chat_id=chat_id, message_thread_id=message_thread_id)
         results = {"video": res_video}
 
         if caption:
@@ -781,7 +1159,7 @@ class TelegramNotifier:
                 f"━━━━━━━━━━━━━━━━━━━━\n"
                 f"<pre>{caption}</pre>"
             )
-            results["caption_message"] = self.send_message(msg)
+            results["caption_message"] = self.send_message(msg, chat_id=chat_id, message_thread_id=message_thread_id)
 
         return {"ok": True, "results": results}
 
@@ -791,6 +1169,8 @@ class TelegramNotifier:
         site: Dict[str, Any],
         caption: Optional[str] = None,
         duration: Optional[int] = None,
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
     ) -> Dict[str, Any]:
         """Dispatches an automated 60s Top 100 video reel to Telegram."""
         path = Path(video_path)
@@ -809,7 +1189,7 @@ class TelegramNotifier:
             f"👉 <i>Full ready-to-post description sent below 👇</i>"
         )
 
-        res_video = self.send_video(path, caption=video_caption, duration=duration)
+        res_video = self.send_video(path, caption=video_caption, duration=duration, chat_id=chat_id, message_thread_id=message_thread_id)
         results = {"video": res_video}
 
         if caption:
@@ -818,26 +1198,31 @@ class TelegramNotifier:
                 f"━━━━━━━━━━━━━━━━━━━━\n"
                 f"<pre>{caption}</pre>"
             )
-            results["caption_message"] = self.send_message(msg)
+            results["caption_message"] = self.send_message(msg, chat_id=chat_id, message_thread_id=message_thread_id)
 
         return {"ok": True, "results": results}
 
-    def dispatch_tech_news(self, image_path: Path | str, news: Dict[str, Any]) -> Dict[str, Any]:
-        """Dispatches a Tech News poster to Telegram."""
-        caption = (
-            f"📡 <b>[TECH NEWS] Tech Architecture Radar: {news.get('headline')}</b>\n\n"
-            f"🏷️ <b>Category:</b> {news.get('category')}\n"
-            f"📅 <b>Date:</b> {news.get('date')} | Source: {news.get('source')}\n\n"
-            f"📝 <b>Summary:</b> {news.get('summary')}\n\n"
-            f"⚡ <b>ExtrovertNerd Verdict:</b> {news.get('extrovertnerd_verdict')}\n\n"
-            f"💬 <i>Want any help in your business with websites, custom tools, or software? Send us a DM.</i>\n\n"
-            f"🏢 Studio: ExtrovertNerd Engineering\n"
-            f"🌐 https://extrovertnerd.com"
-        )
-        return self.send_photo(image_path, caption=caption)
+    def dispatch_tech_news(
+        self,
+        image_path: Path | str,
+        news: Dict[str, Any],
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        """Dispatches a Tech News poster to Telegram using the dedicated news track."""
+        return self.dispatch_news_track(image_path, news)
 
-    def dispatch_website_tip(self, image_path: Path | str, tip: Dict[str, Any]) -> Dict[str, Any]:
+    def dispatch_website_tip(
+        self,
+        image_path: Path | str,
+        tip: Dict[str, Any],
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
+    ) -> Dict[str, Any]:
         """Dispatches a Website Speed & UX Tip poster to Telegram."""
+        target_chat = (chat_id or self.dev_chat_id).strip()
+        target_topic = message_thread_id or self.dev_topic_id
+
         caption = (
             f"🛠️ <b>[PERFORMANCE TIP] ExtrovertNerd Blueprint: {tip.get('title')}</b>\n\n"
             f"🏷️ <b>Category:</b> {tip.get('category')} ({tip.get('tag')})\n"
@@ -847,7 +1232,7 @@ class TelegramNotifier:
             f"🏢 Studio: ExtrovertNerd Engineering\n"
             f"🌐 https://extrovertnerd.com"
         )
-        return self.send_photo(image_path, caption=caption)
+        return self.send_photo(image_path, caption=caption, chat_id=target_chat, message_thread_id=target_topic)
 
 
 def main() -> None:
@@ -857,6 +1242,12 @@ def main() -> None:
     parser.add_argument("--message", type=str, help="Send a test message")
     parser.add_argument("--image", type=str, help="Send a single image path")
     parser.add_argument("--latest", action="store_true", help="Send the latest generated carousel pack")
+    parser.add_argument(
+        "--track",
+        choices=["all", "dev", "news", "local"],
+        default="all",
+        help="Isolate dispatch to specific track (dev, news, local, all)",
+    )
     args = parser.parse_args()
 
     notifier = TelegramNotifier()
@@ -876,14 +1267,14 @@ def main() -> None:
         res = notifier.send_photo(args.image, caption="ExtrovertNerd Generated Poster")
         print(json.dumps(res, indent=2))
     elif args.latest:
-        res = notifier.dispatch_latest_graphics()
-        print("\n=== LATEST GRAPHICS DISPATCHED TO TELEGRAM ===")
+        res = notifier.dispatch_latest_graphics(track=args.track)
+        print(f"\n=== LATEST GRAPHICS DISPATCHED TO TELEGRAM [TRACK: {args.track.upper()}] ===")
         print(json.dumps(res, indent=2))
     else:
         # Default action: run test and dispatch latest
         test_res = notifier.test_connection()
         print(f"Bot Connection: {test_res.get('status')}")
-        disp_res = notifier.dispatch_latest_graphics()
+        disp_res = notifier.dispatch_latest_graphics(track=args.track)
         print(f"Dispatch: {disp_res.get('ok')}")
 
 

@@ -85,24 +85,34 @@ class AdminSocialController
         $returnVar = 0;
         exec("cd " . escapeshellarg($this->baseDir) . " && {$cmd} 2>&1", $output, $returnVar);
 
-        // Also auto-dispatch newly rendered posters to Telegram
-        exec("cd " . escapeshellarg($this->baseDir) . " && {$pythonBin} -m src.telegram_notifier --latest 2>&1", $tgOut, $tgCode);
+        // Strict track isolation for Telegram dispatch
+        $track = 'all';
+        if ($type === 'tech_news') {
+            $track = 'news';
+        } elseif (in_array($type, ['top100', 'website_tip', 'tech_tip'])) {
+            $track = 'dev';
+        } elseif ($type === 'carousel') {
+            $track = 'local';
+        }
 
-        session_flash('success', "Generated [{$type}] graphic! Dispatched to output & Telegram queue.");
+        exec("cd " . escapeshellarg($this->baseDir) . " && {$pythonBin} -m src.telegram_notifier --latest --track " . escapeshellarg($track) . " 2>&1", $tgOut, $tgCode);
+
+        session_flash('success', "Generated [{$type}] graphic! Dispatched strictly to [{$track}] Telegram queue.");
         redirect('/admin/social');
     }
 
     public function telegram()
     {
+        $track = request('track', 'all');
         $pythonBin = file_exists($this->baseDir . '/.venv/bin/python') ? '.venv/bin/python' : 'python3';
-        $cmd = "{$pythonBin} -m src.telegram_notifier --latest";
+        $cmd = "{$pythonBin} -m src.telegram_notifier --latest --track " . escapeshellarg($track);
         $output = [];
         $returnVar = 0;
         exec("cd " . escapeshellarg($this->baseDir) . " && {$cmd} 2>&1", $output, $returnVar);
 
         $outText = implode("\n", $output);
         if (str_contains($outText, '"ok": true') || str_contains($outText, '✅')) {
-            session_flash('success', 'All latest posters & carousel slides successfully dispatched to your Telegram bot!');
+            session_flash('success', "Latest [{$track}] assets successfully dispatched to your Telegram queue!");
         } else {
             session_flash('error', 'Dispatched request to Telegram Bot. Notice: Verify bot token if Telegram returned 401 Unauthorized.');
         }

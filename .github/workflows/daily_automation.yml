@@ -6,6 +6,16 @@ on:
     - cron: '30 2 * * *'
   workflow_dispatch:
     inputs:
+      mode:
+        description: 'Pipeline Track: daily (all isolated tracks), dev (Dev content/code), news (Tech news radar), local (Local funnel)'
+        required: true
+        default: 'daily'
+        type: choice
+        options:
+          - 'daily'
+          - 'dev'
+          - 'news'
+          - 'local'
       dry_run:
         description: 'Run in Dry-Run simulation mode'
         required: true
@@ -98,10 +108,15 @@ jobs:
           TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8580208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw' }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '1432790039' }}
+          TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID || '' }}
+          TELEGRAM_NEWS_CHAT_ID: ${{ secrets.TELEGRAM_NEWS_CHAT_ID || '' }}
+          TELEGRAM_DEV_TOPIC_ID: ${{ secrets.TELEGRAM_DEV_TOPIC_ID || '' }}
+          TELEGRAM_NEWS_TOPIC_ID: ${{ secrets.TELEGRAM_NEWS_TOPIC_ID || '' }}
         run: |
           CITY_ARG=""
           NICHE_ARG=""
           ANGLE_ARG=""
+          MODE_ARG="${{ github.event.inputs.mode || 'daily' }}"
 
           if [ -n "${{ github.event.inputs.city }}" ]; then
             CITY_ARG="--city ${{ github.event.inputs.city }}"
@@ -115,7 +130,7 @@ jobs:
             ANGLE_ARG="--angle ${{ github.event.inputs.angle }}"
           fi
 
-          python -m src.main --mode daily --platform all $CITY_ARG $NICHE_ARG $ANGLE_ARG
+          python -m src.main --mode $MODE_ARG --platform all $CITY_ARG $NICHE_ARG $ANGLE_ARG
 
       - name: Upload Generated Graphics & Social Assets
         uses: actions/upload-artifact@v4

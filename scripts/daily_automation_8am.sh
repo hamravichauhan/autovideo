@@ -26,12 +26,10 @@ fi
 
 mkdir -p output/logs
 
-# Execute full daily acquisition pipeline:
-# 1. Generates daily pSEO blog article for local city/niche
-# 2. Renders 4-slide local case study carousel
-# 3. Renders 2-slide Top 100 Website Teardowns (Instagram, LinkedIn, X)
-# 4. Assembles ready-to-post captions and X Twitter thread
-# 5. Automatically dispatches labeled posters + platform captions + live blog link to Telegram
+# Execute isolated multi-track daily acquisition pipeline:
+# Track 1: Dev Content (Top 100 System Architecture + Performance Blueprints + 60s Reel) -> LinkedIn & Instagram
+# Track 2: Breaking Tech News (Architecture Radar Poster + X/Twitter breaking news post) -> X (Twitter)
+# Track 3: Local B2B Funnel (pSEO Blog + 4-slide Local Carousel + 30s Reel + Prospecting) -> Website Blog & Local IG/FB
 "${PYTHON_BIN}" -m src.main --mode daily --platform all 2>&1 | tee -a output/logs/daily_8am.log
 
 echo "✅ [$(date '+%Y-%m-%d %H:%M:%S')] Daily 8:00 AM Run Finished!"
