@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-11-13T09:52:06.570367",
-  "duration_seconds": 40.09,
-  "target_city": "Mumbai",
-  "target_niche": "Luxury Real Estate & Villa Brokerages",
+  "timestamp": "2026-11-14T09:16:08.076916",
+  "duration_seconds": 37.12,
+  "target_city": "Bangalore",
+  "target_niche": "Boutique Hotels & Luxury Villas",
   "blog_article": {
-    "title": "Why Mumbai Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites",
-    "file": "/home/runner/work/autovideo/autovideo/output/blogs/mumbai-real-estate-local-speed.md",
-    "slug": "mumbai-real-estate-local-speed"
+    "title": "Why Bangalore Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
+    "file": "/home/runner/work/autovideo/autovideo/output/blogs/bangalore-boutique-hotels-local-speed.md",
+    "slug": "bangalore-boutique-hotels-local-speed"
   },
   "graphics": {
     "total_slides": 0,
     "paths": []
   },
   "social": {
-    "caption_preview": "\ud83d\udea8 Is your Mumbai Real Estate Brokerage silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfor...",
+    "caption_preview": "\ud83d\udea8 Is your Bangalore Boutique Hotel silently losing 40%+ of mobile customers to a slow website?\n\nHere is the uncomfortabl...",
     "dry_run": false,
     "meta_status": "simulated"
   },
