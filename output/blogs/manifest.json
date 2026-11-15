@@ -61,18 +61,6 @@
       "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/bangalore-boutique-hotels-tech-comparison.md"
     },
     {
-      "slug": "delhi-ncr-boutique-hotels-local-speed",
-      "filename": "delhi-ncr-boutique-hotels-local-speed.md",
-      "title": "Why Delhi NCR Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
-      "city_id": "delhi-ncr",
-      "city_name": "Delhi NCR",
-      "niche_id": "boutique-hotels",
-      "niche_name": "Boutique Hotels & Luxury Villas",
-      "angle": "local_speed",
-      "date": "2026-10-18",
-      "path": "/Users/ravichauhan/Desktop/WORK /Projects/PROBON/244/output/blogs/delhi-ncr-boutique-hotels-local-speed.md"
-    },
-    {
       "slug": "bangalore-restaurants-local-speed",
       "filename": "bangalore-restaurants-local-speed.md",
       "title": "Why Bangalore Upscale Restaurants, Cafes & Lounges Businesses Lose Customers to Slow Mobile Websites",
@@ -395,18 +383,30 @@
       "angle": "local_speed",
       "date": "2026-11-14",
       "path": "/home/runner/work/autovideo/autovideo/output/blogs/bangalore-boutique-hotels-local-speed.md"
+    },
+    {
+      "slug": "delhi-ncr-boutique-hotels-local-speed",
+      "filename": "delhi-ncr-boutique-hotels-local-speed.md",
+      "title": "Why Delhi NCR Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
+      "city_id": "delhi-ncr",
+      "city_name": "Delhi NCR",
+      "niche_id": "boutique-hotels",
+      "niche_name": "Boutique Hotels & Luxury Villas",
+      "angle": "local_speed",
+      "date": "2026-11-15",
+      "path": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-boutique-hotels-local-speed.md"
     }
   ],
   "last_generated": {
-    "slug": "bangalore-boutique-hotels-local-speed",
-    "filename": "bangalore-boutique-hotels-local-speed.md",
-    "title": "Why Bangalore Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
-    "city_id": "bangalore",
-    "city_name": "Bangalore",
+    "slug": "delhi-ncr-boutique-hotels-local-speed",
+    "filename": "delhi-ncr-boutique-hotels-local-speed.md",
+    "title": "Why Delhi NCR Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites",
+    "city_id": "delhi-ncr",
+    "city_name": "Delhi NCR",
     "niche_id": "boutique-hotels",
     "niche_name": "Boutique Hotels & Luxury Villas",
     "angle": "local_speed",
-    "date": "2026-11-14",
-    "path": "/home/runner/work/autovideo/autovideo/output/blogs/bangalore-boutique-hotels-local-speed.md"
+    "date": "2026-11-15",
+    "path": "/home/runner/work/autovideo/autovideo/output/blogs/delhi-ncr-boutique-hotels-local-speed.md"
   }
 }

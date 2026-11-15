@@ -1,7 +1,7 @@
 ---
 title: "Why Delhi NCR Boutique Hotels & Luxury Villas Businesses Lose Customers to Slow Mobile Websites"
 slug: "delhi-ncr-boutique-hotels-local-speed"
-date: "2026-10-18"
+date: "2026-11-15"
 author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Delhi NCR"
@@ -120,7 +120,7 @@ We offer a **100% Free, No-Obligation Speed & Conversion Audit** for local busin
 
 ### How to Get Your Free Audit:
 - 📱 **Chat Directly on WhatsApp:** [Click here to send us a message](https://wa.me/15551234567?text=Hi+ExtrovertNerd%21+I+read+your+article+on+Delhi+NCR+Boutique+Hotels+%26+Private+Villas+and+would+love+a+free+5-point+website+speed+audit.)
-- 📋 **Fill Out the Quick Intake Form:** [Open the 60-Second Audit Request Form]()
+- 📋 **Fill Out the Quick Intake Form:** [Open the 60-Second Audit Request Form](https://forms.gle/your-free-speed-audit-intake)
 - 💬 **Direct Message:** Send the word **"AUDIT"** to our team at **@extrovertnerd**
 
 *Stop losing customers to slow load times. Upgrade your digital infrastructure today.*
