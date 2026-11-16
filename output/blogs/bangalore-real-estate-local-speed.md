@@ -1,7 +1,7 @@
 ---
 title: "Why Bangalore Luxury Real Estate & Villa Brokerages Businesses Lose Customers to Slow Mobile Websites"
 slug: "bangalore-real-estate-local-speed"
-date: "2026-11-05"
+date: "2026-11-16"
 author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Bangalore"

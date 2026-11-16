@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-15T09:46:16.197585",
-  "duration_seconds": 138.46,
+  "timestamp": "2026-11-16T10:02:17.130471",
+  "duration_seconds": 194.73,
   "dev_track": {
     "status": "completed",
-    "rank": 38
+    "rank": 39
   },
   "news_track": {
     "status": "completed",
-    "headline": "Interaction to Next Paint (INP) is Live: Why 73% of Sluggish Sites Fail"
+    "headline": "HTTP/3 & QUIC Now Powers Over 35% of Global Web Traffic"
   },
   "local_track": {
     "status": "completed",
-    "city": "Delhi NCR",
-    "niche": "Boutique Hotels & Luxury Villas"
+    "city": "Bangalore",
+    "niche": "Luxury Real Estate & Villa Brokerages"
   }
 }
