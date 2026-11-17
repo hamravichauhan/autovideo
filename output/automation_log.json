@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-16T10:02:17.130471",
-  "duration_seconds": 194.73,
+  "timestamp": "2026-11-17T10:59:31.854557",
+  "duration_seconds": 134.38,
   "dev_track": {
     "status": "completed",
-    "rank": 39
+    "rank": 40
   },
   "news_track": {
     "status": "completed",
-    "headline": "HTTP/3 & QUIC Now Powers Over 35% of Global Web Traffic"
+    "headline": "PHP 8.4 Released: Property Hooks, Asymmetric Visibility & OPcache JIT Surges"
   },
   "local_track": {
     "status": "completed",
-    "city": "Bangalore",
-    "niche": "Luxury Real Estate & Villa Brokerages"
+    "city": "Hyderabad",
+    "niche": "Boutique Fashion & Designer Labels"
   }
 }
