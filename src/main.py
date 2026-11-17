@@ -216,6 +216,11 @@ class AutomationEngine:
             blog_file=blog_result["filepath"],
         )
 
+        # Discover real local business targets and generate personalized B2B outreach
+        prospecting_result = self.prospecting_engine.run_prospecting_batch(
+            city_id=city["id"], niche_id=niche["id"], count=3, real_discovery=True
+        )
+
         tg_res: Dict[str, Any] = {}
         try:
             from src.telegram_notifier import TelegramNotifier
@@ -228,14 +233,11 @@ class AutomationEngine:
                 instagram_caption=campaign_summary.get("caption"),
                 video_path=video_result.get("video_path") if video_result else None,
                 video_caption=video_result.get("caption_text") if video_result else None,
+                prospects=prospecting_result.get("leads", []),
             )
             logger.info("📲 Telegram Track 3 (Local) Dispatched: %s", tg_res.get("ok"))
         except Exception as tg_err:
             logger.warning("Telegram Track 3 dispatch error: %s", tg_err)
-
-        prospecting_result = self.prospecting_engine.run_prospecting_batch(
-            city_id=city["id"], niche_id=niche["id"], count=5
-        )
 
         return {
             "track": "local",
@@ -325,6 +327,7 @@ def main() -> None:
     )
     parser.add_argument("--no-graphics", action="store_true", help="Skip Playwright graphic rendering")
     parser.add_argument("--dry-run", action="store_true", default=None, help="Force dry-run simulation mode")
+    parser.add_argument("--count", type=int, default=3, help="Number of prospects or items to evaluate")
 
     args = parser.parse_args()
 
@@ -415,11 +418,26 @@ def main() -> None:
             print(f"Telegram notice: {e}")
     elif args.mode == "prospect":
         res = engine.prospecting_engine.run_prospecting_batch(
-            city_id=args.city, niche_id=args.niche, count=5
+            city_id=args.city, niche_id=args.niche, count=args.count, real_discovery=True
         )
-        print(f"\n[ExtrovertNerd Prospecting Complete]")
-        print(f"Target: {res['city']} — {res['niche']}")
-        print(f"Deck: {res['outreach_deck_md']}")
+        print(f"\n🎯 [ExtrovertNerd Prospecting Complete]")
+        print(f"Target: {res['city']} — {res['niche']} ({res['count']} leads discovered)")
+        for idx, l in enumerate(res.get("leads", []), 1):
+            badge = "REAL" if l.get("is_real") else "SIMULATED"
+            print(f"  {idx}. [{badge}] {l['business_name']} | Web: {l['website']} | Phone: {l.get('phone_raw')}")
+        print(f"\nDeck: {res['outreach_deck_md']}")
+        print(f"JSON: {res['prospects_json']}")
+        try:
+            from src.telegram_notifier import TelegramNotifier
+            notifier = TelegramNotifier()
+            tg_leads_res = notifier.dispatch_outbound_leads(
+                prospects=res.get("leads", []),
+                city_name=res["city"],
+                niche_name=res["niche"],
+            )
+            print(f"🚀 Pushed {len(res.get('leads', []))} Lead Dossiers to Telegram! (Status: {tg_leads_res.get('ok')})")
+        except Exception as e:
+            print(f"Telegram notice: {e}")
     elif args.mode == "pseo":
         res = engine.pseo_generator.generate_article(
             city_id=args.city, niche_id=args.niche, angle=args.angle

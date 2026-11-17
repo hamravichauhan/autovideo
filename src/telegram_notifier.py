@@ -857,6 +857,7 @@ class TelegramNotifier:
         instagram_caption: Optional[str] = None,
         video_path: Optional[Path | str] = None,
         video_caption: Optional[str] = None,
+        prospects: Optional[List[Dict[str, Any]]] = None,
     ) -> Dict[str, Any]:
         """Dispatches Track 3: Local B2B Client Acquisition Funnel.
         
@@ -938,7 +939,77 @@ class TelegramNotifier:
                 )
                 results["video_caption"] = self.send_message(v_msg, chat_id=target_chat)
 
+        # 5. Daily High-Ticket Outbound Leads
+        if prospects:
+            leads_res = self.dispatch_outbound_leads(
+                prospects=prospects,
+                city_name=city.get("name", "Target City"),
+                niche_name=niche.get("name", "High-Ticket Vertical"),
+                chat_id=target_chat,
+            )
+            results["outbound_leads"] = leads_res
+
         return {"ok": True, "track": "local", "results": results}
+
+    def dispatch_outbound_leads(
+        self,
+        prospects: List[Dict[str, Any]],
+        city_name: str = "Target City",
+        niche_name: str = "High-Ticket Vertical",
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        """Dispatches verified real business outbound dossiers to Telegram with 1-tap WhatsApp deep links."""
+        target_chat = (chat_id or self.chat_id).strip()
+        results = {}
+
+        if not prospects:
+            return {"ok": True, "count": 0}
+
+        lead_banner = (
+            f"🎯 <b>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</b>\n"
+            f"🎯 <b>DAILY OUTBOUND LEADS // {city_name.upper()}</b>\n"
+            f"🎯 <b>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</b>\n"
+            f"💼 <b>Vertical:</b> {niche_name}\n"
+            f"📊 <b>Discovered:</b> {len(prospects)} businesses evaluated\n"
+            f"⚡ <b>Action:</b> Tap the WhatsApp link to open the pre-filled message, or copy the pitch text below."
+        )
+        results["banner"] = self.send_message(lead_banner, chat_id=target_chat, message_thread_id=message_thread_id)
+
+        for idx, lead in enumerate(prospects, 1):
+            biz_name = lead.get("business_name", "Business")
+            is_real = lead.get("is_real", False)
+            badge = "🟢 VERIFIED REAL BUSINESS" if is_real else "🟡 SIMULATED TARGET"
+            rating_str = f"({lead.get('rating')} ⭐, {lead.get('reviews')})" if lead.get("rating") else ""
+            wa_number = lead.get("wa_number")
+            phone_display = f"+{wa_number}" if wa_number else (lead.get("phone_raw") or "Not Listed")
+            website = lead.get("website", "No Website")
+            load_time = lead.get("current_load_time", "N/A")
+            score = lead.get("current_pagespeed", "N/A")
+            platform = lead.get("detected_platform", "WordPress")
+            drafts = lead.get("outreach_drafts", {})
+            wa_pitch = drafts.get("whatsapp", "")
+            wa_link = drafts.get("whatsapp_1tap_url", "")
+
+            msg = (
+                f"🎯 <b>LEAD #{idx}: {biz_name}</b> [{badge}]\n"
+                f"📍 <b>Location:</b> {lead.get('district', city_name)}, {city_name} {rating_str}\n"
+                f"🌐 <b>Website:</b> {website}\n"
+                f"⚙️ <b>Architecture:</b> {platform}\n"
+                f"⏱️ <b>Live Mobile Speed:</b> <code>{load_time}</code> (Score: <code>{score}</code>)\n"
+                f"📞 <b>Phone / WhatsApp:</b> <code>{phone_display}</code>\n\n"
+                f"📋 <b>Ready-to-Send WhatsApp Pitch:</b>\n"
+                f"<pre>{wa_pitch}</pre>"
+            )
+
+            if wa_link:
+                msg += (
+                    f"\n👉 <a href=\"{wa_link}\"><b>[⚡ TAP HERE TO OPEN WHATSAPP CHAT WITH OWNER]</b></a>\n"
+                )
+
+            results[f"lead_{idx}"] = self.send_message(msg, chat_id=target_chat, message_thread_id=message_thread_id)
+
+        return {"ok": True, "count": len(prospects), "results": results}
 
     def dispatch_blog_and_x(
         self,
@@ -1112,6 +1183,17 @@ class TelegramNotifier:
                                     local_vid_cap = f.read().strip()
                             except Exception:
                                 pass
+                # Load latest prospects if available
+                latest_prospects = None
+                p_file = config.portfolio_blog_path.parent / "prospects.json"
+                if p_file.exists():
+                    try:
+                        with open(p_file, "r", encoding="utf-8") as pf:
+                            p_json = json.load(pf)
+                            latest_prospects = p_json.get("leads", [])[:3]
+                    except Exception:
+                        pass
+
                 res_local = self.dispatch_local_track(
                     blog_data={"title": f"Why {city.get('name')} {niche.get('name')} Lose Customers to Slow Mobile Websites", "slug": f"{city.get('name', '').lower()}-{niche.get('name', '').lower()}"},
                     city=city,
@@ -1120,6 +1202,7 @@ class TelegramNotifier:
                     instagram_caption=caption,
                     video_path=local_vid,
                     video_caption=local_vid_cap,
+                    prospects=latest_prospects,
                 )
                 results.append({"type": "local_track", "result": res_local})
 
@@ -1242,6 +1325,7 @@ def main() -> None:
     parser.add_argument("--message", type=str, help="Send a test message")
     parser.add_argument("--image", type=str, help="Send a single image path")
     parser.add_argument("--latest", action="store_true", help="Send the latest generated carousel pack")
+    parser.add_argument("--leads", action="store_true", help="Dispatch latest outbound lead dossiers to Telegram")
     parser.add_argument(
         "--track",
         choices=["all", "dev", "news", "local"],
@@ -1260,6 +1344,19 @@ def main() -> None:
             print("\n✅ Successfully connected to Telegram Bot!")
         else:
             print("\n⚠️ Failed to connect to Telegram. See error details above.")
+    elif args.leads:
+        p_file = config.portfolio_blog_path.parent / "prospects.json"
+        if not p_file.exists():
+            print("No prospects.json found. Run `python -m src.prospecting_engine` first.")
+        else:
+            with open(p_file, "r", encoding="utf-8") as pf:
+                p_json = json.load(pf)
+                leads = p_json.get("leads", [])
+                city_name = leads[0].get("city", "Target Market") if leads else "Target Market"
+                niche_name = leads[0].get("niche", "High-Ticket Vertical") if leads else "High-Ticket Vertical"
+                res = notifier.dispatch_outbound_leads(leads, city_name=city_name, niche_name=niche_name)
+                print("\n=== OUTBOUND LEADS DISPATCHED TO TELEGRAM ===")
+                print(json.dumps(res, indent=2))
     elif args.message:
         res = notifier.send_message(args.message)
         print(json.dumps(res, indent=2))

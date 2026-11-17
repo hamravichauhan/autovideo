@@ -1,301 +1,130 @@
 # ExtrovertNerd Outbound Prospecting Deck
 
-> **Market:** Hyderabad • **Niche:** Boutique Fashion & Designer Labels
+> **Market:** Bangalore • **Niche:** Luxury Interior Designers & Architecture Studios
 > **Generated Date:** 2026-11-17 • **Studio:** ExtrovertNerd
 
 ---
 
-## 1. Mirage Studio (Hitec City, Hyderabad)
+## 1. De Panache Luxury Interiors (Bangalore) [🟢 VERIFIED REAL BUSINESS]
 
-- **Website:** https://www.miragestudio.com
-- **Current Mobile Speed:** `6.4s` (PageSpeed: `23/100`)
-- **Platform Detected:** Custom PHP 5.6 Legacy
-- **Est. Revenue Leak:** $12,000/mo
+- **Website:** https://depanache.in/?utm_source=google&utm_medium=business&utm_campaign=website
+- **Phone / WhatsApp:** `Phone: 096201 31348 `
+- **Current Mobile Speed:** `0.39s` (PageSpeed: `89/100`)
+- **Platform Detected:** Custom Web Architecture
+- **Est. Revenue Leak:** ₹2,50,000/mo
+
+👉 **[⚡ Click Here to Open WhatsApp Chat with Owner](https://wa.me/919620131348?text=Hey+team+De+Panache+Luxury+Interiors%21+%F0%9F%91%8B%0A%0AI+was+reviewing+leading+Interior+Design+Studio+websites+in+Bangalore+on+mobile+4G+yesterday+and+came+across+your+site+%28https%3A%2F%2Fdepanache.in%2F%3Futm_source%3Dgoogle%26utm_medium%3Dbusiness%26utm_campaign%3Dwebsite%29.%0A%0ALove+your+work%2C+but+running+a+quick+mobile+speed+test+shows+the+site+takes+~0.39s+to+load+on+Jio%2FAirtel+networks+%28Custom+Web+Architecture+scripts%29%2C+which+typically+causes+35%E2%80%9345%25+of+mobile+visitors+and+ad+clicks+to+bounce+before+seeing+your+portfolio+or+booking.%0A%0AI+recorded+a+quick+60-second+screen+breakdown+showing+the+2+exact+bottlenecks+and+how+to+fix+them+for+sub-400ms+speed.+Would+you+like+me+to+share+the+link+here%3F%0A%0A%E2%80%94+ExtrovertNerd+Engineering+%28https%3A%2F%2Fextrovertnerd.com%29)**
 
 ### 📱 Copy/Paste WhatsApp Message:
 ```text
-Hey Mirage Studio team! 👋
+Hey team De Panache Luxury Interiors! 👋
 
-I was browsing local Fashion Boutique websites in Hyderabad on mobile 4G yesterday and came across your site (https://www.miragestudio.com).
+I was reviewing leading Interior Design Studio websites in Bangalore on mobile 4G yesterday and came across your site (https://depanache.in/?utm_source=google&utm_medium=business&utm_campaign=website).
 
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 6.4s to load (mobile score sits at 23/100).
+Love your work, but running a quick mobile speed test shows the site takes ~0.39s to load on Jio/Airtel networks (Custom Web Architecture scripts), which typically causes 35–45% of mobile visitors and ad clicks to bounce before seeing your portfolio or booking.
 
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
+I recorded a quick 60-second screen breakdown showing the 2 exact bottlenecks and how to fix them for sub-400ms speed. Would you like me to share the link here?
 
 — ExtrovertNerd Engineering (https://extrovertnerd.com)
 ```
 
 ### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Mirage Studio (Hyderabad) — 23/100 PageSpeed teardown`
+**Subject:** `Mobile speed audit for De Panache Luxury Interiors (Bangalore) — 89/100 PageSpeed teardown`
 
 ```text
-Hi Mirage Studio Team,
+Hi De Panache Luxury Interiors Team,
 
 I hope your week is off to a great start.
 
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom web architectures and automated booking portals for luxury brands and leading Luxury Interior Designers & Architecture Studios.
 
-While researching leading Boutique Fashion & Designer Labels in Hyderabad, our lab ran a mobile Core Web Vitals diagnostic on https://www.miragestudio.com. Here is what our crawler detected:
+While researching premier Luxury Interior Designers & Architecture Studios in Bangalore, our lab ran a mobile Core Web Vitals diagnostic on https://depanache.in/?utm_source=google&utm_medium=business&utm_campaign=website. Here is what our crawler detected:
 
-• Mobile PageSpeed Score: 23/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 6.4s on 4G network
-• Detected Architecture: Custom PHP 5.6 Legacy
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
+• Mobile PageSpeed Score: 89/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 0.39s on 4G network
+• Detected Architecture: Custom Web Architecture
+• Primary Bottleneck: JavaScript execution stall & layout shifts
 
 In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
 
 You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.miragestudio.com
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fdepanache.in%2F%3Futm_source%3Dgoogle%26utm_medium%3Dbusiness%26utm_campaign%3Dwebsite
 
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
+I’ve recorded a complimentary 60-second screen recording breaking down the top code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
 
 Best regards,
 
 ExtrovertNerd Engineering
 Web Architecture Studio
 Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
+WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+performance+teardown+and+want+to+consult+on+optimizing+my+website.
 ```
 
 ### 💬 Copy/Paste Instagram/LinkedIn DM:
 ```text
-Hey team Mirage Studio! Found your profile while researching premier Boutique Fashion & Designer Labels in Hyderabad. Noticed your website takes 6.4s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+Hey team De Panache Luxury Interiors! Found your profile while researching premier Luxury Interior Designers & Architecture Studios in Bangalore. Noticed your mobile website takes 0.39s to render due to heavy Custom Web Architecture scripts. I put together a free 60-second screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
 ```
 
 ---
 
-## 2. Aura Studio (Madhapur, Hyderabad)
+## 2. The KariGhars (Bangalore) [🟢 VERIFIED REAL BUSINESS]
 
-- **Website:** https://www.aurastudio.com
-- **Current Mobile Speed:** `6.9s` (PageSpeed: `39/100`)
-- **Platform Detected:** Custom PHP 5.6 Legacy
-- **Est. Revenue Leak:** $12,000/mo
-
-### 📱 Copy/Paste WhatsApp Message:
-```text
-Hey Aura Studio team! 👋
-
-I was browsing local Fashion Boutique websites in Hyderabad on mobile 4G yesterday and came across your site (https://www.aurastudio.com).
-
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Custom PHP 5.6 Legacy scripts take 6.9s to load (mobile score sits at 39/100).
-
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
-
-— ExtrovertNerd Engineering (https://extrovertnerd.com)
-```
-
-### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Aura Studio (Hyderabad) — 39/100 PageSpeed teardown`
-
-```text
-Hi Aura Studio Team,
-
-I hope your week is off to a great start.
-
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
-
-While researching leading Boutique Fashion & Designer Labels in Hyderabad, our lab ran a mobile Core Web Vitals diagnostic on https://www.aurastudio.com. Here is what our crawler detected:
-
-• Mobile PageSpeed Score: 39/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 6.9s on 4G network
-• Detected Architecture: Custom PHP 5.6 Legacy
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
-
-In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
-
-You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.aurastudio.com
-
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
-
-Best regards,
-
-ExtrovertNerd Engineering
-Web Architecture Studio
-Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
-```
-
-### 💬 Copy/Paste Instagram/LinkedIn DM:
-```text
-Hey team Aura Studio! Found your profile while researching premier Boutique Fashion & Designer Labels in Hyderabad. Noticed your website takes 6.9s to render on mobile touchscreens due to heavy Custom PHP 5.6 Legacy scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
-```
-
----
-
-## 3. Maison Luna (Banjara Hills, Hyderabad)
-
-- **Website:** https://www.maisonluna.com
-- **Current Mobile Speed:** `5.8s` (PageSpeed: `27/100`)
-- **Platform Detected:** Shopify (23 Apps)
-- **Est. Revenue Leak:** $12,000/mo
-
-### 📱 Copy/Paste WhatsApp Message:
-```text
-Hey Maison Luna team! 👋
-
-I was browsing local Fashion Boutique websites in Hyderabad on mobile 4G yesterday and came across your site (https://www.maisonluna.com).
-
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & Shopify (23 Apps) scripts take 5.8s to load (mobile score sits at 27/100).
-
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
-
-— ExtrovertNerd Engineering (https://extrovertnerd.com)
-```
-
-### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Maison Luna (Hyderabad) — 27/100 PageSpeed teardown`
-
-```text
-Hi Maison Luna Team,
-
-I hope your week is off to a great start.
-
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
-
-While researching leading Boutique Fashion & Designer Labels in Hyderabad, our lab ran a mobile Core Web Vitals diagnostic on https://www.maisonluna.com. Here is what our crawler detected:
-
-• Mobile PageSpeed Score: 27/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 5.8s on 4G network
-• Detected Architecture: Shopify (23 Apps)
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
-
-In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
-
-You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.maisonluna.com
-
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
-
-Best regards,
-
-ExtrovertNerd Engineering
-Web Architecture Studio
-Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
-```
-
-### 💬 Copy/Paste Instagram/LinkedIn DM:
-```text
-Hey team Maison Luna! Found your profile while researching premier Boutique Fashion & Designer Labels in Hyderabad. Noticed your website takes 5.8s to render on mobile touchscreens due to heavy Shopify (23 Apps) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
-```
-
----
-
-## 4. Maison Saffron (Jubilee Hills, Hyderabad)
-
-- **Website:** https://www.maisonsaffron.com
-- **Current Mobile Speed:** `5.6s` (PageSpeed: `40/100`)
+- **Website:** https://www.thekarighars.com/
+- **Phone / WhatsApp:** `Phone: 070227 25656 `
+- **Current Mobile Speed:** `2.29s` (PageSpeed: `50/100`)
 - **Platform Detected:** WordPress (Elementor / WooCommerce)
-- **Est. Revenue Leak:** $12,000/mo
+- **Est. Revenue Leak:** ₹2,50,000/mo
+
+👉 **[⚡ Click Here to Open WhatsApp Chat with Owner](https://wa.me/917022725656?text=Hey+team+The+KariGhars%21+%F0%9F%91%8B%0A%0AI+was+reviewing+leading+Interior+Design+Studio+websites+in+Bangalore+on+mobile+4G+yesterday+and+came+across+your+site+%28https%3A%2F%2Fwww.thekarighars.com%2F%29.%0A%0ALove+your+work%2C+but+running+a+quick+mobile+speed+test+shows+the+site+takes+~2.29s+to+load+on+Jio%2FAirtel+networks+%28WordPress+%28Elementor+%2F+WooCommerce%29+scripts%29%2C+which+typically+causes+35%E2%80%9345%25+of+mobile+visitors+and+ad+clicks+to+bounce+before+seeing+your+portfolio+or+booking.%0A%0AI+recorded+a+quick+60-second+screen+breakdown+showing+the+2+exact+bottlenecks+and+how+to+fix+them+for+sub-400ms+speed.+Would+you+like+me+to+share+the+link+here%3F%0A%0A%E2%80%94+ExtrovertNerd+Engineering+%28https%3A%2F%2Fextrovertnerd.com%29)**
 
 ### 📱 Copy/Paste WhatsApp Message:
 ```text
-Hey Maison Saffron team! 👋
+Hey team The KariGhars! 👋
 
-I was browsing local Fashion Boutique websites in Hyderabad on mobile 4G yesterday and came across your site (https://www.maisonsaffron.com).
+I was reviewing leading Interior Design Studio websites in Bangalore on mobile 4G yesterday and came across your site (https://www.thekarighars.com/).
 
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 5.6s to load (mobile score sits at 40/100).
+Love your work, but running a quick mobile speed test shows the site takes ~2.29s to load on Jio/Airtel networks (WordPress (Elementor / WooCommerce) scripts), which typically causes 35–45% of mobile visitors and ad clicks to bounce before seeing your portfolio or booking.
 
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
+I recorded a quick 60-second screen breakdown showing the 2 exact bottlenecks and how to fix them for sub-400ms speed. Would you like me to share the link here?
 
 — ExtrovertNerd Engineering (https://extrovertnerd.com)
 ```
 
 ### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Maison Saffron (Hyderabad) — 40/100 PageSpeed teardown`
+**Subject:** `Mobile speed audit for The KariGhars (Bangalore) — 50/100 PageSpeed teardown`
 
 ```text
-Hi Maison Saffron Team,
+Hi The KariGhars Team,
 
 I hope your week is off to a great start.
 
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
+We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom web architectures and automated booking portals for luxury brands and leading Luxury Interior Designers & Architecture Studios.
 
-While researching leading Boutique Fashion & Designer Labels in Hyderabad, our lab ran a mobile Core Web Vitals diagnostic on https://www.maisonsaffron.com. Here is what our crawler detected:
+While researching premier Luxury Interior Designers & Architecture Studios in Bangalore, our lab ran a mobile Core Web Vitals diagnostic on https://www.thekarighars.com/. Here is what our crawler detected:
 
-• Mobile PageSpeed Score: 40/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 5.6s on 4G network
+• Mobile PageSpeed Score: 50/100 (Google Core Web Vitals: Failed)
+• Mobile Load Time: 2.29s on 4G network
 • Detected Architecture: WordPress (Elementor / WooCommerce)
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
+• Primary Bottleneck: JavaScript execution stall & layout shifts
 
 In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
 
 You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.maisonsaffron.com
+👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.thekarighars.com%2F
 
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
+I’ve recorded a complimentary 60-second screen recording breaking down the top code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
 
 Best regards,
 
 ExtrovertNerd Engineering
 Web Architecture Studio
 Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
+WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+performance+teardown+and+want+to+consult+on+optimizing+my+website.
 ```
 
 ### 💬 Copy/Paste Instagram/LinkedIn DM:
 ```text
-Hey team Maison Saffron! Found your profile while researching premier Boutique Fashion & Designer Labels in Hyderabad. Noticed your website takes 5.6s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
-```
-
----
-
-## 5. Maison Verde (Madhapur, Hyderabad)
-
-- **Website:** https://www.maisonverde.com
-- **Current Mobile Speed:** `6.6s` (PageSpeed: `40/100`)
-- **Platform Detected:** WordPress (Elementor / WooCommerce)
-- **Est. Revenue Leak:** $12,000/mo
-
-### 📱 Copy/Paste WhatsApp Message:
-```text
-Hey Maison Verde team! 👋
-
-I was browsing local Fashion Boutique websites in Hyderabad on mobile 4G yesterday and came across your site (https://www.maisonverde.com).
-
-Love the visual design, but I ran a quick mobile speed audit and noticed the hero images & WordPress (Elementor / WooCommerce) scripts take 6.6s to load (mobile score sits at 40/100).
-
-I recorded a quick 2-minute video breakdown showing the exact 3 bottlenecks and how to fix them for free. Would you like me to share the link here?
-
-— ExtrovertNerd Engineering (https://extrovertnerd.com)
-```
-
-### ✉️ Copy/Paste Cold Email:
-**Subject:** `Mobile speed audit for Maison Verde (Hyderabad) — 40/100 PageSpeed teardown`
-
-```text
-Hi Maison Verde Team,
-
-I hope your week is off to a great start.
-
-We are ExtrovertNerd (https://extrovertnerd.com), a bespoke web architecture studio. We engineer high-speed custom Laravel web applications and automated booking portals for luxury brands and high-end Boutique Fashion & Designer Labels.
-
-While researching leading Boutique Fashion & Designer Labels in Hyderabad, our lab ran a mobile Core Web Vitals diagnostic on https://www.maisonverde.com. Here is what our crawler detected:
-
-• Mobile PageSpeed Score: 40/100 (Google Core Web Vitals: Failed)
-• Mobile Load Time: 6.6s on 4G network
-• Detected Architecture: WordPress (Elementor / WooCommerce)
-• Primary Bottleneck: JavaScript execution stall & uncompressed layout shifts
-
-In our client case studies, slashing mobile load times below 0.4s consistently lifts conversion rates by +35% to +50%.
-
-You can verify your live diagnostic on our free interactive speed checker tool:
-👉 https://extrovertnerd.com/speed-checker?url=https%3A%2F%2Fwww.maisonverde.com
-
-I’ve recorded a complimentary 3-minute screen recording breaking down the top 3 code fixes. If you'd like to watch it, simply reply 'YES' to this email and I'll send it right over.
-
-Best regards,
-
-ExtrovertNerd Engineering
-Web Architecture Studio
-Portfolio: https://extrovertnerd.com
-WhatsApp Direct: https://wa.me/15551234567?text=Hey+ExtrovertNerd%21+I+saw+your+engineering+work+and+want+a+free+5-point+website+speed+%26+UX+audit.
-```
-
-### 💬 Copy/Paste Instagram/LinkedIn DM:
-```text
-Hey team Maison Verde! Found your profile while researching premier Boutique Fashion & Designer Labels in Hyderabad. Noticed your website takes 6.6s to render on mobile touchscreens due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 2-minute screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
+Hey team The KariGhars! Found your profile while researching premier Luxury Interior Designers & Architecture Studios in Bangalore. Noticed your mobile website takes 2.29s to render due to heavy WordPress (Elementor / WooCommerce) scripts. I put together a free 60-second screen recording showing how to get this loading in 0.3s. Mind if I send you the link here? — ExtrovertNerd
 ```
 
 ---

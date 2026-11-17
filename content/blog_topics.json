@@ -242,6 +242,111 @@
         "bounce_rate": "28%",
         "conversion_lift": "+61%"
       }
+    },
+    {
+      "id": "luxury-interiors",
+      "name": "Luxury Interior Designers & Architecture Studios",
+      "singular": "Interior Design Studio",
+      "plural": "Interior Designers & Architects",
+      "target_client": "Studio founders, principal architects, and luxury interior design directors",
+      "primary_action": "high-ticket residential and commercial design consultations",
+      "pain_points": [
+        "Uncompressed 4K portfolio imagery causing 6.5s load times on mobile 4G.",
+        "High-net-worth clients abandoning inquiry forms due to broken mobile layouts and slow galleries.",
+        "Wasted Instagram ad spend because clicks bounce before the mobile portfolio renders."
+      ],
+      "symptoms": [
+        "Mobile PageSpeed score below 28/100 due to heavy Elementor/Wix builders",
+        "Over 65% mobile bounce rate on portfolio pages",
+        "Missing instant 1-tap WhatsApp consultation booking button"
+      ],
+      "laravel_solution": [
+        "High-speed AVIF/WebP responsive image delivery pipeline loading under 350ms.",
+        "Instant WhatsApp consultation scheduling with portfolio project tagging.",
+        "Custom interactive 3D floorplan and project showcase engine."
+      ],
+      "metric_before": {
+        "load_time": "6.4s",
+        "pagespeed": "26/100",
+        "bounce_rate": "71%",
+        "lost_revenue": "₹2,50,000/mo"
+      },
+      "metric_after": {
+        "load_time": "0.36s",
+        "pagespeed": "99/100",
+        "bounce_rate": "21%",
+        "conversion_lift": "+52%"
+      }
+    },
+    {
+      "id": "aesthetic-clinics",
+      "name": "Cosmetic, Dermatology & Aesthetic Medicine Clinics",
+      "singular": "Aesthetic Clinic",
+      "plural": "Cosmetic & Dermatology Clinics",
+      "target_client": "Lead dermatologists, plastic surgeons, and aesthetic clinic directors",
+      "primary_action": "private aesthetic consultation and VIP procedure bookings",
+      "pain_points": [
+        "Patients abandoning consultation forms when pages take 5+ seconds to open on phones.",
+        "Slow mobile load speeds causing Google Ads & Meta Ads Cost Per Lead (CPL) to double.",
+        "Broken mobile Before & After transformation galleries destroying clinical authority."
+      ],
+      "symptoms": [
+        "Mobile PageSpeed failing Core Web Vitals on heavy WordPress plugins",
+        "Sluggish appointment booking widgets dropping mobile visitors",
+        "Lack of HIPAA/NABH compliant secure lead intake routing to doctors"
+      ],
+      "laravel_solution": [
+        "Sub-400ms consultation booking engine with automated WhatsApp confirmation.",
+        "Interactive Before & After transformation sliders loading instantaneously.",
+        "Secure patient intake portal eliminating front-desk manual paperwork."
+      ],
+      "metric_before": {
+        "load_time": "5.8s",
+        "pagespeed": "29/100",
+        "bounce_rate": "67%",
+        "lost_revenue": "₹1,80,000/mo"
+      },
+      "metric_after": {
+        "load_time": "0.34s",
+        "pagespeed": "100/100",
+        "bounce_rate": "18%",
+        "conversion_lift": "+48%"
+      }
+    },
+    {
+      "id": "b2b-exporters",
+      "name": "B2B Manufacturers & Global Industrial Exporters",
+      "singular": "B2B Export Manufacturer",
+      "plural": "Industrial Exporters & Manufacturers",
+      "target_client": "Managing directors, export heads, and industrial enterprise owners",
+      "primary_action": "direct international Request-for-Quote (RFQ) inquiries and catalog orders",
+      "pain_points": [
+        "Outdated 2012 legacy websites destroying credibility with European, US, and Middle East buyers.",
+        "Absence of an interactive digital product specification catalog with 1-click RFQ dispatch.",
+        "Sluggish page response on international networks leading to lost multi-lakh export inquiries."
+      ],
+      "symptoms": [
+        "Unresponsive desktop-only layouts that break on mobile touchscreens",
+        "Slow server response times (>2.5s TTFB) for international visitors",
+        "Missing digital catalog search and direct RFQ pipeline"
+      ],
+      "laravel_solution": [
+        "Lightning-fast digital export catalog with faceted search and CAD/spec sheet downloads.",
+        "Automated international RFQ pipeline routing directly to executive sales team.",
+        "Global CDN caching ensuring sub-400ms loading speeds across North America, Europe, and Asia."
+      ],
+      "metric_before": {
+        "load_time": "7.2s",
+        "pagespeed": "21/100",
+        "bounce_rate": "76%",
+        "lost_revenue": "₹5,00,000/mo"
+      },
+      "metric_after": {
+        "load_time": "0.39s",
+        "pagespeed": "98/100",
+        "bounce_rate": "24%",
+        "conversion_lift": "+59%"
+      }
     }
   ],
   "tech_comparisons": [
