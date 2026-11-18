@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-17T10:59:31.854557",
-  "duration_seconds": 134.38,
+  "timestamp": "2026-11-18T10:30:33.229944",
+  "duration_seconds": 235.43,
   "dev_track": {
     "status": "completed",
-    "rank": 40
+    "rank": 41
   },
   "news_track": {
     "status": "completed",
-    "headline": "PHP 8.4 Released: Property Hooks, Asymmetric Visibility & OPcache JIT Surges"
+    "headline": "Speculation Rules API: Achieving True 0ms Page Navigation in Modern Browsers"
   },
   "local_track": {
     "status": "completed",
-    "city": "Hyderabad",
-    "niche": "Boutique Fashion & Designer Labels"
+    "city": "Mumbai",
+    "niche": "B2B Manufacturers & Global Industrial Exporters"
   }
 }
