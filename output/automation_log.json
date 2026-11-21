@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-20T10:19:52.421628",
-  "duration_seconds": 185.32,
+  "timestamp": "2026-11-21T10:04:01.751807",
+  "duration_seconds": 215.5,
   "dev_track": {
     "status": "completed",
-    "rank": 43
+    "rank": 44
   },
   "news_track": {
     "status": "completed",
-    "headline": "Cross-Document View Transitions: Native App Animations Across Multi-Page Apps"
+    "headline": "Interaction to Next Paint (INP) is Live: Why 73% of Sluggish Sites Fail"
   },
   "local_track": {
     "status": "completed",
-    "city": "Delhi NCR",
-    "niche": "Cosmetic, Dermatology & Aesthetic Medicine Clinics"
+    "city": "Hyderabad",
+    "niche": "B2B Manufacturers & Global Industrial Exporters"
   }
 }
