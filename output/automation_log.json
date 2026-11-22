@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-21T10:04:01.751807",
-  "duration_seconds": 215.5,
+  "timestamp": "2026-11-22T10:06:02.272378",
+  "duration_seconds": 196.23,
   "dev_track": {
     "status": "completed",
-    "rank": 44
+    "rank": 45
   },
   "news_track": {
     "status": "completed",
-    "headline": "Interaction to Next Paint (INP) is Live: Why 73% of Sluggish Sites Fail"
+    "headline": "HTTP/3 & QUIC Now Powers Over 35% of Global Web Traffic"
   },
   "local_track": {
     "status": "completed",
-    "city": "Hyderabad",
-    "niche": "B2B Manufacturers & Global Industrial Exporters"
+    "city": "Dubai",
+    "niche": "Luxury Interior Designers & Architecture Studios"
   }
 }
