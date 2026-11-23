@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-22T10:06:02.272378",
-  "duration_seconds": 196.23,
+  "timestamp": "2026-11-23T11:06:04.584901",
+  "duration_seconds": 142.64,
   "dev_track": {
     "status": "completed",
-    "rank": 45
+    "rank": 46
   },
   "news_track": {
     "status": "completed",
-    "headline": "HTTP/3 & QUIC Now Powers Over 35% of Global Web Traffic"
+    "headline": "PHP 8.4 Released: Property Hooks, Asymmetric Visibility & OPcache JIT Surges"
   },
   "local_track": {
     "status": "completed",
-    "city": "Dubai",
+    "city": "Goa",
     "niche": "Luxury Interior Designers & Architecture Studios"
   }
 }
