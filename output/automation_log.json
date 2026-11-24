@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-23T11:06:04.584901",
-  "duration_seconds": 142.64,
+  "timestamp": "2026-11-24T12:49:53.141838",
+  "duration_seconds": 212.78,
   "dev_track": {
     "status": "completed",
-    "rank": 46
+    "rank": 47
   },
   "news_track": {
     "status": "completed",
-    "headline": "PHP 8.4 Released: Property Hooks, Asymmetric Visibility & OPcache JIT Surges"
+    "headline": "Speculation Rules API: Achieving True 0ms Page Navigation in Modern Browsers"
   },
   "local_track": {
     "status": "completed",
-    "city": "Goa",
-    "niche": "Luxury Interior Designers & Architecture Studios"
+    "city": "Mumbai",
+    "niche": "Cosmetic, Dermatology & Aesthetic Medicine Clinics"
   }
 }
