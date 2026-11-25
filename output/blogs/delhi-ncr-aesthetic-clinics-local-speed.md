@@ -1,7 +1,7 @@
 ---
 title: "Why Delhi NCR Cosmetic, Dermatology & Aesthetic Medicine Clinics Businesses Lose Customers to Slow Mobile Websites"
 slug: "delhi-ncr-aesthetic-clinics-local-speed"
-date: "2026-11-20"
+date: "2026-11-25"
 author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Delhi NCR"

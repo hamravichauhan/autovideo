@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-25T09:14:39.125858",
-  "duration_seconds": 11.23,
+  "timestamp": "2026-11-25T11:35:44.559039",
+  "duration_seconds": 66.72,
   "dev_track": {
     "status": "completed",
     "rank": null
   },
   "news_track": {
     "status": "completed",
-    "headline": null
+    "headline": "AVIF Image Format Becomes Universally Supported Across All Browsers & Devices"
   },
   "local_track": {
     "status": "completed",
-    "city": "Goa",
+    "city": "Delhi NCR",
     "niche": "Cosmetic, Dermatology & Aesthetic Medicine Clinics"
   }
 }
