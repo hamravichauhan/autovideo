@@ -64,7 +64,7 @@ class Config:
     dry_run: bool = os.getenv("DRY_RUN", "true").lower() in ("true", "1", "yes")
 
     # Telegram Multi-Track Channel / Topic Routing (Track Isolation)
-    telegram_bot_token: str = os.getenv("TELEGRAM_BOT_TOKEN", "8580208646:AAHbnjZm0ZhHrxXLkamH8yF7ozkmBX2zurw").strip()
+    telegram_bot_token: str = os.getenv("TELEGRAM_BOT_TOKEN", "8672034279:AAHuUDIZs1Is5_ewEmm90kDToEUKh2Nny1g").strip()
     telegram_chat_id: str = os.getenv("TELEGRAM_CHAT_ID", "1432790039").strip()
     telegram_dev_chat_id: str = os.getenv("TELEGRAM_DEV_CHAT_ID", "").strip()
     telegram_news_chat_id: str = os.getenv("TELEGRAM_NEWS_CHAT_ID", "").strip()
