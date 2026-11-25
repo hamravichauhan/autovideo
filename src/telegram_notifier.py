@@ -711,6 +711,9 @@ class TelegramNotifier:
         dev_tip: Optional[Dict[str, Any]] = None,
         video_path: Optional[Path | str] = None,
         video_caption: Optional[str] = None,
+        chat_id: Optional[str] = None,
+        message_thread_id: Optional[int] = None,
+        force: bool = False,
     ) -> Dict[str, Any]:
         """Dispatches Track 1: Dev Content (Top 100 System Architecture + Performance Blueprints).
         
@@ -718,26 +721,28 @@ class TelegramNotifier:
         Target Platforms: LinkedIn (Engineering Network) & Instagram (Visual Carousel).
         """
         results = {}
-        target_chat = (self.dev_chat_id or "").strip()
-        target_topic = self.dev_topic_id
+        target_chat = (chat_id or self.dev_chat_id or "").strip()
+        target_topic = message_thread_id or self.dev_topic_id
 
-        # Guard 1: Check if Dev auto-posting is temporarily paused
-        if not getattr(config, "enable_dev_autoposting", False):
-            logger.info("⏸️ Dev track auto-posting is temporarily PAUSED. Bypassing dispatch to protect news channel.")
-            return {
-                "ok": True,
-                "status": "paused",
-                "message": "Dev track auto-posting is temporarily paused. Protected news channel.",
-            }
+        # Safety Guards: protect news channel during automated daily execution
+        if not force and not chat_id:
+            if not getattr(config, "enable_dev_autoposting", False):
+                logger.info("⏸️ Dev track auto-posting is temporarily PAUSED. Bypassing dispatch to protect news channel.")
+                return {
+                    "ok": True,
+                    "status": "paused",
+                    "message": "Dev track auto-posting is temporarily paused. Protected news channel.",
+                }
+            if not target_chat:
+                logger.warning("⚠️ No dedicated TELEGRAM_DEV_CHAT_ID configured. Skipping dev dispatch to prevent posting to news channel.")
+                return {
+                    "ok": True,
+                    "status": "skipped",
+                    "message": "No dedicated TELEGRAM_DEV_CHAT_ID configured. Skipping to protect news channel from dev posts.",
+                }
 
-        # Guard 2: Prevent posting to news channel if no dedicated dev channel configured
         if not target_chat:
-            logger.warning("⚠️ No dedicated TELEGRAM_DEV_CHAT_ID configured. Skipping dev dispatch to prevent posting to news channel.")
-            return {
-                "ok": True,
-                "status": "skipped",
-                "message": "No dedicated TELEGRAM_DEV_CHAT_ID configured. Skipping to protect news channel from dev posts.",
-            }
+            return {"ok": False, "error": "No target chat ID specified."}
 
         # 1. Prominent Isolation Banner
         banner = (
