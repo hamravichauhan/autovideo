@@ -264,8 +264,16 @@ class AutomationEngine:
         logger.info("🚀 STARTING AUTOMATED MULTI-TRACK DAILY SUITE")
         logger.info("=======================================================")
 
-        # Track 1: Dev Content & Architecture
-        dev_res = self.run_dev_track(render_graphics=render_graphics, render_video=render_graphics)
+        # Track 1: Dev Content & Architecture (Temporarily stopped to prevent posting to news channel)
+        if getattr(config, "enable_dev_autoposting", False) and config.dev_chat_id:
+            dev_res = self.run_dev_track(render_graphics=render_graphics, render_video=render_graphics)
+        else:
+            logger.info("⏸️ [TRACK 1] Dev Content (extrovertnerd.dev) auto-posting is PAUSED to protect news channel.")
+            dev_res = {
+                "track": "dev",
+                "status": "paused",
+                "message": "Dev auto-posting is temporarily paused to protect news channel.",
+            }
 
         # Track 2: Breaking Tech News & Radar
         news_res = self.run_news_track(render_graphics=render_graphics)

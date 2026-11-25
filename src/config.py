@@ -75,10 +75,13 @@ class Config:
         int(os.getenv("TELEGRAM_NEWS_TOPIC_ID")) if os.getenv("TELEGRAM_NEWS_TOPIC_ID") else None
     )
 
+    # Dev Auto-Posting Control (Temporarily stopped to prevent posting to news channel)
+    enable_dev_autoposting: bool = os.getenv("ENABLE_DEV_AUTOPOSTING", "false").lower() in ("true", "1", "yes")
+
     @property
     def dev_chat_id(self) -> str:
-        """Dedicated chat ID for Dev content track (falls back to main chat ID)."""
-        return self.telegram_dev_chat_id or self.telegram_chat_id
+        """Dedicated chat ID for Dev content track (strictly empty if not configured, never falls back to news channel)."""
+        return self.telegram_dev_chat_id
 
     @property
     def news_chat_id(self) -> str:

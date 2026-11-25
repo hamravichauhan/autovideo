@@ -112,6 +112,7 @@ jobs:
           TELEGRAM_NEWS_CHAT_ID: ${{ secrets.TELEGRAM_NEWS_CHAT_ID || '' }}
           TELEGRAM_DEV_TOPIC_ID: ${{ secrets.TELEGRAM_DEV_TOPIC_ID || '' }}
           TELEGRAM_NEWS_TOPIC_ID: ${{ secrets.TELEGRAM_NEWS_TOPIC_ID || '' }}
+          ENABLE_DEV_AUTOPOSTING: ${{ secrets.ENABLE_DEV_AUTOPOSTING || 'false' }}
         run: |
           CITY_ARG=""
           NICHE_ARG=""

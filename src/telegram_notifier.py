@@ -54,7 +54,7 @@ class TelegramNotifier:
             dev_chat_id
             or getattr(config, "dev_chat_id", None)
             or os.getenv("TELEGRAM_DEV_CHAT_ID")
-            or self.chat_id
+            or ""
         ).strip()
         self.news_chat_id = (
             news_chat_id
@@ -718,8 +718,26 @@ class TelegramNotifier:
         Target Platforms: LinkedIn (Engineering Network) & Instagram (Visual Carousel).
         """
         results = {}
-        target_chat = self.dev_chat_id
+        target_chat = (self.dev_chat_id or "").strip()
         target_topic = self.dev_topic_id
+
+        # Guard 1: Check if Dev auto-posting is temporarily paused
+        if not getattr(config, "enable_dev_autoposting", False):
+            logger.info("⏸️ Dev track auto-posting is temporarily PAUSED. Bypassing dispatch to protect news channel.")
+            return {
+                "ok": True,
+                "status": "paused",
+                "message": "Dev track auto-posting is temporarily paused. Protected news channel.",
+            }
+
+        # Guard 2: Prevent posting to news channel if no dedicated dev channel configured
+        if not target_chat:
+            logger.warning("⚠️ No dedicated TELEGRAM_DEV_CHAT_ID configured. Skipping dev dispatch to prevent posting to news channel.")
+            return {
+                "ok": True,
+                "status": "skipped",
+                "message": "No dedicated TELEGRAM_DEV_CHAT_ID configured. Skipping to protect news channel from dev posts.",
+            }
 
         # 1. Prominent Isolation Banner
         banner = (
@@ -1305,6 +1323,14 @@ class TelegramNotifier:
         """Dispatches a Website Speed & UX Tip poster to Telegram."""
         target_chat = (chat_id or self.dev_chat_id).strip()
         target_topic = message_thread_id or self.dev_topic_id
+
+        if not getattr(config, "enable_dev_autoposting", False) or not target_chat:
+            logger.info("⏸️ Website tip dispatch skipped: Dev auto-posting is paused or no dedicated dev channel configured.")
+            return {
+                "ok": True,
+                "status": "skipped",
+                "message": "Dev auto-posting is paused or no dedicated dev chat configured; skipped to protect news channel.",
+            }
 
         caption = (
             f"🛠️ <b>[PERFORMANCE TIP] ExtrovertNerd Blueprint: {tip.get('title')}</b>\n\n"

@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-24T12:49:53.141838",
-  "duration_seconds": 212.78,
+  "timestamp": "2026-11-25T09:14:39.125858",
+  "duration_seconds": 11.23,
   "dev_track": {
     "status": "completed",
-    "rank": 47
+    "rank": null
   },
   "news_track": {
     "status": "completed",
-    "headline": "Speculation Rules API: Achieving True 0ms Page Navigation in Modern Browsers"
+    "headline": null
   },
   "local_track": {
     "status": "completed",
-    "city": "Mumbai",
+    "city": "Goa",
     "niche": "Cosmetic, Dermatology & Aesthetic Medicine Clinics"
   }
 }
