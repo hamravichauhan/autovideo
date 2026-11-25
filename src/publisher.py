@@ -135,7 +135,7 @@ class CaptionBuilder:
 class MetaGraphPublisher:
     """Handles publishing to Instagram and Facebook via Meta Graph API."""
 
-    BASE_URL = "https://graph.facebook.com/v19.0"
+    BASE_URL = "https://graph.facebook.com/v21.0"
 
     def __init__(self):
         self.access_token = config.meta_access_token
@@ -180,6 +180,47 @@ class MetaGraphPublisher:
                 time.sleep(2**attempt)
 
         return {}
+
+    def publish_instagram_photo(
+        self, image_url: str, caption: str
+    ) -> Dict[str, Any]:
+        """Publishes a single image post to Instagram via Meta Graph API."""
+        if not config.has_meta_credentials or config.dry_run:
+            logger.info("[DRY-RUN / NO CREDENTIALS] Simulating Instagram Photo upload")
+            return {
+                "status": "simulated",
+                "platform": "instagram",
+                "image_url": image_url,
+                "caption_snippet": caption[:100] + "...",
+            }
+
+        # Step 1: Create Container
+        logger.info("Creating Instagram photo container for: %s", image_url)
+        res = self._make_request(
+            "POST",
+            f"{self.ig_account_id}/media",
+            params={"image_url": image_url, "caption": caption},
+        )
+        container_id = res.get("id")
+        if not container_id:
+            raise RuntimeError(f"Failed to create photo container for {image_url}: {res}")
+
+        # Meta requires a short buffer to fetch media
+        time.sleep(5)
+
+        # Step 2: Publish Container
+        logger.info("Publishing Instagram container: %s", container_id)
+        publish_res = self._make_request(
+            "POST",
+            f"{self.ig_account_id}/media_publish",
+            params={"creation_id": container_id},
+        )
+
+        return {
+            "status": "published",
+            "platform": "instagram",
+            "post_id": publish_res.get("id"),
+        }
 
     def publish_instagram_carousel(
         self, image_urls: List[str], caption: str
