@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-25T11:35:44.559039",
-  "duration_seconds": 66.72,
+  "timestamp": "2026-11-26T11:19:21.809723",
+  "duration_seconds": 65.02,
   "dev_track": {
     "status": "completed",
     "rank": null
   },
   "news_track": {
     "status": "completed",
-    "headline": "AVIF Image Format Becomes Universally Supported Across All Browsers & Devices"
+    "headline": "Cross-Document View Transitions: Native App Animations Across Multi-Page Apps"
   },
   "local_track": {
     "status": "completed",
-    "city": "Delhi NCR",
-    "niche": "Cosmetic, Dermatology & Aesthetic Medicine Clinics"
+    "city": "Dubai",
+    "niche": "Luxury Interior Designers & Architecture Studios"
   }
 }

@@ -1,7 +1,7 @@
 ---
 title: "Why Dubai Luxury Interior Designers & Architecture Studios Businesses Lose Customers to Slow Mobile Websites"
 slug: "dubai-luxury-interiors-local-speed"
-date: "2026-11-22"
+date: "2026-11-26"
 author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Dubai"
