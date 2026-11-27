@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-26T11:19:21.809723",
-  "duration_seconds": 65.02,
+  "timestamp": "2026-11-27T11:13:56.232448",
+  "duration_seconds": 114.85,
   "dev_track": {
     "status": "completed",
     "rank": null
   },
   "news_track": {
     "status": "completed",
-    "headline": "Cross-Document View Transitions: Native App Animations Across Multi-Page Apps"
+    "headline": "Interaction to Next Paint (INP) is Live: Why 73% of Sluggish Sites Fail"
   },
   "local_track": {
     "status": "completed",
-    "city": "Dubai",
+    "city": "Mumbai",
     "niche": "Luxury Interior Designers & Architecture Studios"
   }
 }
