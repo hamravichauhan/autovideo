@@ -1,7 +1,7 @@
 ---
 title: "Why Mumbai Cosmetic, Dermatology & Aesthetic Medicine Clinics Businesses Lose Customers to Slow Mobile Websites"
 slug: "mumbai-aesthetic-clinics-local-speed"
-date: "2026-11-24"
+date: "2026-11-28"
 author: "ExtrovertNerd"
 category: "Mobile Performance & Core Web Vitals"
 city: "Mumbai"

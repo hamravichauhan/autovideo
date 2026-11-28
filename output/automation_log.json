@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-27T11:13:56.232448",
-  "duration_seconds": 114.85,
+  "timestamp": "2026-11-28T10:45:21.722680",
+  "duration_seconds": 99.11,
   "dev_track": {
     "status": "completed",
     "rank": null
   },
   "news_track": {
     "status": "completed",
-    "headline": "Interaction to Next Paint (INP) is Live: Why 73% of Sluggish Sites Fail"
+    "headline": "HTTP/3 & QUIC Now Powers Over 35% of Global Web Traffic"
   },
   "local_track": {
     "status": "completed",
     "city": "Mumbai",
-    "niche": "Luxury Interior Designers & Architecture Studios"
+    "niche": "Cosmetic, Dermatology & Aesthetic Medicine Clinics"
   }
 }
